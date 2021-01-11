@@ -13,11 +13,10 @@ Todo ano é preciso descrever as características de um sistema que será constr
 
 ## FUNCIONALIDADES
 
-- [ ] Apresentar os requisitos funcionanis
-- [x] Apresentar os requisitos não-funcionanis
+- [ ] Apresentar os requisitos funcionais
+- [x] Apresentar os requisitos não-funcionais
 - [ ] Indicar os membros da equipe
 - [x] Exibir repositório e dicas que são comuns
-
 
 ### REQUISITOS NÃO FUNCIONAIS
 
@@ -54,10 +53,10 @@ O github contém várias ferramentas que permitem o gerenciamento projeto, promo
 
 Data | Descrição
 :---:|:---
-01/2021 | Definição do projeto a ser executado
-02/2020 | Modelo implementado no EF Core
-02/2020 | Aplicação que permite a carga incial/teste do modelo implementado com EF Core
-03/2020 | Entrega de [protótipos](prototipos/prototipos.md) das principais telas do sistema proposto (e que atendam aos itens descritos no REQUISITOS NÃO FUNCIONAIS)
+14/01/2021 | Definição do projeto a ser executado
+??/02/2020 | Modelo implementado no EF Core
+??/02/2020 | Aplicação que permite a carga incial/teste do modelo implementado com EF Core
+??/03/2020 | Entrega de [protótipos](prototipos/prototipos.md) das principais telas do sistema proposto (e que atendam aos itens descritos no REQUISITOS NÃO FUNCIONAIS)
 
 ## Project status
 Este projeto é um template para a definição da avaliação da disciplina programação web 2, do período de 2021.1 (aulas remotas), do IFS
