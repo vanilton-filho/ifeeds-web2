@@ -39,6 +39,7 @@ Todo ano é preciso descrever as características de um sistema que será constr
 - Documentação sobre [Diretrizes de design de estrutura] 
 - [A collection of awesome **.NET CORE** libraries, tools, frameworks, and software](https://github.com/thangchung/awesome-dotnet-core)
 - [A collection of awesome **.NET** libraries, tools, frameworks, and software](https://github.com/quozd/awesome-dotnet) - Referência, pois é para .NET e não .NET CORE
+- [Sqlserver e docker: um guia instantâneo](sqlserver_e_docker.md)
 
 ### Gerenciar seu trabalho no GitHub
 
