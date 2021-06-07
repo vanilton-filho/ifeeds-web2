@@ -22,10 +22,11 @@ Todo ano é preciso descrever as características de um sistema que será constr
 
 - Utilizar .NET CORE 3.1+
 - Utilizar [EF Core](https://docs.microsoft.com/pt-br/ef/core/) para manipução de dados
-- Possuir, pelo menos um, relacionamento 1:1 (um para um)
-- Possuir, pelo menos um, relacionamento 1:N (um para muitos)
+- Possuir, pelo menos três, relacionamentos 1:1 (um para um)
+- Possuir, pelo menos três, relacionamentos 1:N (um para muitos)
 - Possuir, pelo menos um, relacionamento M:N (muito para muitos)
 - Fazer um programa, em C# com Entity Framework, para realizar carga inicial dos dados
+- Utilizar campos de data, numéricos e textuais
 
 ## Membros da equipe (Até 3 pessoas. Identificar o líder)
 
@@ -67,10 +68,10 @@ O github contém várias ferramentas que permitem o gerenciamento projeto, promo
 
 Data | Descrição
 :---:|:---
-14/01/2021 | Definição do projeto a ser executado
-??/02/2020 | [Modelo implementado](https://docs.microsoft.com/pt-br/ef/core/modeling/) no EF Core
-??/02/2020 | Aplicação que permite a [carga incial/teste][Data seeding] do modelo implementado com EF Core
-??/03/2020 | Entrega de [protótipos](prototipos/prototipos.md) das principais telas do sistema proposto (e que atendam aos itens descritos no REQUISITOS NÃO FUNCIONAIS)
+??/??/???? | Definição do projeto a ser executado
+??/??/???? | [Modelo implementado](https://docs.microsoft.com/pt-br/ef/core/modeling/) no EF Core
+??/??/???? | Aplicação que permite a [carga incial/teste][Data seeding] do modelo implementado com EF Core
+??/??/???? | Entrega de [protótipos](prototipos/prototipos.md) das principais telas do sistema proposto (e que atendam aos itens descritos no REQUISITOS NÃO FUNCIONAIS)
 
 ## Project status
 Este projeto é um template para a definição da avaliação da disciplina programação web 2, do período de 2021.1 (aulas remotas), do IFS
