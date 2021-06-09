@@ -1,15 +1,17 @@
 
-# Nome
-
-## < Nome do sistema >
+# **<span style="color:green">IF</span>eed<span style="color:green">S</span>** - Feedback para o Instituto Federal de Sergipe
 
 ### RESUMO/JUSTIFICATIVA
 
-Todo ano é preciso descrever as características de um sistema que será construído pelos alunos. O presente repositório busca organizar as ideias e definir um padrão/template de documentação de sistemas que seja simples e colaborativo.
+Desenvolver uma aplicação web que fornecerá à comunidade acadêmica a possibilidade de 
+reportar e dar feedbacks referente a estrutura organizacional. A comunidade terá a 
+possibilidade de informar por meio da aplicação a necessidade de melhorias, ajustes, e 
+também, fazer elogios sobre serviços, infraestrutura e eventos da instituição.
 
 ### OBJETIVOS
 
-- Definir um template de avaliação para ser utilizado na disciplina de web 2
+- O aplicativo irá funcionar como um captador de dados.
+- O objetivo do aplicativo é simples, ele resolve o problema de fazer o IFS entender o que precisa melhorar de fato e dá uma transparência para todos de como o instituto caminha.
 
 ## FUNCIONALIDADES
 
@@ -28,11 +30,11 @@ Todo ano é preciso descrever as características de um sistema que será constr
 - Fazer um programa, em C# com Entity Framework, para realizar carga inicial dos dados
 - Utilizar campos de data, numéricos e textuais
 
-## Membros da equipe (Até 3 pessoas. Identificar o líder)
+## Membros da equipe
 
-- Aluno 1 (líder)
-- Aluno 2
-- Aluno 3
+- vanilton filho (líder)
+- Kaiki Mello
+- Raphaela
 
 ## Dicas, repositórios e materiais úteis
 
