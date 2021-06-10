@@ -15,14 +15,20 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## FUNCIONALIDADES
 
-- [ ] Apresentar os requisitos funcionais
-- [x] Apresentar os requisitos não-funcionais
-- [ ] Indicar os membros da equipe
-- [x] Exibir repositório e dicas que são comuns
+- [ ] Perfis de usuários(admin, usuário comum)
+- [ ] CRUD usuarios
+- [ ] CRUD avaliação 
+- [ ] CRUD feedback
+- [ ] CRUD histórico 
+- [ ] CRUD as categorias 
+- [ ] CRUD resposta do feedback
+- [ ] CRUD formulário de avaliação
+- [ ] CRUD Campus
+
 
 ### REQUISITOS NÃO FUNCIONAIS
 
-- Utilizar .NET CORE 3.1+
+- Utilizar .NET CORE 5
 - Utilizar [EF Core](https://docs.microsoft.com/pt-br/ef/core/) para manipução de dados
 - Possuir, pelo menos três, relacionamentos 1:1 (um para um)
 - Possuir, pelo menos três, relacionamentos 1:N (um para muitos)
