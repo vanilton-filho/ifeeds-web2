@@ -1,5 +1,5 @@
-
-# **<span style="color:green">IF</span>eed<span style="color:green">S</span>** - Feedback para o Instituto Federal de Sergipe
+![logo](assets/img/logo.png)
+# IFeedS - Feedback para o Instituto Federal de Sergipe
 
 ### RESUMO/JUSTIFICATIVA
 
@@ -41,6 +41,10 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 - vanilton filho (líder)
 - Kaiki Mello
 - Raphaela
+
+## DER
+
+![der_v1](assets/img/der_v1.png)
 
 ## Dicas, repositórios e materiais úteis
 
