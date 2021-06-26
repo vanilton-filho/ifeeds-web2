@@ -13,17 +13,27 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 - O aplicativo irá funcionar como um captador de dados.
 - O objetivo do aplicativo é simples, ele resolve o problema de fazer o IFS entender o que precisa melhorar de fato e dá uma transparência para todos de como o instituto caminha.
 
+
+## REGRAS DE NEGÓCIO
+
+- O usuário deverá ter vínculo com Instituto atravéz da matrícula;
+- O usário deverá realizar um cadastro para estar habilitado a usar o sistema;
+- Ao realizar avaliação, o usuário deverá atribuir uma nota entre 0 e 5;
+- O formulário de avaliação obrigatoriamente deverá conter a descrição para finalizar o Feedback.
+
+
 ## FUNCIONALIDADES
 
-- [ ] Perfis de usuários(admin, usuário comum)
-- [ ] CRUD usuarios
-- [ ] CRUD avaliação 
-- [ ] CRUD feedback
-- [ ] CRUD histórico 
-- [ ] CRUD as categorias 
-- [ ] CRUD resposta do feedback
-- [ ] CRUD formulário de avaliação
-- [ ] CRUD Campus
+- [ ] Perfis de usuários(admin, usuário comum);
+- [ ] CADASTRO de usuários;
+- [ ] CADASTRO de avaliações; 
+- [ ] Realizar Feedback;
+- [ ] Armazenar históricos de Feedbck; 
+- [ ] CADASTRO das categorias;
+- [ ] Analisar e/ou responder feedback;
+- [ ] Preencher formulário de avaliação;
+- [ ] CADASTRAR infomrações de contato do usuário;
+- [ ] CADASTRO de Campus.
 
 
 ### REQUISITOS NÃO FUNCIONAIS
@@ -38,9 +48,9 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## Membros da equipe
 
-- vanilton filho (líder)
+- Vanilton Filho (líder)
 - Kaiki Mello
-- Raphaela
+- Rafaela Passos
 
 ## DER
 
