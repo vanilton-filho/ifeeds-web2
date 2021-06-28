@@ -44,7 +44,7 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## DER
 
-![der_v1](assets/img/der_v1.png)
+![der_v2](assets/img/der_v2.png)
 
 ## Dicas, repositórios e materiais úteis
 
