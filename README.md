@@ -19,21 +19,20 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 - O usuário deverá ter vínculo com Instituto atravéz da matrícula;
 - O usário deverá realizar um cadastro para estar habilitado a usar o sistema;
 - Ao realizar avaliação, o usuário deverá atribuir uma nota entre 0 e 5;
-- O formulário de avaliação obrigatoriamente deverá conter a descrição para finalizar o Feedback.
+- O formulário de avaliação obrigatoriamente deverá conter a descrição para finalizar o feedback.
 
 
 ## FUNCIONALIDADES
 
 - [ ] Perfis de usuários(admin, usuário comum);
-- [ ] CADASTRO de usuários;
-- [ ] CADASTRO de avaliações; 
-- [ ] Realizar Feedback;
-- [ ] Armazenar históricos de Feedbck; 
-- [ ] CADASTRO das categorias;
+- [ ] Cadastro de usuários;
+- [ ] Cadastro de avaliações; 
+- [ ] Realizar feedback;
+- [ ] Cadastro das categorias;
 - [ ] Analisar e/ou responder feedback;
 - [ ] Preencher formulário de avaliação;
-- [ ] CADASTRAR infomrações de contato do usuário;
-- [ ] CADASTRO de Campus.
+- [ ] Cadastrar informações de contato do usuário;
+- [ ] Cadastro de campus;
 
 
 ### REQUISITOS NÃO FUNCIONAIS
@@ -54,7 +53,7 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## DER
 
-![der_v2](assets/img/der_v2.png)
+![der_v3](assets/img/der_v3.png)
 
 ## Dicas, repositórios e materiais úteis
 
