@@ -92,8 +92,8 @@ Data | Descrição
 :---:|:---
 10/06/2021 | Definição do projeto a ser executado
 28/06/2021 | Apresentar o modelo conceitual da solução proposta
-??/??/???? | [Modelo implementado](https://docs.microsoft.com/pt-br/ef/core/modeling/) no EF Core
-??/??/???? | Aplicação que permite a [carga incial/teste][Data seeding] do modelo implementado com EF Core
+12/07/2021 | [Modelo implementado](https://docs.microsoft.com/pt-br/ef/core/modeling/) no EF Core
+15/07/2021 | Aplicação que permite a [carga incial/teste][Data seeding] do modelo implementado com EF Core
 ??/??/???? | Entrega de [protótipos](prototipos/prototipos.md) das principais telas do sistema proposto (e que atendam aos itens descritos no REQUISITOS NÃO FUNCIONAIS)
 
 ## Project status
