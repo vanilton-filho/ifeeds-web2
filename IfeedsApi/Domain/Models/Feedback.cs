@@ -26,5 +26,13 @@ namespace IfeedsApi.Domain.Models
 
         public Avaliacao Avaliacao { get; set; }
 
+        public int FormularioAvaliacaoId { get; set; }
+
+        public FormularioAvaliacao FormularioAvaliacao { get; set; }
+
+        public int UsuarioId { get; set; }
+
+        public Usuario Usuario { get; set; }
+
     }
 }

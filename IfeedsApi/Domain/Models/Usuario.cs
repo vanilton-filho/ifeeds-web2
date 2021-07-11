@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -29,6 +30,8 @@ namespace IfeedsApi.Domain.Models
 
         [JsonIgnore]
         public Contato Contato { get; set; }
+
+        public ICollection<Feedback> Feedbacks { get; set; }
 
     }
 }

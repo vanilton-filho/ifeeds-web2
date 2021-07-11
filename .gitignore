@@ -353,3 +353,6 @@ MigrationBackup/
 IfeedsApi/Migrations/*
 Startup.cs
 appsettings.json
+
+#Removendo SLN
+ifeeds.sln
