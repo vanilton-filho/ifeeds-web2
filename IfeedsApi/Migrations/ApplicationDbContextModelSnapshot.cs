@@ -17,6 +17,21 @@ namespace IfeedsApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.7");
 
+            modelBuilder.Entity("CampusFormularioAvaliacao", b =>
+                {
+                    b.Property<int>("CampusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FormulariosAvaliacoesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CampusId", "FormulariosAvaliacoesId");
+
+                    b.HasIndex("FormulariosAvaliacoesId");
+
+                    b.ToTable("CampusFormularioAvaliacao");
+                });
+
             modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
                 {
                     b.Property<int>("Id")
@@ -216,11 +231,21 @@ namespace IfeedsApi.Migrations
                         .HasColumnType("datetime(6)")
                         .HasDefaultValueSql("(utc_timestamp())");
 
+                    b.Property<int>("FeedbackId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Resposta")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FeedbackId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("RespostasFeedbacks");
                 });
@@ -279,14 +304,36 @@ namespace IfeedsApi.Migrations
                         .HasMaxLength(280)
                         .HasColumnType("varchar(280)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ContatoId");
+                    b.HasIndex("ContatoId")
+                        .IsUnique();
 
                     b.HasIndex("Matricula")
                         .IsUnique();
 
+                    b.HasIndex("RoleId")
+                        .IsUnique();
+
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("CampusFormularioAvaliacao", b =>
+                {
+                    b.HasOne("IfeedsApi.Domain.Models.Campus", null)
+                        .WithMany()
+                        .HasForeignKey("CampusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IfeedsApi.Domain.Models.FormularioAvaliacao", null)
+                        .WithMany()
+                        .HasForeignKey("FormulariosAvaliacoesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
@@ -327,15 +374,42 @@ namespace IfeedsApi.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("IfeedsApi.Domain.Models.RespostaFeedback", b =>
+                {
+                    b.HasOne("IfeedsApi.Domain.Models.Feedback", "Feedback")
+                        .WithMany("RespostasFeedbacks")
+                        .HasForeignKey("FeedbackId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IfeedsApi.Domain.Models.Usuario", "Usuario")
+                        .WithMany("RespostasFeedback")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Feedback");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("IfeedsApi.Domain.Models.Usuario", b =>
                 {
                     b.HasOne("IfeedsApi.Domain.Models.Contato", "Contato")
-                        .WithMany()
-                        .HasForeignKey("ContatoId")
+                        .WithOne("Usuario")
+                        .HasForeignKey("IfeedsApi.Domain.Models.Usuario", "ContatoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("IfeedsApi.Domain.Models.Role", "Role")
+                        .WithOne("Usuario")
+                        .HasForeignKey("IfeedsApi.Domain.Models.Usuario", "RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Contato");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
@@ -348,14 +422,31 @@ namespace IfeedsApi.Migrations
                     b.Navigation("Avaliacoes");
                 });
 
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Contato", b =>
+                {
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Feedback", b =>
+                {
+                    b.Navigation("RespostasFeedbacks");
+                });
+
             modelBuilder.Entity("IfeedsApi.Domain.Models.FormularioAvaliacao", b =>
                 {
                     b.Navigation("Feedbacks");
                 });
 
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Role", b =>
+                {
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("IfeedsApi.Domain.Models.Usuario", b =>
                 {
                     b.Navigation("Feedbacks");
+
+                    b.Navigation("RespostasFeedback");
                 });
 #pragma warning restore 612, 618
         }

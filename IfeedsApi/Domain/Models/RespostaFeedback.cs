@@ -22,8 +22,13 @@ namespace IfeedsApi.Domain.Models {
         [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set; }
 
+        public int FeedbackId { get; set; }
 
+        public Feedback Feedback { get; set; }
 
+        public int UsuarioId { get; set; }
+
+        public Usuario Usuario { get; set; }
 
     }
 

@@ -34,5 +34,7 @@ namespace IfeedsApi.Domain.Models
 
         public Usuario Usuario { get; set; }
 
+        public ICollection<RespostaFeedback> RespostasFeedbacks { get; set; }
+
     }
 }

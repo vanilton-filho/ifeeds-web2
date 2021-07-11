@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace IfeedsApi.Domain.Models 
 {
 
-    public class Campus 
+    public class Campus
     {
 
         [Key]
-        public int Id { get; set;}
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(45)]
@@ -21,6 +22,8 @@ namespace IfeedsApi.Domain.Models
         [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set; }
 
+
+        public ICollection<FormularioAvaliacao> FormulariosAvaliacoes {get; set;}
 
     }
 
