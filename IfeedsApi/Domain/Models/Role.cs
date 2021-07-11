@@ -18,12 +18,13 @@ namespace IfeedsApi.Domain.Models {
         [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set;}
 
-
         
         [DataType(DataType.DateTime)]
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DateTime? DataAtualizacao { get; set;}
 
+
+        public Usuario Usuario { get; set; }
         
     }
 }

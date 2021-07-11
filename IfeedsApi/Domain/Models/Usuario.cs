@@ -33,5 +33,11 @@ namespace IfeedsApi.Domain.Models
 
         public ICollection<Feedback> Feedbacks { get; set; }
 
+        public int RoleId { get; set; }
+
+        public Role Role { get; set; }
+
+        public ICollection<RespostaFeedback> RespostasFeedback { get; set; }
+
     }
 }

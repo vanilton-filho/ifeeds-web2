@@ -30,6 +30,7 @@ namespace IfeedsApi.Domain.Models
 
         public ICollection<Feedback> Feedbacks { get; set; }
 
+        public ICollection<Campus> Campus { get; set; }
  
     }
 
