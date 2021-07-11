@@ -7,9 +7,11 @@ namespace IfeedsApi.Config.Database
     {
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Contato> Contatos { get; set; }
+
         public DbSet<Role> Roles { get; set; }
 
-        public DbSet<FormularioAvaliacao> FormularioAvaliacao { get; set; }
+        public DbSet<FormularioAvaliacao> FormulariosAvaliacaos { get; set; }
 
         public DbSet<RespostaFeedback> RespostasFeedbacks { get; set; }
 
@@ -17,7 +19,9 @@ namespace IfeedsApi.Config.Database
 
         public DbSet<Categoria> Categorias { get; set; }
 
-        public DbSet<Avaliacao> Avaliacao { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
