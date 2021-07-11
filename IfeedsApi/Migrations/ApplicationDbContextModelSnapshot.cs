@@ -18,6 +18,45 @@ namespace IfeedsApi.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7");
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Campus", b =>
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DataAtualizacao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("(utc_timestamp())");
+
+                    b.Property<string>("Nome")
+
+                    b.Property<decimal>("MediaAvaliacao")
+                        .HasColumnType("decimal(5,2)");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(45)
+                        .HasColumnType("varchar(45)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nome")
+                        .IsUnique();
+
+                    b.ToTable("Campus");
+                    b.HasIndex("CategoriaId");
+
+                    b.ToTable("Avaliacao");
+                });
+
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,15 +72,15 @@ namespace IfeedsApi.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("varchar(45)");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Nome")
                         .IsUnique();
 
-                    b.ToTable("Campus");
+                    b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Contato", b =>
@@ -77,6 +116,7 @@ namespace IfeedsApi.Migrations
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.FormularioAvaliacao", b =>
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Feedback", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -130,6 +170,15 @@ namespace IfeedsApi.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+                    b.Property<int>("AvaliacaoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("varchar(36)")
+                        .HasDefaultValueSql("(UUID())");
 
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("datetime(6)");
@@ -150,6 +199,11 @@ namespace IfeedsApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Roles");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvaliacaoId");
+
+                    b.ToTable("Feedback");
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Usuario", b =>
@@ -189,6 +243,28 @@ namespace IfeedsApi.Migrations
                     b.ToTable("Usuarios");
                 });
 
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
+                {
+                    b.HasOne("IfeedsApi.Domain.Models.Categoria", "Categoria")
+                        .WithMany("Avaliacoes")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Feedback", b =>
+                {
+                    b.HasOne("IfeedsApi.Domain.Models.Avaliacao", "Avaliacao")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("AvaliacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Avaliacao");
+                });
+
             modelBuilder.Entity("IfeedsApi.Domain.Models.Usuario", b =>
                 {
                     b.HasOne("IfeedsApi.Domain.Models.Contato", "Contato")
@@ -198,6 +274,16 @@ namespace IfeedsApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Contato");
+                });
+
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
+                {
+                    b.Navigation("Feedbacks");
+                });
+
+            modelBuilder.Entity("IfeedsApi.Domain.Models.Categoria", b =>
+                {
+                    b.Navigation("Avaliacoes");
                 });
 #pragma warning restore 612, 618
         }

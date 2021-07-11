@@ -15,8 +15,9 @@ namespace IfeedsApi.Config.Database
 
         public DbSet<Campus> Campus { get; set; }
 
+        public DbSet<Categoria> Categorias { get; set; }
 
-
+        public DbSet<Avaliacao> Avaliacao { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -43,7 +44,6 @@ namespace IfeedsApi.Config.Database
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
-
             //Entidade Role
             modelBuilder.Entity<Role>()
                 .HasIndex(p => p.Tipo)
@@ -68,9 +68,29 @@ namespace IfeedsApi.Config.Database
                 .IsUnique();
 
             modelBuilder.Entity<Campus>()
+
+            //Entidade Categoria
+            modelBuilder.Entity<Categoria>()
+                .HasIndex(p => p.Nome)
+                .IsUnique();
+
+            modelBuilder.Entity<Categoria>()
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
+            //Entidade Avalicao
+            modelBuilder.Entity<Avaliacao>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
+
+            //Entidade Feedback
+            modelBuilder.Entity<Feedback>()
+                .Property(p => p.Codigo)
+                .HasDefaultValueSql("(UUID())");
+
+            modelBuilder.Entity<Feedback>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
 
 
             //Entidade RespostaFeedbck
