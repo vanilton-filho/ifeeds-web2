@@ -7,6 +7,17 @@ namespace IfeedsApi.Config.Database
     {
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Role> Roles { get; set;}
+
+        public DbSet<FormularioAvaliacao> FormularioAvaliacao { get; set; }
+
+        public DbSet<RespostaFeedback> RespostasFeedbacks { get; set;}
+
+        public DbSet<Campus> Campus { get; set; }
+
+
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -31,6 +42,42 @@ namespace IfeedsApi.Config.Database
             modelBuilder.Entity<Contato>()
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
+
+
+            //Entidade Role
+            modelBuilder.Entity<Role>()
+                .HasIndex(p => p.Tipo)
+                .IsUnique();
+
+            modelBuilder.Entity<Role>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
+
+
+
+            //Entidade Formulario Avaliação
+            modelBuilder.Entity<FormularioAvaliacao>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
+
+
+
+            //Entidade Campus
+            modelBuilder.Entity<Campus>()
+                .HasIndex(p => p.Nome)
+                .IsUnique();
+
+            modelBuilder.Entity<Campus>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
+
+
+
+            //Entidade RespostaFeedbck
+            modelBuilder.Entity<RespostaFeedback>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
+
         }
     }
 }
