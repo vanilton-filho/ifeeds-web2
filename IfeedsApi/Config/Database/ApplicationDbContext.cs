@@ -98,6 +98,49 @@ namespace IfeedsApi.Config.Database
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
+
+            // Popular o banco
+            modelBuilder.Entity<Contato>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        Email = "cicrano@email.com",
+                        Telefone = "79999999999"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Email = "fulano@email.com",
+                        Telefone = "79999999999"
+                    });
+
+            modelBuilder.Entity<Role>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        Tipo = "ADMIN"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Tipo = "USER" // servidor ou aluno
+                    }
+                );
+
+            modelBuilder.Entity<Usuario>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        Nome = "Cicrano",
+                        Matricula = "20211897238",
+                        ContatoId = 1,
+                        RoleId = 1
+                    }
+                );
+
         }
     }
 }

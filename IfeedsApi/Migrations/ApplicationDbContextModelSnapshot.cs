@@ -148,6 +148,20 @@ namespace IfeedsApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Contato");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "cicrano@email.com",
+                            Telefone = "79999999999"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "fulano@email.com",
+                            Telefone = "79999999999"
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Feedback", b =>
@@ -275,6 +289,18 @@ namespace IfeedsApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Tipo = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Tipo = "USER"
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Usuario", b =>
@@ -319,6 +345,16 @@ namespace IfeedsApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ContatoId = 1,
+                            Matricula = "20211897238",
+                            Nome = "Cicrano",
+                            RoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("CampusFormularioAvaliacao", b =>

@@ -1,4 +1,5 @@
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace IfeedsApi
             });
 
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("RafaConnection");
+            string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<ApplicationDbContext>(options =>
                 options.UseMySql(mySqlConnection,
                 MySqlServerVersion.AutoDetect(mySqlConnection)));
