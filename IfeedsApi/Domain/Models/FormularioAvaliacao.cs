@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,7 +28,7 @@ namespace IfeedsApi.Domain.Models
         [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set;}
 
-
+        public ICollection<Feedback> Feedbacks { get; set; }
 
  
     }
