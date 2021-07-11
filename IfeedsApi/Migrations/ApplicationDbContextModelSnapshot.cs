@@ -3,7 +3,6 @@ using System;
 using IfeedsApi.Config.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IfeedsApi.Migrations
 {
@@ -35,7 +34,7 @@ namespace IfeedsApi.Migrations
                         .HasColumnType("datetime(6)")
                         .HasDefaultValueSql("(utc_timestamp())");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Nome");
 
                     b.Property<decimal>("MediaAvaliacao")
                         .HasColumnType("decimal(5,2)");
@@ -54,8 +53,7 @@ namespace IfeedsApi.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Avaliacao");
-                });
-
+                }));
             modelBuilder.Entity("IfeedsApi.Domain.Models.Categoria", b =>
                 {
                     b.Property<int>("Id")
@@ -140,7 +138,7 @@ namespace IfeedsApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FormularioAvaliacao");
-                });
+                }));
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.RespostaFeedback", b =>
                 {

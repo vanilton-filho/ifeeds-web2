@@ -7,11 +7,11 @@ namespace IfeedsApi.Config.Database
     {
         public DbSet<Usuario> Usuarios { get; set; }
 
-        public DbSet<Role> Roles { get; set;}
+        public DbSet<Role> Roles { get; set; }
 
         public DbSet<FormularioAvaliacao> FormularioAvaliacao { get; set; }
 
-        public DbSet<RespostaFeedback> RespostasFeedbacks { get; set;}
+        public DbSet<RespostaFeedback> RespostasFeedbacks { get; set; }
 
         public DbSet<Campus> Campus { get; set; }
 
@@ -60,14 +60,14 @@ namespace IfeedsApi.Config.Database
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
-
-
             //Entidade Campus
             modelBuilder.Entity<Campus>()
                 .HasIndex(p => p.Nome)
                 .IsUnique();
 
             modelBuilder.Entity<Campus>()
+                .Property(p => p.DataCriacao)
+                .HasDefaultValueSql("(utc_timestamp())");
 
             //Entidade Categoria
             modelBuilder.Entity<Categoria>()
