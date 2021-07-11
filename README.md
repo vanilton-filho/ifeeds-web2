@@ -1,7 +1,7 @@
 ![logo](assets/img/logo.png)
 # IFeedS - Feedback para o Instituto Federal de Sergipe
 
-### RESUMO/JUSTIFICATIVA
+### RESUMO/JUSTIFICATIVA 
 
 Desenvolver uma aplicação web que fornecerá à comunidade acadêmica a possibilidade de 
 reportar e dar feedbacks referente a estrutura organizacional. A comunidade terá a 
