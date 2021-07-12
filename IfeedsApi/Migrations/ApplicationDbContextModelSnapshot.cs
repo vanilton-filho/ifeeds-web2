@@ -114,6 +114,100 @@ namespace IfeedsApi.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Avaliacoes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoriaId = 1,
+                            MediaAvaliacao = 4.5m,
+                            Titulo = "Banheiro Com Problema"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoriaId = 1,
+                            MediaAvaliacao = 4.5m,
+                            Titulo = "Corrimão da Escada da COINF Descascando"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoriaId = 2,
+                            MediaAvaliacao = 3.5m,
+                            Titulo = "Demora para Aprovar Máteria de TCC 1"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoriaId = 2,
+                            MediaAvaliacao = 4.8m,
+                            Titulo = "Melhorias no Processo de Atendimento"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoriaId = 3,
+                            MediaAvaliacao = 5.0m,
+                            Titulo = "Pessoal da Limpeza Top"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoriaId = 3,
+                            MediaAvaliacao = 2.9m,
+                            Titulo = "Problemas com o Wifi do Campus"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoriaId = 4,
+                            MediaAvaliacao = 5.0m,
+                            Titulo = "Ifs Techday Top"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoriaId = 4,
+                            MediaAvaliacao = 4.9m,
+                            Titulo = "Semana Academica Divertida"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoriaId = 4,
+                            MediaAvaliacao = 3.0m,
+                            Titulo = "Semana Academica Algumas Palestras Massantes"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoriaId = 5,
+                            MediaAvaliacao = 3.9m,
+                            Titulo = "Lab da COINF precisão limpar o filtro do Ar"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoriaId = 5,
+                            MediaAvaliacao = 2.9m,
+                            Titulo = "Lab de Redes com acustica prejudicada"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoriaId = 6,
+                            MediaAvaliacao = 2.5m,
+                            Titulo = "Nenhum Livro de Loiane Groner"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoriaId = 6,
+                            MediaAvaliacao = 3.5m,
+                            Titulo = "Livro de Cálculo com página rasurada"
+                        });
+
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Campus", b =>
@@ -225,6 +319,38 @@ namespace IfeedsApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "Infraestrutura"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "Coordenação"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nome = "Serviços"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nome = "Eventos"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Nome = "Laboratórios"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Nome = "Biblioteca"
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Contato", b =>

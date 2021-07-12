@@ -431,6 +431,135 @@ namespace IfeedsApi.Config.Database
                 .UsingEntity(j => j.ToTable("CampusFormularioAvaliacao")
                 );
 
+            modelBuilder.Entity<Categoria>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        Nome = "Infraestrutura"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Nome = "Coordenação"
+                    },
+                    new
+                    {
+                        Id = 3,
+                        Nome = "Serviços"
+                    },
+                    new
+                    {
+                        Id = 4,
+                        Nome = "Eventos"
+                    },
+                    new
+                    {
+                        Id = 5,
+                        Nome = "Laboratórios"
+                    },
+                    new
+                    {
+                        Id = 6,
+                        Nome = "Biblioteca"
+                    }
+                );
+
+            modelBuilder.Entity<Avaliacao>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        Titulo = "Banheiro Com Problema",
+                        MediaAvaliacao = 4.5m,
+                        CategoriaId = 1
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Titulo = "Corrimão da Escada da COINF Descascando",
+                        MediaAvaliacao = 4.5m,
+                        CategoriaId = 1
+                    },
+                    new
+                    {
+                        Id = 3,
+                        Titulo = "Demora para Aprovar Máteria de TCC 1",
+                        MediaAvaliacao = 3.5m,
+                        CategoriaId = 2
+                    },
+                    new
+                    {
+                        Id = 4,
+                        Titulo = "Melhorias no Processo de Atendimento",
+                        MediaAvaliacao = 4.5m,
+                        CategoriaId = 2
+                    },
+                    new
+                    {
+                        Id = 5,
+                        Titulo = "Pessoal da Limpeza Top",
+                        MediaAvaliacao = 5.0m,
+                        CategoriaId = 3
+                    },
+                    new
+                    {
+                        Id = 6,
+                        Titulo = "Problemas com o Wifi do Campus",
+                        MediaAvaliacao = 2.5m,
+                        CategoriaId = 3
+                    },
+                    new
+                    {
+                        Id = 7,
+                        Titulo = "Ifs Techday Top",
+                        MediaAvaliacao = 5.0m,
+                        CategoriaId = 4
+                    },
+                    new
+                    {
+                        Id = 8,
+                        Titulo = "Semana Academica Divertida",
+                        MediaAvaliacao = 4.5m,
+                        CategoriaId = 4
+                    },
+                    new
+                    {
+                        Id = 9,
+                        Titulo = "Semana Academica Algumas Palestras Massantes",
+                        MediaAvaliacao = 3.0m,
+                        CategoriaId = 4
+                    },
+                    new
+                    {
+                        Id = 10,
+                        Titulo = "Lab da COINF precisão limpar o filtro do Ar",
+                        MediaAvaliacao = 3.5m,
+                        CategoriaId = 5
+                    },
+                    new
+                    {
+                        Id = 11,
+                        Titulo = "Lab de Redes com acustica prejudicada",
+                        MediaAvaliacao = 2.5m,
+                        CategoriaId = 5
+                    },
+                    new
+                    {
+                        Id = 12,
+                        Titulo = "Nenhum Livro de Loiane Groner",
+                        MediaAvaliacao = 2.5m,
+                        CategoriaId = 6
+                    },
+                    new
+                    {
+                        Id = 13,
+                        Titulo = "Livro de Cálculo com página rasurada",
+                        MediaAvaliacao = 3.5m,
+                        CategoriaId = 6
+                    }
+                );
+
             modelBuilder
                 .Entity<Campus>()
                 .HasMany(p => p.FormulariosAvaliacoes)
