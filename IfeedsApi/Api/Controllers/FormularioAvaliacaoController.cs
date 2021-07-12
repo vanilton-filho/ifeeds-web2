@@ -12,6 +12,12 @@ namespace IfeedsApi.Api.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public FormularioAvaliacaoController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
         public ActionResult<ICollection<FormularioAvaliacao>> Get()
         {
             return _context.FormulariosAvaliacaos.ToList();

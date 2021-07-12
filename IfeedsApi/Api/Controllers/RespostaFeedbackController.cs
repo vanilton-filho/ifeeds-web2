@@ -12,6 +12,11 @@ namespace IfeedsApi.Api.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public RespostaFeedbackController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public ActionResult<ICollection<RespostaFeedback>> Get()
         {
