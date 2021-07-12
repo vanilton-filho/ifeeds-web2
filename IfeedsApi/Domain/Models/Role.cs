@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -23,8 +24,8 @@ namespace IfeedsApi.Domain.Models {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DateTime? DataAtualizacao { get; set;}
 
+        public ICollection<Usuario> Usuario { get; set; }
 
-        public Usuario Usuario { get; set; }
         
     }
 }
