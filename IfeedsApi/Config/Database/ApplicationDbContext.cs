@@ -104,7 +104,6 @@ namespace IfeedsApi.Config.Database
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
-
             // Popular o banco
             modelBuilder.Entity<Contato>()
                 .HasData(
@@ -577,6 +576,154 @@ namespace IfeedsApi.Config.Database
                     new { CampusId = 10,FormulariosAvaliacoesId = 9}
                 ));
 
+            modelBuilder.Entity<Feedback>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        FormularioAvaliacaoId = 1,
+                        UsuarioId = 2,
+                        AvaliacaoId = 1
+                    },
+                    new
+                    {
+                        Id = 2,
+                        FormularioAvaliacaoId = 2,
+                        UsuarioId = 1,
+                        AvaliacaoId = 2
+                    },
+                    new
+                    {
+                        Id = 3,
+                        FormularioAvaliacaoId = 3,
+                        UsuarioId = 4,
+                        AvaliacaoId = 3
+                    },
+                    new
+                    {
+                        Id = 4,
+                        FormularioAvaliacaoId = 4,
+                        UsuarioId = 3,
+                        AvaliacaoId = 4
+                    },
+                    new
+                    {
+                        Id = 5,
+                        FormularioAvaliacaoId = 5,
+                        UsuarioId = 3,
+                        AvaliacaoId = 5
+                    },
+                    new
+                    {
+                        Id = 6,
+                        FormularioAvaliacaoId = 6,
+                        UsuarioId = 8,
+                        AvaliacaoId = 6
+                    },
+                    new
+                    {
+                        Id = 7,
+                        FormularioAvaliacaoId = 7,
+                        UsuarioId = 5,
+                        AvaliacaoId = 7
+                    },
+                    new
+                    {
+                        Id = 8,
+                        FormularioAvaliacaoId = 8,
+                        UsuarioId = 9,
+                        AvaliacaoId = 2
+                    },
+                    new
+                    {
+                        Id = 9,
+                        FormularioAvaliacaoId = 9,
+                        UsuarioId = 10,
+                        AvaliacaoId = 5
+                    },
+                    new
+                    {
+                        Id = 10,
+                        FormularioAvaliacaoId = 10,
+                        UsuarioId = 7,
+                        AvaliacaoId = 8
+                    },
+                    new
+                    {
+                        Id = 11,
+                        FormularioAvaliacaoId = 11,
+                        UsuarioId = 3,
+                        AvaliacaoId = 4
+                    },
+                    new
+                    {
+                        Id = 12,
+                        FormularioAvaliacaoId = 13,
+                        UsuarioId = 4,
+                        AvaliacaoId = 2
+                    },
+                    new
+                    {
+                        Id = 13,
+                        FormularioAvaliacaoId = 12,
+                        UsuarioId = 2,
+                        AvaliacaoId = 8
+                    }
+                );
+
+            modelBuilder.Entity<RespostaFeedback>()
+                .HasData(
+                    new
+                    {
+                        Id = 1,
+                        Resposta = "Obrigado, iremos resolver",
+                        FeedbackId = 2,
+                        UsuarioId = 1
+                    },
+                    new
+                    {
+                        Id = 2,
+                        Resposta = "Obrigado, Sim, eles são maravilhosos",
+                        FeedbackId = 5,
+                        UsuarioId =1
+
+                    },
+                    new
+                    {
+                        Id = 3,
+                        Resposta = "Resolução esta em andamento",
+                        FeedbackId = 4,
+                        UsuarioId = 1
+                    },
+                    new
+                    {
+                        Id = 4,
+                        Resposta = "Oh, não estavamos cientes dessa situação",
+                        FeedbackId = 1,
+                        UsuarioId = 1
+                    },
+                    new
+                    {
+                        Id = 5,
+                        Resposta = "Que bom que está gostando, aproveite",
+                        FeedbackId = 8,
+                        UsuarioId = 1
+                    },
+                    new
+                    {
+                        Id = 6,
+                        Resposta = "Repassando para os resposáveis",
+                        FeedbackId = 6,
+                        UsuarioId = 1
+                    },
+                    new
+                    {
+                        Id = 7,
+                        Resposta = "Obrigado pelo seu feedback",
+                        FeedbackId = 8,
+                        UsuarioId = 1
+                    }
+                );
         }
     }
 }
