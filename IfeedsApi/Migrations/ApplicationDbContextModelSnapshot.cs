@@ -30,6 +30,58 @@ namespace IfeedsApi.Migrations
                     b.HasIndex("FormulariosAvaliacoesId");
 
                     b.ToTable("CampusFormularioAvaliacao");
+
+                    b.HasData(
+                        new
+                        {
+                            CampusId = 1,
+                            FormulariosAvaliacoesId = 1
+                        },
+                        new
+                        {
+                            CampusId = 2,
+                            FormulariosAvaliacoesId = 2
+                        },
+                        new
+                        {
+                            CampusId = 3,
+                            FormulariosAvaliacoesId = 4
+                        },
+                        new
+                        {
+                            CampusId = 4,
+                            FormulariosAvaliacoesId = 3
+                        },
+                        new
+                        {
+                            CampusId = 5,
+                            FormulariosAvaliacoesId = 5
+                        },
+                        new
+                        {
+                            CampusId = 6,
+                            FormulariosAvaliacoesId = 7
+                        },
+                        new
+                        {
+                            CampusId = 7,
+                            FormulariosAvaliacoesId = 6
+                        },
+                        new
+                        {
+                            CampusId = 8,
+                            FormulariosAvaliacoesId = 8
+                        },
+                        new
+                        {
+                            CampusId = 9,
+                            FormulariosAvaliacoesId = 10
+                        },
+                        new
+                        {
+                            CampusId = 10,
+                            FormulariosAvaliacoesId = 9
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Avaliacao", b =>
@@ -155,6 +207,7 @@ namespace IfeedsApi.Migrations
                             MediaAvaliacao = 3.5m,
                             Titulo = "Livro de Cálculo com página rasurada"
                         });
+
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Campus", b =>
@@ -182,6 +235,63 @@ namespace IfeedsApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Campus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nome = "IFS-Campus Lagarto"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "IFS-Campus Glória"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nome = "IFS-Campus Estância"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nome = "IFS-Campus São Cristovão"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Nome = "IFS-Campus Itabaiana"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Nome = "IFS-Campus Aracaju"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Nome = "IFS-Campus Tobias Barreto"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Nome = "IFS-Campus Poço Redondo"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Nome = "IFS-Campus Propriá"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Nome = "IFS-Campus Socorro"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Nome = "IFS-Educação a Distancia"
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Categoria", b =>
@@ -286,6 +396,54 @@ namespace IfeedsApi.Migrations
                             Id = 2,
                             Email = "fulano@email.com",
                             Telefone = "79999999999"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "maria@email.com",
+                            Telefone = "71999999999"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "jose@email.com",
+                            Telefone = "7199944444"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "joao@email.com",
+                            Telefone = "7199933333"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Email = "carlos@email.com",
+                            Telefone = "71999995555"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Email = "rafaela@email.com",
+                            Telefone = "7199999999999"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Email = "kaiki@email.com",
+                            Telefone = "71999666666"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Email = "vanilton@email.com",
+                            Telefone = "71999977777"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Email = "chico@email.com",
+                            Telefone = "71999998888"
                         });
                 });
 
@@ -354,6 +512,86 @@ namespace IfeedsApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FormulariosAvaliacaos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descricao = "Banheiro com problema espelho quebrado",
+                            QuantidadeEstrelas = 3.50m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
+                            QuantidadeEstrelas = 3m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
+                            QuantidadeEstrelas = 2.50m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
+                            QuantidadeEstrelas = 3m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
+                            QuantidadeEstrelas = 5m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
+                            QuantidadeEstrelas = 4m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Descricao = "Ifs Techday Top - Evento maravilhoso",
+                            QuantidadeEstrelas = 5m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Descricao = "Semana Academica Divertida - Evento top",
+                            QuantidadeEstrelas = 4.50m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
+                            QuantidadeEstrelas = 2.50m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
+                            QuantidadeEstrelas = 3.50m
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
+                            QuantidadeEstrelas = 2.50m
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
+                            QuantidadeEstrelas = 3m
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
+                            QuantidadeEstrelas = 3m
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.RespostaFeedback", b =>
@@ -466,8 +704,7 @@ namespace IfeedsApi.Migrations
                     b.HasIndex("Matricula")
                         .IsUnique();
 
-                    b.HasIndex("RoleId")
-                        .IsUnique();
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Usuarios");
 
@@ -479,6 +716,78 @@ namespace IfeedsApi.Migrations
                             Matricula = "20211897238",
                             Nome = "Cicrano",
                             RoleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ContatoId = 2,
+                            Matricula = "21203554",
+                            Nome = "Fulano",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ContatoId = 3,
+                            Matricula = "20215888854",
+                            Nome = "Maria",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ContatoId = 4,
+                            Matricula = "2021777554",
+                            Nome = "Jose",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ContatoId = 5,
+                            Matricula = "2021533554",
+                            Nome = "Joao",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ContatoId = 6,
+                            Matricula = "20215554",
+                            Nome = "Carlos",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ContatoId = 7,
+                            Matricula = "20213554",
+                            Nome = "Rafaela",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ContatoId = 8,
+                            Matricula = "202156954",
+                            Nome = "Kaiki",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ContatoId = 9,
+                            Matricula = "20266654",
+                            Nome = "Vanilton",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ContatoId = 10,
+                            Matricula = "2021585641",
+                            Nome = "Chico",
+                            RoleId = 2
                         });
                 });
 
@@ -563,8 +872,8 @@ namespace IfeedsApi.Migrations
                         .IsRequired();
 
                     b.HasOne("IfeedsApi.Domain.Models.Role", "Role")
-                        .WithOne("Usuario")
-                        .HasForeignKey("IfeedsApi.Domain.Models.Usuario", "RoleId")
+                        .WithMany("Usuario")
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
