@@ -141,7 +141,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 4,
                             CategoriaId = 2,
-                            MediaAvaliacao = 4.8m,
+                            MediaAvaliacao = 4.5m,
                             Titulo = "Melhorias no Processo de Atendimento"
                         },
                         new
@@ -155,7 +155,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 6,
                             CategoriaId = 3,
-                            MediaAvaliacao = 2.9m,
+                            MediaAvaliacao = 2.5m,
                             Titulo = "Problemas com o Wifi do Campus"
                         },
                         new
@@ -169,7 +169,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 8,
                             CategoriaId = 4,
-                            MediaAvaliacao = 4.9m,
+                            MediaAvaliacao = 4.5m,
                             Titulo = "Semana Academica Divertida"
                         },
                         new
@@ -183,14 +183,14 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 10,
                             CategoriaId = 5,
-                            MediaAvaliacao = 3.9m,
+                            MediaAvaliacao = 3.5m,
                             Titulo = "Lab da COINF precisão limpar o filtro do Ar"
                         },
                         new
                         {
                             Id = 11,
                             CategoriaId = 5,
-                            MediaAvaliacao = 2.9m,
+                            MediaAvaliacao = 2.5m,
                             Titulo = "Lab de Redes com acustica prejudicada"
                         },
                         new
@@ -207,7 +207,6 @@ namespace IfeedsApi.Migrations
                             MediaAvaliacao = 3.5m,
                             Titulo = "Livro de Cálculo com página rasurada"
                         });
-
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Campus", b =>
@@ -481,11 +480,105 @@ namespace IfeedsApi.Migrations
 
                     b.HasIndex("AvaliacaoId");
 
-                    b.HasIndex("FormularioAvaliacaoId");
+                    b.HasIndex("FormularioAvaliacaoId")
+                        .IsUnique();
 
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Feedbacks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AvaliacaoId = 1,
+                            FormularioAvaliacaoId = 1,
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AvaliacaoId = 2,
+                            FormularioAvaliacaoId = 2,
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AvaliacaoId = 3,
+                            FormularioAvaliacaoId = 3,
+                            UsuarioId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AvaliacaoId = 4,
+                            FormularioAvaliacaoId = 4,
+                            UsuarioId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AvaliacaoId = 5,
+                            FormularioAvaliacaoId = 5,
+                            UsuarioId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AvaliacaoId = 6,
+                            FormularioAvaliacaoId = 6,
+                            UsuarioId = 8
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AvaliacaoId = 7,
+                            FormularioAvaliacaoId = 7,
+                            UsuarioId = 5
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AvaliacaoId = 2,
+                            FormularioAvaliacaoId = 8,
+                            UsuarioId = 9
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AvaliacaoId = 5,
+                            FormularioAvaliacaoId = 9,
+                            UsuarioId = 10
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AvaliacaoId = 8,
+                            FormularioAvaliacaoId = 10,
+                            UsuarioId = 7
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AvaliacaoId = 4,
+                            FormularioAvaliacaoId = 11,
+                            UsuarioId = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AvaliacaoId = 2,
+                            FormularioAvaliacaoId = 13,
+                            UsuarioId = 4
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AvaliacaoId = 8,
+                            FormularioAvaliacaoId = 12,
+                            UsuarioId = 2
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.FormularioAvaliacao", b =>
@@ -625,6 +718,57 @@ namespace IfeedsApi.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("RespostasFeedbacks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FeedbackId = 2,
+                            Resposta = "Obrigado, iremos resolver",
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FeedbackId = 5,
+                            Resposta = "Obrigado, Sim, eles são maravilhosos",
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FeedbackId = 4,
+                            Resposta = "Resolução esta em andamento",
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FeedbackId = 1,
+                            Resposta = "Oh, não estavamos cientes dessa situação",
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FeedbackId = 8,
+                            Resposta = "Que bom que está gostando, aproveite",
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            FeedbackId = 6,
+                            Resposta = "Repassando para os resposáveis",
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            FeedbackId = 8,
+                            Resposta = "Obrigado pelo seu feedback",
+                            UsuarioId = 1
+                        });
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Role", b =>
@@ -826,8 +970,8 @@ namespace IfeedsApi.Migrations
                         .IsRequired();
 
                     b.HasOne("IfeedsApi.Domain.Models.FormularioAvaliacao", "FormularioAvaliacao")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("FormularioAvaliacaoId")
+                        .WithOne("Feedback")
+                        .HasForeignKey("IfeedsApi.Domain.Models.Feedback", "FormularioAvaliacaoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -904,7 +1048,7 @@ namespace IfeedsApi.Migrations
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.FormularioAvaliacao", b =>
                 {
-                    b.Navigation("Feedbacks");
+                    b.Navigation("Feedback");
                 });
 
             modelBuilder.Entity("IfeedsApi.Domain.Models.Role", b =>
