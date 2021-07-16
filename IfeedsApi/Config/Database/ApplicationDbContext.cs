@@ -1,5 +1,6 @@
 using IfeedsApi.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace IfeedsApi.Config.Database
 {
@@ -34,12 +35,6 @@ namespace IfeedsApi.Config.Database
                 .HasIndex(p => p.Matricula)
                 .IsUnique();
 
-
-            modelBuilder.Entity<Usuario>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
-
             // Entidade Contato
             modelBuilder.Entity<Contato>()
                 .HasIndex(p => p.Email)
@@ -59,8 +54,6 @@ namespace IfeedsApi.Config.Database
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
-
-
             //Entidade Formulario Avaliação
             modelBuilder.Entity<FormularioAvaliacao>()
                 .Property(p => p.DataCriacao)
@@ -71,36 +64,12 @@ namespace IfeedsApi.Config.Database
                 .HasIndex(p => p.Nome)
                 .IsUnique();
 
-            modelBuilder.Entity<Campus>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
             //Entidade Categoria
             modelBuilder.Entity<Categoria>()
                 .HasIndex(p => p.Nome)
                 .IsUnique();
 
             modelBuilder.Entity<Categoria>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
-            //Entidade Avalicao
-            modelBuilder.Entity<Avaliacao>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
-            //Entidade Feedback
-            modelBuilder.Entity<Feedback>()
-                .Property(p => p.Codigo)
-                .HasDefaultValueSql("(UUID())");
-
-            modelBuilder.Entity<Feedback>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
-
-            //Entidade RespostaFeedbck
-            modelBuilder.Entity<RespostaFeedback>()
                 .Property(p => p.DataCriacao)
                 .HasDefaultValueSql("(utc_timestamp())");
 
@@ -194,81 +163,101 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 1,
                         Nome = "Cicrano",
+                        Senha = "123789745",
                         Matricula = "20211897238",
                         ContatoId = 1,
-                        RoleId = 1
+                        RoleId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 2,
                         Nome = "Fulano",
+                        Senha = "12565735",
                         Matricula = "21203554",
                         ContatoId = 2,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 3,
                         Nome = "Maria",
+                        Senha = "145",
                         Matricula = "20215888854",
                         ContatoId = 3,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 4,
                         Nome = "Jose",
+                        Senha = "123145",
                         Matricula = "2021777554",
                         ContatoId = 4,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 5,
                         Nome = "Joao",
+                        Senha = "12312345",
                         Matricula = "2021533554",
                         ContatoId = 5,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 6,
                         Nome = "Carlos",
+                        Senha = "123452139",
                         Matricula = "20215554",
                         ContatoId = 6,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 7,
                         Nome = "Rafaela",
+                        Senha = "12367645",
                         Matricula = "20213554",
                         ContatoId = 7,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 8,
                         Nome = "Kaiki",
+                        Senha = "124356345",
                         Matricula = "202156954",
                         ContatoId = 8,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 9,
                         Nome = "Vanilton",
+                        Senha = "12346545745",
                         Matricula = "20266654",
                         ContatoId = 9,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 10,
                         Nome = "Chico",
+                        Senha = "123454645",
                         Matricula = "2021585641",
                         ContatoId = 10,
-                        RoleId = 2
+                        RoleId = 2,
+                        DataCriacao = DateTime.UtcNow
                     }
                 );
 
@@ -280,58 +269,69 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 1,
                         Nome = "IFS-Campus Lagarto",
+                        DataCriacao = DateTime.UtcNow
                     },
 
                     new
                     {
                         Id = 2,
                         Nome = "IFS-Campus Glória",
+                        DataCriacao = DateTime.UtcNow
                     },
 
                     new
                     {
                         Id = 3,
                         Nome = "IFS-Campus Estância",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
                         Nome = "IFS-Campus São Cristovão",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
                         Nome = "IFS-Campus Itabaiana",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
                         Nome = "IFS-Campus Aracaju",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 7,
                         Nome = "IFS-Campus Tobias Barreto",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 8,
                         Nome = "IFS-Campus Poço Redondo",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 9,
                         Nome = "IFS-Campus Propriá",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 10,
                         Nome = "IFS-Campus Socorro",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 11,
                         Nome = "IFS-Educação a Distancia",
+                        DataCriacao = DateTime.UtcNow
                     }
 
                 );
@@ -471,91 +471,104 @@ namespace IfeedsApi.Config.Database
                         Id = 1,
                         Titulo = "Banheiro Com Problema",
                         MediaAvaliacao = 4.5m,
-                        CategoriaId = 1
+                        CategoriaId = 1, 
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 2,
                         Titulo = "Corrimão da Escada da COINF Descascando",
                         MediaAvaliacao = 4.5m,
-                        CategoriaId = 1
+                        CategoriaId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 3,
                         Titulo = "Demora para Aprovar Máteria de TCC 1",
                         MediaAvaliacao = 3.5m,
-                        CategoriaId = 2
+                        CategoriaId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
                         Titulo = "Melhorias no Processo de Atendimento",
                         MediaAvaliacao = 4.5m,
-                        CategoriaId = 2
+                        CategoriaId = 2,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
                         Titulo = "Pessoal da Limpeza Top",
                         MediaAvaliacao = 5.0m,
-                        CategoriaId = 3
+                        CategoriaId = 3,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
                         Titulo = "Problemas com o Wifi do Campus",
                         MediaAvaliacao = 2.5m,
-                        CategoriaId = 3
+                        CategoriaId = 3,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 7,
                         Titulo = "Ifs Techday Top",
                         MediaAvaliacao = 5.0m,
-                        CategoriaId = 4
+                        CategoriaId = 4,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 8,
                         Titulo = "Semana Academica Divertida",
                         MediaAvaliacao = 4.5m,
-                        CategoriaId = 4
+                        CategoriaId = 4,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 9,
                         Titulo = "Semana Academica Algumas Palestras Massantes",
                         MediaAvaliacao = 3.0m,
-                        CategoriaId = 4
+                        CategoriaId = 4,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 10,
                         Titulo = "Lab da COINF precisão limpar o filtro do Ar",
                         MediaAvaliacao = 3.5m,
-                        CategoriaId = 5
+                        CategoriaId = 5,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 11,
                         Titulo = "Lab de Redes com acustica prejudicada",
                         MediaAvaliacao = 2.5m,
-                        CategoriaId = 5
+                        CategoriaId = 5,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 12,
                         Titulo = "Nenhum Livro de Loiane Groner",
                         MediaAvaliacao = 2.5m,
-                        CategoriaId = 6
+                        CategoriaId = 6,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 13,
                         Titulo = "Livro de Cálculo com página rasurada",
                         MediaAvaliacao = 3.5m,
-                        CategoriaId = 6
+                        CategoriaId = 6,
+                        DataCriacao = DateTime.UtcNow
                     }
                 );
 
@@ -581,6 +594,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 1,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 1,
                         UsuarioId = 2,
                         AvaliacaoId = 1
@@ -588,6 +603,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 2,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 2,
                         UsuarioId = 1,
                         AvaliacaoId = 2
@@ -595,6 +612,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 3,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 3,
                         UsuarioId = 4,
                         AvaliacaoId = 3
@@ -602,6 +621,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 4,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 4,
                         UsuarioId = 3,
                         AvaliacaoId = 4
@@ -609,6 +630,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 5,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 5,
                         UsuarioId = 3,
                         AvaliacaoId = 5
@@ -616,6 +639,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 6,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 6,
                         UsuarioId = 8,
                         AvaliacaoId = 6
@@ -623,6 +648,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 7,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 7,
                         UsuarioId = 5,
                         AvaliacaoId = 7
@@ -630,6 +657,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 8,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 8,
                         UsuarioId = 9,
                         AvaliacaoId = 2
@@ -637,6 +666,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 9,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 9,
                         UsuarioId = 10,
                         AvaliacaoId = 5
@@ -644,6 +675,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 10,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 10,
                         UsuarioId = 7,
                         AvaliacaoId = 8
@@ -651,6 +684,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 11,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 11,
                         UsuarioId = 3,
                         AvaliacaoId = 4
@@ -658,6 +693,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 12,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 13,
                         UsuarioId = 4,
                         AvaliacaoId = 2
@@ -665,6 +702,8 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 13,
+                        Codigo = Guid.NewGuid(),
+                        DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 12,
                         UsuarioId = 2,
                         AvaliacaoId = 8
@@ -678,14 +717,16 @@ namespace IfeedsApi.Config.Database
                         Id = 1,
                         Resposta = "Obrigado, iremos resolver",
                         FeedbackId = 2,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 2,
                         Resposta = "Obrigado, Sim, eles são maravilhosos",
                         FeedbackId = 5,
-                        UsuarioId =1
+                        UsuarioId =1,
+                        DataCriacao = DateTime.UtcNow
 
                     },
                     new
@@ -693,35 +734,40 @@ namespace IfeedsApi.Config.Database
                         Id = 3,
                         Resposta = "Resolução esta em andamento",
                         FeedbackId = 4,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
                         Resposta = "Oh, não estavamos cientes dessa situação",
                         FeedbackId = 1,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
                         Resposta = "Que bom que está gostando, aproveite",
                         FeedbackId = 8,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
                         Resposta = "Repassando para os resposáveis",
                         FeedbackId = 6,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 7,
                         Resposta = "Obrigado pelo seu feedback",
                         FeedbackId = 8,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        DataCriacao = DateTime.UtcNow
                     }
                 );
         }

@@ -7,19 +7,20 @@ namespace IfeedsApi.Domain.Models {
 
     public class RespostaFeedback {
 
+        public RespostaFeedback()
+        {
+            DataCriacao = DateTime.UtcNow;
+        }
+
         [Key]
         public int Id { get; set; }
 
         [Required]
         public string Resposta { get; set; }
 
-
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
 
-
-        [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set; }
 
         public int FeedbackId { get; set; }

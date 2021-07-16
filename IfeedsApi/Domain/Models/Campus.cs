@@ -7,6 +7,10 @@ namespace IfeedsApi.Domain.Models
 
     public class Campus
     {
+        public Campus()
+        {
+           DataCriacao = DateTime.UtcNow;
+        }
 
         [Key]
         public int Id { get; set; }
@@ -16,10 +20,8 @@ namespace IfeedsApi.Domain.Models
         public string Nome { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set; }
 
 

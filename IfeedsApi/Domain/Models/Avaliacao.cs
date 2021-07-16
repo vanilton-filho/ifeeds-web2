@@ -8,6 +8,12 @@ namespace IfeedsApi.Domain.Models
 {
     public class Avaliacao
     {
+        
+        public Avaliacao()
+        {
+            DataCriacao = DateTime.UtcNow;
+        }
+
         [Key]
         public int Id { get; set; }
         
@@ -20,10 +26,8 @@ namespace IfeedsApi.Domain.Models
         public decimal MediaAvaliacao { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set; }
 
         public int CategoriaId { get; set; }
