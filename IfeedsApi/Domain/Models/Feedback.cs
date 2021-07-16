@@ -8,18 +8,22 @@ namespace IfeedsApi.Domain.Models
 {
     public class Feedback
     {
+        public Feedback()
+        {
+            DataCriacao = DateTime.UtcNow;
+            Codigo = Guid.NewGuid();
+        }
+
+
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(36)]
-        public string Codigo { get; set; }
+        public Guid Codigo { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DataAtualizacao { get; set; }
 
         public int AvaliacaoId { get; set; }

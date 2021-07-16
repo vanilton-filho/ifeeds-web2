@@ -53,7 +53,7 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## DER
 
-![der_v4](assets/img/der_v4.png)
+![der_v5](assets/img/der_v5.png)
 
 ## Dicas, repositórios e materiais úteis
 
