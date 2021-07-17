@@ -40,25 +40,13 @@ namespace IfeedsApi.Config.Database
                 .HasIndex(p => p.Email)
                 .IsUnique();
 
-            modelBuilder.Entity<Contato>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
 
             //Entidade Role
             modelBuilder.Entity<Role>()
                 .HasIndex(p => p.Tipo)
                 .IsUnique();
 
-           
-            modelBuilder.Entity<Role>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
-            //Entidade Formulario Avaliação
-            modelBuilder.Entity<FormularioAvaliacao>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
+                
             //Entidade Campus
             modelBuilder.Entity<Campus>()
                 .HasIndex(p => p.Nome)
@@ -69,10 +57,6 @@ namespace IfeedsApi.Config.Database
                 .HasIndex(p => p.Nome)
                 .IsUnique();
 
-            modelBuilder.Entity<Categoria>()
-                .Property(p => p.DataCriacao)
-                .HasDefaultValueSql("(utc_timestamp())");
-
             // Popular o banco
             modelBuilder.Entity<Contato>()
                 .HasData(
@@ -80,61 +64,71 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 1,
                         Email = "cicrano@email.com",
-                        Telefone = "79999999999"
+                        Telefone = "79999999999",
+                        DataCriacao =  DateTime.UtcNow
                     },
                     new
                     {
                         Id = 2,
                         Email = "fulano@email.com",
-                        Telefone = "79999999999"
+                        Telefone = "79999999999",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 3,
                         Email = "maria@email.com",
-                        Telefone = "71999999999"
+                        Telefone = "71999999999",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
                         Email = "jose@email.com",
-                        Telefone = "7199944444"
+                        Telefone = "7199944444",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
                         Email = "joao@email.com",
-                        Telefone = "7199933333"
+                        Telefone = "7199933333",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
                         Email = "carlos@email.com",
-                        Telefone = "71999995555"
+                        Telefone = "71999995555",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 7,
                         Email = "rafaela@email.com",
-                        Telefone = "7199999999999"
+                        Telefone = "7199999999999",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 8,
                         Email = "kaiki@email.com",
                         Telefone = "71999666666",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 9,
                         Email = "vanilton@email.com",
                         Telefone = "71999977777",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 10,
                         Email = "chico@email.com",
                         Telefone = "71999998888",
+                        DataCriacao = DateTime.UtcNow
                     }
                  );
 
@@ -145,12 +139,15 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 1,
-                        Tipo = "ADMIN"
+                        Tipo = "ADMIN",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 2,
-                        Tipo = "USER" // servidor ou aluno
+                        Tipo = "USER" , // servidor ou aluno
+                        DataCriacao = DateTime.UtcNow
+
                     }
                 );
 
@@ -346,36 +343,42 @@ namespace IfeedsApi.Config.Database
                         Id = 1,
                         Descricao = "Banheiro com problema espelho quebrado",
                         QuantidadeEstrelas = 3.50m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 2,
                         Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
                         QuantidadeEstrelas = 3m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 3,
                         Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
                         QuantidadeEstrelas = 2.50m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
                         Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
                         QuantidadeEstrelas = 3m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
                         Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
                         QuantidadeEstrelas = 5m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
                         Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
                         QuantidadeEstrelas = 4m,
+                        DataCriacao = DateTime.UtcNow
                     },
 
                     new
@@ -383,42 +386,49 @@ namespace IfeedsApi.Config.Database
                         Id = 7,
                         Descricao = "Ifs Techday Top - Evento maravilhoso",
                         QuantidadeEstrelas = 5m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 8,
                         Descricao = "Semana Academica Divertida - Evento top",
                         QuantidadeEstrelas = 4.50m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 9,
                         Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
                         QuantidadeEstrelas = 2.50m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 10,
                         Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
                         QuantidadeEstrelas = 3.50m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 11,
                         Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
                         QuantidadeEstrelas = 2.50m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 12,
                         Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
                         QuantidadeEstrelas = 3m,
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 13,
                         Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
                         QuantidadeEstrelas = 3m,
+                        DataCriacao = DateTime.UtcNow
                     }
             );
 
@@ -435,32 +445,38 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 1,
-                        Nome = "Infraestrutura"
+                        Nome = "Infraestrutura",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 2,
-                        Nome = "Coordenação"
+                        Nome = "Coordenação",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 3,
-                        Nome = "Serviços"
+                        Nome = "Serviços",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
-                        Nome = "Eventos"
+                        Nome = "Eventos",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
-                        Nome = "Laboratórios"
+                        Nome = "Laboratórios",
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
-                        Nome = "Biblioteca"
+                        Nome = "Biblioteca",
+                        DataCriacao = DateTime.UtcNow
                     }
                 );
 

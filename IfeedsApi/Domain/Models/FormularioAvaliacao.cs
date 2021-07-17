@@ -8,6 +8,13 @@ namespace IfeedsApi.Domain.Models
     public class FormularioAvaliacao 
     {
 
+        public FormularioAvaliacao()
+        {
+            DataCriacao = DateTime.UtcNow;
+        
+        }
+
+
         [Key]
         public int Id { get; set; }
 
@@ -21,7 +28,6 @@ namespace IfeedsApi.Domain.Models
         public decimal QuantidadeEstrelas { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao {get; set;}
 
 

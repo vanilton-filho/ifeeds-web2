@@ -6,6 +6,13 @@ using System.Text.Json.Serialization;
 namespace IfeedsApi.Domain.Models {
 
     public class Role { 
+
+
+        public Role() 
+        {
+            DataCriacao = DateTime.UtcNow;
+        
+        }
         
         [Key]
         public int Id { get; set;}
@@ -16,7 +23,6 @@ namespace IfeedsApi.Domain.Models {
 
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set;}
 
         

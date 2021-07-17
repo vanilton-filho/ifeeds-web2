@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IfeedsApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210716153848_MigrationInicial_v2")]
-    partial class MigrationInicial_v2
+    [Migration("20210717190030_MigrationV1")]
+    partial class MigrationV1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,7 +120,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 1,
                             CategoriaId = 1,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(3520),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(743),
                             MediaAvaliacao = 4.5m,
                             Titulo = "Banheiro Com Problema"
                         },
@@ -128,7 +128,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 2,
                             CategoriaId = 1,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1673),
                             MediaAvaliacao = 4.5m,
                             Titulo = "Corrimão da Escada da COINF Descascando"
                         },
@@ -136,7 +136,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 3,
                             CategoriaId = 2,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1676),
                             MediaAvaliacao = 3.5m,
                             Titulo = "Demora para Aprovar Máteria de TCC 1"
                         },
@@ -144,7 +144,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 4,
                             CategoriaId = 2,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1677),
                             MediaAvaliacao = 4.5m,
                             Titulo = "Melhorias no Processo de Atendimento"
                         },
@@ -152,7 +152,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 5,
                             CategoriaId = 3,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1678),
                             MediaAvaliacao = 5.0m,
                             Titulo = "Pessoal da Limpeza Top"
                         },
@@ -160,7 +160,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 6,
                             CategoriaId = 3,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1679),
                             MediaAvaliacao = 2.5m,
                             Titulo = "Problemas com o Wifi do Campus"
                         },
@@ -168,7 +168,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 7,
                             CategoriaId = 4,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1680),
                             MediaAvaliacao = 5.0m,
                             Titulo = "Ifs Techday Top"
                         },
@@ -176,7 +176,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 8,
                             CategoriaId = 4,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1681),
                             MediaAvaliacao = 4.5m,
                             Titulo = "Semana Academica Divertida"
                         },
@@ -184,7 +184,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 9,
                             CategoriaId = 4,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1683),
                             MediaAvaliacao = 3.0m,
                             Titulo = "Semana Academica Algumas Palestras Massantes"
                         },
@@ -192,7 +192,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 10,
                             CategoriaId = 5,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1684),
                             MediaAvaliacao = 3.5m,
                             Titulo = "Lab da COINF precisão limpar o filtro do Ar"
                         },
@@ -200,7 +200,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 11,
                             CategoriaId = 5,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1685),
                             MediaAvaliacao = 2.5m,
                             Titulo = "Lab de Redes com acustica prejudicada"
                         },
@@ -208,7 +208,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 12,
                             CategoriaId = 6,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1686),
                             MediaAvaliacao = 2.5m,
                             Titulo = "Nenhum Livro de Loiane Groner"
                         },
@@ -216,7 +216,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 13,
                             CategoriaId = 6,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1688),
                             MediaAvaliacao = 3.5m,
                             Titulo = "Livro de Cálculo com página rasurada"
                         });
@@ -250,67 +250,67 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 1,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2520),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4840),
                             Nome = "IFS-Campus Lagarto"
                         },
                         new
                         {
                             Id = 2,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5414),
                             Nome = "IFS-Campus Glória"
                         },
                         new
                         {
                             Id = 3,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5417),
                             Nome = "IFS-Campus Estância"
                         },
                         new
                         {
                             Id = 4,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5418),
                             Nome = "IFS-Campus São Cristovão"
                         },
                         new
                         {
                             Id = 5,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5419),
                             Nome = "IFS-Campus Itabaiana"
                         },
                         new
                         {
                             Id = 6,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5420),
                             Nome = "IFS-Campus Aracaju"
                         },
                         new
                         {
                             Id = 7,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5421),
                             Nome = "IFS-Campus Tobias Barreto"
                         },
                         new
                         {
                             Id = 8,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5423),
                             Nome = "IFS-Campus Poço Redondo"
                         },
                         new
                         {
                             Id = 9,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5424),
                             Nome = "IFS-Campus Propriá"
                         },
                         new
                         {
                             Id = 10,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5426),
                             Nome = "IFS-Campus Socorro"
                         },
                         new
                         {
                             Id = 11,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5427),
                             Nome = "IFS-Educação a Distancia"
                         });
                 });
@@ -345,31 +345,37 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 1,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(517),
                             Nome = "Infraestrutura"
                         },
                         new
                         {
                             Id = 2,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(535),
                             Nome = "Coordenação"
                         },
                         new
                         {
                             Id = 3,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(536),
                             Nome = "Serviços"
                         },
                         new
                         {
                             Id = 4,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(537),
                             Nome = "Eventos"
                         },
                         new
                         {
                             Id = 5,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(539),
                             Nome = "Laboratórios"
                         },
                         new
                         {
                             Id = 6,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(540),
                             Nome = "Biblioteca"
                         });
                 });
@@ -409,60 +415,70 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 1,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 407, DateTimeKind.Utc).AddTicks(8930),
                             Email = "cicrano@email.com",
                             Telefone = "79999999999"
                         },
                         new
                         {
                             Id = 2,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(195),
                             Email = "fulano@email.com",
                             Telefone = "79999999999"
                         },
                         new
                         {
                             Id = 3,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(200),
                             Email = "maria@email.com",
                             Telefone = "71999999999"
                         },
                         new
                         {
                             Id = 4,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(201),
                             Email = "jose@email.com",
                             Telefone = "7199944444"
                         },
                         new
                         {
                             Id = 5,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(202),
                             Email = "joao@email.com",
                             Telefone = "7199933333"
                         },
                         new
                         {
                             Id = 6,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(204),
                             Email = "carlos@email.com",
                             Telefone = "71999995555"
                         },
                         new
                         {
                             Id = 7,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(205),
                             Email = "rafaela@email.com",
                             Telefone = "7199999999999"
                         },
                         new
                         {
                             Id = 8,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(206),
                             Email = "kaiki@email.com",
                             Telefone = "71999666666"
                         },
                         new
                         {
                             Id = 9,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(207),
                             Email = "vanilton@email.com",
                             Telefone = "71999977777"
                         },
                         new
                         {
                             Id = 10,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(208),
                             Email = "chico@email.com",
                             Telefone = "71999998888"
                         });
@@ -508,8 +524,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 1,
                             AvaliacaoId = 1,
-                            Codigo = new Guid("e2e89f27-7e7f-4144-be8b-daea11ea7a17"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(120),
+                            Codigo = new Guid("2e8e624e-fa8a-451b-aa8f-4f557d6da49a"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(6356),
                             FormularioAvaliacaoId = 1,
                             UsuarioId = 2
                         },
@@ -517,8 +533,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 2,
                             AvaliacaoId = 2,
-                            Codigo = new Guid("0d8a5780-ebe5-4a13-b2cf-68eb978b0cea"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1350),
+                            Codigo = new Guid("fd4e3c65-4df1-435e-8396-c2042e3561cc"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7194),
                             FormularioAvaliacaoId = 2,
                             UsuarioId = 1
                         },
@@ -526,8 +542,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 3,
                             AvaliacaoId = 3,
-                            Codigo = new Guid("3843d04b-87b4-44d0-9122-5b43d7e0db67"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1350),
+                            Codigo = new Guid("f65fac06-8eab-4b6f-9189-fbf0b9e469ed"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7199),
                             FormularioAvaliacaoId = 3,
                             UsuarioId = 4
                         },
@@ -535,8 +551,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 4,
                             AvaliacaoId = 4,
-                            Codigo = new Guid("fdc2e0bf-60a3-4846-aae8-7a7cb116b55f"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1360),
+                            Codigo = new Guid("2688f73b-b53f-4aa0-a58a-366bfded5868"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7201),
                             FormularioAvaliacaoId = 4,
                             UsuarioId = 3
                         },
@@ -544,8 +560,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 5,
                             AvaliacaoId = 5,
-                            Codigo = new Guid("1e0167eb-d1a8-40a8-82ea-b13144bef060"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1360),
+                            Codigo = new Guid("81f76f55-f8fc-43b5-83f2-0748c4c61382"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7214),
                             FormularioAvaliacaoId = 5,
                             UsuarioId = 3
                         },
@@ -553,8 +569,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 6,
                             AvaliacaoId = 6,
-                            Codigo = new Guid("b4b0ac56-7ed8-481b-9b82-2cefbe55395a"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1370),
+                            Codigo = new Guid("264b7ce5-7cdb-4d9b-a978-b3958eec0af3"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7216),
                             FormularioAvaliacaoId = 6,
                             UsuarioId = 8
                         },
@@ -562,8 +578,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 7,
                             AvaliacaoId = 7,
-                            Codigo = new Guid("96ee8aa2-4628-4688-be3f-95180acbc4a8"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1370),
+                            Codigo = new Guid("2076adfd-e6bb-4e62-8282-e11295443711"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7218),
                             FormularioAvaliacaoId = 7,
                             UsuarioId = 5
                         },
@@ -571,8 +587,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 8,
                             AvaliacaoId = 2,
-                            Codigo = new Guid("f32a558b-64d9-49c4-b1d1-940db4616a6b"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1380),
+                            Codigo = new Guid("7036489b-6ed2-402f-9254-92a71fb261d2"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7220),
                             FormularioAvaliacaoId = 8,
                             UsuarioId = 9
                         },
@@ -580,8 +596,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 9,
                             AvaliacaoId = 5,
-                            Codigo = new Guid("45cb71a0-c39c-4451-a6f5-def3026f7398"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1380),
+                            Codigo = new Guid("5652a8e0-e7f0-411e-a2d7-08cbbaf2d19a"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7221),
                             FormularioAvaliacaoId = 9,
                             UsuarioId = 10
                         },
@@ -589,8 +605,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 10,
                             AvaliacaoId = 8,
-                            Codigo = new Guid("dacbd059-395f-4bd4-9033-7784aa031742"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1390),
+                            Codigo = new Guid("45d9357d-c889-4eed-8ede-4cbebe52c17a"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7223),
                             FormularioAvaliacaoId = 10,
                             UsuarioId = 7
                         },
@@ -598,8 +614,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 11,
                             AvaliacaoId = 4,
-                            Codigo = new Guid("93c7c36a-26f6-42b1-9c50-9528b8467830"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1390),
+                            Codigo = new Guid("4d69868b-4aeb-4c7c-a17c-e1b71ea6ad21"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7225),
                             FormularioAvaliacaoId = 11,
                             UsuarioId = 3
                         },
@@ -607,8 +623,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 12,
                             AvaliacaoId = 2,
-                            Codigo = new Guid("5fea607c-b207-405b-85d1-705ea46940d0"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1400),
+                            Codigo = new Guid("debb667c-0472-4dc1-852b-a616aca99422"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7226),
                             FormularioAvaliacaoId = 13,
                             UsuarioId = 4
                         },
@@ -616,8 +632,8 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 13,
                             AvaliacaoId = 8,
-                            Codigo = new Guid("bbb17266-fd2b-4561-81bc-fc9cd406f121"),
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1400),
+                            Codigo = new Guid("a114a4e3-41b0-4917-b2dc-9eb9171ca90d"),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7232),
                             FormularioAvaliacaoId = 12,
                             UsuarioId = 2
                         });
@@ -652,78 +668,91 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 1,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5762),
                             Descricao = "Banheiro com problema espelho quebrado",
                             QuantidadeEstrelas = 3.50m
                         },
                         new
                         {
                             Id = 2,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6479),
                             Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
                             QuantidadeEstrelas = 3m
                         },
                         new
                         {
                             Id = 3,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6482),
                             Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
                             QuantidadeEstrelas = 2.50m
                         },
                         new
                         {
                             Id = 4,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6483),
                             Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
                             QuantidadeEstrelas = 3m
                         },
                         new
                         {
                             Id = 5,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6484),
                             Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
                             QuantidadeEstrelas = 5m
                         },
                         new
                         {
                             Id = 6,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6485),
                             Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
                             QuantidadeEstrelas = 4m
                         },
                         new
                         {
                             Id = 7,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6487),
                             Descricao = "Ifs Techday Top - Evento maravilhoso",
                             QuantidadeEstrelas = 5m
                         },
                         new
                         {
                             Id = 8,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6488),
                             Descricao = "Semana Academica Divertida - Evento top",
                             QuantidadeEstrelas = 4.50m
                         },
                         new
                         {
                             Id = 9,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6489),
                             Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
                             QuantidadeEstrelas = 2.50m
                         },
                         new
                         {
                             Id = 10,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6490),
                             Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
                             QuantidadeEstrelas = 3.50m
                         },
                         new
                         {
                             Id = 11,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6491),
                             Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
                             QuantidadeEstrelas = 2.50m
                         },
                         new
                         {
                             Id = 12,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6493),
                             Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
                             QuantidadeEstrelas = 3m
                         },
                         new
                         {
                             Id = 13,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6494),
                             Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
                             QuantidadeEstrelas = 3m
                         });
@@ -763,7 +792,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 1,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1650),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7440),
                             FeedbackId = 2,
                             Resposta = "Obrigado, iremos resolver",
                             UsuarioId = 1
@@ -771,7 +800,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 2,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2850),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8127),
                             FeedbackId = 5,
                             Resposta = "Obrigado, Sim, eles são maravilhosos",
                             UsuarioId = 1
@@ -779,7 +808,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 3,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2850),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8129),
                             FeedbackId = 4,
                             Resposta = "Resolução esta em andamento",
                             UsuarioId = 1
@@ -787,7 +816,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 4,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2850),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8130),
                             FeedbackId = 1,
                             Resposta = "Oh, não estavamos cientes dessa situação",
                             UsuarioId = 1
@@ -795,7 +824,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 5,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2930),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8132),
                             FeedbackId = 8,
                             Resposta = "Que bom que está gostando, aproveite",
                             UsuarioId = 1
@@ -803,7 +832,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 6,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2940),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8133),
                             FeedbackId = 6,
                             Resposta = "Repassando para os resposáveis",
                             UsuarioId = 1
@@ -811,7 +840,7 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 7,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2940),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8134),
                             FeedbackId = 8,
                             Resposta = "Obrigado pelo seu feedback",
                             UsuarioId = 1
@@ -848,11 +877,13 @@ namespace IfeedsApi.Migrations
                         new
                         {
                             Id = 1,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(2809),
                             Tipo = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(3627),
                             Tipo = "USER"
                         });
                 });
@@ -907,7 +938,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 1,
                             ContatoId = 1,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(1040),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(3868),
                             Matricula = "20211897238",
                             Nome = "Cicrano",
                             RoleId = 1,
@@ -917,7 +948,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 2,
                             ContatoId = 2,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4705),
                             Matricula = "21203554",
                             Nome = "Fulano",
                             RoleId = 2,
@@ -927,7 +958,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 3,
                             ContatoId = 3,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4708),
                             Matricula = "20215888854",
                             Nome = "Maria",
                             RoleId = 2,
@@ -937,7 +968,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 4,
                             ContatoId = 4,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4710),
                             Matricula = "2021777554",
                             Nome = "Jose",
                             RoleId = 2,
@@ -947,7 +978,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 5,
                             ContatoId = 5,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4712),
                             Matricula = "2021533554",
                             Nome = "Joao",
                             RoleId = 2,
@@ -957,7 +988,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 6,
                             ContatoId = 6,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4713),
                             Matricula = "20215554",
                             Nome = "Carlos",
                             RoleId = 2,
@@ -967,7 +998,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 7,
                             ContatoId = 7,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4714),
                             Matricula = "20213554",
                             Nome = "Rafaela",
                             RoleId = 2,
@@ -977,7 +1008,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 8,
                             ContatoId = 8,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4716),
                             Matricula = "202156954",
                             Nome = "Kaiki",
                             RoleId = 2,
@@ -987,7 +1018,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 9,
                             ContatoId = 9,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4717),
                             Matricula = "20266654",
                             Nome = "Vanilton",
                             RoleId = 2,
@@ -997,7 +1028,7 @@ namespace IfeedsApi.Migrations
                         {
                             Id = 10,
                             ContatoId = 10,
-                            DataCriacao = new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370),
+                            DataCriacao = new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4718),
                             Matricula = "2021585641",
                             Nome = "Chico",
                             RoleId = 2,
