@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IfeedsApi.Migrations
 {
-    public partial class MigrationInicial_v2 : Migration
+    public partial class MigrationV1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -257,76 +257,76 @@ namespace IfeedsApi.Migrations
                 columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "Nome" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2520), "IFS-Campus Lagarto" },
-                    { 10, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510), "IFS-Campus Socorro" },
-                    { 9, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510), "IFS-Campus Propriá" },
-                    { 8, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510), "IFS-Campus Poço Redondo" },
-                    { 7, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510), "IFS-Campus Tobias Barreto" },
-                    { 11, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3510), "IFS-Educação a Distancia" },
-                    { 5, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500), "IFS-Campus Itabaiana" },
-                    { 4, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500), "IFS-Campus São Cristovão" },
-                    { 3, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500), "IFS-Campus Estância" },
-                    { 2, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500), "IFS-Campus Glória" },
-                    { 6, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(3500), "IFS-Campus Aracaju" }
+                    { 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4840), "IFS-Campus Lagarto" },
+                    { 10, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5426), "IFS-Campus Socorro" },
+                    { 9, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5424), "IFS-Campus Propriá" },
+                    { 8, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5423), "IFS-Campus Poço Redondo" },
+                    { 7, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5421), "IFS-Campus Tobias Barreto" },
+                    { 11, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5427), "IFS-Educação a Distancia" },
+                    { 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5419), "IFS-Campus Itabaiana" },
+                    { 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5418), "IFS-Campus São Cristovão" },
+                    { 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5417), "IFS-Campus Estância" },
+                    { 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5414), "IFS-Campus Glória" },
+                    { 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5420), "IFS-Campus Aracaju" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Categorias",
-                columns: new[] { "Id", "DataAtualizacao", "Nome" },
+                columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "Nome" },
                 values: new object[,]
                 {
-                    { 1, null, "Infraestrutura" },
-                    { 2, null, "Coordenação" },
-                    { 3, null, "Serviços" },
-                    { 4, null, "Eventos" },
-                    { 5, null, "Laboratórios" },
-                    { 6, null, "Biblioteca" }
+                    { 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(517), "Infraestrutura" },
+                    { 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(535), "Coordenação" },
+                    { 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(536), "Serviços" },
+                    { 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(537), "Eventos" },
+                    { 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(539), "Laboratórios" },
+                    { 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(540), "Biblioteca" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Contatos",
-                columns: new[] { "Id", "DataAtualizacao", "Email", "Telefone" },
+                columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "Email", "Telefone" },
                 values: new object[,]
                 {
-                    { 7, null, "rafaela@email.com", "7199999999999" },
-                    { 10, null, "chico@email.com", "71999998888" },
-                    { 9, null, "vanilton@email.com", "71999977777" },
-                    { 8, null, "kaiki@email.com", "71999666666" },
-                    { 6, null, "carlos@email.com", "71999995555" },
-                    { 4, null, "jose@email.com", "7199944444" },
-                    { 3, null, "maria@email.com", "71999999999" },
-                    { 2, null, "fulano@email.com", "79999999999" },
-                    { 1, null, "cicrano@email.com", "79999999999" },
-                    { 5, null, "joao@email.com", "7199933333" }
+                    { 7, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(205), "rafaela@email.com", "7199999999999" },
+                    { 10, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(208), "chico@email.com", "71999998888" },
+                    { 9, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(207), "vanilton@email.com", "71999977777" },
+                    { 8, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(206), "kaiki@email.com", "71999666666" },
+                    { 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(204), "carlos@email.com", "71999995555" },
+                    { 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(201), "jose@email.com", "7199944444" },
+                    { 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(200), "maria@email.com", "71999999999" },
+                    { 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(195), "fulano@email.com", "79999999999" },
+                    { 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 407, DateTimeKind.Utc).AddTicks(8930), "cicrano@email.com", "79999999999" },
+                    { 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 408, DateTimeKind.Utc).AddTicks(202), "joao@email.com", "7199933333" }
                 });
 
             migrationBuilder.InsertData(
                 table: "FormulariosAvaliacaos",
-                columns: new[] { "Id", "DataAtualizacao", "Descricao", "QuantidadeEstrelas" },
+                columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "Descricao", "QuantidadeEstrelas" },
                 values: new object[,]
                 {
-                    { 6, null, "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso", 4m },
-                    { 11, null, "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula", 2.50m },
-                    { 10, null, "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente", 3.50m },
-                    { 9, null, "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas", 2.50m },
-                    { 8, null, "Semana Academica Divertida - Evento top", 4.50m },
-                    { 7, null, "Ifs Techday Top - Evento maravilhoso", 5m },
-                    { 5, null, "Pessoal da Limpeza Top - Campus sempre muito bem conservado", 5m },
-                    { 4, null, "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos", 3m },
-                    { 3, null, "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação", 2.50m },
-                    { 2, null, "Corrimão da Escada da COINF Descascando. Me cortei", 3m },
-                    { 1, null, "Banheiro com problema espelho quebrado", 3.50m },
-                    { 12, null, "Nenhum Livro de Loiane Groner - acervos desatualizados", 3m },
-                    { 13, null, "Livro de Cálculo com página rasurada - o livro está com rasuras", 3m }
+                    { 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6485), "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso", 4m },
+                    { 11, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6491), "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula", 2.50m },
+                    { 10, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6490), "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente", 3.50m },
+                    { 9, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6489), "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas", 2.50m },
+                    { 8, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6488), "Semana Academica Divertida - Evento top", 4.50m },
+                    { 7, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6487), "Ifs Techday Top - Evento maravilhoso", 5m },
+                    { 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6484), "Pessoal da Limpeza Top - Campus sempre muito bem conservado", 5m },
+                    { 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6483), "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos", 3m },
+                    { 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6482), "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação", 2.50m },
+                    { 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6479), "Corrimão da Escada da COINF Descascando. Me cortei", 3m },
+                    { 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(5762), "Banheiro com problema espelho quebrado", 3.50m },
+                    { 12, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6493), "Nenhum Livro de Loiane Groner - acervos desatualizados", 3m },
+                    { 13, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(6494), "Livro de Cálculo com página rasurada - o livro está com rasuras", 3m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Roles",
-                columns: new[] { "Id", "DataAtualizacao", "Tipo" },
+                columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "Tipo" },
                 values: new object[,]
                 {
-                    { 1, null, "ADMIN" },
-                    { 2, null, "USER" }
+                    { 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(2809), "ADMIN" },
+                    { 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(3627), "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -334,19 +334,19 @@ namespace IfeedsApi.Migrations
                 columns: new[] { "Id", "CategoriaId", "DataAtualizacao", "DataCriacao", "MediaAvaliacao", "Titulo" },
                 values: new object[,]
                 {
-                    { 1, 1, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(3520), 4.5m, "Banheiro Com Problema" },
-                    { 13, 6, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760), 3.5m, "Livro de Cálculo com página rasurada" },
-                    { 12, 6, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760), 2.5m, "Nenhum Livro de Loiane Groner" },
-                    { 11, 5, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760), 2.5m, "Lab de Redes com acustica prejudicada" },
-                    { 10, 5, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760), 3.5m, "Lab da COINF precisão limpar o filtro do Ar" },
-                    { 8, 4, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760), 4.5m, "Semana Academica Divertida" },
-                    { 9, 4, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4760), 3.0m, "Semana Academica Algumas Palestras Massantes" },
-                    { 6, 3, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750), 2.5m, "Problemas com o Wifi do Campus" },
-                    { 5, 3, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750), 5.0m, "Pessoal da Limpeza Top" },
-                    { 4, 2, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750), 4.5m, "Melhorias no Processo de Atendimento" },
-                    { 3, 2, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750), 3.5m, "Demora para Aprovar Máteria de TCC 1" },
-                    { 2, 1, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750), 4.5m, "Corrimão da Escada da COINF Descascando" },
-                    { 7, 4, null, new DateTime(2021, 7, 16, 15, 38, 47, 129, DateTimeKind.Utc).AddTicks(4750), 5.0m, "Ifs Techday Top" }
+                    { 1, 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(743), 4.5m, "Banheiro Com Problema" },
+                    { 13, 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1688), 3.5m, "Livro de Cálculo com página rasurada" },
+                    { 12, 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1686), 2.5m, "Nenhum Livro de Loiane Groner" },
+                    { 11, 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1685), 2.5m, "Lab de Redes com acustica prejudicada" },
+                    { 10, 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1684), 3.5m, "Lab da COINF precisão limpar o filtro do Ar" },
+                    { 8, 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1681), 4.5m, "Semana Academica Divertida" },
+                    { 9, 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1683), 3.0m, "Semana Academica Algumas Palestras Massantes" },
+                    { 6, 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1679), 2.5m, "Problemas com o Wifi do Campus" },
+                    { 5, 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1678), 5.0m, "Pessoal da Limpeza Top" },
+                    { 4, 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1677), 4.5m, "Melhorias no Processo de Atendimento" },
+                    { 3, 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1676), 3.5m, "Demora para Aprovar Máteria de TCC 1" },
+                    { 2, 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1673), 4.5m, "Corrimão da Escada da COINF Descascando" },
+                    { 7, 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(1680), 5.0m, "Ifs Techday Top" }
                 });
 
             migrationBuilder.InsertData(
@@ -371,16 +371,16 @@ namespace IfeedsApi.Migrations
                 columns: new[] { "Id", "ContatoId", "DataAtualizacao", "DataCriacao", "Matricula", "Nome", "RoleId", "Senha" },
                 values: new object[,]
                 {
-                    { 9, 9, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370), "20266654", "Vanilton", 2, "12346545745" },
-                    { 1, 1, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(1040), "20211897238", "Cicrano", 1, "123789745" },
-                    { 2, 2, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360), "21203554", "Fulano", 2, "12565735" },
-                    { 3, 3, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360), "20215888854", "Maria", 2, "145" },
-                    { 4, 4, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360), "2021777554", "Jose", 2, "123145" },
-                    { 5, 5, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2360), "2021533554", "Joao", 2, "12312345" },
-                    { 6, 6, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370), "20215554", "Carlos", 2, "123452139" },
-                    { 7, 7, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370), "20213554", "Rafaela", 2, "12367645" },
-                    { 8, 8, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370), "202156954", "Kaiki", 2, "124356345" },
-                    { 10, 10, null, new DateTime(2021, 7, 16, 15, 38, 47, 124, DateTimeKind.Utc).AddTicks(2370), "2021585641", "Chico", 2, "123454645" }
+                    { 9, 9, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4717), "20266654", "Vanilton", 2, "12346545745" },
+                    { 1, 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(3868), "20211897238", "Cicrano", 1, "123789745" },
+                    { 2, 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4705), "21203554", "Fulano", 2, "12565735" },
+                    { 3, 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4708), "20215888854", "Maria", 2, "145" },
+                    { 4, 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4710), "2021777554", "Jose", 2, "123145" },
+                    { 5, 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4712), "2021533554", "Joao", 2, "12312345" },
+                    { 6, 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4713), "20215554", "Carlos", 2, "123452139" },
+                    { 7, 7, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4714), "20213554", "Rafaela", 2, "12367645" },
+                    { 8, 8, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4716), "202156954", "Kaiki", 2, "124356345" },
+                    { 10, 10, null, new DateTime(2021, 7, 17, 19, 0, 29, 409, DateTimeKind.Utc).AddTicks(4718), "2021585641", "Chico", 2, "123454645" }
                 });
 
             migrationBuilder.InsertData(
@@ -388,19 +388,19 @@ namespace IfeedsApi.Migrations
                 columns: new[] { "Id", "AvaliacaoId", "Codigo", "DataAtualizacao", "DataCriacao", "FormularioAvaliacaoId", "UsuarioId" },
                 values: new object[,]
                 {
-                    { 2, 2, new Guid("0d8a5780-ebe5-4a13-b2cf-68eb978b0cea"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1350), 2, 1 },
-                    { 1, 1, new Guid("e2e89f27-7e7f-4144-be8b-daea11ea7a17"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(120), 1, 2 },
-                    { 13, 8, new Guid("bbb17266-fd2b-4561-81bc-fc9cd406f121"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1400), 12, 2 },
-                    { 4, 4, new Guid("fdc2e0bf-60a3-4846-aae8-7a7cb116b55f"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1360), 4, 3 },
-                    { 5, 5, new Guid("1e0167eb-d1a8-40a8-82ea-b13144bef060"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1360), 5, 3 },
-                    { 11, 4, new Guid("93c7c36a-26f6-42b1-9c50-9528b8467830"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1390), 11, 3 },
-                    { 3, 3, new Guid("3843d04b-87b4-44d0-9122-5b43d7e0db67"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1350), 3, 4 },
-                    { 12, 2, new Guid("5fea607c-b207-405b-85d1-705ea46940d0"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1400), 13, 4 },
-                    { 7, 7, new Guid("96ee8aa2-4628-4688-be3f-95180acbc4a8"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1370), 7, 5 },
-                    { 10, 8, new Guid("dacbd059-395f-4bd4-9033-7784aa031742"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1390), 10, 7 },
-                    { 6, 6, new Guid("b4b0ac56-7ed8-481b-9b82-2cefbe55395a"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1370), 6, 8 },
-                    { 8, 2, new Guid("f32a558b-64d9-49c4-b1d1-940db4616a6b"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1380), 8, 9 },
-                    { 9, 5, new Guid("45cb71a0-c39c-4451-a6f5-def3026f7398"), null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1380), 9, 10 }
+                    { 2, 2, new Guid("fd4e3c65-4df1-435e-8396-c2042e3561cc"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7194), 2, 1 },
+                    { 1, 1, new Guid("2e8e624e-fa8a-451b-aa8f-4f557d6da49a"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(6356), 1, 2 },
+                    { 13, 8, new Guid("a114a4e3-41b0-4917-b2dc-9eb9171ca90d"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7232), 12, 2 },
+                    { 4, 4, new Guid("2688f73b-b53f-4aa0-a58a-366bfded5868"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7201), 4, 3 },
+                    { 5, 5, new Guid("81f76f55-f8fc-43b5-83f2-0748c4c61382"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7214), 5, 3 },
+                    { 11, 4, new Guid("4d69868b-4aeb-4c7c-a17c-e1b71ea6ad21"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7225), 11, 3 },
+                    { 3, 3, new Guid("f65fac06-8eab-4b6f-9189-fbf0b9e469ed"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7199), 3, 4 },
+                    { 12, 2, new Guid("debb667c-0472-4dc1-852b-a616aca99422"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7226), 13, 4 },
+                    { 7, 7, new Guid("2076adfd-e6bb-4e62-8282-e11295443711"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7218), 7, 5 },
+                    { 10, 8, new Guid("45d9357d-c889-4eed-8ede-4cbebe52c17a"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7223), 10, 7 },
+                    { 6, 6, new Guid("264b7ce5-7cdb-4d9b-a978-b3958eec0af3"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7216), 6, 8 },
+                    { 8, 2, new Guid("7036489b-6ed2-402f-9254-92a71fb261d2"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7220), 8, 9 },
+                    { 9, 5, new Guid("5652a8e0-e7f0-411e-a2d7-08cbbaf2d19a"), null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7221), 9, 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -408,13 +408,13 @@ namespace IfeedsApi.Migrations
                 columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "FeedbackId", "Resposta", "UsuarioId" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(1650), 2, "Obrigado, iremos resolver", 1 },
-                    { 4, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2850), 1, "Oh, não estavamos cientes dessa situação", 1 },
-                    { 3, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2850), 4, "Resolução esta em andamento", 1 },
-                    { 2, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2850), 5, "Obrigado, Sim, eles são maravilhosos", 1 },
-                    { 6, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2940), 6, "Repassando para os resposáveis", 1 },
-                    { 5, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2930), 8, "Que bom que está gostando, aproveite", 1 },
-                    { 7, null, new DateTime(2021, 7, 16, 15, 38, 47, 130, DateTimeKind.Utc).AddTicks(2940), 8, "Obrigado pelo seu feedback", 1 }
+                    { 1, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(7440), 2, "Obrigado, iremos resolver", 1 },
+                    { 4, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8130), 1, "Oh, não estavamos cientes dessa situação", 1 },
+                    { 3, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8129), 4, "Resolução esta em andamento", 1 },
+                    { 2, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8127), 5, "Obrigado, Sim, eles são maravilhosos", 1 },
+                    { 6, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8133), 6, "Repassando para os resposáveis", 1 },
+                    { 5, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8132), 8, "Que bom que está gostando, aproveite", 1 },
+                    { 7, null, new DateTime(2021, 7, 17, 19, 0, 29, 413, DateTimeKind.Utc).AddTicks(8134), 8, "Obrigado pelo seu feedback", 1 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -5,6 +5,13 @@ namespace IfeedsApi.Domain.Models
 {
     public class Contato
     {
+
+        public Contato()
+        {
+            DataCriacao = DateTime.UtcNow;
+        }
+
+
         [Key]
         public int Id { get; set; }
 
@@ -19,7 +26,6 @@ namespace IfeedsApi.Domain.Models
         public string Telefone { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
 
         [DataType(DataType.DateTime)]

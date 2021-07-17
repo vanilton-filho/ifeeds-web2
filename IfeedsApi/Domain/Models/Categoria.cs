@@ -6,6 +6,13 @@ namespace IfeedsApi.Domain.Models
 {
     public class Categoria
     {
+
+        public Categoria()
+        {
+            DataCriacao = DateTime.UtcNow;
+        }
+
+
         [Key]
         public int Id { get; set; }
 
@@ -14,7 +21,6 @@ namespace IfeedsApi.Domain.Models
         public string Nome { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
         public DateTime DataCriacao { get; set; }
 
         [DataType(DataType.DateTime)]
