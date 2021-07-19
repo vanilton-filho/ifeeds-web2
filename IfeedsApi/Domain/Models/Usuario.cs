@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace IfeedsApi.Domain.Models
 {
@@ -31,12 +30,10 @@ namespace IfeedsApi.Domain.Models
         [Required]
         public DateTime DataCriacao { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DateTime? DataAtualizacao { get; set; }
 
         public int ContatoId { get; set; }
 
-        [JsonIgnore]
         public Contato Contato { get; set; }
 
         public ICollection<Feedback> Feedbacks { get; set; }
