@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace IfeedsApi.Domain.Models 
+namespace IfeedsApi.Domain.Models
 {
-    public class FormularioAvaliacao 
+    public class FormularioAvaliacao
     {
 
         public FormularioAvaliacao()
         {
             DataCriacao = DateTime.UtcNow;
-        
         }
 
 
@@ -28,16 +27,16 @@ namespace IfeedsApi.Domain.Models
         public decimal QuantidadeEstrelas { get; set; }
 
         [Required]
-        public DateTime DataCriacao {get; set;}
+        public DateTime DataCriacao { get; set; }
 
 
         [DataType(DataType.DateTime)]
-        public DateTime? DataAtualizacao { get; set;}
+        public DateTime? DataAtualizacao { get; set; }
 
         public Feedback Feedback { get; set; }
 
         public ICollection<Campus> Campus { get; set; }
- 
+
     }
 
 }

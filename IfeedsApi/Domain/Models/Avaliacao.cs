@@ -8,7 +8,7 @@ namespace IfeedsApi.Domain.Models
 {
     public class Avaliacao
     {
-        
+
         public Avaliacao()
         {
             DataCriacao = DateTime.UtcNow;
@@ -16,7 +16,7 @@ namespace IfeedsApi.Domain.Models
 
         [Key]
         public int Id { get; set; }
-        
+
         [Required]
         [MaxLength(45)]
         public string Titulo { get; set; }

@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Config.Database;
 using IfeedsApi.Domain.Models;
+using IfeedsApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers
@@ -21,7 +24,32 @@ namespace IfeedsApi.Api.Controllers
             _mapper = mapper;
         }
 
+
+        /// <summary>Realiza o login do usuário</summary>
+        [AllowAnonymous]
+        [HttpPost("login")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public ActionResult<dynamic> Login([FromBody] LoginModelRequest req)
+        {
+            var usuario = AutenticarUsuario(req.Matricula, req.Senha);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            var token = TokenService.GenerateToken(ToUsuarioModel(usuario));
+            return new
+            {
+                usuario = ToUsuarioModel(usuario),
+                token = token
+            };
+
+        }
+
         /// <summary>Lista todos os usuários</summary>
+        /// <response code="401">Unauthorized</response>
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         [Produces("application/json")]
         public ActionResult<ICollection<UsuarioModel>> Get()
@@ -43,29 +71,37 @@ namespace IfeedsApi.Api.Controllers
         }
 
         /// <summary>Busca um usuário por matrícula</summary>
+        /// <response code="401">Unauthorized</response>
         /// <response code="404">NotFound</response>
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{matricula}", Name = "ObterUsuarioPorMatricula")]
         [Produces("application/json")]
         public ActionResult<UsuarioModel> Get(string matricula)
         {
-            var usuario = _context.Usuarios
-                .Where(e => e.Matricula == matricula)
-                .FirstOrDefault();
-
-            if (usuario == null)
+            if (HttpContext.User.HasClaim(ClaimTypes.Actor, matricula))
             {
-                return NotFound();
+
+                var usuario = FindByMatricula(matricula);
+
+                if (usuario == null)
+                {
+                    return NotFound();
+                }
+
+                var usuarioModel = ToUsuarioModel(usuario);
+
+
+                return new OkObjectResult(usuarioModel);
             }
 
-            var usuarioModel = ToUsuarioModel(usuario);
-
-
-            return new OkObjectResult(usuarioModel);
+            return new UnauthorizedResult();
         }
 
         /// <summary>Cria um novo usuário</summary>
         /// <response code="201">Created</response>
         /// <response code="400">BadRequest</response>
+        /// <response code="401">Unauthorized</response>
+        [AllowAnonymous]
         [HttpPost]
         [Produces("application/json")]
         [Consumes("application/json")]
@@ -79,21 +115,33 @@ namespace IfeedsApi.Api.Controllers
 
         /// <summary>Atualiza os dados de um usuário</summary>
         /// <response code="400">BadRequest</response>
+        /// <response code="401">Unauthorized</response>
         /// <response code="404">NotFound</response>
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpPut("{matricula}")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        public ActionResult<UsuarioModel> Put(string matricula, [FromBody] UsuarioModelRequest req)
+        public ActionResult<UsuarioModel> Put(string matricula, [FromBody] UsuarioUpdateModelRequest req)
         {
-            if (matricula != req.Matricula)
+            if (HttpContext.User.HasClaim(ClaimTypes.Actor, matricula))
             {
-                return BadRequest();
+                if (matricula != req.Matricula)
+                {
+                    return BadRequest();
+                }
+
+                var usuario = _context.Usuarios
+                    .Where(e => e.Matricula == req.Matricula)
+                    .FirstOrDefault();
+
+                _mapper.Map<UsuarioUpdateModelRequest, Usuario>(req, usuario);
+                _context.Update(usuario);
+                _context.SaveChanges();
+                var usuarioModel = ToUsuarioModel(usuario);
+                return new OkObjectResult(usuarioModel);
             }
 
-            // TODO: Desenvolver lógica para update
-            // var usuario = UpdateUsuario(request: req);
-            // var usuarioModel = ToUsuarioModel(usuario: usuario);
-            return Ok();
+            return new UnauthorizedResult();
         }
 
         private UsuarioModel ToUsuarioModel(Usuario usuario)
@@ -128,7 +176,7 @@ namespace IfeedsApi.Api.Controllers
             // TODO: Definir lógica para o tipo de usuário
             usuario.RoleId = 2;
 
-            usuario.Senha = request.Senha;
+            usuario.Senha = BCrypt.Net.BCrypt.HashPassword(request.Senha);
             _context.Add(usuario);
             _context.SaveChanges();
 
@@ -136,9 +184,27 @@ namespace IfeedsApi.Api.Controllers
             return usuario;
         }
 
-        private Usuario UpdateUsuario(UsuarioModelRequest request)
+        private Usuario FindByMatricula(string matricula)
         {
-            return null;
+            var usuario = _context.Usuarios
+                .Where(e => e.Matricula == matricula)
+                .FirstOrDefault();
+
+            return usuario;
+        }
+
+        private Usuario AutenticarUsuario(string matricula, string senha)
+        {
+            var usuario = _context.Usuarios
+                .Where(e => e.Matricula == matricula)
+                .FirstOrDefault();
+
+            return (usuario != null) && CheckSenha(senha, usuario) ? usuario : null;
+        }
+
+        private bool CheckSenha(string senhaReq, Usuario usuario)
+        {
+            return BCrypt.Net.BCrypt.Verify(senhaReq, usuario.Senha) ? true : false;
         }
 
     }

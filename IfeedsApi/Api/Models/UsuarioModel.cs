@@ -7,12 +7,10 @@ namespace IfeedsApi.Api.Models
     {
         /// <summary>Matrícula do aluno ou servidor</summary>
         /// <example>20152863123456</example>
-        [Required]
         public string Matricula { get; set; }
 
         /// <summary>Nome completo</summary>
         /// <example>Cicrano Fulano Beltrano da Silva</example>
-        [Required]
         public string Nome { get; set; }
 
         /// <summary>Informações de contato do usuário</summary>
@@ -20,7 +18,6 @@ namespace IfeedsApi.Api.Models
 
         /// <summary>Tipo de usuário</summary>
         /// <example>ADMIN</example>
-        [Required]
         public string Role { get; set; }
     }
 
@@ -53,5 +50,34 @@ namespace IfeedsApi.Api.Models
         /// <example>toor123</example>
         [Required]
         public string Senha { get; set; }
+    }
+
+    /// <summary>Modelo de representação para a atualização de um usuário</summary>
+    public class UsuarioUpdateModelRequest
+    {
+        /// <summary>Matrícula do aluno ou servidor</summary>
+        /// <example>20152863123456</example>
+        [Required]
+        public string Matricula { get; set; }
+
+        /// <summary>Nome completo</summary>
+        /// <example>Cicrano Fulano Beltrano da Silva</example>
+        [Required]
+        public string Nome { get; set; }
+    }
+
+    /// <summary>Modelo de representação para login do usuário</summary>
+    public class LoginModelRequest
+    {
+        /// <summary>Matrícula do aluno ou servidor</summary>
+        /// <example>20152863123456</example>
+        [Required]
+        public string Matricula { get; set; }
+
+        /// <summary>Senha do usuário</summary>
+        /// <example>toor123</example>
+        [Required]
+        public string Senha { get; set; }
+
     }
 }

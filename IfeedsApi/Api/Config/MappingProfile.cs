@@ -9,11 +9,14 @@ namespace IfeedsApi.Api.Config
         public MappingProfile()
         {
             CreateMap<Usuario, UsuarioModel>().ReverseMap();
+
             CreateMap<Contato, ContatoModel>().ReverseMap();
-            CreateMap<UsuarioModelRequest, UsuarioModel>().ReverseMap();
-            CreateMap<UsuarioModelRequest, ContatoModel>().ReverseMap();
-            CreateMap<UsuarioModelRequest, Usuario>().ReverseMap();
-            CreateMap<UsuarioModelRequest, Contato>().ReverseMap();
+
+            CreateMap<Usuario, UsuarioModelRequest>().ReverseMap();
+
+            CreateMap<Usuario, UsuarioUpdateModelRequest>().ReverseMap();
+
+            CreateMap<Contato, UsuarioModelRequest>().ReverseMap();
         }
     }
 }
