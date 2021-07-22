@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using AutoMapper;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Config.Database;
@@ -78,7 +77,7 @@ namespace IfeedsApi.Api.Controllers
         [Produces("application/json")]
         public ActionResult<UsuarioModel> Get(string matricula)
         {
-            if (HttpContext.User.HasClaim(ClaimTypes.Actor, matricula))
+            if (HttpContext.User.HasClaim("matricula", matricula))
             {
 
                 var usuario = FindByMatricula(matricula);
@@ -123,7 +122,7 @@ namespace IfeedsApi.Api.Controllers
         [Consumes("application/json")]
         public ActionResult<UsuarioModel> Put(string matricula, [FromBody] UsuarioUpdateModelRequest req)
         {
-            if (HttpContext.User.HasClaim(ClaimTypes.Actor, matricula))
+            if (HttpContext.User.HasClaim("matricula", matricula))
             {
                 if (matricula != req.Matricula)
                 {

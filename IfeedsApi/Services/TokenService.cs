@@ -18,7 +18,7 @@ namespace IfeedsApi.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Actor, usuario.Matricula),
+                    new Claim("matricula", usuario.Matricula),
                     new Claim(ClaimTypes.Email, usuario.Contato.Email),
                     new Claim(ClaimTypes.Role, usuario.Role)
                 }),
