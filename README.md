@@ -53,7 +53,13 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## DER
 
-![der_v5](assets/img/der_v5.png)
+![der_v6](assets/img/der_v6.png)
+
+## PROTÓTIPOS
+
+[Protótipos no Figma](https://www.figma.com/file/N4Nlex5bBmemGKYjnDHAri/IfeedS?node-id=0%3A1)
+
+![tela_login_user](assets/img/tela_login_user.png)
 
 ## Dicas, repositórios e materiais úteis
 
