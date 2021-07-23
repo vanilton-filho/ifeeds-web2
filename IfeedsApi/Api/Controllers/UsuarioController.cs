@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
+using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Config.Database;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -14,12 +13,15 @@ namespace IfeedsApi.Api.Controllers
     [Route("/api/usuarios")]
     public class UsuarioController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly UsuarioMapper _usuarioMapper;
         private readonly IMapper _mapper;
 
-        public UsuarioController(ApplicationDbContext context, IMapper mapper)
+        private readonly UsuarioService _usuarioService;
+
+        public UsuarioController(IMapper mapper, UsuarioMapper usuarioMapper, UsuarioService usuarioService)
         {
-            _context = context;
+            _usuarioMapper = usuarioMapper;
+            _usuarioService = usuarioService;
             _mapper = mapper;
         }
 
@@ -31,16 +33,16 @@ namespace IfeedsApi.Api.Controllers
         [Consumes("application/json")]
         public ActionResult<dynamic> Login([FromBody] LoginModelRequest req)
         {
-            var usuario = AutenticarUsuario(req.Matricula, req.Senha);
+            var usuario = _usuarioService.AutenticarUsuario(req.Matricula, req.Senha);
             if (usuario == null)
             {
                 return NotFound();
             }
 
-            var token = TokenService.GenerateToken(ToUsuarioModel(usuario));
+            var token = TokenService.GenerateToken(_usuarioMapper.ToModel(usuario));
             return new
             {
-                usuario = ToUsuarioModel(usuario),
+                usuario = _usuarioMapper.ToModel(usuario),
                 token = token
             };
 
@@ -53,18 +55,8 @@ namespace IfeedsApi.Api.Controllers
         [Produces("application/json")]
         public ActionResult<ICollection<UsuarioModel>> Get()
         {
-            var usuarios = _context.Usuarios.ToList();
-            var usuariosModel = _mapper.Map<List<UsuarioModel>>(usuarios);
-
-            usuarios.ForEach(u =>
-            {
-                var contato = _context.Contatos.Find(u.ContatoId);
-                var role = _context.Roles.Find(u.RoleId);
-
-                var usuarioModel = usuariosModel.Where(e => e.Matricula == u.Matricula);
-                usuarioModel.Single().Contato = _mapper.Map<ContatoModel>(contato);
-                usuarioModel.Single().Role = role.Tipo;
-            });
+            var usuarios = _usuarioService.Listar();
+            var usuariosModel = _usuarioMapper.ToCollection(usuarios);
 
             return new OkObjectResult(usuariosModel);
         }
@@ -79,16 +71,14 @@ namespace IfeedsApi.Api.Controllers
         {
             if (HttpContext.User.HasClaim("matricula", matricula))
             {
-
-                var usuario = FindByMatricula(matricula);
+                var usuario = _usuarioService.FindByMatricula(matricula);
 
                 if (usuario == null)
                 {
                     return NotFound();
                 }
 
-                var usuarioModel = ToUsuarioModel(usuario);
-
+                var usuarioModel = _usuarioMapper.ToModel(usuario);
 
                 return new OkObjectResult(usuarioModel);
             }
@@ -106,8 +96,11 @@ namespace IfeedsApi.Api.Controllers
         [Consumes("application/json")]
         public ActionResult Post([FromBody] UsuarioModelRequest req)
         {
-            var usuario = SaveUsuario(request: req);
-            var usuarioModel = ToUsuarioModel(usuario: usuario);
+            // Vou extrair da requisição recebida meu usuário e contato
+            var usuario = _mapper.Map<Usuario>(req);
+            var contato = _mapper.Map<Contato>(req);
+            usuario = _usuarioService.SaveUsuario(usuario, contato);
+            var usuarioModel = _usuarioMapper.ToModel(usuario);
             // Aqui nos vamos retornar um usuário criado e retornaremos o DTO e no header o seu Location
             return new CreatedAtRouteResult("ObterUsuarioPorMatricula", new { matricula = usuario.Matricula }, usuarioModel);
         }
@@ -129,81 +122,22 @@ namespace IfeedsApi.Api.Controllers
                     return BadRequest();
                 }
 
-                var usuario = _context.Usuarios
-                    .Where(e => e.Matricula == req.Matricula)
-                    .FirstOrDefault();
 
-                _mapper.Map<UsuarioUpdateModelRequest, Usuario>(req, usuario);
-                _context.Update(usuario);
-                _context.SaveChanges();
-                var usuarioModel = ToUsuarioModel(usuario);
+                var usuario = _usuarioService.FindByMatricula(req.Matricula);
+
+                if (usuario == null)
+                {
+                    return NotFound();
+                }
+
+                // Copiando o que tem na requisição recebida para o usuário encontrado
+                usuario = _mapper.Map<UsuarioUpdateModelRequest, Usuario>(req, usuario);
+                _usuarioService.UpdateUsuario(usuario);
+                var usuarioModel = _usuarioMapper.ToModel(usuario);
                 return new OkObjectResult(usuarioModel);
             }
 
             return new UnauthorizedResult();
-        }
-
-        private UsuarioModel ToUsuarioModel(Usuario usuario)
-        {
-            var usuarioModel = _mapper.Map<UsuarioModel>(usuario);
-
-            var contato = _context.Contatos.Find(usuario.ContatoId);
-            var role = _context.Roles.Find(usuario.RoleId);
-
-            // Anexando contato e role ao model
-            usuarioModel.Contato = _mapper.Map<ContatoModel>(contato);
-            usuarioModel.Role = role.Tipo;
-
-            return usuarioModel;
-        }
-
-        private Usuario SaveUsuario(UsuarioModelRequest request)
-        {
-            var usuario = _mapper.Map<Usuario>(request);
-            var contato = _mapper.Map<Contato>(request);
-
-            // É importante considerarmos que pode haver um erro
-            // no meio do caminho, então vamos garantir o rollback de
-            // tudo o que ocorrer até o commit
-            using var transaction = _context.Database.BeginTransaction(); // início da transação
-
-            _context.Add(contato);
-            _context.SaveChanges();
-
-            // Atribuindo IDs das entidades Contato e Role
-            usuario.ContatoId = contato.Id;
-            // TODO: Definir lógica para o tipo de usuário
-            usuario.RoleId = 2;
-
-            usuario.Senha = BCrypt.Net.BCrypt.HashPassword(request.Senha);
-            _context.Add(usuario);
-            _context.SaveChanges();
-
-            transaction.Commit(); // fim da transação
-            return usuario;
-        }
-
-        private Usuario FindByMatricula(string matricula)
-        {
-            var usuario = _context.Usuarios
-                .Where(e => e.Matricula == matricula)
-                .FirstOrDefault();
-
-            return usuario;
-        }
-
-        private Usuario AutenticarUsuario(string matricula, string senha)
-        {
-            var usuario = _context.Usuarios
-                .Where(e => e.Matricula == matricula)
-                .FirstOrDefault();
-
-            return (usuario != null) && CheckSenha(senha, usuario) ? usuario : null;
-        }
-
-        private bool CheckSenha(string senhaReq, Usuario usuario)
-        {
-            return BCrypt.Net.BCrypt.Verify(senhaReq, usuario.Senha) ? true : false;
         }
 
     }

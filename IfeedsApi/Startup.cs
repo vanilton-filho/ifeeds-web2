@@ -4,8 +4,10 @@ using System.Reflection;
 using System.Text;
 using AutoMapper;
 using IfeedsApi.Api.Config;
+using IfeedsApi.Api.Mappers;
 using IfeedsApi.Config.Auth;
 using IfeedsApi.Config.Database;
+using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,7 +32,6 @@ namespace IfeedsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -88,6 +89,10 @@ namespace IfeedsApi
                     ValidateAudience = false
                 };
             });
+
+            // Add services
+            services.AddTransient<UsuarioMapper, UsuarioMapper>();
+            services.AddTransient<UsuarioService, UsuarioService>();
 
         }
 
