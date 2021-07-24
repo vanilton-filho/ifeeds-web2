@@ -22,7 +22,7 @@ namespace IfeedsApi.Domain.Models
         public string Titulo { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(5,2)")]
+        [Column(TypeName = "decimal(5,1)")]
         public decimal MediaAvaliacao { get; set; }
 
         [Required]
