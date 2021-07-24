@@ -10,6 +10,7 @@ namespace IfeedsApi.Domain.Models
         public Usuario()
         {
             DataCriacao = DateTime.UtcNow;
+            Status = false;
         }
 
         [Key]
@@ -26,6 +27,9 @@ namespace IfeedsApi.Domain.Models
         [Required]
         [MaxLength(80)]
         public string Senha { get; set; }
+
+        [Required]
+        public bool Status { get; set; }
 
         [Required]
         public DateTime DataCriacao { get; set; }

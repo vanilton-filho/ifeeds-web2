@@ -160,8 +160,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 1,
                         Nome = "Cicrano",
-                        Senha = "123789745",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "20211897238",
+                        Status = true,
                         ContatoId = 1,
                         RoleId = 1,
                         DataCriacao = DateTime.UtcNow
@@ -170,8 +171,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 2,
                         Nome = "Fulano",
-                        Senha = "12565735",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "21203554",
+                        Status = true,
                         ContatoId = 2,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -180,8 +182,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 3,
                         Nome = "Maria",
-                        Senha = "145",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "20215888854",
+                        Status = true,
                         ContatoId = 3,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -190,8 +193,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 4,
                         Nome = "Jose",
-                        Senha = "123145",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "2021777554",
+                        Status = true,
                         ContatoId = 4,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -200,8 +204,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 5,
                         Nome = "Joao",
-                        Senha = "12312345",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "2021533554",
+                        Status = true,
                         ContatoId = 5,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -210,8 +215,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 6,
                         Nome = "Carlos",
-                        Senha = "123452139",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "20215554",
+                        Status = true,
                         ContatoId = 6,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -220,8 +226,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 7,
                         Nome = "Rafaela",
-                        Senha = "12367645",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "20213554",
+                        Status = true,
                         ContatoId = 7,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -230,8 +237,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 8,
                         Nome = "Kaiki",
-                        Senha = "124356345",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "202156954",
+                        Status = true,
                         ContatoId = 8,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -240,8 +248,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 9,
                         Nome = "Vanilton",
-                        Senha = "12346545745",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "20266654",
+                        Status = true,
                         ContatoId = 9,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -250,8 +259,9 @@ namespace IfeedsApi.Config.Database
                     {
                         Id = 10,
                         Nome = "Chico",
-                        Senha = "123454645",
+                        Senha = BCrypt.Net.BCrypt.HashPassword("12345678"),
                         Matricula = "2021585641",
+                        Status = true,
                         ContatoId = 10,
                         RoleId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -341,6 +351,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 1,
+                        Titulo = "Banheiro com problema",
                         Descricao = "Banheiro com problema espelho quebrado",
                         QuantidadeEstrelas = 3.50m,
                         DataCriacao = DateTime.UtcNow
@@ -348,6 +359,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 2,
+                        Titulo = "Problema no corrimão",
                         Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
                         QuantidadeEstrelas = 3m,
                         DataCriacao = DateTime.UtcNow
@@ -355,6 +367,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 3,
+                        Titulo = "Dificuldade com TCC",
                         Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
                         QuantidadeEstrelas = 2.50m,
                         DataCriacao = DateTime.UtcNow
@@ -362,6 +375,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 4,
+                        Titulo = "Sugestão de Melhoria",
                         Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
                         QuantidadeEstrelas = 3m,
                         DataCriacao = DateTime.UtcNow
@@ -369,6 +383,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 5,
+                        Titulo = "Elogio ao pessoal da limpeza",
                         Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
                         QuantidadeEstrelas = 5m,
                         DataCriacao = DateTime.UtcNow
@@ -376,6 +391,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 6,
+                        Titulo = "Problemas com WIFI",
                         Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
                         QuantidadeEstrelas = 4m,
                         DataCriacao = DateTime.UtcNow
@@ -384,6 +400,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 7,
+                        Titulo = "Elogio ao Techday",
                         Descricao = "Ifs Techday Top - Evento maravilhoso",
                         QuantidadeEstrelas = 5m,
                         DataCriacao = DateTime.UtcNow
@@ -391,6 +408,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 8,
+                        Titulo = "Elogio ao evento",
                         Descricao = "Semana Academica Divertida - Evento top",
                         QuantidadeEstrelas = 4.50m,
                         DataCriacao = DateTime.UtcNow
@@ -398,6 +416,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 9,
+                        Titulo = "Palestras cansativas na SEMAC",
                         Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
                         QuantidadeEstrelas = 2.50m,
                         DataCriacao = DateTime.UtcNow
@@ -405,6 +424,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 10,
+                        Titulo = "Problema com Ar",
                         Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
                         QuantidadeEstrelas = 3.50m,
                         DataCriacao = DateTime.UtcNow
@@ -412,6 +432,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 11,
+                        Titulo = "Barulho no lab de redes",
                         Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
                         QuantidadeEstrelas = 2.50m,
                         DataCriacao = DateTime.UtcNow
@@ -419,6 +440,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 12,
+                        Titulo = "Sugestão de bibliográfia",
                         Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
                         QuantidadeEstrelas = 3m,
                         DataCriacao = DateTime.UtcNow
@@ -426,6 +448,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 13,
+                        Titulo = "Rasuras no livro",
                         Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
                         QuantidadeEstrelas = 3m,
                         DataCriacao = DateTime.UtcNow
@@ -734,6 +757,7 @@ namespace IfeedsApi.Config.Database
                         Resposta = "Obrigado, iremos resolver",
                         FeedbackId = 2,
                         UsuarioId = 1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -742,8 +766,8 @@ namespace IfeedsApi.Config.Database
                         Resposta = "Obrigado, Sim, eles são maravilhosos",
                         FeedbackId = 5,
                         UsuarioId =1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
-
                     },
                     new
                     {
@@ -751,6 +775,7 @@ namespace IfeedsApi.Config.Database
                         Resposta = "Resolução esta em andamento",
                         FeedbackId = 4,
                         UsuarioId = 1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -759,14 +784,16 @@ namespace IfeedsApi.Config.Database
                         Resposta = "Oh, não estavamos cientes dessa situação",
                         FeedbackId = 1,
                         UsuarioId = 1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
                         Resposta = "Que bom que está gostando, aproveite",
-                        FeedbackId = 8,
+                        FeedbackId = 3,
                         UsuarioId = 1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -775,6 +802,7 @@ namespace IfeedsApi.Config.Database
                         Resposta = "Repassando para os resposáveis",
                         FeedbackId = 6,
                         UsuarioId = 1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -783,6 +811,7 @@ namespace IfeedsApi.Config.Database
                         Resposta = "Obrigado pelo seu feedback",
                         FeedbackId = 8,
                         UsuarioId = 1,
+                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     }
                 );
