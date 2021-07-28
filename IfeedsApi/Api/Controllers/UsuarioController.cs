@@ -99,7 +99,7 @@ namespace IfeedsApi.Api.Controllers
             // Vou extrair da requisição recebida meu usuário e contato
             var usuario = _mapper.Map<Usuario>(req);
             var contato = _mapper.Map<Contato>(req);
-            usuario = _usuarioService.SaveUsuario(usuario, contato);
+            usuario = _usuarioService.SaveUsuario(usuario, contato, req.CampusId, req.TipoConta);
             var usuarioModel = _usuarioMapper.ToModel(usuario);
             // Aqui nos vamos retornar um usuário criado e retornaremos o DTO e no header o seu Location
             return new CreatedAtRouteResult("ObterUsuarioPorMatricula", new { matricula = usuario.Matricula }, usuarioModel);

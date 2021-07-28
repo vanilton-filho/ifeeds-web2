@@ -17,6 +17,10 @@ namespace IfeedsApi.Api.Config
             CreateMap<Usuario, UsuarioUpdateModelRequest>().ReverseMap();
 
             CreateMap<Contato, UsuarioModelRequest>().ReverseMap();
+
+            CreateMap<Campus, CampusModel>().ReverseMap();
+
+            CreateMap<Campus, UsuarioModelRequest>().ReverseMap();
         }
     }
 }

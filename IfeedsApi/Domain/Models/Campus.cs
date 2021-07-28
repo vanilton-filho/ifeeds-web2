@@ -24,8 +24,8 @@ namespace IfeedsApi.Domain.Models
 
         public DateTime? DataAtualizacao { get; set; }
 
+        public ICollection<Usuario> Usuarios { get; set; }
 
-        public ICollection<FormularioAvaliacao> FormulariosAvaliacoes {get; set;}
 
     }
 

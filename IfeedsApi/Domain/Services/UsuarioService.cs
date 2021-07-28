@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using IfeedsApi.Api.Mappers;
+using IfeedsApi.Api.Models;
 using IfeedsApi.Config.Database;
 using IfeedsApi.Domain.Models;
 
@@ -22,7 +23,7 @@ namespace IfeedsApi.Services
             return _context.Usuarios.ToList();
         }
 
-        public Usuario SaveUsuario(Usuario usuario, Contato contato)
+        public Usuario SaveUsuario(Usuario usuario, Contato contato, int campusId, int tipoConta)
         {
             // var usuario = _mapper.Map<Usuario>(request);
             // var contato = _mapper.Map<Contato>(request);
@@ -38,7 +39,14 @@ namespace IfeedsApi.Services
             // Atribuindo IDs das entidades Contato e Role
             usuario.ContatoId = contato.Id;
             // TODO: Definir lógica para o tipo de usuário
-            usuario.RoleId = 2;
+            if ((int)TipoConta.USER==tipoConta)
+            {
+                usuario.Status = true;
+            }
+
+            usuario.RoleId = tipoConta;
+            usuario.CampusId = campusId;
+           
 
             usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
             _context.Add(usuario);

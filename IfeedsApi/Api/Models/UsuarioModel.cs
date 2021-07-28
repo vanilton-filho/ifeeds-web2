@@ -21,6 +21,8 @@ namespace IfeedsApi.Api.Models
         /// <summary>Tipo de usuário</summary>
         /// <example>ADMIN</example>
         public string Role { get; set; }
+
+        public string Campus { get; set; }
     }
 
 
@@ -57,6 +59,18 @@ namespace IfeedsApi.Api.Models
         [Required(ErrorMessage = "Senha é um campo obrigatório")]
         [MinLength(8, ErrorMessage = "A senha precisa ter no mínimo 8 caracteres")]
         public string Senha { get; set; }
+
+        [Required(ErrorMessage = "O id do Campus é obrigatório")]
+        public int CampusId { get; set; }
+
+        [Required(ErrorMessage = "O tipo de conta é obrigatório")]
+        public int TipoConta { get; set; }
+    }
+
+    public enum TipoConta
+    {
+        ADMIN = 1, 
+        USER = 2
     }
 
     /// <summary>Modelo de representação para a atualização de um usuário</summary>

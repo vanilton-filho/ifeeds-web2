@@ -165,7 +165,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 1,
                         RoleId = 1,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 1
                     },
                     new
                     {
@@ -176,7 +177,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 2,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 2
                     },
                     new
                     {
@@ -187,7 +189,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 3,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 3
                     },
                     new
                     {
@@ -198,7 +201,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 4,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 1
                     },
                     new
                     {
@@ -209,7 +213,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 5,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 6
                     },
                     new
                     {
@@ -220,7 +225,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 6,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 7
                     },
                     new
                     {
@@ -231,7 +237,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 7,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 4
                     },
                     new
                     {
@@ -242,7 +249,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 8,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 2
                     },
                     new
                     {
@@ -253,7 +261,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 9,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 4
                     },
                     new
                     {
@@ -264,7 +273,8 @@ namespace IfeedsApi.Config.Database
                         Status = true,
                         ContatoId = 10,
                         RoleId = 2,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        CampusId = 1
                     }
                 );
 
@@ -455,14 +465,6 @@ namespace IfeedsApi.Config.Database
                     }
             );
 
-
-            modelBuilder
-                .Entity<Campus>()
-                .HasMany(p => p.FormulariosAvaliacoes)
-                .WithMany(p => p.Campus)
-                .UsingEntity(j => j.ToTable("CampusFormularioAvaliacao")
-                );
-
             modelBuilder.Entity<Categoria>()
                 .HasData(
                     new
@@ -610,23 +612,6 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow
                     }
                 );
-
-            modelBuilder
-                .Entity<Campus>()
-                .HasMany(p => p.FormulariosAvaliacoes)
-                .WithMany(p => p.Campus)
-                .UsingEntity(j => j.HasData(
-                    new { CampusId = 1, FormulariosAvaliacoesId = 1 },
-                    new { CampusId = 2, FormulariosAvaliacoesId = 2 },
-                    new { CampusId = 3, FormulariosAvaliacoesId = 4 },
-                    new { CampusId = 4, FormulariosAvaliacoesId = 3 },
-                    new { CampusId = 5, FormulariosAvaliacoesId = 5 },
-                    new { CampusId = 6, FormulariosAvaliacoesId = 7 },
-                    new { CampusId = 7, FormulariosAvaliacoesId = 6 },
-                    new { CampusId = 8, FormulariosAvaliacoesId = 8 }, 
-                    new { CampusId = 9, FormulariosAvaliacoesId = 10 }, 
-                    new { CampusId = 10,FormulariosAvaliacoesId = 9}
-                ));
 
             modelBuilder.Entity<Feedback>()
                 .HasData(
