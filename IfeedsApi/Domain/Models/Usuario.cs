@@ -48,5 +48,9 @@ namespace IfeedsApi.Domain.Models
 
         public ICollection<RespostaFeedback> RespostasFeedback { get; set; }
 
+        public int CampusId { get; set; }
+
+        public Campus Campus { get; set; }
+
     }
 }

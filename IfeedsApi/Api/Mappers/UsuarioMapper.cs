@@ -24,8 +24,9 @@ namespace IfeedsApi.Api.Mappers
 
             var contato = _context.Contatos.Find(usuario.ContatoId);
             var role = _context.Roles.Find(usuario.RoleId);
-
+            var campus = _context.Campus.Find(usuario.CampusId);
             // Anexando contato e role ao model
+            usuarioModel.Campus = campus.Nome;
             usuarioModel.Contato = _mapper.Map<ContatoModel>(contato);
             usuarioModel.Role = role.Tipo;
 
