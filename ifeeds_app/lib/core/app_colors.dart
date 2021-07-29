@@ -17,5 +17,6 @@ class AppColors {
   static final MaterialColor primarySwatch = MaterialColor(0xff1BC35E, _color);
   static final Color heading1 = Color(0xff39434D);
   static final Color normal = Color(0xff4D5F56);
+  static final Color normal2 = Color(0xff39434D);
   static final Color link = Colors.blueAccent;
 }

@@ -24,6 +24,27 @@ class AppTextStyles {
     fontSize: 18,
   );
 
+  static final TextStyle normal2 = GoogleFonts.roboto(
+    color: AppColors.normal,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w400,
+    fontSize: 21,
+  );
+
+  static final TextStyle categoria = GoogleFonts.titilliumWeb(
+    color: AppColors.normal2,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w700,
+    fontSize: 36,
+  );
+
+  static final TextStyle categoria2 = GoogleFonts.titilliumWeb(
+    color: Colors.black,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w700,
+    fontSize: 18,
+  );
+
   static final TextStyle link = GoogleFonts.sourceSansPro(
     color: AppColors.link,
     fontStyle: FontStyle.normal,

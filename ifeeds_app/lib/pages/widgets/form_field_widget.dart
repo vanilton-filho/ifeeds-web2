@@ -5,6 +5,8 @@ class FormFieldWidget extends StatelessWidget {
   final String label;
   final IconData? prefixIcon;
   final bool isPassword;
+  final Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
   const FormFieldWidget({
     Key? key,
@@ -12,6 +14,8 @@ class FormFieldWidget extends StatelessWidget {
     required this.label,
     this.prefixIcon,
     this.isPassword = false,
+    this.onChanged,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -19,6 +23,9 @@ class FormFieldWidget extends StatelessWidget {
     return Padding(
       padding: edgeInsets,
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: validator,
+        onChanged: onChanged,
         obscureText: isPassword,
         decoration: InputDecoration(
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
