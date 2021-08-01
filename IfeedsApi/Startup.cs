@@ -32,6 +32,7 @@ namespace IfeedsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -50,7 +51,7 @@ namespace IfeedsApi
 
 
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
+            string mySqlConnection = Configuration.GetConnectionString("rafaConnection");
             services.AddDbContextPool<ApplicationDbContext>(options =>
                 options.UseMySql(mySqlConnection,
                 MySqlServerVersion.AutoDetect(mySqlConnection)));
@@ -91,6 +92,8 @@ namespace IfeedsApi
             });
 
             // Add services
+            services.AddTransient<AvaliacaoMapper, AvaliacaoMapper>();
+            services.AddTransient<AvaliacaoService, AvaliacaoService>();
             services.AddTransient<UsuarioMapper, UsuarioMapper>();
             services.AddTransient<UsuarioService, UsuarioService>();
 
@@ -99,6 +102,11 @@ namespace IfeedsApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseCors(options => 
+              options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

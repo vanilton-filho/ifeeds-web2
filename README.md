@@ -53,7 +53,7 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## DER
 
-![der_v6](assets/img/der_v6.png)
+![der_v7](assets/img/der_v7.png)
 
 ## PROTÓTIPOS
 

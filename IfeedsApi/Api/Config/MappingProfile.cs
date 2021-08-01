@@ -21,6 +21,10 @@ namespace IfeedsApi.Api.Config
             CreateMap<Campus, CampusModel>().ReverseMap();
 
             CreateMap<Campus, UsuarioModelRequest>().ReverseMap();
+
+            CreateMap<Avaliacao, AvaliacaoModel>().ReverseMap();
+
+            CreateMap<Categoria, CategoriaModel>().ReverseMap();
         }
     }
 }

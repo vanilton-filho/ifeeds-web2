@@ -26,7 +26,7 @@ namespace IfeedsApi.Domain.Models
 
         public ICollection<Usuario> Usuarios { get; set; }
 
-
+        public ICollection<Avaliacao> Avaliacoes { get; set; }
     }
 
 }

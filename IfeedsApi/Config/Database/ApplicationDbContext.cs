@@ -513,7 +513,9 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Banheiro Com Problema",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 1, 
+                        CampusId = 1,
                         DataCriacao = DateTime.UtcNow
+
                     },
                     new
                     {
@@ -521,6 +523,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Corrimão da Escada da COINF Descascando",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 1,
+                        CampusId = 2,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -529,6 +532,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Demora para Aprovar Máteria de TCC 1",
                         MediaAvaliacao = 3.5m,
                         CategoriaId = 2,
+                        CampusId = 3,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -537,6 +541,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Melhorias no Processo de Atendimento",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 2,
+                        CampusId = 4,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -545,6 +550,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Pessoal da Limpeza Top",
                         MediaAvaliacao = 5.0m,
                         CategoriaId = 3,
+                        CampusId = 5,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -553,6 +559,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Problemas com o Wifi do Campus",
                         MediaAvaliacao = 2.5m,
                         CategoriaId = 3,
+                        CampusId = 6,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -561,6 +568,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Ifs Techday Top",
                         MediaAvaliacao = 5.0m,
                         CategoriaId = 4,
+                        CampusId = 7,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -569,6 +577,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Semana Academica Divertida",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 4,
+                        CampusId = 8,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -577,6 +586,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Semana Academica Algumas Palestras Massantes",
                         MediaAvaliacao = 3.0m,
                         CategoriaId = 4,
+                        CampusId = 9,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -585,6 +595,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Lab da COINF precisão limpar o filtro do Ar",
                         MediaAvaliacao = 3.5m,
                         CategoriaId = 5,
+                        CampusId = 10,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -593,6 +604,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Lab de Redes com acustica prejudicada",
                         MediaAvaliacao = 2.5m,
                         CategoriaId = 5,
+                        CampusId = 11,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -601,6 +613,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Nenhum Livro de Loiane Groner",
                         MediaAvaliacao = 2.5m,
                         CategoriaId = 6,
+                        CampusId = 1,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -609,6 +622,7 @@ namespace IfeedsApi.Config.Database
                         Titulo = "Livro de Cálculo com página rasurada",
                         MediaAvaliacao = 3.5m,
                         CategoriaId = 6,
+                        CampusId = 6,
                         DataCriacao = DateTime.UtcNow
                     }
                 );
