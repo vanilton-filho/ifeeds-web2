@@ -29,5 +29,13 @@ namespace IfeedsApi.Api.Controllers
             var avaliacoesModel = _avaliacaoMapper.ToCollection(avaliacoes);
             return new OkObjectResult(avaliacoesModel);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<ICollection<AvaliacaoModel>> ListarPorCategoria(int id)
+        {
+            var avaliacoes = _avaliacaoService.ListarPorCategoria(id);
+            var avaliacoesModel = _avaliacaoMapper.ToCollection(avaliacoes);
+            return new OkObjectResult(avaliacoesModel);
+        }
     }
 }

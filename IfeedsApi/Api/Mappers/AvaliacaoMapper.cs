@@ -18,34 +18,34 @@ namespace IfeedsApi.Api.Mappers
             _mapper = mapper;
         }
 
-          public AvaliacaoModel ToModel(Avaliacao avaliacao)
-          {
-              var avaliacaoModel = _mapper.Map<AvaliacaoModel>(avaliacao);
+        public AvaliacaoModel ToModel(Avaliacao avaliacao)
+        {
+            var avaliacaoModel = _mapper.Map<AvaliacaoModel>(avaliacao);
 
-              var categoria = _context.Categorias.Find(avaliacao.CategoriaId);
-              var campus    = _context.Campus.Find(avaliacao.CampusId);
-              
-              // Anexando Campus e Categoria ao model
-              avaliacaoModel.Campus = campus.Nome;
-              avaliacaoModel.Categoria = categoria.Nome;
+            var categoria = _context.Categorias.Find(avaliacao.CategoriaId);
+            var campus = _context.Campus.Find(avaliacao.CampusId);
 
-              return avaliacaoModel;
-          }
+            // Anexando Campus e Categoria ao model
+            avaliacaoModel.Campus = campus.Nome;
+            avaliacaoModel.Categoria = categoria.Nome;
 
-          public List<AvaliacaoModel> ToCollection(List<Avaliacao> avaliacaos)
-          {
-              var avaliacoesModel = _mapper.Map<List<AvaliacaoModel>>(avaliacaos);
-                 avaliacaos.ForEach(a =>
-              {
-                  var campus = _context.Campus.Find(a.CampusId);
-                  var categoria = _context.Categorias.Find(a.CategoriaId);
+            return avaliacaoModel;
+        }
 
-                  var avaliacaoModel = avaliacoesModel.Where(e => e.Titulo == a.Titulo);
-                  avaliacaoModel.Single().Categoria = categoria.Nome;
-                  avaliacaoModel.Single().Campus = campus.Nome;
-              });
-              return avaliacoesModel;
-          }
+        public List<AvaliacaoModel> ToCollection(List<Avaliacao> avaliacaos)
+        {
+            var avaliacoesModel = _mapper.Map<List<AvaliacaoModel>>(avaliacaos);
+            avaliacaos.ForEach(a =>
+         {
+             var campus = _context.Campus.Find(a.CampusId);
+             var categoria = _context.Categorias.Find(a.CategoriaId);
+
+             var avaliacaoModel = avaliacoesModel.Where(e => e.Titulo == a.Titulo);
+             avaliacaoModel.Single().Categoria = categoria.Nome;
+             avaliacaoModel.Single().Campus = campus.Nome;
+         });
+            return avaliacoesModel;
+        }
 
     }
 }

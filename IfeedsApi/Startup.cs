@@ -51,7 +51,7 @@ namespace IfeedsApi
 
 
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("rafaConnection");
+            string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<ApplicationDbContext>(options =>
                 options.UseMySql(mySqlConnection,
                 MySqlServerVersion.AutoDetect(mySqlConnection)));
@@ -96,6 +96,7 @@ namespace IfeedsApi
             services.AddTransient<AvaliacaoService, AvaliacaoService>();
             services.AddTransient<UsuarioMapper, UsuarioMapper>();
             services.AddTransient<UsuarioService, UsuarioService>();
+            services.AddTransient<CategoriaService, CategoriaService>();
 
         }
 
@@ -103,10 +104,12 @@ namespace IfeedsApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseCors(options => 
-              options.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors(options => options
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+            );
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

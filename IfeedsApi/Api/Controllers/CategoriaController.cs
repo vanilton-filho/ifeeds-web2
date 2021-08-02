@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
+using IfeedsApi.Api.Models;
 using IfeedsApi.Config.Database;
 using IfeedsApi.Domain.Models;
+using IfeedsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers
@@ -10,17 +13,20 @@ namespace IfeedsApi.Api.Controllers
     [Route("/api/categorias")]
     public class CategoriaController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CategoriaService _categoriaService;
+        private readonly IMapper _mapper;
 
-        public CategoriaController(ApplicationDbContext context)
+        public CategoriaController(CategoriaService categoriaService, IMapper mapper)
         {
-            _context = context;
+            _categoriaService = categoriaService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<ICollection<Categoria>> Get()
+        public ActionResult<ICollection<CategoriaModel>> Get()
         {
-            return _context.Categorias.ToList();
+            var categorias = _categoriaService.Listar();
+            return _mapper.Map<List<CategoriaModel>>(categorias);
         }
     }
 }

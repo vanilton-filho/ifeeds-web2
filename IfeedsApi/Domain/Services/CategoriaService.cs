@@ -12,25 +12,18 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace IfeedsApi.Services
 {
-    public class AvaliacaoService
+    public class CategoriaService
     {
         private readonly ApplicationDbContext _context;
 
-        public AvaliacaoService(ApplicationDbContext context)
+        public CategoriaService(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public List<Avaliacao> Listar()
+        public List<Categoria> Listar()
         {
-            return _context.Avaliacoes.ToList();
-        }
-
-        public List<Avaliacao> ListarPorCategoria(int categoriaId)
-        {
-            return _context.Avaliacoes
-                .Where(e => e.CategoriaId == categoriaId)
-                .ToList();
+            return _context.Categorias.ToList();
         }
 
     }
