@@ -109,6 +109,7 @@ class _DrawerPageState extends State<DrawerPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ButtonWidget(
+                      onPressed: () => {},
                       edgeInsets: const EdgeInsets.symmetric(
                         vertical: 10.5,
                         horizontal: 48,
