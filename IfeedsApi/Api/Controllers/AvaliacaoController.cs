@@ -30,7 +30,7 @@ namespace IfeedsApi.Api.Controllers
             return new OkObjectResult(avaliacoesModel);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}/por-categoria")]
         public ActionResult<ICollection<AvaliacaoModel>> ListarPorCategoria(int id)
         {
             var avaliacoes = _avaliacaoService.ListarPorCategoria(id);
