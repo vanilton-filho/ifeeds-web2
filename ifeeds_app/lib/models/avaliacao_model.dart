@@ -5,8 +5,9 @@ import 'package:ifeeds_app/models/categoria_model.dart';
 class AvaliacaoModel {
   String? titulo;
   double? mediaAvaliacao;
-  CategoriaModel? categoria;
+  String? categoria;
   String? campus;
+  
   AvaliacaoModel({
     this.titulo,
     this.mediaAvaliacao,
@@ -18,7 +19,7 @@ class AvaliacaoModel {
     return {
       'titulo': titulo,
       'mediaAvaliacao': mediaAvaliacao,
-      'categoria': categoria?.toMap(),
+      'categoria': categoria,
       'campus': campus,
     };
   }
@@ -27,13 +28,12 @@ class AvaliacaoModel {
     return AvaliacaoModel(
       titulo: map['titulo'],
       mediaAvaliacao: map['mediaAvaliacao'],
-      categoria: CategoriaModel.fromMap(map['categoria']),
+      categoria: map['categoria'],
       campus: map['campus'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory AvaliacaoModel.fromJson(String source) =>
-      AvaliacaoModel.fromMap(json.decode(source));
+  factory AvaliacaoModel.fromJson(String source) => AvaliacaoModel.fromMap(json.decode(source));
 }
