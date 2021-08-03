@@ -349,5 +349,12 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-ifeeds_app/*
+# # Removendo Migrations / Startup e Arquivo de Configuracao
+# # IfeedsApi/Migrations/*
+# Startup.cs
+# appsettings.json
+
+# #Removendo SLN
+# ifeeds.sln
+
 .vscode/*
