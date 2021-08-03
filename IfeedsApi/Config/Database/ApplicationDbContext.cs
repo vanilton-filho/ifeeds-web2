@@ -496,12 +496,6 @@ namespace IfeedsApi.Config.Database
                         Id = 5,
                         Nome = "Laboratórios",
                         DataCriacao = DateTime.UtcNow
-                    },
-                    new
-                    {
-                        Id = 6,
-                        Nome = "Biblioteca",
-                        DataCriacao = DateTime.UtcNow
                     }
                 );
 
@@ -510,7 +504,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 1,
-                        Titulo = "Banheiro Com Problema",
+                        Titulo = "Banheiro",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 1, 
                         CampusId = 1,
@@ -520,7 +514,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 2,
-                        Titulo = "Corrimão da Escada da COINF Descascando",
+                        Titulo = "Escada COINF",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 1,
                         CampusId = 2,
@@ -529,7 +523,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 3,
-                        Titulo = "Demora para Aprovar Máteria de TCC 1",
+                        Titulo = "COINF",
                         MediaAvaliacao = 3.5m,
                         CategoriaId = 2,
                         CampusId = 3,
@@ -538,7 +532,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 4,
-                        Titulo = "Melhorias no Processo de Atendimento",
+                        Titulo = "GEN",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 2,
                         CampusId = 4,
@@ -547,7 +541,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 5,
-                        Titulo = "Pessoal da Limpeza Top",
+                        Titulo = "Limpeza",
                         MediaAvaliacao = 5.0m,
                         CategoriaId = 3,
                         CampusId = 5,
@@ -556,16 +550,16 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 6,
-                        Titulo = "Problemas com o Wifi do Campus",
+                        Titulo = "Biblioteca",
                         MediaAvaliacao = 2.5m,
                         CategoriaId = 3,
-                        CampusId = 6,
+                        CampusId = 1,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 7,
-                        Titulo = "Ifs Techday Top",
+                        Titulo = "Ifs Techday",
                         MediaAvaliacao = 5.0m,
                         CategoriaId = 4,
                         CampusId = 7,
@@ -574,7 +568,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 8,
-                        Titulo = "Semana Academica Divertida",
+                        Titulo = "Semana Acadêmica",
                         MediaAvaliacao = 4.5m,
                         CategoriaId = 4,
                         CampusId = 8,
@@ -583,7 +577,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 9,
-                        Titulo = "Semana Academica Algumas Palestras Massantes",
+                        Titulo = "Ifs Dev Conf",
                         MediaAvaliacao = 3.0m,
                         CategoriaId = 4,
                         CampusId = 9,
@@ -592,7 +586,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 10,
-                        Titulo = "Lab da COINF precisão limpar o filtro do Ar",
+                        Titulo = "Lab da COINF",
                         MediaAvaliacao = 3.5m,
                         CategoriaId = 5,
                         CampusId = 10,
@@ -601,7 +595,7 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 11,
-                        Titulo = "Lab de Redes com acustica prejudicada",
+                        Titulo = "Lab de Redes",
                         MediaAvaliacao = 2.5m,
                         CategoriaId = 5,
                         CampusId = 11,
@@ -610,18 +604,18 @@ namespace IfeedsApi.Config.Database
                     new
                     {
                         Id = 12,
-                        Titulo = "Nenhum Livro de Loiane Groner",
+                        Titulo = "Refeitório",
                         MediaAvaliacao = 2.5m,
-                        CategoriaId = 6,
+                        CategoriaId = 1,
                         CampusId = 1,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 13,
-                        Titulo = "Livro de Cálculo com página rasurada",
+                        Titulo = "Quadra Poliesportiva",
                         MediaAvaliacao = 3.5m,
-                        CategoriaId = 6,
+                        CategoriaId = 1,
                         CampusId = 6,
                         DataCriacao = DateTime.UtcNow
                     }
