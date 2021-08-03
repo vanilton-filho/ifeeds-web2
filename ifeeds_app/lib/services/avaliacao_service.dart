@@ -19,13 +19,13 @@ class AvaliacaoService {
             .toList();
       }
     } catch (e) {
-      throw new Exception("Impossível buscar lista de avaliações");
+      throw new Exception("Impossível listar de avaliações");
     }
   }
 
   static Future<dynamic> listarAvaliacoesPorCategoria(int categoria) async {
     Uri uri =
-        Uri.http(Envs.baseUrl, "api/avaliacoes/${categoria}/por-categoria");
+        Uri.http(Envs.baseUrl, "api/avaliacoes/$categoria/por-categoria");
     try {
       final response =
           await http.get(uri, headers: {"Accept": "application/json"});
@@ -37,7 +37,7 @@ class AvaliacaoService {
             .toList();
       }
     } catch (e) {
-      throw new Exception("Impossível buscar lista de avaliações");
+      throw new Exception("Impossível listar as avaliações por categoria");
     }
   }
 
@@ -55,7 +55,7 @@ class AvaliacaoService {
             .toList();
       }
     } catch (e) {
-      throw new Exception("Impossível buscar listar categorias");
+      throw new Exception("Impossível listar categorias");
     }
   }
 }
