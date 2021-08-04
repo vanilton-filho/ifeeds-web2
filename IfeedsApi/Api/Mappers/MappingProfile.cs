@@ -25,6 +25,14 @@ namespace IfeedsApi.Api.Config
             CreateMap<Avaliacao, AvaliacaoModel>().ReverseMap();
 
             CreateMap<Categoria, CategoriaModel>().ReverseMap();
+
+            CreateMap<Feedback, FeedbackModel>().ReverseMap();
+
+            CreateMap<Usuario, FeedbackModel>().ReverseMap();
+
+            CreateMap<FormularioAvaliacao, FormularioAvaliacaoModel>().ReverseMap();
+
+            CreateMap<Avaliacao, FeedbackAvaliacaoModel>().ReverseMap();
         }
     }
 }
