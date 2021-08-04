@@ -7,6 +7,7 @@ using IfeedsApi.Api.Config;
 using IfeedsApi.Api.Mappers;
 using IfeedsApi.Config.Auth;
 using IfeedsApi.Config.Database;
+using IfeedsApi.Domain.Services;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -97,6 +98,8 @@ namespace IfeedsApi
             services.AddTransient<UsuarioMapper, UsuarioMapper>();
             services.AddTransient<UsuarioService, UsuarioService>();
             services.AddTransient<CategoriaService, CategoriaService>();
+            services.AddTransient<FeedbackMapper, FeedbackMapper>();
+            services.AddTransient<FeedbackService, FeedbackService>();
 
         }
 

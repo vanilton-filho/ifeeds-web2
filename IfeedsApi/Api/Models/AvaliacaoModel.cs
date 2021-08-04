@@ -12,9 +12,16 @@ namespace IfeedsApi.Api.Models
 
         public decimal MediaAvaliacao { get; set; }
 
-
         public string Categoria { get; set; }
 
         public string Campus { get; set; }
+    }
+
+    public class FeedbackAvaliacaoModel
+    {
+        public int Id { get; set; }
+
+        public string Titulo { get; set; }
+
     }
 }
