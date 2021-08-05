@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:ifeeds_app/core/app_colors.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
+import 'package:ifeeds_app/models/feedback_model.dart';
 
 class TileWidget extends StatefulWidget {
   final double? marginRight;
+  final FeedbackModel feedbackModel;
 
   const TileWidget({
     Key? key,
     this.marginRight,
+    required this.feedbackModel,
   }) : super(key: key);
 
   @override
@@ -58,14 +62,14 @@ class _TileWidgetState extends State<TileWidget> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 14.0),
                                 child: Text(
-                                  'TKSDHFJKSDHJKFHDSJKHFJKDSHKJDHGJKHFDJKGHKJFDHGKKKKKK',
+                                  '${widget.feedbackModel.formulario!.titulo}',
                                   style: AppTextStyles.normal2.merge(TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20)),
                                 ),
                               ),
                               Text(
-                                'AwQerqbasTs5hXasa6789',
+                                '${widget.feedbackModel.codigo}',
                                 style: AppTextStyles.normal2
                                     .merge(TextStyle(fontSize: 14)),
                               ),
@@ -93,7 +97,7 @@ class _TileWidgetState extends State<TileWidget> {
                                       ),
                                     ),
                                     Text(
-                                      '4.2',
+                                      '${widget.feedbackModel.nota}',
                                       style: AppTextStyles.normal2.merge(
                                         TextStyle(
                                           fontSize: 27,
@@ -103,7 +107,7 @@ class _TileWidgetState extends State<TileWidget> {
                                   ],
                                 ),
                               ),
-                              Text('18/07/2020',
+                              Text('${widget.feedbackModel.dataCriacao}',
                                   style: AppTextStyles.normal2
                                       .merge(TextStyle(fontSize: 16))),
                             ],
@@ -145,7 +149,7 @@ class _TileWidgetState extends State<TileWidget> {
                       padding: const EdgeInsets.all(8.0),
                       child: RatingBar.builder(
                         itemSize: 42,
-                        initialRating: 4.5,
+                        initialRating: widget.feedbackModel.nota!,
                         direction: Axis.horizontal,
                         allowHalfRating: true,
                         itemCount: 5,
@@ -159,7 +163,7 @@ class _TileWidgetState extends State<TileWidget> {
                       ),
                     ),
                     Text(
-                      '4.5',
+                      '${widget.feedbackModel.nota}',
                       style: GoogleFonts.robotoCondensed(
                         fontSize: 23.0,
                         fontWeight: FontWeight.bold,
@@ -170,7 +174,7 @@ class _TileWidgetState extends State<TileWidget> {
                       child: Wrap(
                         children: [
                           Text(
-                            'Descrição do feedback dada pelo usuário',
+                            '${widget.feedbackModel.formulario!.descricao}',
                             style: GoogleFonts.roboto(fontSize: 21.0),
                             textAlign: TextAlign.center,
                           ),
@@ -187,7 +191,7 @@ class _TileWidgetState extends State<TileWidget> {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        'Data de criação 01/01/2000',
+                        'Data de criação ${widget.feedbackModel.dataCriacao}',
                         style: GoogleFonts.roboto(color: Colors.grey),
                       ),
                     ),
