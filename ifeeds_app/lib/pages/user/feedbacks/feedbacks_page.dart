@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifeeds_app/pages/user/feedbacks/feedback_tile.dart';
 
 class FeedbacksPage extends StatefulWidget {
   const FeedbacksPage({Key? key}) : super(key: key);
@@ -10,10 +11,16 @@ class FeedbacksPage extends StatefulWidget {
 class _FeedbacksPageState extends State<FeedbacksPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Feedbacks'),
-      ),
+    return ListView(
+      children: [
+        FeedbackTile(),
+        FeedbackTile(),
+        FeedbackTile(),
+        FeedbackTile(),
+        FeedbackTile(),
+        FeedbackTile(),
+        FeedbackTile(),
+      ],
     );
   }
 }

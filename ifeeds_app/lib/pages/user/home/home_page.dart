@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/pages/user/home/widgets/list_category_widget.dart';
+import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
 import 'package:ifeeds_app/services/avaliacao_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,9 +25,7 @@ class HomePage extends StatelessWidget {
                 .toList(),
           );
         } else if (snapshot.hasError) {
-          return Center(
-            child: Text('Erro'),
-          );
+          return ErrorAppWidget(message: '${snapshot.error}');
         }
         return Center(
           child: Row(

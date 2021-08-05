@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ifeeds_app/core/app_colors.dart';
-import 'package:ifeeds_app/pages/user/home/drawer_page.dart';
+import 'package:ifeeds_app/pages/login/login_page.dart';
 
 void main() {
   runApp(RootApp());
@@ -15,7 +15,7 @@ class RootApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: AppColors.primarySwatch,
       ),
-      home: DrawerPage(),
+      home: LoginPage(),
     );
   }
 }

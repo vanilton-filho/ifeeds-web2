@@ -19,33 +19,47 @@ class _DrawerPageState extends State<DrawerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: Drawer(
-            child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            ListTile(
-              selected: 0 == _selectedIndex,
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () => _onSelectItem(0),
-            ),
-            ListTile(
-              selected: 1 == _selectedIndex,
-              leading: Icon(Icons.feedback),
-              title: Text('Feedbacks'),
-              onTap: () => _onSelectItem(1),
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Perfil'),
-              onTap: () => {Navigator.of(context).pop()},
-            ),
-            ListTile(
-              leading: Icon(Icons.help),
-              title: Text('Ajuda'),
-              onTap: () => {Navigator.of(context).pop()},
-            ),
-          ],
-        )),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                  accountName: Text("John Doe"),
+                  accountEmail: Text("johndoe@email.com"),
+                  currentAccountPicture: CircleAvatar(
+                    child: Icon(
+                      Icons.account_circle,
+                      size: 60,
+                      color: Colors.white,
+                    ),
+                    radius: 30.0,
+                  )),
+              ListTile(
+                selected: 0 == _selectedIndex,
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+                onTap: () => _onSelectItem(0),
+              ),
+              ListTile(
+                selected: 1 == _selectedIndex,
+                leading: Icon(Icons.feedback),
+                title: Text('Feedbacks'),
+                subtitle: Text('Histórico de Feedbacks'),
+                onTap: () => _onSelectItem(1),
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Perfil'),
+                subtitle: Text('Configurações do usuário'),
+                onTap: () => {Navigator.of(context).pop()},
+              ),
+              ListTile(
+                leading: Icon(Icons.help),
+                title: Text('Ajuda'),
+                onTap: () => {Navigator.of(context).pop()},
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
           actions: [
             Row(
