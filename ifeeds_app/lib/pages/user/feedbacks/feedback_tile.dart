@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+
+import 'package:ifeeds_app/models/feedback_model.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/widgets/tile_widget.dart';
 
 class FeedbackTile extends StatefulWidget {
-  const FeedbackTile({Key? key}) : super(key: key);
+   final FeedbackModel feedbackModel;
+  const FeedbackTile({
+    Key? key,
+    required this.feedbackModel,
+  }) : super(key: key);
 
   @override
   _FeedbackTileState createState() => _FeedbackTileState();
@@ -14,9 +20,9 @@ class _FeedbackTileState extends State<FeedbackTile> {
     return LayoutBuilder(
       builder: (BuildContext ctx, BoxConstraints constraints) {
         if (constraints.maxWidth < 1200) {
-          return TileWidget();
+          return TileWidget(feedbackModel: widget.feedbackModel,);
         }
-        return TileWidget(
+        return TileWidget(feedbackModel: widget.feedbackModel,
           marginRight: 600,
         );
       },

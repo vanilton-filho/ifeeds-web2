@@ -52,7 +52,7 @@ namespace IfeedsApi
 
 
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
+            string mySqlConnection = Configuration.GetConnectionString("rafaConnection");
             services.AddDbContextPool<ApplicationDbContext>(options =>
                 options.UseMySql(mySqlConnection,
                 MySqlServerVersion.AutoDetect(mySqlConnection)));
