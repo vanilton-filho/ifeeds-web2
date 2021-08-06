@@ -17,8 +17,8 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
     return FutureBuilder(
         future: FeedbackService.listarFeedback(),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
-          List<FeedbackModel> feedbacksModel = snapshot.data!;
           if (snapshot.hasData) {
+            List<FeedbackModel> feedbacksModel = snapshot.data!;
             return ListView(
               children: feedbacksModel
                   .map((e) => FeedbackTile(

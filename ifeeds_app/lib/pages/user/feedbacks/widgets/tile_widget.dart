@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_colors.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
+import 'package:intl/intl.dart';
 
 class TileWidget extends StatefulWidget {
   final double? marginRight;
@@ -25,98 +26,115 @@ class _TileWidgetState extends State<TileWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
-      child: Card(
-        margin: EdgeInsets.only(
-            right: widget.marginRight == null ? 0 : widget.marginRight!),
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25), bottomLeft: Radius.circular(25))),
-        child: InkWell(
-          onTap: () => _showModal(),
-          child: ClipPath(
-            clipper: ShapeBorderClipper(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        bottomLeft: Radius.circular(25)))),
-            child: Container(
-                height: 180,
-                decoration: BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
-                        color: AppColors.primarySwatch[500]!, width: 24),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 3),
+        child: Container(
+          child: InkWell(
+            onTap: () => _showModal(),
+            child: ClipPath(
+              clipper: ShapeBorderClipper(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          bottomLeft: Radius.circular(15)))),
+              child: Container(
+                  height: 180,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      left: BorderSide(
+                          color: AppColors.primarySwatch[500]!, width: 24),
+                    ),
                   ),
-                ),
-                padding: EdgeInsets.all(20.0),
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  child: Row(
-                    children: [
-                      Expanded(
-                          flex: 3,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 14.0),
-                                child: Text(
-                                  '${widget.feedbackModel.formulario!.titulo}',
-                                  style: AppTextStyles.normal2.merge(TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20)),
+                  padding: EdgeInsets.all(20.0),
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 14.0),
+                                  child: Text(
+                                    '${widget.feedbackModel.formulario!.titulo}',
+                                    style: AppTextStyles.normal2.merge(TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                '${widget.feedbackModel.codigo}',
-                                style: AppTextStyles.normal2
-                                    .merge(TextStyle(fontSize: 14)),
-                              ),
-                            ],
-                          )),
-                      Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 15.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
+                                widget.feedbackModel.status!
+                                    ? Row(children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 3),
+                                          child: Icon(
+                                            Icons.check_circle,
+                                            color: Colors.green,
+                                          ),
+                                        ),
+                                        Text('Respondido em: ${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataResposta!)}'),
+                                      ])
+                                    : Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 3),
+                                            child: Icon(
+                                              Icons.check_circle,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          Text('Não Respondido'),
+                                        ],
                                       ),
-                                    ),
-                                    Text(
-                                      '${widget.feedbackModel.nota}',
-                                      style: AppTextStyles.normal2.merge(
-                                        TextStyle(
-                                          fontSize: 27,
+                              
+                              ],
+                            )),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 15.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          Icons.star,
+                                          color: Colors.amber,
                                         ),
                                       ),
-                                    )
-                                  ],
+                                      Text(
+                                        '${widget.feedbackModel.nota!.toStringAsFixed(1)}',
+                                        style: AppTextStyles.normal2.merge(
+                                          TextStyle(
+                                            fontSize: 27,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Text('${widget.feedbackModel.dataCriacao}',
-                                  style: AppTextStyles.normal2
-                                      .merge(TextStyle(fontSize: 16))),
-                            ],
+                                Text(
+                                    '${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataCriacao!)}',
+                                    style: AppTextStyles.normal2
+                                        .merge(TextStyle(fontSize: 16))),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )),
+                      ],
+                    ),
+                  )),
+            ),
           ),
         ),
       ),
@@ -163,7 +181,7 @@ class _TileWidgetState extends State<TileWidget> {
                       ),
                     ),
                     Text(
-                      '${widget.feedbackModel.nota}',
+                      '${widget.feedbackModel.nota!.toStringAsFixed(1)}',
                       style: GoogleFonts.robotoCondensed(
                         fontSize: 23.0,
                         fontWeight: FontWeight.bold,
@@ -184,15 +202,23 @@ class _TileWidgetState extends State<TileWidget> {
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
                       child: Text(
-                        'Campus Lagarto',
+                        '${widget.feedbackModel.campus}',
                         style: GoogleFonts.roboto(),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        'Data de criação ${widget.feedbackModel.dataCriacao}',
-                        style: GoogleFonts.roboto(color: Colors.grey),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Data de criação ${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataCriacao!)}',
+                            style: GoogleFonts.roboto(color: Colors.grey),
+                          ),
+                          Text(
+                            'Código ${widget.feedbackModel.codigo}',
+                            style: GoogleFonts.roboto(color: Colors.grey),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(
@@ -209,11 +235,18 @@ class _TileWidgetState extends State<TileWidget> {
                         )),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        'Nenhuma resposta até o momento...',
-                        style: GoogleFonts.roboto(
-                            fontSize: 14.0, color: Colors.grey),
-                      ),
+                      child: widget.feedbackModel.resposta == null
+                          ? Text(
+                              'Nenhuma resposta até o momento...',
+                              style: GoogleFonts.roboto(
+                                  fontSize: 14.0, color: Colors.grey),
+                            )
+                          : Text(
+                              '${widget.feedbackModel.resposta}',
+                              style: GoogleFonts.roboto(
+                                fontSize: 14.0,
+                              ),
+                            ),
                     ),
                   ],
                 ),
