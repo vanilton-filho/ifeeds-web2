@@ -17,7 +17,15 @@ namespace IfeedsApi.Api.Models
 
         public FeedbackAvaliacaoModel Avaliacao { get; set; }
 
+        public string Campus { get; set; }
+
+        public string Resposta { get; set; }
+
+        public bool Status { get; set; }
+
         public DateTime DataCriacao { get; set; }
+
+        public DateTime? DataResposta { get; set; }
 
     }
 }
