@@ -24,26 +24,24 @@ namespace IfeedsApi.Api.Mappers
 
             var categoria = _context.Categorias.Find(avaliacao.CategoriaId);
             var campus = _context.Campus.Find(avaliacao.CampusId);
+            var totalFeedbacks = _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacao.Id).Count();
+
 
             // Anexando Campus e Categoria ao model
             avaliacaoModel.Campus = campus.Nome;
             avaliacaoModel.Categoria = categoria.Nome;
+            avaliacaoModel.TotalFeedbacks = totalFeedbacks;
 
             return avaliacaoModel;
         }
 
-        public List<AvaliacaoModel> ToCollection(List<Avaliacao> avaliacaos)
+        public List<AvaliacaoModel> ToCollection(List<Avaliacao> avaliacoes)
         {
-            var avaliacoesModel = _mapper.Map<List<AvaliacaoModel>>(avaliacaos);
-            avaliacaos.ForEach(a =>
-         {
-             var campus = _context.Campus.Find(a.CampusId);
-             var categoria = _context.Categorias.Find(a.CategoriaId);
-
-             var avaliacaoModel = avaliacoesModel.Where(e => e.Titulo == a.Titulo);
-             avaliacaoModel.Single().Categoria = categoria.Nome;
-             avaliacaoModel.Single().Campus = campus.Nome;
-         });
+            List<AvaliacaoModel> avaliacoesModel = new List<AvaliacaoModel>();
+            avaliacoes.ForEach(a =>
+            {
+                avaliacoesModel.Add(ToModel(a));
+            });
             return avaliacoesModel;
         }
 
