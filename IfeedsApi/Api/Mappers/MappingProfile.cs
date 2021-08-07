@@ -33,6 +33,11 @@ namespace IfeedsApi.Api.Config
             CreateMap<FormularioAvaliacao, FormularioAvaliacaoModel>().ReverseMap();
 
             CreateMap<Avaliacao, FeedbackAvaliacaoModel>().ReverseMap();
+
+            CreateMap<FormularioAvaliacao, FormularioAvaliacaoModelRequest>().ReverseMap();
+
+
+            
         }
     }
 }
