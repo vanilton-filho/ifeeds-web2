@@ -69,7 +69,7 @@ namespace IfeedsApi.Api.Models
 
     public enum TipoConta
     {
-        ADMIN = 1, 
+        ADMIN = 1,
         USER = 2
     }
 

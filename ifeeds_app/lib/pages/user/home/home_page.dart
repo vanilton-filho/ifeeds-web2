@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           return ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
-            itemExtent: 350,
+            itemExtent: 250,
             children: categorias
                 .map((e) => ListCategoryWidget(
                       categoria: e,

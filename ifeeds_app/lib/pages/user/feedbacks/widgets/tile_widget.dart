@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:ifeeds_app/core/app_colors.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
 import 'package:intl/intl.dart';
@@ -41,8 +39,7 @@ class _TileWidgetState extends State<TileWidget> {
                   height: 180,
                   decoration: BoxDecoration(
                     border: Border(
-                      left: BorderSide(
-                          color: AppColors.primarySwatch[500]!, width: 24),
+                      left: BorderSide(color: Colors.blueGrey, width: 24),
                     ),
                   ),
                   padding: EdgeInsets.all(20.0),
@@ -60,26 +57,30 @@ class _TileWidgetState extends State<TileWidget> {
                                   padding: const EdgeInsets.only(bottom: 14.0),
                                   child: Text(
                                     '${widget.feedbackModel.formulario!.titulo}',
-                                    style: AppTextStyles.normal2.merge(TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20)),
+                                    style: AppTextStyles.normal2.merge(
+                                        TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20)),
                                   ),
                                 ),
                                 widget.feedbackModel.status!
-                                    ? Row(children: [
+                                    ? Wrap(children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(right: 3),
+                                          padding:
+                                              const EdgeInsets.only(right: 3),
                                           child: Icon(
                                             Icons.check_circle,
                                             color: Colors.green,
                                           ),
                                         ),
-                                        Text('Respondido em: ${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataResposta!)}'),
+                                        Text(
+                                            'Respondido em: ${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataResposta!)}'),
                                       ])
-                                    : Row(
+                                    : Wrap(
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsets.only(right: 3),
+                                            padding:
+                                                const EdgeInsets.only(right: 3),
                                             child: Icon(
                                               Icons.check_circle,
                                               color: Colors.grey,
@@ -88,13 +89,13 @@ class _TileWidgetState extends State<TileWidget> {
                                           Text('Não Respondido'),
                                         ],
                                       ),
-                              
                               ],
                             )),
                         Expanded(
                           flex: 2,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +104,8 @@ class _TileWidgetState extends State<TileWidget> {
                                   padding: const EdgeInsets.only(bottom: 15.0),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -142,14 +144,6 @@ class _TileWidgetState extends State<TileWidget> {
   }
 
   _showModal() async {
-    // String? response = formRating.response;
-    // String dataCriacao =
-    //     DateFormat('dd-MM-yyyy HH:mm').format(formRating.creationDate!);
-
-    // String? dataAtualizacao = formRating.updateDate == null
-    //     ? null
-    //     : DateFormat('dd-MM-yyyy HH:mm').format(formRating.updateDate!);
-
     await showModalBottomSheet(
         isDismissible: true,
         isScrollControlled: true,
@@ -210,9 +204,12 @@ class _TileWidgetState extends State<TileWidget> {
                       padding: const EdgeInsets.all(12.0),
                       child: Column(
                         children: [
-                          Text(
-                            'Data de criação ${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataCriacao!)}',
-                            style: GoogleFonts.roboto(color: Colors.grey),
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Text(
+                              'Data de criação ${DateFormat('dd-MM-yyyy').format(widget.feedbackModel.dataCriacao!)}',
+                              style: GoogleFonts.roboto(color: Colors.grey),
+                            ),
                           ),
                           Text(
                             'Código ${widget.feedbackModel.codigo}',

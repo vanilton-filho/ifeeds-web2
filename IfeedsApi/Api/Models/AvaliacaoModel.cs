@@ -15,6 +15,8 @@ namespace IfeedsApi.Api.Models
         public string Categoria { get; set; }
 
         public string Campus { get; set; }
+
+        public int TotalFeedbacks { get; set; }
     }
 
     public class FeedbackAvaliacaoModel
