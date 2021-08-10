@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/feedbacks_page.dart';
+import 'package:ifeeds_app/pages/user/formulario/formulario_avaliacao_page.dart';
 import 'package:ifeeds_app/pages/user/home/home_page.dart';
 import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
@@ -123,7 +124,7 @@ class _DrawerPageState extends State<DrawerPage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ButtonWidget(
-                      onPressed: () => {},
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => FormularioAvaliacaoPage())),
                       edgeInsets: const EdgeInsets.symmetric(
                         vertical: 10.5,
                         horizontal: 48,
