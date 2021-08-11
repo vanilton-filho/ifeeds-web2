@@ -16,7 +16,7 @@ class RootApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: AppColors.primarySwatch,
       ),
-      home: FormularioAvaliacaoPage(),
+      home: DrawerPage(),
     );
   }
 }

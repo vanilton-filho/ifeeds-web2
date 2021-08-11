@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_colors.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/avaliacao_model.dart';
+import 'package:ifeeds_app/pages/user/formulario/formulario_avaliacao_page.dart';
 
 class CardAvaliacaoWidget extends StatefulWidget {
   final AvaliacaoModel avaliacaoModel;
@@ -29,7 +30,7 @@ class _CardAvaliacaoWidgetState extends State<CardAvaliacaoWidget> {
         ),
         child: InkWell(
           hoverColor: AppColors.primarySwatch[50],
-          onTap: () => _showModal(),
+          onLongPress: () => _showModal(), onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => FormularioAvaliacaoPage())),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
