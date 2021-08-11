@@ -5,7 +5,7 @@ import 'package:ifeeds_app/pages/login/widgets/page_image_widget.dart';
 
 class PageViewWidget extends StatefulWidget {
   final int totalPages;
-  final List<PageImageWidget> images;
+  final List<dynamic> images;
 
   const PageViewWidget({
     Key? key,
