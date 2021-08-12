@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,5 +1,5 @@
 using AutoMapper;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Domain.Services

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Database;
 
 namespace IfeedsApi.Api.Models
 {

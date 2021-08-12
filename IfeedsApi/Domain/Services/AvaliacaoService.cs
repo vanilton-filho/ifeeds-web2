@@ -5,8 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Config.Auth;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using Microsoft.IdentityModel.Tokens;
 

@@ -1,4 +1,4 @@
-namespace IfeedsApi.Config.Auth
+namespace IfeedsApi.Core.Auth
 {
     public class JwtSettings
     {
