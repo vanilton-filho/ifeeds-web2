@@ -1,6 +1,6 @@
 using AutoMapper;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Api.Mappers

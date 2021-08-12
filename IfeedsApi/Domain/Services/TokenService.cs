@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Config.Auth;
+using IfeedsApi.Core.Auth;
 using Microsoft.IdentityModel.Tokens;
 
 namespace IfeedsApi.Services

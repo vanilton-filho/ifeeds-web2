@@ -1,4 +1,4 @@
-﻿using IfeedsApi.Config.Database;
+﻿using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using System;
 using System.Collections.Generic;

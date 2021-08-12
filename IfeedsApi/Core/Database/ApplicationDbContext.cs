@@ -2,7 +2,7 @@ using IfeedsApi.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace IfeedsApi.Config.Database
+namespace IfeedsApi.Core.Database
 {
     public class ApplicationDbContext : DbContext
     {
@@ -693,7 +693,7 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 8,
                         UsuarioId = 9,
-                        AvaliacaoId = 2
+                        AvaliacaoId = 8
                     },
                     new
                     {
@@ -702,7 +702,7 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 9,
                         UsuarioId = 10,
-                        AvaliacaoId = 5
+                        AvaliacaoId = 8
                     },
                     new
                     {
@@ -711,7 +711,7 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 10,
                         UsuarioId = 7,
-                        AvaliacaoId = 8
+                        AvaliacaoId = 10
                     },
                     new
                     {
@@ -720,7 +720,7 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 11,
                         UsuarioId = 3,
-                        AvaliacaoId = 4
+                        AvaliacaoId = 11
                     },
                     new
                     {
@@ -729,7 +729,7 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 13,
                         UsuarioId = 4,
-                        AvaliacaoId = 2
+                        AvaliacaoId = 6
                     },
                     new
                     {
@@ -738,7 +738,7 @@ namespace IfeedsApi.Config.Database
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 12,
                         UsuarioId = 2,
-                        AvaliacaoId = 8
+                        AvaliacaoId = 6
                     }
                 );
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
