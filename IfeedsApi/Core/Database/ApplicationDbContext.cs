@@ -24,6 +24,7 @@ namespace IfeedsApi.Core.Database
 
         public DbSet<Feedback> Feedbacks { get; set; }
 
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -364,7 +365,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Banheiro com problema",
                         Descricao = "Banheiro com problema espelho quebrado",
                         QuantidadeEstrelas = 3.50m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 1
                     },
                     new
                     {
@@ -372,7 +374,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Problema no corrimão",
                         Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
                         QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 2
                     },
                     new
                     {
@@ -380,7 +383,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Dificuldade com TCC",
                         Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
                         QuantidadeEstrelas = 2.50m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 3
                     },
                     new
                     {
@@ -388,7 +392,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Sugestão de Melhoria",
                         Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
                         QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 4
                     },
                     new
                     {
@@ -396,7 +401,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao pessoal da limpeza",
                         Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
                         QuantidadeEstrelas = 5m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 5
                     },
                     new
                     {
@@ -404,7 +410,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Problemas com WIFI",
                         Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
                         QuantidadeEstrelas = 4m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 6
                     },
 
                     new
@@ -413,7 +420,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao Techday",
                         Descricao = "Ifs Techday Top - Evento maravilhoso",
                         QuantidadeEstrelas = 5m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 7
                     },
                     new
                     {
@@ -421,7 +429,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao evento",
                         Descricao = "Semana Academica Divertida - Evento top",
                         QuantidadeEstrelas = 4.50m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 8
                     },
                     new
                     {
@@ -429,7 +438,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Palestras cansativas na SEMAC",
                         Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
                         QuantidadeEstrelas = 2.50m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 8
                     },
                     new
                     {
@@ -437,7 +447,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Problema com Ar",
                         Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
                         QuantidadeEstrelas = 3.50m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 10
                     },
                     new
                     {
@@ -445,7 +456,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Barulho no lab de redes",
                         Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
                         QuantidadeEstrelas = 2.50m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 11
                     },
                     new
                     {
@@ -453,7 +465,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Sugestão de bibliográfia",
                         Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
                         QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 6
                     },
                     new
                     {
@@ -461,7 +474,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Rasuras no livro",
                         Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
                         QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow,
+                        AvaliacaoId = 6
                     }
             );
 
@@ -629,8 +643,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 1,
-                        UsuarioId = 2,
-                        AvaliacaoId = 1
+                        UsuarioId = 2
                     },
                     new
                     {
@@ -638,8 +651,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 2,
-                        UsuarioId = 1,
-                        AvaliacaoId = 2
+                        UsuarioId = 1
                     },
                     new
                     {
@@ -647,8 +659,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 3,
-                        UsuarioId = 4,
-                        AvaliacaoId = 3
+                        UsuarioId = 4
                     },
                     new
                     {
@@ -656,8 +667,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 4,
-                        UsuarioId = 3,
-                        AvaliacaoId = 4
+                        UsuarioId = 3
                     },
                     new
                     {
@@ -665,8 +675,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 5,
-                        UsuarioId = 3,
-                        AvaliacaoId = 5
+                        UsuarioId = 3
                     },
                     new
                     {
@@ -674,8 +683,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 6,
-                        UsuarioId = 8,
-                        AvaliacaoId = 6
+                        UsuarioId = 8
                     },
                     new
                     {
@@ -683,8 +691,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 7,
-                        UsuarioId = 5,
-                        AvaliacaoId = 7
+                        UsuarioId = 5
                     },
                     new
                     {
@@ -692,8 +699,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 8,
-                        UsuarioId = 9,
-                        AvaliacaoId = 8
+                        UsuarioId = 9
                     },
                     new
                     {
@@ -701,8 +707,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 9,
-                        UsuarioId = 10,
-                        AvaliacaoId = 8
+                        UsuarioId = 10
                     },
                     new
                     {
@@ -710,8 +715,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 10,
-                        UsuarioId = 7,
-                        AvaliacaoId = 10
+                        UsuarioId = 7
                     },
                     new
                     {
@@ -719,8 +723,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 11,
-                        UsuarioId = 3,
-                        AvaliacaoId = 11
+                        UsuarioId = 3
                     },
                     new
                     {
@@ -728,8 +731,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 13,
-                        UsuarioId = 4,
-                        AvaliacaoId = 6
+                        UsuarioId = 4
                     },
                     new
                     {
@@ -737,8 +739,7 @@ namespace IfeedsApi.Core.Database
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
                         FormularioAvaliacaoId = 12,
-                        UsuarioId = 2,
-                        AvaliacaoId = 6
+                        UsuarioId = 2
                     }
                 );
 

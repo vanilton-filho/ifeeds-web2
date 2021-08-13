@@ -26,8 +26,8 @@ namespace IfeedsApi.Api.Mappers
 
             var formulario = _context.FormulariosAvaliacaos.Find(feedback.FormularioAvaliacaoId);
             var usuario = _context.Usuarios.Find(feedback.UsuarioId);
-            var avaliacao = _context.Avaliacoes.Find(feedback.AvaliacaoId);
-            var campus = _context.Campus.Find(feedback.Avaliacao.CampusId);
+            var avaliacao = _context.Avaliacoes.Find(formulario.AvaliacaoId);
+            var campus = _context.Campus.Find(avaliacao.CampusId);
             var respostaFeedback = _context.RespostasFeedbacks.Find(feedback.Id);
             
 

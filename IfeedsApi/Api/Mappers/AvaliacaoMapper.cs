@@ -24,13 +24,13 @@ namespace IfeedsApi.Api.Mappers
 
             var categoria = _context.Categorias.Find(avaliacao.CategoriaId);
             var campus = _context.Campus.Find(avaliacao.CampusId);
-            var totalFeedbacks = _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacao.Id).Count();
+            //var totalFeedbacks = _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacao.Id).Count();
 
 
             // Anexando Campus e Categoria ao model
             avaliacaoModel.Campus = campus.Nome;
             avaliacaoModel.Categoria = categoria.Nome;
-            avaliacaoModel.TotalFeedbacks = totalFeedbacks;
+            //avaliacaoModel.TotalFeedbacks = totalFeedbacks;
 
             return avaliacaoModel;
         }

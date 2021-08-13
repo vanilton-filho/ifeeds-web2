@@ -39,6 +39,10 @@ namespace IfeedsApi.Domain.Models
 
         public Feedback Feedback { get; set; }
 
+        public int AvaliacaoId{get;set;}
+
+        public Avaliacao Avaliacao {get;set;}
+
 
     }
 

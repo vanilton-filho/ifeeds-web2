@@ -26,10 +26,6 @@ namespace IfeedsApi.Domain.Models
 
         public DateTime? DataAtualizacao { get; set; }
 
-        public int AvaliacaoId { get; set; }
-
-        public Avaliacao Avaliacao { get; set; }
-
         public int FormularioAvaliacaoId { get; set; }
 
         public FormularioAvaliacao FormularioAvaliacao { get; set; }

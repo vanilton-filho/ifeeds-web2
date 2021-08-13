@@ -35,7 +35,7 @@ namespace IfeedsApi.Api.Controllers
         public ActionResult<FormularioAvaliacaoModel> Post([FromBody] FormularioAvaliacaoModelRequest formularioAvaliacaoModelRequest){
             var formularioAvaliacao = _mapper.Map<FormularioAvaliacao>(formularioAvaliacaoModelRequest);
             formularioAvaliacao.QuantidadeEstrelas = formularioAvaliacaoModelRequest.Nota;
-            _formularioAvaliacaoService.Salvar(formularioAvaliacao);
+            _formularioAvaliacaoService.Salvar(formularioAvaliacao,formularioAvaliacaoModelRequest.AvaliacaoId,1);
             return _mapper.Map<FormularioAvaliacaoModel>(formularioAvaliacao);
         }
     }
