@@ -34,11 +34,11 @@ namespace IfeedsApi.Domain.Models
 
         public Categoria Categoria { get; set; }
 
-        public ICollection<Feedback> Feedbacks { get; set; }
-
         public int CampusId { get; set; }
 
         public Campus Campus { get; set; }
+
+        public ICollection<Feedback> Feedbacks {get; set;}
 
 
     }

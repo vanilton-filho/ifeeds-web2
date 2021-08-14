@@ -32,6 +32,10 @@ namespace IfeedsApi.Api.Models
         public decimal Nota{get; set;}
 
 
+        public int AvaliacaoId{ get; set; }
+
+
+
 
     }
 }

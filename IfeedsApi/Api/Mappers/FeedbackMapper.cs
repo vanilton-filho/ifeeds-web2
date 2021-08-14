@@ -24,18 +24,18 @@ namespace IfeedsApi.Api.Mappers
         {
             var feedbackModel = _mapper.Map<FeedbackModel>(feedback);
 
-            var formulario = _context.FormulariosAvaliacaos.Find(feedback.FormularioAvaliacaoId);
+            //var formulario = _context.FormulariosAvaliacaos.Find(feedback.FormularioAvaliacaoId);
             var usuario = _context.Usuarios.Find(feedback.UsuarioId);
-            var avaliacao = _context.Avaliacoes.Find(feedback.AvaliacaoId);
-            var campus = _context.Campus.Find(feedback.Avaliacao.CampusId);
+            //var avaliacao = _context.Avaliacoes.Find(formulario.AvaliacaoId);
+            //var campus = _context.Campus.Find(avaliacao.CampusId);
             var respostaFeedback = _context.RespostasFeedbacks.Find(feedback.Id);
             
 
-            feedbackModel.Formulario = _mapper.Map<FormularioAvaliacaoModel>(formulario);
+            //feedbackModel.Formulario = _mapper.Map<FormularioAvaliacaoModel>(formulario);
             feedbackModel.Matricula = usuario.Matricula;
-            feedbackModel.Avaliacao = _mapper.Map<FeedbackAvaliacaoModel>(avaliacao);
-            feedbackModel.Nota = formulario.QuantidadeEstrelas;
-            feedbackModel.Campus = campus.Nome;
+            //feedbackModel.Avaliacao = _mapper.Map<FeedbackAvaliacaoModel>(avaliacao);
+            //feedbackModel.Nota = formulario.QuantidadeEstrelas;
+            //feedbackModel.Campus = campus.Nome;
             feedbackModel.Resposta = respostaFeedback is null ? null : respostaFeedback.Resposta;
             feedbackModel.Status = respostaFeedback is not null && respostaFeedback.Status;
             feedbackModel.DataResposta = respostaFeedback is null ? null : respostaFeedback.DataCriacao;
