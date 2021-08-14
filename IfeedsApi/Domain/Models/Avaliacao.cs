@@ -38,7 +38,7 @@ namespace IfeedsApi.Domain.Models
 
         public Campus Campus { get; set; }
 
-        public ICollection<FormularioAvaliacao> FormulariosAvaliacoes {get; set;}
+        public ICollection<Feedback> Feedbacks {get; set;}
 
 
     }

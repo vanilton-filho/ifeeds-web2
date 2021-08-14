@@ -12,8 +12,6 @@ namespace IfeedsApi.Core.Database
 
         public DbSet<Role> Roles { get; set; }
 
-        public DbSet<FormularioAvaliacao> FormulariosAvaliacaos { get; set; }
-
         public DbSet<RespostaFeedback> RespostasFeedbacks { get; set; }
 
         public DbSet<Campus> Campus { get; set; }
@@ -354,131 +352,6 @@ namespace IfeedsApi.Core.Database
 
                 );
 
-
-
-
-            modelBuilder.Entity<FormularioAvaliacao>()
-                .HasData(
-                    new
-                    {
-                        Id = 1,
-                        Titulo = "Banheiro com problema",
-                        Descricao = "Banheiro com problema espelho quebrado",
-                        QuantidadeEstrelas = 3.50m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 1
-                    },
-                    new
-                    {
-                        Id = 2,
-                        Titulo = "Problema no corrimão",
-                        Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
-                        QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 2
-                    },
-                    new
-                    {
-                        Id = 3,
-                        Titulo = "Dificuldade com TCC",
-                        Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
-                        QuantidadeEstrelas = 2.50m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 3
-                    },
-                    new
-                    {
-                        Id = 4,
-                        Titulo = "Sugestão de Melhoria",
-                        Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
-                        QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 4
-                    },
-                    new
-                    {
-                        Id = 5,
-                        Titulo = "Elogio ao pessoal da limpeza",
-                        Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
-                        QuantidadeEstrelas = 5m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 5
-                    },
-                    new
-                    {
-                        Id = 6,
-                        Titulo = "Problemas com WIFI",
-                        Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
-                        QuantidadeEstrelas = 4m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 6
-                    },
-
-                    new
-                    {
-                        Id = 7,
-                        Titulo = "Elogio ao Techday",
-                        Descricao = "Ifs Techday Top - Evento maravilhoso",
-                        QuantidadeEstrelas = 5m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 7
-                    },
-                    new
-                    {
-                        Id = 8,
-                        Titulo = "Elogio ao evento",
-                        Descricao = "Semana Academica Divertida - Evento top",
-                        QuantidadeEstrelas = 4.50m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 8
-                    },
-                    new
-                    {
-                        Id = 9,
-                        Titulo = "Palestras cansativas na SEMAC",
-                        Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
-                        QuantidadeEstrelas = 2.50m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 8
-                    },
-                    new
-                    {
-                        Id = 10,
-                        Titulo = "Problema com Ar",
-                        Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
-                        QuantidadeEstrelas = 3.50m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 10
-                    },
-                    new
-                    {
-                        Id = 11,
-                        Titulo = "Barulho no lab de redes",
-                        Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
-                        QuantidadeEstrelas = 2.50m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 11
-                    },
-                    new
-                    {
-                        Id = 12,
-                        Titulo = "Sugestão de bibliográfia",
-                        Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
-                        QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 6
-                    },
-                    new
-                    {
-                        Id = 13,
-                        Titulo = "Rasuras no livro",
-                        Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
-                        QuantidadeEstrelas = 3m,
-                        DataCriacao = DateTime.UtcNow,
-                        AvaliacaoId = 6
-                    }
-            );
-
             modelBuilder.Entity<Categoria>()
                 .HasData(
                     new
@@ -519,7 +392,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 1,
                         Titulo = "Banheiro",
-                        MediaAvaliacao = 4.5m,
+                        MediaAvaliacao = 3.5m,
                         CategoriaId = 1, 
                         CampusId = 1,
                         DataCriacao = DateTime.UtcNow
@@ -529,7 +402,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 2,
                         Titulo = "Escada COINF",
-                        MediaAvaliacao = 4.5m,
+                        MediaAvaliacao = 3.0m,
                         CategoriaId = 1,
                         CampusId = 2,
                         DataCriacao = DateTime.UtcNow
@@ -538,7 +411,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 3,
                         Titulo = "COINF",
-                        MediaAvaliacao = 3.5m,
+                        MediaAvaliacao = 2.5m,
                         CategoriaId = 2,
                         CampusId = 3,
                         DataCriacao = DateTime.UtcNow
@@ -547,7 +420,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 4,
                         Titulo = "GEN",
-                        MediaAvaliacao = 4.5m,
+                        MediaAvaliacao = 3.0m,
                         CategoriaId = 2,
                         CampusId = 4,
                         DataCriacao = DateTime.UtcNow
@@ -565,7 +438,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 6,
                         Titulo = "Biblioteca",
-                        MediaAvaliacao = 2.5m,
+                        MediaAvaliacao = 3.5m,
                         CategoriaId = 3,
                         CampusId = 1,
                         DataCriacao = DateTime.UtcNow
@@ -583,7 +456,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 8,
                         Titulo = "Semana Acadêmica",
-                        MediaAvaliacao = 4.5m,
+                        MediaAvaliacao = 3.5m,
                         CategoriaId = 4,
                         CampusId = 8,
                         DataCriacao = DateTime.UtcNow
@@ -592,7 +465,7 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 9,
                         Titulo = "Ifs Dev Conf",
-                        MediaAvaliacao = 3.0m,
+                        MediaAvaliacao = 0.0m,
                         CategoriaId = 4,
                         CampusId = 9,
                         DataCriacao = DateTime.UtcNow
@@ -615,11 +488,12 @@ namespace IfeedsApi.Core.Database
                         CampusId = 11,
                         DataCriacao = DateTime.UtcNow
                     },
+
                     new
                     {
                         Id = 12,
                         Titulo = "Refeitório",
-                        MediaAvaliacao = 2.5m,
+                        MediaAvaliacao = 0.0m,
                         CategoriaId = 1,
                         CampusId = 1,
                         DataCriacao = DateTime.UtcNow
@@ -628,11 +502,12 @@ namespace IfeedsApi.Core.Database
                     {
                         Id = 13,
                         Titulo = "Quadra Poliesportiva",
-                        MediaAvaliacao = 3.5m,
+                        MediaAvaliacao = 0.0m,
                         CategoriaId = 1,
                         CampusId = 6,
                         DataCriacao = DateTime.UtcNow
                     }
+                    
                 );
 
             modelBuilder.Entity<Feedback>()
@@ -642,104 +517,144 @@ namespace IfeedsApi.Core.Database
                         Id = 1,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 1,
-                        UsuarioId = 2
+                        UsuarioId = 2,
+                        Titulo = "Banheiro com problema",
+                        Descricao = "Banheiro com problema espelho quebrado",
+                        Nota = 3.50m,
+                        AvaliacaoId = 1
+                        
                     },
                     new
                     {
                         Id = 2,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 2,
-                        UsuarioId = 1
+                        UsuarioId = 1,
+                        Titulo = "Problema no corrimão",
+                        Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
+                        Nota = 3m,
+                        AvaliacaoId = 2
                     },
                     new
                     {
                         Id = 3,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 3,
-                        UsuarioId = 4
+                        UsuarioId = 4,
+                        Titulo = "Dificuldade com TCC",
+                        Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
+                        Nota = 2.50m,
+                        AvaliacaoId = 3
                     },
                     new
                     {
                         Id = 4,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 4,
-                        UsuarioId = 3
+                        UsuarioId = 3,
+                        Titulo = "Sugestão de Melhoria",
+                        Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
+                        Nota = 3m,
+                        AvaliacaoId = 4
                     },
                     new
                     {
                         Id = 5,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 5,
-                        UsuarioId = 3
+                        UsuarioId = 3,
+                        Titulo = "Elogio ao pessoal da limpeza",
+                        Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
+                        Nota = 5m,
+                        AvaliacaoId = 5
                     },
                     new
                     {
                         Id = 6,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 6,
-                        UsuarioId = 8
+                        UsuarioId = 8,
+                        Titulo = "Problemas com WIFI",
+                        Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
+                        Nota = 4m,
+                        AvaliacaoId = 6
                     },
                     new
                     {
                         Id = 7,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 7,
-                        UsuarioId = 5
+                        UsuarioId = 5,
+                        Titulo = "Elogio ao Techday",
+                        Descricao = "Ifs Techday Top - Evento maravilhoso",
+                        Nota = 5m,
+                        AvaliacaoId = 7
                     },
                     new
                     {
                         Id = 8,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 8,
-                        UsuarioId = 9
+                        UsuarioId = 9,
+                        Titulo = "Elogio ao evento",
+                        Descricao = "Semana Academica Divertida - Evento top",
+                        Nota = 4.50m,
+                        AvaliacaoId = 8
                     },
                     new
                     {
                         Id = 9,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 9,
-                        UsuarioId = 10
+                        UsuarioId = 10,
+                        Titulo = "Palestras cansativas na SEMAC",
+                        Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
+                        Nota = 2.50m,
+                        AvaliacaoId = 8
+                    
                     },
                     new
                     {
                         Id = 10,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 10,
-                        UsuarioId = 7
+                        UsuarioId = 7,
+                        Titulo = "Problema com Ar",
+                        Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
+                        Nota = 3.50m,
+                        AvaliacaoId = 10
                     },
                     new
                     {
                         Id = 11,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 11,
-                        UsuarioId = 3
+                        UsuarioId = 3,
+                        Titulo = "Barulho no lab de redes",
+                        Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
+                        Nota = 2.50m,
+                        AvaliacaoId = 11
                     },
                     new
                     {
                         Id = 12,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 13,
-                        UsuarioId = 4
+                        UsuarioId = 4,
+                        Titulo = "Sugestão de bibliográfia",
+                        Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
+                        Nota = 3m,
+                        AvaliacaoId = 6
                     },
                     new
                     {
                         Id = 13,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        FormularioAvaliacaoId = 12,
-                        UsuarioId = 2
+                        UsuarioId = 2,Titulo = "Rasuras no livro",
+                        Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
+                        Nota = 3m,
+                        AvaliacaoId = 6
                     }
                 );
 

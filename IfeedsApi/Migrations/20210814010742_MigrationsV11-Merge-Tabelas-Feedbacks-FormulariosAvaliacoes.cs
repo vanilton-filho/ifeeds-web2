@@ -1,681 +1,613 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IfeedsApi.Migrations
 {
-    public partial class MigrationsV11AddRelacionamentoFormularioAvaliacao : Migration
+    public partial class MigrationsV11MergeTabelasFeedbacksFormulariosAvaliacoes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Feedbacks_Avaliacoes_AvaliacaoId",
+                name: "FK_Feedbacks_FormulariosAvaliacaos_FormularioAvaliacaoId",
                 table: "Feedbacks");
+
+            migrationBuilder.DropTable(
+                name: "FormulariosAvaliacaos");
 
             migrationBuilder.DropIndex(
-                name: "IX_Feedbacks_AvaliacaoId",
+                name: "IX_Feedbacks_FormularioAvaliacaoId",
                 table: "Feedbacks");
+
+            migrationBuilder.DeleteData(
+                table: "Avaliacoes",
+                keyColumn: "Id",
+                keyValue: 12);
+
+            migrationBuilder.DeleteData(
+                table: "Avaliacoes",
+                keyColumn: "Id",
+                keyValue: 13);
 
             migrationBuilder.DropColumn(
-                name: "AvaliacaoId",
+                name: "FormularioAvaliacaoId",
                 table: "Feedbacks");
 
-            migrationBuilder.AddColumn<int>(
-                name: "AvaliacaoId",
-                table: "FormulariosAvaliacaos",
-                type: "int",
+            migrationBuilder.AddColumn<string>(
+                name: "Descricao",
+                table: "Feedbacks",
+                type: "longtext",
+                nullable: false)
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.AddColumn<decimal>(
+                name: "Nota",
+                table: "Feedbacks",
+                type: "decimal(5,1)",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: 0m);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Titulo",
+                table: "Feedbacks",
+                type: "varchar(45)",
+                maxLength: 45,
+                nullable: false,
+                defaultValue: "")
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5524));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4843), 3.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6351));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5910), 3.0m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6354));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5914), 2.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6356));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5921), 3.0m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6358));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5923));
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 6,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6359));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5924), 3.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6360));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5928));
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 8,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6361));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5930), 3.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 9,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6362));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5932), 0.0m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6364));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5935));
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6366));
-
-            migrationBuilder.UpdateData(
-                table: "Avaliacoes",
-                keyColumn: "Id",
-                keyValue: 12,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6367));
-
-            migrationBuilder.UpdateData(
-                table: "Avaliacoes",
-                keyColumn: "Id",
-                keyValue: 13,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6368));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(5937));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(2144));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(2627));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3297));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4086));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3300));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4089));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3301));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4090));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3303));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4091));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3304));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4093));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3339));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4107));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3340));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4108));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3341));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4110));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3342));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4111));
 
             migrationBuilder.UpdateData(
                 table: "Campus",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3343));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4112));
 
             migrationBuilder.UpdateData(
                 table: "Categorias",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5377));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4341));
 
             migrationBuilder.UpdateData(
                 table: "Categorias",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5379));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4343));
 
             migrationBuilder.UpdateData(
                 table: "Categorias",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5380));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4345));
 
             migrationBuilder.UpdateData(
                 table: "Categorias",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5381));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4346));
 
             migrationBuilder.UpdateData(
                 table: "Categorias",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5382));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(4347));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(1519));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(6176));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2729));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7106));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2734));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7109));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2736));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7111));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2738));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7112));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2739));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7113));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2740));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7114));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2741));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7115));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2742));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7116));
 
             migrationBuilder.UpdateData(
                 table: "Contatos",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 361, DateTimeKind.Utc).AddTicks(2743));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 887, DateTimeKind.Utc).AddTicks(7117));
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 1,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("7448f4a6-31d7-4e14-b680-6266d68b192f"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(6624) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("58ba8ed7-b525-4542-ab74-aa3ee1be29d5"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(6281), "Banheiro com problema espelho quebrado", 3.50m, "Banheiro com problema" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 2,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("297f0764-0c60-481a-8ce5-e7c8ae6fb011"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7545) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("d0bedbc6-33d9-4b50-9a1d-0797a80db74c"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7364), "Corrimão da Escada da COINF Descascando. Me cortei", 3m, "Problema no corrimão" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 3,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("ef0ba6f8-769f-4678-b3c0-e94acec6ed0f"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7549) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("608c2fc6-8669-4e01-b0d2-da8f20d507a0"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7382), "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação", 2.50m, "Dificuldade com TCC" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 4,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("43cc0dc6-3baa-4d6c-9cc8-2fdd3a8e7af0"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7551) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("40ae75ff-c404-4cb7-aa87-a13d71571ff9"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7385), "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos", 3m, "Sugestão de Melhoria" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 5,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("4aa64569-b9f6-4649-b7eb-ee45f3e8fb18"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7566) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("0222e997-6e53-4e12-ad3e-7a2665048245"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7387), "Pessoal da Limpeza Top - Campus sempre muito bem conservado", 5m, "Elogio ao pessoal da limpeza" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 6,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("1846e218-405b-4ea8-bbc2-904ddf169a93"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7567) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("52e6e3de-b121-4f24-bc8c-bdcf86f2b190"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7388), "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso", 4m, "Problemas com WIFI" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 7,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("20ad233c-8b32-40eb-bd2b-93e8d1471c10"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7569) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("010bdb86-d460-47a4-a8b5-d8e34ad06eb1"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7390), "Ifs Techday Top - Evento maravilhoso", 5m, "Elogio ao Techday" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 8,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("2b3aad79-1d24-47bf-9635-ac2c964b135c"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7571) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("56a44130-51c8-490f-ad93-613523c90e1c"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7392), "Semana Academica Divertida - Evento top", 4.50m, "Elogio ao evento" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 9,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("a2aef7a7-2548-4e4b-8a8d-957107168c08"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7572) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("be3441f3-b8dd-471a-8ad2-a4943092ffaf"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7400), "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas", 2.50m, "Palestras cansativas na SEMAC" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 10,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("8b5bd077-752c-4493-a843-9d5585bec387"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7574) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("97d589e0-9501-433b-880d-b5aca23ab82f"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7403), "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente", 3.50m, "Problema com Ar" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 11,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("e5572f83-2554-47cd-b0ce-1adfb2267753"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7576) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("87690238-e8e3-4e7e-b7eb-d89c539b153b"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7406), "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula", 2.50m, "Barulho no lab de redes" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 12,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("18e5b35c-55c4-4f19-aa2a-0424f7d173f2"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7578) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("f8cc9a8b-4e3c-4b1c-8df8-4496cee4737e"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7409), "Nenhum Livro de Loiane Groner - acervos desatualizados", 3m, "Sugestão de bibliográfia" });
 
             migrationBuilder.UpdateData(
                 table: "Feedbacks",
                 keyColumn: "Id",
                 keyValue: 13,
-                columns: new[] { "Codigo", "DataCriacao" },
-                values: new object[] { new Guid("c6aefbee-9e7e-4bb2-8bb4-dec0a40cc225"), new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7582) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 1,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 1, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(3942) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 2,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 2, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5093) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 3,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 3, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5097) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 4,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 4, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5098) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 5,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 5, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5099) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 6,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 6, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5100) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 7,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 7, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5102) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 8,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 8, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5103) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 9,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 8, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5109) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 10,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 10, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5111) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 11,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 11, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5169) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 12,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 6, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5171) });
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 13,
-                columns: new[] { "AvaliacaoId", "DataCriacao" },
-                values: new object[] { 6, new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(5173) });
+                columns: new[] { "Codigo", "DataCriacao", "Descricao", "Nota", "Titulo" },
+                values: new object[] { new Guid("62b2f636-0a23-4a95-b10c-b1709a6b9e93"), new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7411), "Livro de Cálculo com página rasurada - o livro está com rasuras", 3m, "Rasuras no livro" });
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(7810));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(7635));
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(8530));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(8585));
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(8533));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(8588));
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(8534));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(8590));
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(8536));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(8592));
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(8537));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(8594));
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(8538));
+                value: new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(8595));
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 362, DateTimeKind.Utc).AddTicks(6034));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 888, DateTimeKind.Utc).AddTicks(9605));
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "DataCriacao",
-                value: new DateTime(2021, 8, 13, 0, 22, 3, 362, DateTimeKind.Utc).AddTicks(6823));
+                value: new DateTime(2021, 8, 14, 1, 7, 39, 889, DateTimeKind.Utc).AddTicks(333));
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 3, 576, DateTimeKind.Utc).AddTicks(5059), "$2a$11$AoRbwBX2uC2Og4.QtiqU6OPsiSxK2IIUvSIQLA20BmK8uiJu0CmmK" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 40, 99, DateTimeKind.Utc).AddTicks(7760), "$2a$11$emQw0f1sX3ALxG43UwRwCeBFWm2JJI/SCnbUNZP4mwfP4vAcC84VW" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 3, 781, DateTimeKind.Utc).AddTicks(6882), "$2a$11$pRrrU2S64lXe3551DwvKeuYpdbcYVf3c8M8wQeNwFCoYjyhrpqV1G" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 40, 304, DateTimeKind.Utc).AddTicks(9347), "$2a$11$umzXSCUH62xVytx.1B19QOV36M2b5Kt9NphJUsn.KMTWyBJDbnfGG" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 3, 987, DateTimeKind.Utc).AddTicks(3381), "$2a$11$rcJK0nZl5l.s4ta25fF/bORxcO7J98oX8fkzqmPV6TJru059T8NJC" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 40, 508, DateTimeKind.Utc).AddTicks(125), "$2a$11$oLT1HUIZc8QZwBqXlFN8qOrQ4YI1veGmvG4e2qdzFLUYXMHzT7Zem" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 4,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 4, 188, DateTimeKind.Utc).AddTicks(2800), "$2a$11$Z.5bsHH4J8ENexbSKkaib.A19qkUovJ8pXKe9qUsgU9S6CJ8BYzvW" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 40, 706, DateTimeKind.Utc).AddTicks(3499), "$2a$11$QhPkJuFN7sxB0DySYdvLjuPkydnlbnpq7xm3W2V92N9v5TCpH0A5e" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 5,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 4, 390, DateTimeKind.Utc).AddTicks(1547), "$2a$11$LVkvtbNuZCpRKeNkVHnbH.myvUiuim0D1NG9zdmDBm4ycUMyVX5za" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 40, 906, DateTimeKind.Utc).AddTicks(2691), "$2a$11$O2M9Hwda48uoiaFDXjiOWOs9sk5tkoWvJyGi55JlHWXokINaWv.ZK" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 6,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 4, 594, DateTimeKind.Utc).AddTicks(1670), "$2a$11$8/6u4OrDR3V.m3fjhT3rXeWMko2R5NI6MK1cGGGqo2Y5xC6laPYm2" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 107, DateTimeKind.Utc).AddTicks(5597), "$2a$11$tWlsrKfVgnfnCAtfAIaA6e4fFz.XZeWz2jBMbfp9TNatEcA8hRijK" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 7,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 4, 796, DateTimeKind.Utc).AddTicks(5294), "$2a$11$G1QVfix6FdPljqD2h6xHzOOHArnecr5MvZtqI2fjT45WTk2CQBnKi" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 313, DateTimeKind.Utc).AddTicks(7285), "$2a$11$iaJ/jzdZ9kqgWvmGKqt8M.1XNWv19porm8srsP8SXMtir44LYX5b." });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 8,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 5, 3, DateTimeKind.Utc).AddTicks(726), "$2a$11$SG0TkJVvNX4Y6dMmdabVJeirzUG6SYbqFMxlEMwdXgwQd0WsVhlL." });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 522, DateTimeKind.Utc).AddTicks(7469), "$2a$11$a5Ve6qc5Fm3zNbkASPQWz.jUhXwM6o8pgoGw2h0kIRX5Wy0gZB8LG" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 9,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 5, 206, DateTimeKind.Utc).AddTicks(2889), "$2a$11$J6CVXe4wx0hiA2mKrsGdFuWKuBJfTvvgPQk38LkowXcaFxJQNFYtu" });
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 725, DateTimeKind.Utc).AddTicks(6188), "$2a$11$h3oTw.IUzu5mzRdXXkwt.eajC1LG5WcUphgrdE2pLuhiSx/Q4A64m" });
 
             migrationBuilder.UpdateData(
                 table: "Usuarios",
                 keyColumn: "Id",
                 keyValue: 10,
                 columns: new[] { "DataCriacao", "Senha" },
-                values: new object[] { new DateTime(2021, 8, 13, 0, 22, 5, 421, DateTimeKind.Utc).AddTicks(1343), "$2a$11$rT56dfa/bevtb7frK.xlLOWboDpaT8JuOqDGVEwuwEWe9TyMqAFjK" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FormulariosAvaliacaos_AvaliacaoId",
-                table: "FormulariosAvaliacaos",
-                column: "AvaliacaoId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_FormulariosAvaliacaos_Avaliacoes_AvaliacaoId",
-                table: "FormulariosAvaliacaos",
-                column: "AvaliacaoId",
-                principalTable: "Avaliacoes",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                values: new object[] { new DateTime(2021, 8, 14, 1, 7, 41, 929, DateTimeKind.Utc).AddTicks(1701), "$2a$11$fvD4XEnZ7sbGwEZPgjKzr.b4I2lcwijH466IWVbPa34V/9CQiIxgu" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_FormulariosAvaliacaos_Avaliacoes_AvaliacaoId",
-                table: "FormulariosAvaliacaos");
-
-            migrationBuilder.DropIndex(
-                name: "IX_FormulariosAvaliacaos_AvaliacaoId",
-                table: "FormulariosAvaliacaos");
+            migrationBuilder.DropColumn(
+                name: "Descricao",
+                table: "Feedbacks");
 
             migrationBuilder.DropColumn(
-                name: "AvaliacaoId",
-                table: "FormulariosAvaliacaos");
+                name: "Nota",
+                table: "Feedbacks");
+
+            migrationBuilder.DropColumn(
+                name: "Titulo",
+                table: "Feedbacks");
 
             migrationBuilder.AddColumn<int>(
-                name: "AvaliacaoId",
+                name: "FormularioAvaliacaoId",
                 table: "Feedbacks",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
+            migrationBuilder.CreateTable(
+                name: "FormulariosAvaliacaos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DataAtualizacao = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DataCriacao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Descricao = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    QuantidadeEstrelas = table.Column<decimal>(type: "decimal(5,1)", nullable: false),
+                    Titulo = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FormulariosAvaliacaos", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(2159));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(2159), 4.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3443));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3443), 4.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3449));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3449), 3.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3451));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3451), 4.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
@@ -688,8 +620,8 @@ namespace IfeedsApi.Migrations
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 6,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3454));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3454), 2.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
@@ -702,15 +634,15 @@ namespace IfeedsApi.Migrations
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 8,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3456));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3456), 4.5m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
                 keyColumn: "Id",
                 keyValue: 9,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3458));
+                columns: new[] { "DataCriacao", "MediaAvaliacao" },
+                values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3458), 3.0m });
 
             migrationBuilder.UpdateData(
                 table: "Avaliacoes",
@@ -726,19 +658,14 @@ namespace IfeedsApi.Migrations
                 column: "DataCriacao",
                 value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3461));
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Avaliacoes",
-                keyColumn: "Id",
-                keyValue: 12,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3463));
-
-            migrationBuilder.UpdateData(
-                table: "Avaliacoes",
-                keyColumn: "Id",
-                keyValue: 13,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3464));
+                columns: new[] { "Id", "CampusId", "CategoriaId", "DataAtualizacao", "DataCriacao", "MediaAvaliacao", "Titulo" },
+                values: new object[,]
+                {
+                    { 12, 1, 1, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3463), 2.5m, "Refeitório" },
+                    { 13, 6, 1, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3464), 3.5m, "Quadra Poliesportiva" }
+                });
 
             migrationBuilder.UpdateData(
                 table: "Campus",
@@ -922,187 +849,25 @@ namespace IfeedsApi.Migrations
                 column: "DataCriacao",
                 value: new DateTime(2021, 8, 12, 0, 47, 44, 366, DateTimeKind.Utc).AddTicks(5711));
 
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 1,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 1, new Guid("9869569c-0e80-4d03-91ae-625f5746706d"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3928) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 2,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 2, new Guid("fee394bd-308f-4b6f-99d9-958fe1c972eb"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5265) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 3,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 3, new Guid("21fcd079-cfa0-48a4-b2fa-336bd35525f2"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5273) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 4,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 4, new Guid("db966de6-68da-4188-88b5-cde7ae72d045"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5275) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 5,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 5, new Guid("893b5c26-4a9c-4dff-a157-0f40580bbdee"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5277) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 6,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 6, new Guid("cb1b92c3-80c7-4b93-9470-8b8f3ad724a0"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5281) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 7,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 7, new Guid("085b9abd-4677-468d-b27e-18345be407c9"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5283) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 8,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 8, new Guid("df87e857-fab3-4797-8032-7ec7c55ccc23"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5300) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 9,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 8, new Guid("135ec232-64b3-4793-9e1e-335909f77aa5"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5305) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 10,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 10, new Guid("8be5c4ff-50f1-43df-81cb-f8046f5df350"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5307) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 11,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 11, new Guid("4bd8fadf-7a0b-4424-a124-b15f023f4b93"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5309) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 12,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 6, new Guid("e12aaac0-44e5-4995-8dc8-19f5d26135a5"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5312) });
-
-            migrationBuilder.UpdateData(
-                table: "Feedbacks",
-                keyColumn: "Id",
-                keyValue: 13,
-                columns: new[] { "AvaliacaoId", "Codigo", "DataCriacao" },
-                values: new object[] { 6, new Guid("77133dd7-0530-4d27-8eca-b88acfe73086"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5314) });
-
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(101));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1630));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1635));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 4,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1638));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 5,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1640));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 6,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1643));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 7,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1645));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 8,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1646));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 9,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1648));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 10,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1656));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 11,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1658));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 12,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1659));
-
-            migrationBuilder.UpdateData(
-                table: "FormulariosAvaliacaos",
-                keyColumn: "Id",
-                keyValue: 13,
-                column: "DataCriacao",
-                value: new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1661));
+                columns: new[] { "Id", "DataAtualizacao", "DataCriacao", "Descricao", "QuantidadeEstrelas", "Titulo" },
+                values: new object[,]
+                {
+                    { 13, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1661), "Livro de Cálculo com página rasurada - o livro está com rasuras", 3m, "Rasuras no livro" },
+                    { 12, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1659), "Nenhum Livro de Loiane Groner - acervos desatualizados", 3m, "Sugestão de bibliográfia" },
+                    { 1, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(101), "Banheiro com problema espelho quebrado", 3.50m, "Banheiro com problema" },
+                    { 2, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1630), "Corrimão da Escada da COINF Descascando. Me cortei", 3m, "Problema no corrimão" },
+                    { 3, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1635), "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação", 2.50m, "Dificuldade com TCC" },
+                    { 4, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1638), "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos", 3m, "Sugestão de Melhoria" },
+                    { 5, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1640), "Pessoal da Limpeza Top - Campus sempre muito bem conservado", 5m, "Elogio ao pessoal da limpeza" },
+                    { 6, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1643), "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso", 4m, "Problemas com WIFI" },
+                    { 7, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1645), "Ifs Techday Top - Evento maravilhoso", 5m, "Elogio ao Techday" },
+                    { 8, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1646), "Semana Academica Divertida - Evento top", 4.50m, "Elogio ao evento" },
+                    { 9, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1648), "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas", 2.50m, "Palestras cansativas na SEMAC" },
+                    { 10, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1656), "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente", 3.50m, "Problema com Ar" },
+                    { 11, null, new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(1658), "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula", 2.50m, "Barulho no lab de redes" }
+                });
 
             migrationBuilder.UpdateData(
                 table: "RespostasFeedbacks",
@@ -1237,16 +1002,108 @@ namespace IfeedsApi.Migrations
                 columns: new[] { "DataCriacao", "Senha" },
                 values: new object[] { new DateTime(2021, 8, 12, 0, 47, 46, 300, DateTimeKind.Utc).AddTicks(6758), "$2a$11$QZii17HfUiHWou65oiAiBeJtq3HKlV/4UUi1KvyiABsYUnwFDPi2G" });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Feedbacks_AvaliacaoId",
+            migrationBuilder.UpdateData(
                 table: "Feedbacks",
-                column: "AvaliacaoId");
+                keyColumn: "Id",
+                keyValue: 1,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("9869569c-0e80-4d03-91ae-625f5746706d"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(3928), 1 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 2,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("fee394bd-308f-4b6f-99d9-958fe1c972eb"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5265), 2 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 3,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("21fcd079-cfa0-48a4-b2fa-336bd35525f2"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5273), 3 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 4,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("db966de6-68da-4188-88b5-cde7ae72d045"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5275), 4 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 5,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("893b5c26-4a9c-4dff-a157-0f40580bbdee"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5277), 5 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 6,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("cb1b92c3-80c7-4b93-9470-8b8f3ad724a0"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5281), 6 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 7,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("085b9abd-4677-468d-b27e-18345be407c9"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5283), 7 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 8,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("df87e857-fab3-4797-8032-7ec7c55ccc23"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5300), 8 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 9,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("135ec232-64b3-4793-9e1e-335909f77aa5"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5305), 9 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 10,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("8be5c4ff-50f1-43df-81cb-f8046f5df350"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5307), 10 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 11,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("4bd8fadf-7a0b-4424-a124-b15f023f4b93"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5309), 11 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 12,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("e12aaac0-44e5-4995-8dc8-19f5d26135a5"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5312), 13 });
+
+            migrationBuilder.UpdateData(
+                table: "Feedbacks",
+                keyColumn: "Id",
+                keyValue: 13,
+                columns: new[] { "Codigo", "DataCriacao", "FormularioAvaliacaoId" },
+                values: new object[] { new Guid("77133dd7-0530-4d27-8eca-b88acfe73086"), new DateTime(2021, 8, 12, 0, 47, 46, 301, DateTimeKind.Utc).AddTicks(5314), 12 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Feedbacks_FormularioAvaliacaoId",
+                table: "Feedbacks",
+                column: "FormularioAvaliacaoId",
+                unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Feedbacks_Avaliacoes_AvaliacaoId",
+                name: "FK_Feedbacks_FormulariosAvaliacaos_FormularioAvaliacaoId",
                 table: "Feedbacks",
-                column: "AvaliacaoId",
-                principalTable: "Avaliacoes",
+                column: "FormularioAvaliacaoId",
+                principalTable: "FormulariosAvaliacaos",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
