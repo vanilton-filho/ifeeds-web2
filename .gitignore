@@ -357,4 +357,4 @@ MigrationBackup/
 # #Removendo SLN
 # ifeeds.sln
 
-.vscode/*
+.vscode/
