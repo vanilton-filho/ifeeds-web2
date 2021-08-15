@@ -18,8 +18,40 @@ namespace IfeedsApi.Domain.Services
 
         public List<Feedback> Listar()
         {
-
             return _context.Feedbacks.ToList();
         }
+        public Feedback Salvar(Feedback feedback)
+        {
+            using var transaction = _context.Database.BeginTransaction(); // início da transação
+
+            _context.Add(feedback);
+            _context.SaveChanges();
+            decimal media = GetTotalNotasPorAvaliacao(feedback.AvaliacaoId) / GetTotalFeedbacks(feedback.AvaliacaoId);
+            var avaliacao = _context.Avaliacoes.Find(feedback.AvaliacaoId);
+            avaliacao.MediaAvaliacao = media;
+            _context.Avaliacoes.Update(avaliacao);
+            _context.SaveChanges();
+
+            transaction.Commit(); // fim da transação
+            return feedback;
+        }
+
+        private int GetTotalFeedbacks(int avaliacaoId)
+        {
+            return _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacaoId).Count();
+
+        }
+
+        private decimal GetTotalNotasPorAvaliacao(int avaliacaoId)
+        {
+            return _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacaoId).Sum(f => f.Nota);
+
+        }
+
+        public Feedback GetPorCodigo(String codigo)
+        {
+            return _context.Feedbacks.Where(f => f.Codigo.ToString().Equals(codigo)).FirstOrDefault();
+        }
+
     }
 }
