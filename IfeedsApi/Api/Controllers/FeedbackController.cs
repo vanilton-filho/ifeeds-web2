@@ -52,7 +52,7 @@ namespace IfeedsApi.Api.Controllers
             var feedback = _mapper.Map<Feedback>(request);
             var feedbackSalvo = _feedbackService.Salvar(feedback);
             var feedbackModel = _feedbackMapper.ToModel(feedbackSalvo);
-            return  new CreatedAtRouteResult("GetPorCodigo",_feedbackMapper.ToModel(feedbackSalvo), feedbackModel);
+            return  new CreatedAtRouteResult("GetPorCodigo", new {codigo = feedbackSalvo.Codigo}, feedbackModel);
         }
     }
 }
