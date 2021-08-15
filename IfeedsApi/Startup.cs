@@ -5,8 +5,8 @@ using System.Text;
 using AutoMapper;
 using IfeedsApi.Api.Config;
 using IfeedsApi.Api.Mappers;
-using IfeedsApi.Config.Auth;
-using IfeedsApi.Config.Database;
+using IfeedsApi.Core.Auth;
+using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Services;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,7 +52,7 @@ namespace IfeedsApi
 
 
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
+            string mySqlConnection = Configuration.GetConnectionString("rafaConnection");
             services.AddDbContextPool<ApplicationDbContext>(options =>
                 options.UseMySql(mySqlConnection,
                 MySqlServerVersion.AutoDetect(mySqlConnection)));
