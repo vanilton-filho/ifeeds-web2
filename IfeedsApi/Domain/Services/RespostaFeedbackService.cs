@@ -25,7 +25,6 @@ namespace IfeedsApi.Domain.Services
 
         public RespostaFeedback Salvar(RespostaFeedback respostaFeedback)
         {
-            respostaFeedback.Status = true;
             _context.Add(respostaFeedback);
             _context.SaveChanges();
 

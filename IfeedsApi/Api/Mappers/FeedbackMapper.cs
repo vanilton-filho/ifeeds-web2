@@ -35,7 +35,6 @@ namespace IfeedsApi.Api.Mappers
             feedbackModel.Nota = feedback.Nota;
             feedbackModel.Campus = campus.Nome;
             feedbackModel.Resposta = respostaFeedback is null ? null : respostaFeedback.Resposta;
-            feedbackModel.Status = respostaFeedback is not null && respostaFeedback.Status;
             feedbackModel.DataResposta = respostaFeedback is null ? null : respostaFeedback.DataCriacao;
 
             return feedbackModel;

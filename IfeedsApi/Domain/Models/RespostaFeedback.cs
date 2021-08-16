@@ -10,7 +10,6 @@ namespace IfeedsApi.Domain.Models {
         public RespostaFeedback()
         {
             DataCriacao = DateTime.UtcNow;
-            Status = false;
         }
 
         [Key]
@@ -18,9 +17,6 @@ namespace IfeedsApi.Domain.Models {
 
         [Required]
         public string Resposta { get; set; }
-
-        [Required]
-        public bool Status { get; set; }
 
         [Required]
         public DateTime DataCriacao { get; set; }
