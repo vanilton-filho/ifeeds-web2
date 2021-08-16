@@ -13,6 +13,7 @@ namespace IfeedsApi.Domain.Models
         {
             DataCriacao = DateTime.UtcNow;
             Codigo = Guid.NewGuid();
+            Status = false;
         }
 
 
@@ -34,6 +35,9 @@ namespace IfeedsApi.Domain.Models
         [Required]
         [Column(TypeName = "decimal(5,1)")]
         public decimal Nota { get; set; }
+
+        [Required]
+        public bool Status { get; set; }
 
         [Required]
         public DateTime DataCriacao { get; set; }

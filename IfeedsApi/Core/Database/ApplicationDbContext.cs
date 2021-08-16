@@ -284,69 +284,69 @@ namespace IfeedsApi.Core.Database
                     new
                     {
                         Id = 1,
-                        Nome = "IFS-Campus Lagarto",
+                        Nome = "Campus Lagarto",
                         DataCriacao = DateTime.UtcNow
                     },
 
                     new
                     {
                         Id = 2,
-                        Nome = "IFS-Campus Glória",
+                        Nome = "Campus Glória",
                         DataCriacao = DateTime.UtcNow
                     },
 
                     new
                     {
                         Id = 3,
-                        Nome = "IFS-Campus Estância",
+                        Nome = "Campus Estância",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 4,
-                        Nome = "IFS-Campus São Cristovão",
+                        Nome = "Campus São Cristovão",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 5,
-                        Nome = "IFS-Campus Itabaiana",
+                        Nome = "Campus Itabaiana",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 6,
-                        Nome = "IFS-Campus Aracaju",
+                        Nome = "Campus Aracaju",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 7,
-                        Nome = "IFS-Campus Tobias Barreto",
+                        Nome = "Campus Tobias Barreto",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 8,
-                        Nome = "IFS-Campus Poço Redondo",
+                        Nome = "Campus Poço Redondo",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 9,
-                        Nome = "IFS-Campus Propriá",
+                        Nome = "Campus Propriá",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 10,
-                        Nome = "IFS-Campus Socorro",
+                        Nome = "Campus Socorro",
                         DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
                         Id = 11,
-                        Nome = "IFS-Educação a Distancia",
+                        Nome = "Educação a Distancia",
                         DataCriacao = DateTime.UtcNow
                     }
 
@@ -521,7 +521,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Banheiro com problema",
                         Descricao = "Banheiro com problema espelho quebrado",
                         Nota = 3.50m,
-                        AvaliacaoId = 1
+                        AvaliacaoId = 1,
+                        Status = true
                         
                     },
                     new
@@ -533,7 +534,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Problema no corrimão",
                         Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
                         Nota = 3m,
-                        AvaliacaoId = 2
+                        AvaliacaoId = 2,
+                        Status = true
                     },
                     new
                     {
@@ -544,7 +546,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Dificuldade com TCC",
                         Descricao = "Demora para Aprovar Máteria de TCC 1 - Estou com mais de um mes aguardando aprovação",
                         Nota = 2.50m,
-                        AvaliacaoId = 3
+                        AvaliacaoId = 3,
+                        Status = true
                     },
                     new
                     {
@@ -555,7 +558,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Sugestão de Melhoria",
                         Descricao = "Melhorias no Processo de Atendimento -  Deveriam automatizar mais os processos",
                         Nota = 3m,
-                        AvaliacaoId = 4
+                        AvaliacaoId = 4,
+                        Status = true
                     },
                     new
                     {
@@ -566,7 +570,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao pessoal da limpeza",
                         Descricao = "Pessoal da Limpeza Top - Campus sempre muito bem conservado",
                         Nota = 5m,
-                        AvaliacaoId = 5
+                        AvaliacaoId = 5,
+                        Status = true
                     },
                     new
                     {
@@ -577,7 +582,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Problemas com WIFI",
                         Descricao = "Problemas com o Wifi do Campus - Internet lenta o que dificulta o acesso",
                         Nota = 4m,
-                        AvaliacaoId = 6
+                        AvaliacaoId = 6,
+                        Status = true
                     },
                     new
                     {
@@ -588,7 +594,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao Techday",
                         Descricao = "Ifs Techday Top - Evento maravilhoso",
                         Nota = 5m,
-                        AvaliacaoId = 7
+                        AvaliacaoId = 7,
+                        Status = false
                     },
                     new
                     {
@@ -599,7 +606,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao evento",
                         Descricao = "Semana Academica Divertida - Evento top",
                         Nota = 4.50m,
-                        AvaliacaoId = 8
+                        AvaliacaoId = 8, 
+                        Status = true
                     },
                     new
                     {
@@ -610,8 +618,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Palestras cansativas na SEMAC",
                         Descricao = "Semana Academica Algumas Palestras Massantes - palestras muito longas e cansativas",
                         Nota = 2.50m,
-                        AvaliacaoId = 8
-                    
+                        AvaliacaoId = 8,
+                        Status = false
                     },
                     new
                     {
@@ -622,7 +630,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Problema com Ar",
                         Descricao = "Lab da COINF precisão limpar o filtro do Ar - nunca funciona corretamente",
                         Nota = 3.50m,
-                        AvaliacaoId = 10
+                        AvaliacaoId = 10,
+                        Status = false
                     },
                     new
                     {
@@ -633,7 +642,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Barulho no lab de redes",
                         Descricao = "Lab de Redes com acustica prejudicada - Barulho da oficina atrapalha a aula",
                         Nota = 2.50m,
-                        AvaliacaoId = 11
+                        AvaliacaoId = 11,
+                        Status = false
                     },
                     new
                     {
@@ -644,7 +654,8 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Sugestão de bibliográfia",
                         Descricao = "Nenhum Livro de Loiane Groner - acervos desatualizados",
                         Nota = 3m,
-                        AvaliacaoId = 6
+                        AvaliacaoId = 6,
+                        Status = false
                     },
                     new
                     {
@@ -654,7 +665,8 @@ namespace IfeedsApi.Core.Database
                         UsuarioId = 2,Titulo = "Rasuras no livro",
                         Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
                         Nota = 3m,
-                        AvaliacaoId = 6
+                        AvaliacaoId = 6,
+                        Status = false
                     }
                 );
 
@@ -666,7 +678,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Obrigado, iremos resolver",
                         FeedbackId = 2,
                         UsuarioId = 1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -675,7 +686,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Obrigado, Sim, eles são maravilhosos",
                         FeedbackId = 5,
                         UsuarioId =1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -684,7 +694,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Resolução esta em andamento",
                         FeedbackId = 4,
                         UsuarioId = 1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -693,7 +702,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Oh, não estavamos cientes dessa situação",
                         FeedbackId = 1,
                         UsuarioId = 1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -702,7 +710,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Que bom que está gostando, aproveite",
                         FeedbackId = 3,
                         UsuarioId = 1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -711,7 +718,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Repassando para os resposáveis",
                         FeedbackId = 6,
                         UsuarioId = 1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -720,7 +726,6 @@ namespace IfeedsApi.Core.Database
                         Resposta = "Obrigado pelo seu feedback",
                         FeedbackId = 8,
                         UsuarioId = 1,
-                        Status = true,
                         DataCriacao = DateTime.UtcNow
                     }
                 );
