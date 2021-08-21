@@ -27,6 +27,7 @@ namespace IfeedsApi.Api.Mappers
             respostaFeedbackModel.Descricao = feedback.Descricao;
             respostaFeedbackModel.Nota = feedback.Nota;
             respostaFeedbackModel.Usuario = usuario.Matricula;
+            respostaFeedbackModel.Status = feedback.Status;
 
              
             return respostaFeedbackModel; 

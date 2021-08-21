@@ -67,12 +67,6 @@ namespace IfeedsApi.Api.Models
         public int TipoConta { get; set; }
     }
 
-    public enum TipoConta
-    {
-        ADMIN = 1,
-        USER = 2
-    }
-
     /// <summary>Modelo de representação para a atualização de um usuário</summary>
     public class UsuarioUpdateModelRequest
     {
