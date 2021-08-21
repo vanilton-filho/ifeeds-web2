@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
 using IfeedsApi.Api.Config;
 using IfeedsApi.Api.Mappers;
@@ -12,6 +13,7 @@ using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -90,7 +92,25 @@ namespace IfeedsApi
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            });
+
+                x.Events = new JwtBearerEvents();
+                x.Events.OnMessageReceived = context =>
+                {
+
+                    if (context.Request.Cookies.ContainsKey("X-Access-Token"))
+                    {
+                        context.Token = context.Request.Cookies["X-Access-Token"];
+                    }
+
+                    return Task.CompletedTask;
+                };
+            })
+            .AddCookie(options =>
+                {
+                    options.Cookie.SameSite = SameSiteMode.Strict;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                    options.Cookie.IsEssential = true;
+                });
 
             // Add services
             services.AddTransient<AvaliacaoMapper, AvaliacaoMapper>();
@@ -113,6 +133,7 @@ namespace IfeedsApi
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
+                    .WithExposedHeaders()
             );
 
             if (env.IsDevelopment())

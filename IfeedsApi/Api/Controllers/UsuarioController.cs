@@ -5,6 +5,7 @@ using IfeedsApi.Api.Models;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers
@@ -31,7 +32,7 @@ namespace IfeedsApi.Api.Controllers
         [HttpPost("login")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        public ActionResult<dynamic> Login([FromBody] LoginModelRequest req)
+        public ActionResult Login([FromBody] LoginModelRequest req)
         {
             var usuario = _usuarioService.AutenticarUsuario(req.Matricula, req.Senha);
             if (usuario == null)
@@ -40,11 +41,18 @@ namespace IfeedsApi.Api.Controllers
             }
 
             var token = TokenService.GenerateToken(_usuarioMapper.ToModel(usuario));
-            return new
-            {
-                usuario = _usuarioMapper.ToModel(usuario),
-                token = token
-            };
+            Response.Cookies
+                .Append(
+                    "X-Access-Token",
+                    token,
+                    new CookieOptions()
+                    {
+                        HttpOnly = true,
+                        SameSite = SameSiteMode.Strict,
+                        Secure = true
+                    });
+
+            return NoContent();
 
         }
 
