@@ -39,7 +39,7 @@ namespace IfeedsApi.Services
             // Atribuindo IDs das entidades Contato e Role
             usuario.ContatoId = contato.Id;
             // TODO: Definir lógica para o tipo de usuário
-            if ((int)TipoConta.USER==tipoConta)
+            if ((int)TipoRole.USER==tipoConta)
             {
                 usuario.Status = true;
             }
@@ -85,6 +85,11 @@ namespace IfeedsApi.Services
         public bool CheckSenha(string senhaReq, Usuario usuario)
         {
             return BCrypt.Net.BCrypt.Verify(senhaReq, usuario.Senha) ? true : false;
+        }
+
+        public Usuario BuscarAdminPorId(int usuarioId)
+        {
+            return _context.Usuarios.Where( u => u.Id == usuarioId && u.RoleId == ((int)TipoRole.ADMIN)).FirstOrDefault();
         }
     }
 }

@@ -122,6 +122,8 @@ namespace IfeedsApi
             services.AddTransient<FeedbackService, FeedbackService>();
             services.AddTransient<RespostaFeedbackMapper, RespostaFeedbackMapper>();
             services.AddTransient<RespostaFeedbackService, RespostaFeedbackService>();
+            services.AddTransient<EstatisticaMapper, EstatisticaMapper>();
+            services.AddTransient<EstatisticaService, EstatisticaService>();
 
         }
 

@@ -34,4 +34,9 @@ namespace IfeedsApi.Domain.Models {
 
         
     }
+    public enum TipoRole
+    {
+        ADMIN = 1,
+        USER = 2
+    }
 }

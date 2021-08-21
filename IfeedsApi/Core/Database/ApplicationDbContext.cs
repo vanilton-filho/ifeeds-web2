@@ -707,7 +707,7 @@ namespace IfeedsApi.Core.Database
                     new
                     {
                         Id = 5,
-                        Resposta = "Que bom que está gostando, aproveite",
+                        Resposta = "Obrigado pelo seu feedback, iremos resolver",
                         FeedbackId = 3,
                         UsuarioId = 1,
                         DataCriacao = DateTime.UtcNow
@@ -720,10 +720,10 @@ namespace IfeedsApi.Core.Database
                         UsuarioId = 1,
                         DataCriacao = DateTime.UtcNow
                     },
-                    new
+                    new 
                     {
                         Id = 7,
-                        Resposta = "Obrigado pelo seu feedback",
+                        Resposta = "Que bom que está gostando, aproveite",
                         FeedbackId = 8,
                         UsuarioId = 1,
                         DataCriacao = DateTime.UtcNow

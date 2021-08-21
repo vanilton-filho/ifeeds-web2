@@ -27,13 +27,16 @@ namespace IfeedsApi.Api.Mappers
             var usuario = _context.Usuarios.Find(feedback.UsuarioId);
             var avaliacao = _context.Avaliacoes.Find(feedback.AvaliacaoId);
             var campus = _context.Campus.Find(avaliacao.CampusId);
-            var respostaFeedback = _context.RespostasFeedbacks.Find(feedback.Id);
+            var respostaFeedback = _context.RespostasFeedbacks.Where(
+                r => r.FeedbackId == feedback.Id                
+            ).FirstOrDefault();
             
 
             feedbackModel.Matricula = usuario.Matricula;
             feedbackModel.Avaliacao = _mapper.Map<FeedbackAvaliacaoModel>(avaliacao);
             feedbackModel.Nota = feedback.Nota;
             feedbackModel.Campus = campus.Nome;
+
             feedbackModel.Resposta = respostaFeedback is null ? null : respostaFeedback.Resposta;
             feedbackModel.DataResposta = respostaFeedback is null ? null : respostaFeedback.DataCriacao;
 
