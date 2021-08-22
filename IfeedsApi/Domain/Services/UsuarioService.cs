@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using IfeedsApi.Api.Mappers;
@@ -39,14 +40,14 @@ namespace IfeedsApi.Services
             // Atribuindo IDs das entidades Contato e Role
             usuario.ContatoId = contato.Id;
             // TODO: Definir lógica para o tipo de usuário
-            if ((int)TipoRole.USER==tipoConta)
+            if ((int)TipoRole.USER == tipoConta)
             {
                 usuario.Status = true;
             }
 
             usuario.RoleId = tipoConta;
             usuario.CampusId = campusId;
-           
+
 
             usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
             _context.Add(usuario);
@@ -89,7 +90,29 @@ namespace IfeedsApi.Services
 
         public Usuario BuscarAdminPorId(int usuarioId)
         {
-            return _context.Usuarios.Where( u => u.Id == usuarioId && u.RoleId == ((int)TipoRole.ADMIN)).FirstOrDefault();
+            return _context.Usuarios.Where(u => u.Id == usuarioId && u.RoleId == ((int)TipoRole.ADMIN)).FirstOrDefault();
         }
+
+        public bool AlterarSenha(string senhaAtual, string novaSenha, string matricula)
+        {
+            var usuario = _context.Usuarios.Where(u => u.Matricula.Equals(matricula)).FirstOrDefault();
+
+            if (usuario == null)
+            {
+                throw new Exception("Usuário não encontrado!");
+            }
+            var senhaVerificada = CheckSenha(senhaAtual, usuario);
+
+            if (senhaVerificada)
+            {
+                usuario.Senha = BCrypt.Net.BCrypt.HashPassword(novaSenha);
+                usuario.DataAtualizacao = DateTime.Now;
+                _context.Update(usuario);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
     }
 }

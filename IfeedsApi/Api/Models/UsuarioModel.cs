@@ -95,4 +95,14 @@ namespace IfeedsApi.Api.Models
         public string Senha { get; set; }
 
     }
+
+    public class AlterarSenhaModel
+    {
+        [Required(ErrorMessage = "Senha atual é um campo obrigatório")]
+        public string senhaAtual{get; set;}
+
+        [Required(ErrorMessage = "Nova senha é um campo obrigatório")]
+        public string novaSenha{get; set;}
+
+    }
 }
