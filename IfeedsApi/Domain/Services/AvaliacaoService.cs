@@ -58,6 +58,7 @@ namespace IfeedsApi.Services
             avaliacaoEncontrada.Titulo = avaliacao.Titulo;
             avaliacaoEncontrada.CategoriaId = avaliacao.CategoriaId;
             avaliacaoEncontrada.CampusId = avaliacao.CampusId;
+            avaliacaoEncontrada.DataAtualizacao = DateTime.UtcNow;
             _context.Update(avaliacaoEncontrada);
             _context.SaveChanges();
 

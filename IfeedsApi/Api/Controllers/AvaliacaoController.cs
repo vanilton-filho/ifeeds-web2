@@ -77,6 +77,7 @@ namespace IfeedsApi.Api.Controllers
             var avaliacaoModel = _avaliacaoMapper.ToModel(avaliacaoAtualizada);
             return new OkObjectResult(avaliacaoModel);
         }
+       
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

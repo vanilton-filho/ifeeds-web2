@@ -39,6 +39,13 @@ namespace IfeedsApi.Api.Config
             CreateMap<RespostaFeedback, RespostaFeedbackModelRequest>().ReverseMap();
 
             CreateMap<Avaliacao, AvaliacaoModelRequest>().ReverseMap();
+
+            CreateMap<Campus, CampusModelRequest>().ReverseMap();
+
+            CreateMap<Categoria, CategoriaModelRequest>().ReverseMap();
+            
+            CreateMap<Contato, ContatoModelRequest>().ReverseMap();
+
             
         }
     }
