@@ -54,7 +54,7 @@ namespace IfeedsApi
 
 
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("DefaultConnection");
+            string mySqlConnection = Configuration.GetConnectionString("rafaConnection");
             services.AddDbContextPool<ApplicationDbContext>(options =>
                 options.UseMySql(mySqlConnection,
                 MySqlServerVersion.AutoDetect(mySqlConnection)));
@@ -124,6 +124,11 @@ namespace IfeedsApi
             services.AddTransient<RespostaFeedbackService, RespostaFeedbackService>();
             services.AddTransient<EstatisticaMapper, EstatisticaMapper>();
             services.AddTransient<EstatisticaService, EstatisticaService>();
+            services.AddTransient<CampusMapper, CampusMapper>();
+            services.AddTransient<CampusService, CampusService>();
+            services.AddTransient<CategoriaMapper, CategoriaMapper>();
+            services.AddTransient<ContatoService, ContatoService>();
+            services.AddTransient<ContatoMapper, ContatoMapper>();
 
         }
 

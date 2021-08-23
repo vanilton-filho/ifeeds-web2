@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace IfeedsApi.Api.Models
 {
     public class AvaliacaoModel
     {
+        public int Id {get; set;}
 
         public string Titulo { get; set; }
 
@@ -24,6 +26,22 @@ namespace IfeedsApi.Api.Models
         public int Id { get; set; }
 
         public string Titulo { get; set; }
+
+    }
+
+    public class AvaliacaoModelRequest 
+    {
+        [MaxLength(45)]
+        [Required(ErrorMessage = "Título é um campo obrigatório")]
+        public string Titulo{get; set;}
+        
+        
+        [Required(ErrorMessage = "Título é um campo obrigatório")]
+        public int CategoriaId {get;set;}
+
+        
+        [Required(ErrorMessage = "Título é um campo obrigatório")]
+        public int CampusId{get;set;}
 
     }
 }

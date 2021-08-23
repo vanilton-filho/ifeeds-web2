@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using IfeedsApi.Api.Mappers;
@@ -146,6 +147,24 @@ namespace IfeedsApi.Api.Controllers
             }
 
             return new UnauthorizedResult();
+        }
+
+        [HttpPut("alterar-senha/{matricula}")]
+        public ActionResult AlterarSenha(string matricula, [FromBody] AlterarSenhaModel request)
+        {
+
+            try
+            {
+                var status = _usuarioService.AlterarSenha(request.senhaAtual, request.novaSenha, matricula);
+                if(status)
+                    return NoContent();
+                throw new Exception();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
         }
 
     }

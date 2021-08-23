@@ -26,5 +26,53 @@ namespace IfeedsApi.Services
             return _context.Categorias.ToList();
         }
 
+        public Categoria Salvar(Categoria categoria)
+        {
+            var categoriaEncontrada = _context.Categorias.Where(c => c.Nome == categoria.Nome).FirstOrDefault(); 
+            if(categoriaEncontrada != null)
+            {
+                return null;
+            }
+            _context.Add(categoria);
+            _context.SaveChanges();
+            return categoria;
+        }
+
+        public Categoria Atualizar(int id, Categoria categoria)
+        {   
+            var categoriaNome = _context.Categorias.Where(c => c.Nome == categoria.Nome).FirstOrDefault(); 
+            var categoriaEncontrada = _context.Categorias.Find(id);
+
+            if(categoriaEncontrada == null || categoriaNome != null)
+            {
+                return  null;
+            }
+
+            categoriaEncontrada.Nome = categoria.Nome;
+            categoriaEncontrada.DataAtualizacao = DateTime.UtcNow;
+            _context.Update(categoriaEncontrada);
+            _context.SaveChanges();
+            return categoriaEncontrada;
+        }
+
+        public bool Deletar(int id)
+        {
+            var categoria = _context.Categorias.Find(id);
+            var avalicao = _context.Avaliacoes.Where(f => f.CategoriaId == categoria.Id).Count();
+
+            if(categoria == null || avalicao > 0)
+            {
+                return false;
+            }
+            _context.Remove(categoria);
+            _context.SaveChanges();
+            return true;
+        }
+
+        public Categoria BuscarPorId(int id)
+        {
+            return _context.Categorias.Find(id);
+        }
+
     }
 }

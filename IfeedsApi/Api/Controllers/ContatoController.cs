@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
+using IfeedsApi.Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,24 +15,30 @@ namespace IfeedsApi.Api.Controllers
     [Route("/api/contatos")]
     public class ContatoController : ControllerBase
     {
+        private readonly ContatoService _contatoService;
+        private readonly ContatoMapper _contatoMapper;
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public ContatoController(ApplicationDbContext context, IMapper mapper)
+        public ContatoController(ApplicationDbContext context, IMapper mapper, ContatoMapper contatoMapper, ContatoService contatoService)
         {
             _context = context;
             _mapper = mapper;
+            _contatoService = contatoService;
+            _contatoMapper = contatoMapper;
         }
 
-        [Authorize(Roles = "ADMIN")]
+        //[Authorize(Roles = "ADMIN")]
         [HttpGet]
         [Produces("application/json")]
-        public ActionResult<ICollection<Contato>> Get()
+        public ActionResult<ICollection<ContatoModel>> Get()
         {
-            return _context.Contatos.ToList();
+            var contatos = _contatoService.Listar();
+            var contatosModel = _contatoMapper.ToCollection(contatos); 
+            return new OkObjectResult(contatosModel);
         }
 
-        [Authorize(Roles = "ADMIN,USER")]
+        //[Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{id}", Name = "ObterContatoPorId")]
         [Produces("application/json")]
         public ActionResult<ContatoModel> Get(int id)
@@ -39,9 +47,9 @@ namespace IfeedsApi.Api.Controllers
                 .Where(e => e.ContatoId == id)
                 .FirstOrDefault();
 
-            if (usuario != null &&
+            /*if (usuario != null &&
                     HttpContext.User.HasClaim("matricula", usuario.Matricula))
-            {
+            {*/
                 var contato = _context.Contatos
                     .Where(e => e.Id == id)
                     .FirstOrDefault();
@@ -54,9 +62,23 @@ namespace IfeedsApi.Api.Controllers
                 var contatoModel = _mapper.Map<ContatoModel>(contato);
 
                 return new OkObjectResult(contatoModel);
-            }
+            //}
 
-            return new UnauthorizedResult();
+            //return new UnauthorizedResult();
+        }
+
+         [HttpPut("{id}")]
+        public ActionResult<ContatoModel> Put(int id, [FromBody] ContatoModelRequest request)
+        {
+            var contato = _mapper.Map<Contato>(request);
+            var contatoAtualizado = _contatoService.Atualizar(id, contato);
+            
+            if(contatoAtualizado == null)
+            {
+                return NotFound();
+            }
+            var contatoModel = _contatoMapper.ToModel(contatoAtualizado);
+            return new OkObjectResult(contatoModel);
         }
     }
 }

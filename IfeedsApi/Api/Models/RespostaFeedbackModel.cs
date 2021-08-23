@@ -16,4 +16,9 @@ namespace IfeedsApi.Api.Models
         public int FeedbackId { get; set; }
         public int UsuarioId { get; set; }
     }
+
+    public class RespostaFeedbackModelUpdateRequest
+    {
+        public string Resposta {get; set;}
+    }
 }
