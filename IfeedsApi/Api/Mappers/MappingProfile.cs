@@ -46,6 +46,8 @@ namespace IfeedsApi.Api.Config
             
             CreateMap<Contato, ContatoModelRequest>().ReverseMap();
 
+            CreateMap<RespostaFeedback, RespostaFeedbackModelUpdateRequest>().ReverseMap();
+
             
         }
     }

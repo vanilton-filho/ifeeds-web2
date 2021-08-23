@@ -74,7 +74,7 @@ namespace IfeedsApi.Services
             {
                 return false;
             }
-            _context.Avaliacoes.Remove(avaliacao);
+            _context.Remove(avaliacao);
             _context.SaveChanges();
             return true;
         }

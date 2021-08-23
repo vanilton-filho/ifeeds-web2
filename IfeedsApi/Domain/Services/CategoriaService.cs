@@ -64,7 +64,7 @@ namespace IfeedsApi.Services
             {
                 return false;
             }
-            _context.Categorias.Remove(categoria);
+            _context.Remove(categoria);
             _context.SaveChanges();
             return true;
         }

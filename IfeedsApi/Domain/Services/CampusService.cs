@@ -58,7 +58,7 @@ namespace IfeedsApi.Domain.Services
             {
                 return false;
             }
-            _context.Campus.Remove(campus);
+            _context.Remove(campus);
             _context.SaveChanges();
             return true;
         }

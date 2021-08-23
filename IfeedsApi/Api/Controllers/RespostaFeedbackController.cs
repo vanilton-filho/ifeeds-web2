@@ -34,7 +34,7 @@ namespace IfeedsApi.Api.Controllers
             return _respostaFeedbackMapper.ToCollection(respostas);
         }
 
-        [HttpGet("{id}", Name = "GetPorId")]
+        [HttpGet("{id}", Name = "GetRespostaId")]
         public ActionResult<RespostaFeedbackModel> GetPorId(int id)
         {
             var respostaFeedback = _respostaFeedbackService.GetPorId(id);
@@ -52,9 +52,37 @@ namespace IfeedsApi.Api.Controllers
         {
             var resposta = _mapper.Map<RespostaFeedback>(request);
             var respostaSalva = _respostaFeedbackService.Salvar(resposta);
-            var respostaFeedbackModel = _respostaFeedbackMapper.ToModel(respostaSalva);
+            if(respostaSalva == null)
+            {
+                return BadRequest();
+            }
 
-            return new CreatedAtRouteResult("GetPorId", new {id = respostaSalva.Id}, respostaFeedbackModel);
+            var respostaFeedbackModel = _respostaFeedbackMapper.ToModel(respostaSalva);
+            return new CreatedAtRouteResult("GetRespostaId", new {id = respostaSalva.Id}, respostaFeedbackModel);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<ContatoModel> Put(int id, [FromBody] RespostaFeedbackModelUpdateRequest request)
+        {
+            var resposta = _mapper.Map<RespostaFeedback>(request);
+            var respostaAtualizada = _respostaFeedbackService.Atualizar(id, resposta);
+            
+            if(respostaAtualizada == null)
+            {
+                return NotFound();
+            }
+            var respostaModel = _respostaFeedbackMapper.ToModel(respostaAtualizada);
+            return new OkObjectResult(respostaModel);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            if(_respostaFeedbackService.Deletar(id))
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }

@@ -59,7 +59,7 @@ namespace IfeedsApi.Domain.Services
             {
                 return false;
             }
-            _context.Contatos.Remove(contato);
+            _context.Remove(contato);
             _context.SaveChanges();
             return true;
         }
