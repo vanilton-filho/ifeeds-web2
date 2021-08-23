@@ -8,6 +8,7 @@ using IfeedsApi.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace IfeedsApi.Api.Controllers
 {
@@ -20,11 +21,14 @@ namespace IfeedsApi.Api.Controllers
 
         private readonly UsuarioService _usuarioService;
 
-        public UsuarioController(IMapper mapper, UsuarioMapper usuarioMapper, UsuarioService usuarioService)
+        private readonly IConfiguration _configuration;
+
+        public UsuarioController(IMapper mapper, UsuarioMapper usuarioMapper, UsuarioService usuarioService, IConfiguration configuration)
         {
             _usuarioMapper = usuarioMapper;
             _usuarioService = usuarioService;
             _mapper = mapper;
+            _configuration = configuration;
         }
 
 
@@ -41,7 +45,7 @@ namespace IfeedsApi.Api.Controllers
                 return NotFound();
             }
 
-            var token = TokenService.GenerateToken(_usuarioMapper.ToModel(usuario));
+            var token = new TokenService(_configuration).GenerateToken(_usuarioMapper.ToModel(usuario));
             Response.Cookies
                 .Append(
                     "X-Access-Token",

@@ -14,7 +14,6 @@ namespace IfeedsApi.Api.Controllers
     [Route("/api/campus")]
     public class CampusController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly CampusMapper _campusMapper;
         private readonly CampusService _campusService;
         private readonly IMapper _mapper;
