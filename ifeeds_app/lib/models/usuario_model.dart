@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:ifeeds_app/models/contato_model.dart';
 
 class UsuarioModel {
-  final String? matricula;
-  final String? nome;
-  final ContatoModel? contato;
-  final String? role;
+  String? matricula;
+  String? nome;
+  ContatoModel? contato;
+  String? role;
 
   UsuarioModel({
     this.matricula,
