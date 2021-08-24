@@ -58,7 +58,7 @@ namespace IfeedsApi.Services
         public bool Deletar(int id)
         {
             var categoria = _context.Categorias.Find(id);
-            var avalicao = _context.Avaliacoes.Where(f => f.CategoriaId == categoria.Id).Count();
+            var avalicao = _context.Avaliacoes.Where(f => f.CategoriaId == id).Count();
 
             if(categoria == null || avalicao > 0)
             {

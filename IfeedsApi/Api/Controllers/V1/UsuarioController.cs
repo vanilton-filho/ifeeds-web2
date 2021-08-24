@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/usuarios")]
+    [Route("/v1/api/usuarios")]
     public class UsuarioController : ControllerBase
     {
         private readonly UsuarioMapper _usuarioMapper;
@@ -144,7 +144,7 @@ namespace IfeedsApi.Api.Controllers
                 }
 
                 // Copiando o que tem na requisição recebida para o usuário encontrado
-                usuario = _mapper.Map<UsuarioUpdateModelRequest, Usuario>(req, usuario);
+                usuario = _mapper.Map(req, usuario);
                 _usuarioService.UpdateUsuario(usuario);
                 var usuarioModel = _usuarioMapper.ToModel(usuario);
                 return new OkObjectResult(usuarioModel);
@@ -160,7 +160,7 @@ namespace IfeedsApi.Api.Controllers
             try
             {
                 var status = _usuarioService.AlterarSenha(request.senhaAtual, request.novaSenha, matricula);
-                if(status)
+                if (status)
                     return NoContent();
                 throw new Exception();
             }
@@ -171,5 +171,32 @@ namespace IfeedsApi.Api.Controllers
 
         }
 
+        [HttpPut("{matricula}/ativar")]
+        public ActionResult Ativar(string matricula)
+        {
+            var usuario = _usuarioService.FindByMatricula(matricula);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            _usuarioService.Ativar(usuario);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{matricula}/desativar")]
+        public ActionResult Desativar(string matricula)
+        {
+            var usuario = _usuarioService.FindByMatricula(matricula);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            _usuarioService.Desativar(usuario);
+
+            return NoContent();
+        }
     }
 }

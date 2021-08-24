@@ -24,6 +24,20 @@ namespace IfeedsApi.Services
             return _context.Usuarios.ToList();
         }
 
+        public void Ativar(Usuario usuario)
+        {
+            usuario.Status = true;
+            _context.Update(usuario);
+            _context.SaveChanges();
+        }
+
+        public void Desativar(Usuario usuario)
+        {
+            usuario.Status = false;
+            _context.Update(usuario);
+            _context.SaveChanges();
+        }
+
         public Usuario SaveUsuario(Usuario usuario, Contato contato, int campusId, int tipoConta)
         {
             // var usuario = _mapper.Map<Usuario>(request);

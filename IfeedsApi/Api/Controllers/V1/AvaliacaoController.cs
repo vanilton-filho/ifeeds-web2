@@ -8,10 +8,10 @@ using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/avaliacoes")]
+    [Route("/v1/api/avaliacoes")]
     public class AvaliacaoController : ControllerBase
     {
         private readonly AvaliacaoMapper _avaliacaoMapper;
@@ -44,10 +44,10 @@ namespace IfeedsApi.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCodigo")]
-        public ActionResult<AvaliacaoModel> Get(int id) 
+        public ActionResult<AvaliacaoModel> Get(int id)
         {
             var avaliacao = _avaliacaoService.BuscarPorId(id);
-            if(avaliacao == null)
+            if (avaliacao == null)
             {
                 return NotFound();
             }
@@ -61,7 +61,7 @@ namespace IfeedsApi.Api.Controllers
             var avaliacao = _mapper.Map<Avaliacao>(request);
             var avaliacaoSalva = _avaliacaoService.Salvar(avaliacao);
             var avaliacaoModel = _avaliacaoMapper.ToModel(avaliacaoSalva);
-            return new CreatedAtRouteResult("GetCodigo", new {Id = avaliacaoSalva.Id}, avaliacaoModel);
+            return new CreatedAtRouteResult("GetCodigo", new { avaliacaoSalva.Id }, avaliacaoModel);
         }
 
         [HttpPut("{id}")]
@@ -69,19 +69,19 @@ namespace IfeedsApi.Api.Controllers
         {
             var avaliacao = _mapper.Map<Avaliacao>(request);
             var avaliacaoAtualizada = _avaliacaoService.Atualizar(id, avaliacao);
-            
-            if(avaliacaoAtualizada == null)
+
+            if (avaliacaoAtualizada == null)
             {
                 return NotFound();
             }
             var avaliacaoModel = _avaliacaoMapper.ToModel(avaliacaoAtualizada);
             return new OkObjectResult(avaliacaoModel);
         }
-       
+
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            if(_avaliacaoService.Deletar(id))
+            if (_avaliacaoService.Deletar(id))
             {
                 return NoContent();
             }

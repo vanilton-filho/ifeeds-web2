@@ -137,6 +137,8 @@ namespace IfeedsApi
             services.AddTransient<CategoriaMapper, CategoriaMapper>();
             services.AddTransient<ContatoService, ContatoService>();
             services.AddTransient<ContatoMapper, ContatoMapper>();
+            services.AddTransient<RoleService, RoleService>();
+            services.AddTransient<RoleMapper, RoleMapper>();
 
         }
 

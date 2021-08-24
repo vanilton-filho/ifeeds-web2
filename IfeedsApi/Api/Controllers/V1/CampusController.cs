@@ -8,10 +8,10 @@ using IfeedsApi.Domain.Models;
 using IfeedsApi.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/campus")]
+    [Route("/v1/api/campus")]
     public class CampusController : ControllerBase
     {
         private readonly CampusMapper _campusMapper;
@@ -36,10 +36,10 @@ namespace IfeedsApi.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCampusId")]
-        public ActionResult<CampusModel> Get(int id) 
+        public ActionResult<CampusModel> Get(int id)
         {
             var campus = _campusService.BuscarPorId(id);
-            if(campus == null)
+            if (campus == null)
             {
                 return NotFound();
             }
@@ -53,22 +53,22 @@ namespace IfeedsApi.Api.Controllers
         {
             var campus = _mapper.Map<Campus>(request);
             var campusSalvo = _campusService.Salvar(campus);
-            if(campusSalvo == null)
+            if (campusSalvo == null)
             {
                 return BadRequest();
             }
             var campusModel = _campusMapper.ToModel(campusSalvo);
-            return new CreatedAtRouteResult("GetCampusId", new {Id = campusSalvo.Id}, campusModel);
+            return new CreatedAtRouteResult("GetCampusId", new { campusSalvo.Id }, campusModel);
         }
 
-        
+
         [HttpPut("{id}")]
         public ActionResult<CampusModel> Put(int id, [FromBody] CampusModelRequest request)
         {
             var campus = _mapper.Map<Campus>(request);
             var campusAtualizado = _campusService.Atualizar(id, campus);
-            
-            if(campusAtualizado == null)
+
+            if (campusAtualizado == null)
             {
                 return NotFound();
             }
@@ -79,7 +79,7 @@ namespace IfeedsApi.Api.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            if(_campusService.Deletar(id))
+            if (_campusService.Deletar(id))
             {
                 return NoContent();
             }
