@@ -4,13 +4,13 @@ using IfeedsApi.Domain.Services;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/estatisticas")]
+    [Route("/v1/api/estatisticas")]
     public class EstatisticaController : ControllerBase
     {
-        
+
         private readonly UsuarioService _usuarioService;
         private readonly EstatisticaMapper _estatisticaMapper;
 
@@ -25,7 +25,7 @@ namespace IfeedsApi.Api.Controllers
         {
             var usuario = _usuarioService.BuscarAdminPorId(usuarioId);
 
-            if(usuario == null)
+            if (usuario == null)
             {
                 return NotFound();
             }

@@ -8,10 +8,10 @@ using IfeedsApi.Domain.Models;
 using IfeedsApi.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/feedbacks")]
+    [Route("/v1/api/feedbacks")]
     public class FeedbackController : ControllerBase
     {
         private readonly FeedbackService _feedbackService;
@@ -25,7 +25,7 @@ namespace IfeedsApi.Api.Controllers
             _feedbackMapper = feedbackMapper;
             _mapper = mapper;
         }
-        
+
         [HttpGet]
         public ActionResult<ICollection<FeedbackModel>> Get()
         {
@@ -37,10 +37,10 @@ namespace IfeedsApi.Api.Controllers
         public ActionResult<FeedbackModel> GetPorCodigo(string codigo)
         {
             var feedback = _feedbackService.GetPorCodigo(codigo);
-            if(feedback == null)
+            if (feedback == null)
             {
                 return NotFound();
-            } 
+            }
 
             var feedbackModel = _feedbackMapper.ToModel(feedback);
             return new OkObjectResult(feedbackModel);
@@ -52,7 +52,7 @@ namespace IfeedsApi.Api.Controllers
             var feedback = _mapper.Map<Feedback>(request);
             var feedbackSalvo = _feedbackService.Salvar(feedback);
             var feedbackModel = _feedbackMapper.ToModel(feedbackSalvo);
-            return  new CreatedAtRouteResult("GetPorCodigo", new {codigo = feedbackSalvo.Codigo}, feedbackModel);
+            return new CreatedAtRouteResult("GetPorCodigo", new { codigo = feedbackSalvo.Codigo }, feedbackModel);
         }
     }
 }

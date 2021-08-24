@@ -8,10 +8,10 @@ using IfeedsApi.Domain.Models;
 using IfeedsApi.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/respostas-feedbacks")]
+    [Route("/v1/api/respostas-feedbacks")]
     public class RespostaFeedbackController : ControllerBase
     {
         private readonly RespostaFeedbackService _respostaFeedbackService;
@@ -30,7 +30,7 @@ namespace IfeedsApi.Api.Controllers
         public ActionResult<ICollection<RespostaFeedbackModel>> Get()
         {
             var respostas = _respostaFeedbackService.Listar();
-        
+
             return _respostaFeedbackMapper.ToCollection(respostas);
         }
 
@@ -38,10 +38,10 @@ namespace IfeedsApi.Api.Controllers
         public ActionResult<RespostaFeedbackModel> GetPorId(int id)
         {
             var respostaFeedback = _respostaFeedbackService.GetPorId(id);
-            if(respostaFeedback == null)
+            if (respostaFeedback == null)
             {
                 return NotFound();
-            } 
+            }
 
             var respostaFeedbackModel = _respostaFeedbackMapper.ToModel(respostaFeedback);
             return new OkObjectResult(respostaFeedbackModel);
@@ -52,13 +52,13 @@ namespace IfeedsApi.Api.Controllers
         {
             var resposta = _mapper.Map<RespostaFeedback>(request);
             var respostaSalva = _respostaFeedbackService.Salvar(resposta);
-            if(respostaSalva == null)
+            if (respostaSalva == null)
             {
                 return BadRequest();
             }
 
             var respostaFeedbackModel = _respostaFeedbackMapper.ToModel(respostaSalva);
-            return new CreatedAtRouteResult("GetRespostaId", new {id = respostaSalva.Id}, respostaFeedbackModel);
+            return new CreatedAtRouteResult("GetRespostaId", new { id = respostaSalva.Id }, respostaFeedbackModel);
         }
 
         [HttpPut("{id}")]
@@ -66,8 +66,8 @@ namespace IfeedsApi.Api.Controllers
         {
             var resposta = _mapper.Map<RespostaFeedback>(request);
             var respostaAtualizada = _respostaFeedbackService.Atualizar(id, resposta);
-            
-            if(respostaAtualizada == null)
+
+            if (respostaAtualizada == null)
             {
                 return NotFound();
             }
@@ -78,7 +78,7 @@ namespace IfeedsApi.Api.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            if(_respostaFeedbackService.Deletar(id))
+            if (_respostaFeedbackService.Deletar(id))
             {
                 return NoContent();
             }

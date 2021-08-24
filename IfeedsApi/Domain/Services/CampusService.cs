@@ -52,7 +52,7 @@ namespace IfeedsApi.Domain.Services
         public bool Deletar(int id)
         {
             var campus = _context.Campus.Find(id);
-            var avalicao = _context.Avaliacoes.Where(f => f.CampusId == campus.Id).Count();
+            var avalicao = _context.Avaliacoes.Where(f => f.CampusId == id).Count();
 
             if(campus == null || avalicao > 0)
             {

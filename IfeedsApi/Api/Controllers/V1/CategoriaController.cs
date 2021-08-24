@@ -8,10 +8,10 @@ using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/categorias")]
+    [Route("/v1/api/categorias")]
     public class CategoriaController : ControllerBase
     {
         private readonly CategoriaService _categoriaService;
@@ -34,10 +34,10 @@ namespace IfeedsApi.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCategoriaId")]
-        public ActionResult<CategoriaModel> Get(int id) 
+        public ActionResult<CategoriaModel> Get(int id)
         {
             var categoria = _categoriaService.BuscarPorId(id);
-            if(categoria == null)
+            if (categoria == null)
             {
                 return NotFound();
             }
@@ -50,21 +50,21 @@ namespace IfeedsApi.Api.Controllers
         {
             var categoria = _mapper.Map<Categoria>(request);
             var categoriaSalva = _categoriaService.Salvar(categoria);
-            if(categoriaSalva == null)
+            if (categoriaSalva == null)
             {
                 return BadRequest();
             }
             var categoriaModel = _categoriaMapper.ToModel(categoriaSalva);
-            return new CreatedAtRouteResult("GetCategoriaId", new {Id = categoriaSalva.Id}, categoriaModel);
+            return new CreatedAtRouteResult("GetCategoriaId", new { categoriaSalva.Id }, categoriaModel);
         }
 
-         [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public ActionResult<CategoriaModel> Put(int id, [FromBody] CategoriaModelRequest request)
         {
             var categoria = _mapper.Map<Categoria>(request);
             var categoriaAtualizada = _categoriaService.Atualizar(id, categoria);
-            
-            if(categoriaAtualizada == null)
+
+            if (categoriaAtualizada == null)
             {
                 return NotFound();
             }
@@ -72,10 +72,10 @@ namespace IfeedsApi.Api.Controllers
             return new OkObjectResult(categoriaModel);
         }
 
-         [HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            if(_categoriaService.Deletar(id))
+            if (_categoriaService.Deletar(id))
             {
                 return NoContent();
             }

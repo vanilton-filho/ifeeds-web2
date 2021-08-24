@@ -53,7 +53,7 @@ namespace IfeedsApi.Domain.Services
         public bool Deletar(int id)
         {
             var contato = _context.Contatos.Find(id);
-            var usuario = _context.Usuarios.Where(u => u.ContatoId == contato.Id).Count();
+            var usuario = _context.Usuarios.Where(u => u.ContatoId == id).Count();
 
             if(contato == null || usuario > 0)
             {

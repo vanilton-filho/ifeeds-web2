@@ -13,6 +13,7 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 - O aplicativo irá funcionar como um captador de dados.
 - O objetivo do aplicativo é simples, ele resolve o problema de fazer o IFS entender o que precisa melhorar de fato e dá uma transparência para todos de como o instituto caminha.
 
+> Esse projeto utiliza o Secret Manager para gerenciar as credenciais/segredos(senha de banco de dados, JWT, etc.)
 
 ## REGRAS DE NEGÓCIO
 
@@ -53,7 +54,7 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 ## DER
 
-![der_v12](assets/img/der_v12.png)
+![der_v13](assets/img/der_v13.png)
 
 ## PROTÓTIPOS
 

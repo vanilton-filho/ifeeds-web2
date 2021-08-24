@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -53,11 +54,18 @@ namespace IfeedsApi
             });
 
 
+
+
             // Configurando banco de dados MySQL
-            string mySqlConnection = Configuration.GetConnectionString("rafaConnection");
+            var builder = new SqlConnectionStringBuilder(Configuration["Ifeeds:ConnectionString"]);
+            builder.Password = Configuration["Ifeeds:Password"];
+
+            
             services.AddDbContextPool<ApplicationDbContext>(options =>
-                options.UseMySql(mySqlConnection,
-                MySqlServerVersion.AutoDetect(mySqlConnection)));
+                options.UseMySql(builder.ConnectionString, MySqlServerVersion.AutoDetect(builder.ConnectionString)));
+
+
+
 
             // Configuração do AutoMapper
             var mappingProfile = new MapperConfiguration(mc =>
@@ -74,7 +82,7 @@ namespace IfeedsApi
             );
 
             // JWT config
-            var key = Encoding.ASCII.GetBytes(JwtSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(new JwtSettings(Configuration).GetSecret());
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -129,6 +137,8 @@ namespace IfeedsApi
             services.AddTransient<CategoriaMapper, CategoriaMapper>();
             services.AddTransient<ContatoService, ContatoService>();
             services.AddTransient<ContatoMapper, ContatoMapper>();
+            services.AddTransient<RoleService, RoleService>();
+            services.AddTransient<RoleMapper, RoleMapper>();
 
         }
 

@@ -68,7 +68,7 @@ namespace IfeedsApi.Services
         public bool Deletar(int id)
         {
             var avaliacao= _context.Avaliacoes.Find(id);
-            var feedback = _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacao.Id).Count();
+            var feedback = _context.Feedbacks.Where(f => f.AvaliacaoId == id).Count();
             
             if(avaliacao == null || feedback > 0)
             {

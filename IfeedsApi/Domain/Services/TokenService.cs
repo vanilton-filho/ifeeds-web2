@@ -4,16 +4,25 @@ using System.Security.Claims;
 using System.Text;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Auth;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace IfeedsApi.Services
 {
     public class TokenService
     {
-        public static string GenerateToken(UsuarioModel usuario)
+        public IConfiguration Configuration { get; }
+        public TokenService(IConfiguration configuration)
         {
+            Configuration = configuration;
+        }
+        
+        public string GenerateToken(UsuarioModel usuario)
+        {
+            var jwt =  new JwtSettings(Configuration);
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(JwtSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(jwt.GetSecret());
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

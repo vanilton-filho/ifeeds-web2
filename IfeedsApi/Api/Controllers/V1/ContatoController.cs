@@ -9,10 +9,10 @@ using IfeedsApi.Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IfeedsApi.Api.Controllers
+namespace IfeedsApi.Api.Controllers.V1
 {
     [ApiController]
-    [Route("/api/contatos")]
+    [Route("/v1/api/contatos")]
     public class ContatoController : ControllerBase
     {
         private readonly ContatoService _contatoService;
@@ -34,7 +34,7 @@ namespace IfeedsApi.Api.Controllers
         public ActionResult<ICollection<ContatoModel>> Get()
         {
             var contatos = _contatoService.Listar();
-            var contatosModel = _contatoMapper.ToCollection(contatos); 
+            var contatosModel = _contatoMapper.ToCollection(contatos);
             return new OkObjectResult(contatosModel);
         }
 
@@ -50,30 +50,30 @@ namespace IfeedsApi.Api.Controllers
             /*if (usuario != null &&
                     HttpContext.User.HasClaim("matricula", usuario.Matricula))
             {*/
-                var contato = _context.Contatos
-                    .Where(e => e.Id == id)
-                    .FirstOrDefault();
+            var contato = _context.Contatos
+                .Where(e => e.Id == id)
+                .FirstOrDefault();
 
-                if (contato == null)
-                {
-                    return NotFound();
-                }
+            if (contato == null)
+            {
+                return NotFound();
+            }
 
-                var contatoModel = _mapper.Map<ContatoModel>(contato);
+            var contatoModel = _mapper.Map<ContatoModel>(contato);
 
-                return new OkObjectResult(contatoModel);
+            return new OkObjectResult(contatoModel);
             //}
 
             //return new UnauthorizedResult();
         }
 
-         [HttpPut("{id}")]
+        [HttpPut("{id}")]
         public ActionResult<ContatoModel> Put(int id, [FromBody] ContatoModelRequest request)
         {
             var contato = _mapper.Map<Contato>(request);
             var contatoAtualizado = _contatoService.Atualizar(id, contato);
-            
-            if(contatoAtualizado == null)
+
+            if (contatoAtualizado == null)
             {
                 return NotFound();
             }
