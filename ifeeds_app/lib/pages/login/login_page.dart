@@ -117,38 +117,36 @@ class _LoginPageState extends State<LoginPage> {
                                             SizedBox(
                                               height: 40,
                                             ),
-                                            FormFieldWidget(
-                                              edgeInsets: EdgeInsets.only(
-                                                left: 120,
-                                                right: 120,
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 120),
+                                              child: FormFieldWidget(
+                                                label: 'Matrícula',
+                                                validator: (String? val) => (val!
+                                                        .isEmpty)
+                                                    ? 'Por favor, insira a sua matrícula'
+                                                    : null,
+                                                onChanged: (val) {
+                                                  _loginModel.matricula = val;
+                                                },
                                               ),
-                                              label: 'Matrícula',
-                                              validator: (String? val) => (val!
-                                                      .isEmpty)
-                                                  ? 'Por favor, insira a sua matrícula'
-                                                  : null,
-                                              onChanged: (val) {
-                                                _loginModel.matricula = val;
-                                              },
                                             ),
                                             SizedBox(
                                               height: 33,
                                             ),
-                                            FormFieldWidget(
-                                              edgeInsets: EdgeInsets.only(
-                                                left: 120,
-                                                right: 120,
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 120),
+                                              child: FormFieldWidget(
+                                                label: 'Senha',
+                                                prefixIcon: Icons.lock,
+                                                isPassword: true,
+                                                validator: (String? val) => (val!
+                                                        .isEmpty)
+                                                    ? 'Por favor, insira a sua senha'
+                                                    : null,
+                                                onChanged: (val) {
+                                                  _loginModel.senha = val;
+                                                },
                                               ),
-                                              label: 'Senha',
-                                              prefixIcon: Icons.lock,
-                                              isPassword: true,
-                                              validator: (String? val) => (val!
-                                                      .isEmpty)
-                                                  ? 'Por favor, insira a sua senha'
-                                                  : null,
-                                              onChanged: (val) {
-                                                _loginModel.senha = val;
-                                              },
                                             ),
                                             SizedBox(
                                               height: 40,

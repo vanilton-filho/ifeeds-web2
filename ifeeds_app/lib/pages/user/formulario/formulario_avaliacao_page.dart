@@ -67,10 +67,6 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: FormFieldWidget(
-                          edgeInsets: EdgeInsets.only(
-                            left: 0,
-                            right: 0,
-                          ),
                           label: 'Título',
                           validator: (String? val) => (val!.isEmpty)
                               ? 'Por favor, insira a sua matrícula'

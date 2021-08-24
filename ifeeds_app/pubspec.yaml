@@ -35,6 +35,8 @@ dependencies:
   intl: ^0.17.0
   flutter_animator: ^3.1.2
   flutter_breadcrumb: ^1.0.1
+  get: ^4.3.8
+  mask_text_input_formatter: ^2.0.0
 
 dev_dependencies:
   flutter_test:
