@@ -4,6 +4,7 @@ using AutoMapper;
 using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Database;
+using IfeedsApi.Domain.Exceptions;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -81,9 +82,16 @@ namespace IfeedsApi.Api.Controllers.V1
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            if (_avaliacaoService.Deletar(id))
+            try
             {
-                return NoContent();
+                if (_avaliacaoService.Deletar(id))
+                {
+                    return NoContent();
+                }
+            }
+            catch (EntidadeEmUsoException e)
+            {
+                throw e;
             }
             return NotFound();
         }

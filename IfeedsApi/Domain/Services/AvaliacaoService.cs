@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Database;
+using IfeedsApi.Domain.Exceptions;
 using IfeedsApi.Domain.Models;
 using Microsoft.IdentityModel.Tokens;
 
@@ -67,13 +68,19 @@ namespace IfeedsApi.Services
 
         public bool Deletar(int id)
         {
-            var avaliacao= _context.Avaliacoes.Find(id);
+            var avaliacao = _context.Avaliacoes.Find(id);
             var feedback = _context.Feedbacks.Where(f => f.AvaliacaoId == id).Count();
-            
-            if(avaliacao == null || feedback > 0)
+
+            if (avaliacao == null)
             {
                 return false;
             }
+
+            if (feedback > 0)
+            {
+                throw new EntidadeEmUsoException("O registro não pode ser deletado pois está em uso.");
+            }
+
             _context.Remove(avaliacao);
             _context.SaveChanges();
             return true;

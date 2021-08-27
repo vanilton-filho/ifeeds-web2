@@ -22,7 +22,7 @@ namespace IfeedsApi.Api.Config
 
             CreateMap<Campus, UsuarioModelRequest>().ReverseMap();
 
-            CreateMap<Avaliacao, AvaliacaoModel>().ReverseMap();
+            // CreateMap<Avaliacao, AvaliacaoModel>().ReverseMap();
 
             CreateMap<Categoria, CategoriaModel>().ReverseMap();
 
@@ -43,7 +43,7 @@ namespace IfeedsApi.Api.Config
             CreateMap<Campus, CampusModelRequest>().ReverseMap();
 
             CreateMap<Categoria, CategoriaModelRequest>().ReverseMap();
-            
+
             CreateMap<Contato, ContatoModelRequest>().ReverseMap();
 
             CreateMap<RespostaFeedback, RespostaFeedbackModelUpdateRequest>().ReverseMap();
