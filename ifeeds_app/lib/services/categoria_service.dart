@@ -6,11 +6,30 @@ import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class CategoriaService {
+  static Future<dynamic> listarCategorias() async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias");
+    try {
+      final response = await http.get(uri, headers: {
+        "Accept": "application/json",
+      });
+
+      if (response.statusCode == 200) {
+        final json = convert.json.decode(response.body);
+        return json
+            .map<CategoriaModel>((json) => CategoriaModel.fromMap(json))
+            .toList();
+      }
+    } catch (e) {
+      throw new Exception("Impossível listar categorias");
+    }
+  }
+
   static Future<dynamic> criarCategoria(Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias");
     try {
       final response = await http.post(uri, headers: {
-        HttpHeaders.acceptHeader:"application/json", HttpHeaders.contentTypeHeader: "application/json"
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.contentTypeHeader: "application/json"
       });
 
       if (response.statusCode == 201) {
@@ -22,11 +41,13 @@ class CategoriaService {
     }
   }
 
-static Future<dynamic> atualizarCategoria(Map<String, dynamic> payload) async {
+  static Future<dynamic> atualizarCategoria(
+      Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categoria");
     try {
       final response = await http.put(uri, headers: {
-        HttpHeaders.acceptHeader:"application/json", HttpHeaders.contentTypeHeader: "application/json"
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.contentTypeHeader: "application/json"
       });
 
       if (response.statusCode == 200) {

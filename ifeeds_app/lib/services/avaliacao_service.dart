@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/avaliacao_model.dart';
-import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class AvaliacaoService {
@@ -25,8 +24,7 @@ class AvaliacaoService {
   }
 
   static Future<dynamic> listarAvaliacoesPorCategoria(int categoria) async {
-    Uri uri =
-        Uri.http(Envs.baseUrl, "api/avaliacoes/$categoria/por-categoria");
+    Uri uri = Uri.http(Envs.baseUrl, "api/avaliacoes/$categoria/por-categoria");
     try {
       final response =
           await http.get(uri, headers: {"Accept": "application/json"});
@@ -42,29 +40,12 @@ class AvaliacaoService {
     }
   }
 
-  static Future<dynamic> listarCategorias() async {
-    Uri uri = Uri.http(Envs.baseUrl, "api/categorias");
-    try {
-      final response = await http.get(uri, headers: {
-        "Accept": "application/json",
-      });
-
-      if (response.statusCode == 200) {
-        final json = convert.json.decode(response.body);
-        return json
-            .map<CategoriaModel>((json) => CategoriaModel.fromMap(json))
-            .toList();
-      }
-    } catch (e) {
-      throw new Exception("Impossível listar categorias");
-    }
-  }
-
   static Future<dynamic> criarAvaliacao(Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacoes");
     try {
       final response = await http.post(uri, headers: {
-        HttpHeaders.acceptHeader:"application/json", HttpHeaders.contentTypeHeader: "application/json"
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.contentTypeHeader: "application/json"
       });
 
       if (response.statusCode == 201) {
@@ -76,11 +57,13 @@ class AvaliacaoService {
     }
   }
 
-  static Future<dynamic> atualizarAvaliacao(Map<String, dynamic> payload) async {
+  static Future<dynamic> atualizarAvaliacao(
+      Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacao");
     try {
       final response = await http.put(uri, headers: {
-        HttpHeaders.acceptHeader:"application/json", HttpHeaders.contentTypeHeader: "application/json"
+        HttpHeaders.acceptHeader: "application/json",
+        HttpHeaders.contentTypeHeader: "application/json"
       });
 
       if (response.statusCode == 200) {
@@ -92,7 +75,7 @@ class AvaliacaoService {
     }
   }
 
-static Future<dynamic> deletarAvaliacao(int id) async {
+  static Future<dynamic> deletarAvaliacao(int id) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacao/{id}");
     try {
       final response = await http.delete(uri);
@@ -104,6 +87,4 @@ static Future<dynamic> deletarAvaliacao(int id) async {
       throw new Exception("Impossível deletar avaliação");
     }
   }
-
-
 }
