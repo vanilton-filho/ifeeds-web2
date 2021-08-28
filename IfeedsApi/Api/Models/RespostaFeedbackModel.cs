@@ -1,5 +1,9 @@
+using AutoMapper;
+using IfeedsApi.Domain.Models;
+
 namespace IfeedsApi.Api.Models
 {
+    [AutoMap(typeof(RespostaFeedback), ReverseMap =true)]
     public class RespostaFeedbackModel
     {
         public string Titulo { get; set; }
@@ -10,6 +14,7 @@ namespace IfeedsApi.Api.Models
         public string Usuario { get; set; }
     }
 
+    [AutoMap(typeof(RespostaFeedback), ReverseMap =true)]
     public class RespostaFeedbackModelRequest
     {
         public string Resposta { get; set; }
@@ -17,6 +22,7 @@ namespace IfeedsApi.Api.Models
         public int UsuarioId { get; set; }
     }
 
+    [AutoMap(typeof(RespostaFeedback), ReverseMap =true)]
     public class RespostaFeedbackModelUpdateRequest
     {
         public string Resposta {get; set;}

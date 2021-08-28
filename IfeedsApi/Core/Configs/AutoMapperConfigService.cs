@@ -1,5 +1,4 @@
 using AutoMapper;
-using IfeedsApi.Api.Config;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IfeedsApi.Core.Configs
@@ -11,7 +10,6 @@ namespace IfeedsApi.Core.Configs
             var mappingProfile = new MapperConfiguration(mc =>
             {
                 mc.AddMaps("IfeedsApi");
-                mc.AddProfile(new MappingProfile());
             });
 
             IMapper mapper = mappingProfile.CreateMapper();

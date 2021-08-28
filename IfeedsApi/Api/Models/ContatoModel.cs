@@ -1,8 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using AutoMapper;
+using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Api.Models
 {
+    
     /// <summary>Modelo de representação de contato</summary>
+    [AutoMap(typeof(Contato), ReverseMap = true)]
     public class ContatoModel
     {
         public int Id {get;set;}
@@ -18,6 +22,7 @@ namespace IfeedsApi.Api.Models
         public string Telefone { get; set; }
     }
 
+    [AutoMap(typeof(Contato), ReverseMap = true)]
     public class ContatoModelRequest
     {
         [Required(ErrorMessage = "Email é um campo obrigatório")]

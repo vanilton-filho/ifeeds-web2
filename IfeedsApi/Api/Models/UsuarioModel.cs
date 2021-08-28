@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using IfeedsApi.Core.Database;
+using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Api.Models
 {
     /// <summary>Modelo de representação do usuário</summary>
+    [AutoMap(typeof(Usuario), ReverseMap = true)]
     public class UsuarioModel
     {
         /// <summary>Matrícula do aluno ou servidor</summary>
@@ -27,6 +29,9 @@ namespace IfeedsApi.Api.Models
 
 
     /// <summary>Modelo de representação para a criação de um usuário</summary>
+    [AutoMap(typeof(Usuario), ReverseMap = true)]
+    [AutoMap(typeof(Contato), ReverseMap = true)]
+    [AutoMap(typeof(Campus), ReverseMap = true)]
     public class UsuarioModelRequest
     {
 
@@ -68,6 +73,7 @@ namespace IfeedsApi.Api.Models
     }
 
     /// <summary>Modelo de representação para a atualização de um usuário</summary>
+    [AutoMap(typeof(Usuario), ReverseMap = true)]
     public class UsuarioUpdateModelRequest
     {
         /// <summary>Matrícula do aluno ou servidor</summary>
