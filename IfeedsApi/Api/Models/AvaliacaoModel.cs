@@ -8,7 +8,7 @@ using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Api.Models
 {
-    [AutoMap(typeof(Avaliacao))]
+    [AutoMap(typeof(Avaliacao), ReverseMap = true)]
     public class AvaliacaoModel
     {
         public int Id { get; set; }
@@ -24,6 +24,7 @@ namespace IfeedsApi.Api.Models
         public int TotalFeedbacks { get; set; }
     }
 
+    [AutoMap(typeof(Avaliacao), ReverseMap = true)]
     public class FeedbackAvaliacaoModel
     {
         public int Id { get; set; }
@@ -32,6 +33,7 @@ namespace IfeedsApi.Api.Models
 
     }
 
+    [AutoMap(typeof(Avaliacao), ReverseMap = true)]
     public class AvaliacaoModelRequest
     {
         [MaxLength(45)]

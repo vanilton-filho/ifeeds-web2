@@ -20,7 +20,6 @@ namespace IfeedsApi.Api.ExceptionsHandler
 
                 if (exceptionHandlerFeature != null)
                 {
-                    Console.WriteLine(context.Response.StatusCode);
                     if (exceptionHandlerFeature.Error.GetBaseException() is EntidadeEmUsoException)
                     {
                         context.Response.StatusCode = (int)HttpStatusCode.Conflict;

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Api.Models
 {
+    [AutoMap(typeof(Feedback), ReverseMap =true)]
+    [AutoMap(typeof(Usuario), ReverseMap =true)]
     public class FeedbackModel
     {
 
         public string Codigo { get; set; }
-
 
         public string Titulo { get; set; }
 
@@ -35,6 +38,7 @@ namespace IfeedsApi.Api.Models
 
     }
 
+    [AutoMap(typeof(Feedback), ReverseMap =true)]
     public class FeedbaackModelRequest 
     {
         [Required(ErrorMessage = "Título é um campo obrigatório")]
