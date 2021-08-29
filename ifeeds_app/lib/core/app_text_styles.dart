@@ -9,6 +9,12 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     fontSize: 50,
   );
+  static final TextStyle heading2 = GoogleFonts.titilliumWeb(
+    color: AppColors.heading1,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.bold,
+    fontSize: 36,
+  );
 
   static final TextStyle button = GoogleFonts.sourceSansPro(
     color: Colors.white,
@@ -22,6 +28,13 @@ class AppTextStyles {
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w400,
     fontSize: 18,
+  );
+
+  static final TextStyle tile = GoogleFonts.sourceSansPro(
+    color: AppColors.normal,
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w400,
+    fontSize: 20,
   );
 
   static final TextStyle normal2 = GoogleFonts.roboto(

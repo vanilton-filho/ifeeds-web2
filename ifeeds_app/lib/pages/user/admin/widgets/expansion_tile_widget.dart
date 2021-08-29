@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ifeeds_app/models/avaliacao_model.dart';
+import 'package:ifeeds_app/core/app_button_styles.dart';
+import 'package:ifeeds_app/core/app_text_styles.dart';
+import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 
 class ExpansionTileWidget extends StatelessWidget {
   final IconData? leadingIcon;
@@ -23,16 +25,15 @@ class ExpansionTileWidget extends StatelessWidget {
       ),
       title: Text(
         title,
+        style: AppTextStyles.normal2,
       ),
       children: [
         ...lista.map(
           (e) => ListTile(
-
             dense: true,
             title: Text(
-              isAvaliacao?
-              e.titulo!:
-              e.nome!
+              isAvaliacao ? e.titulo! : e.nome!,
+              style: AppTextStyles.tile,
             ),
             trailing: Wrap(
               children: [
@@ -43,7 +44,24 @@ class ExpansionTileWidget extends StatelessWidget {
                       color: Colors.blue,
                     )),
                 IconButton(
-                  onPressed: () => {},
+                  onPressed: () => {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Tem certeza que deseja deletar?'),
+                            content: Text(isAvaliacao ? e.titulo! : e.nome!),
+                            actions: <Widget>[
+                              ButtonWidget(
+                                buttonStyle: AppButtonStyles.delete,
+                                edgeInsets: EdgeInsets.zero,
+                                label: 'Remover',
+                                borderCircular: 15,
+                              )
+                            ],
+                          );
+                        })
+                  },
                   icon: Icon(
                     Icons.delete,
                     color: Colors.red,

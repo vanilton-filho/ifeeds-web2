@@ -19,6 +19,16 @@ class AppButtonStyles {
     ),
   );
 
+  static final ButtonStyle delete = ButtonStyle(
+    textStyle: MaterialStateProperty.all<TextStyle>(
+      AppTextStyles.button,
+    ),
+    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+    backgroundColor: MaterialStateProperty.all<Color>(
+      Colors.red,
+    ),
+  );
+
   static final ButtonStyle white = ButtonStyle(
     textStyle: MaterialStateProperty.all<TextStyle>(
       AppTextStyles.button,
