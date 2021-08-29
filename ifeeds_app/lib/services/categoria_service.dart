@@ -33,7 +33,7 @@ class CategoriaService {
       final response = await http.post(uri, headers: {
         HttpHeaders.acceptHeader: "application/json",
         HttpHeaders.contentTypeHeader: "application/json"
-      });
+      }, body: convert.json.encode(payload));
 
       if (response.statusCode == 201) {
         final json = convert.json.decode(response.body);

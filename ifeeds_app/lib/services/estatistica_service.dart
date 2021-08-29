@@ -13,7 +13,6 @@ class EstatisticaService {
 
       if (response.statusCode == 200) {
         //final json = convert.json.decode(response.body);
-        print(response.body);
         return EstatisticaModel.fromJson(response.body);
       }
     } catch (e) {

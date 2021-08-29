@@ -17,7 +17,6 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
   @override
   Widget build(BuildContext context) {
     var widthSize = MediaQuery.of(context).size.width;
-    print(widthSize);
     return StreamBuilder(
         stream: estatisticasStream(),
         builder: (context, AsyncSnapshot<EstatisticaModel> snapshot) {

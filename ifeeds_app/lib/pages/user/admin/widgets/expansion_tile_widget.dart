@@ -3,14 +3,16 @@ import 'package:ifeeds_app/models/avaliacao_model.dart';
 
 class ExpansionTileWidget extends StatelessWidget {
   final IconData? leadingIcon;
-  final String? title;
-  final List<AvaliacaoModel> avaliacoes;
+  final String title;
+  final List<dynamic> lista;
+  final isAvaliacao;
 
   const ExpansionTileWidget({
     Key? key,
     this.leadingIcon,
-    this.title,
-    required this.avaliacoes,
+    required this.title,
+    this.isAvaliacao = true,
+    required this.lista,
   }) : super(key: key);
 
   @override
@@ -20,14 +22,17 @@ class ExpansionTileWidget extends StatelessWidget {
         leadingIcon,
       ),
       title: Text(
-        title!,
+        title,
       ),
       children: [
-        ...avaliacoes.map(
+        ...lista.map(
           (e) => ListTile(
+
             dense: true,
             title: Text(
-              e.titulo!,
+              isAvaliacao?
+              e.titulo!:
+              e.nome!
             ),
             trailing: Wrap(
               children: [
