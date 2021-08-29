@@ -24,9 +24,9 @@ class ExpansionTileAppWidget extends StatefulWidget {
 }
 
 class _ExpansionTileAppWidgetState extends State<ExpansionTileAppWidget> {
-  List<CategoriaModel>? _categorias;
-  List<CampusModel>? _campus;
-  List<AvaliacaoModel>? _avaliacoes;
+  late List<CategoriaModel>? _categorias;
+  late List<CampusModel>? _campus;
+  late List<AvaliacaoModel>? _avaliacoes;
   final _formKey = GlobalKey<FormState>();
   final _avaliacaoRequest = AvaliacaoModelRequest();
 
@@ -40,146 +40,172 @@ class _ExpansionTileAppWidgetState extends State<ExpansionTileAppWidget> {
 
   _getCategorias() async {
     _categorias = await CategoriaService.listarCategorias();
+    setState(() {});
   }
 
   _getCampus() async {
     _campus = await CampusService.listarCampus();
+    setState(() {});
   }
 
   _getAvaliacoes() async {
     _avaliacoes = await AvaliacaoService.listarAvaliacoes();
+    setState(() {});
+  }
+
+  _future() async {
+    if (_avaliacoes != null && _categorias != null && _campus != null) {
+      return true;
+    }
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Builder(
-        builder: (context) => Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
+    return FutureBuilder(
+        future: _future(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Container(
+              child: Builder(
+                builder: (context) => Form(
+                  key: _formKey,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            widget.title,
-                            style: TextStyle(fontSize: 23),
-                          )
-                        ],
-                      ),
-                      Divider(
-                        thickness: 2,
-                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 3,
-                                child: FormFieldWidget(
-                                  label: 'Nome da avaliação',
-                                  onChanged: (value) =>
-                                      _avaliacaoRequest.nome = value,
-                                )),
-                            Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 3)),
-                            Expanded(
-                              flex: 1,
-                              child: DropdownButtonFormField(
-                                validator: (val) => val == null
-                                    ? 'Selecione a categoria'
-                                    : null,
-                                isDense: true,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    prefixIcon: Icon(Icons.account_circle),
-                                    fillColor: Colors.white,
-                                    focusColor: Colors.red),
-                                hint: Text("Categoria"),
-                                // isExpanded: true,
-                                items: [
-                                  ..._categorias!.map(
-                                    (e) => DropdownMenuItem<int>(
-                                      child: Text("${e.nome}"),
-                                      value: e.id,
-                                    ),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    widget.title,
+                                    style: TextStyle(fontSize: 23),
                                   )
                                 ],
-                                onChanged: (int? val) {
-                                  setState(() {
-                                    _avaliacaoRequest.categoriaId = val;
-                                  });
-                                },
                               ),
-                            ),
-                            Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 3)),
-                            Expanded(
-                              flex: 1,
-                              child: DropdownButtonFormField(
-                                validator: (val) =>
-                                    val == null ? 'Selecione o campus' : null,
-                                isDense: true,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    prefixIcon: Icon(Icons.account_circle),
-                                    fillColor: Colors.white,
-                                    focusColor: Colors.red),
-                                hint: Text("Campus"),
-                                // isExpanded: true,
-                                items: [
-                                  ..._campus!.map(
-                                    (e) => DropdownMenuItem<int>(
-                                      child: Text("${e.nome}"),
-                                      value: e.id,
+                              Divider(
+                                thickness: 2,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12.0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                        flex: 3,
+                                        child: FormFieldWidget(
+                                          label: 'Nome da avaliação',
+                                          onChanged: (value) =>
+                                              _avaliacaoRequest.titulo = value,
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 3)),
+                                    Expanded(
+                                      flex: 1,
+                                      child: DropdownButtonFormField(
+                                        validator: (val) => val == null
+                                            ? 'Selecione a categoria'
+                                            : null,
+                                        isDense: true,
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        decoration: const InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            prefixIcon:
+                                                Icon(Icons.account_circle),
+                                            fillColor: Colors.white,
+                                            focusColor: Colors.red),
+                                        hint: Text("Categoria"),
+                                        // isExpanded: true,
+                                        items: [
+                                          ..._categorias!.map(
+                                            (e) => DropdownMenuItem<int>(
+                                              child: Text("${e.nome}"),
+                                              value: e.id,
+                                            ),
+                                          )
+                                        ],
+                                        onChanged: (int? val) {
+                                          setState(() {
+                                            _avaliacaoRequest.categoriaId = val;
+                                          });
+                                        },
+                                      ),
                                     ),
-                                  )
-                                ],
-                                onChanged: (int? val) {
-                                  setState(() {
-                                    _avaliacaoRequest.campusId = val;
-                                  });
-                                },
+                                    Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 3)),
+                                    Expanded(
+                                      flex: 1,
+                                      child: DropdownButtonFormField(
+                                        validator: (val) => val == null
+                                            ? 'Selecione o campus'
+                                            : null,
+                                        isDense: true,
+                                        autovalidateMode:
+                                            AutovalidateMode.onUserInteraction,
+                                        decoration: const InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            prefixIcon:
+                                                Icon(Icons.account_circle),
+                                            fillColor: Colors.white,
+                                            focusColor: Colors.red),
+                                        hint: Text("Campus"),
+                                        // isExpanded: true,
+                                        items: [
+                                          ..._campus!.map(
+                                            (e) => DropdownMenuItem<int>(
+                                              child: Text("${e.nome}"),
+                                              value: e.id,
+                                            ),
+                                          )
+                                        ],
+                                        onChanged: (int? val) {
+                                          setState(() {
+                                            _avaliacaoRequest.campusId = val;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          ButtonWidget(
-                            edgeInsets: EdgeInsets.zero,
-                            label: 'Adicionar +',
-                            borderCircular: 15,
-                            onPressed: () {
-                              final form = _formKey.currentState;
-                              if (form!.validate()) {}
-                            },
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  ButtonWidget(
+                                    edgeInsets: EdgeInsets.zero,
+                                    label: 'Adicionar +',
+                                    borderCircular: 15,
+                                    onPressed: () {
+                                      final form = _formKey.currentState;
+                                      if (form!.validate()) {
+                                        _criarAvaliacao(_avaliacaoRequest);
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
+            );
+          } else
+            return CircularProgressIndicator();
+        });
   }
 
   _criarAvaliacao(AvaliacaoModelRequest request) async {
     var payload = request.toMap();
-    await AvaliacaoService.criarAvaliacao(payload);
+    print(await AvaliacaoService.criarAvaliacao(payload));
   }
 }

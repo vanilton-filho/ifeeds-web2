@@ -1,19 +1,19 @@
 import 'dart:convert';
 
 class AvaliacaoModelRequest {
-  String? nome;
+  String? titulo;
   int? categoriaId;
   int? campusId;
 
   AvaliacaoModelRequest({
-    this.nome,
+    this.titulo,
     this.categoriaId,
     this.campusId,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'nome': nome,
+      'titulo': titulo,
       'categoriaId': categoriaId,
       'campusId': campusId,
     };
@@ -21,7 +21,7 @@ class AvaliacaoModelRequest {
 
   factory AvaliacaoModelRequest.fromMap(Map<String, dynamic> map) {
     return AvaliacaoModelRequest(
-      nome: map['nome'],
+      titulo: map['titulo'],
       categoriaId: map['categoriaId'],
       campusId: map['campusId'],
     );
