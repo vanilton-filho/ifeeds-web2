@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ifeeds_app/core/app_colors.dart';
-import 'package:ifeeds_app/pages/user/admin/home_admin.dart';
 import 'package:ifeeds_app/pages/user/cadastro/cadastro_usuario_page.dart';
 import 'package:ifeeds_app/pages/user/formulario/formulario_avaliacao_page.dart';
 import 'package:ifeeds_app/pages/user/home/drawer_page.dart';
+import 'package:ifeeds_app/pages/user/home/drawer_page_admin.dart';
 
 void main() {
   runApp(RootApp());
@@ -18,7 +18,7 @@ class RootApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: AppColors.primarySwatch,
       ),
-      home: Scaffold(body: GridViewListAppWidget (),),
+      home: DrawerPageAdmin()
     );
   }
 }

@@ -32,12 +32,12 @@ class CardGridView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
                 '$value',
-                style: AppTextStyles.heading1,
+              style: AppTextStyles.heading1.merge(TextStyle(fontSize: 40, color: Colors.white)),
               ),
             ),
             Text(
               '$label',
-              style: AppTextStyles.heading1.merge(TextStyle(fontSize: 23)),
+              style: AppTextStyles.heading1.merge(TextStyle(fontSize: 23, color: Colors.white)),
             ),
           ],
         ),
