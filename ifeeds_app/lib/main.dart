@@ -16,7 +16,7 @@ class RootApp extends StatelessWidget {
         primarySwatch: AppColors.primarySwatch,
       ),
       home: Scaffold(
-        body: ExpansionTileAppWidget(
+        body: AcoesPage(
           title: 'avaliação',
         ),
       ),
