@@ -1,12 +1,9 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
-import 'package:ifeeds_app/models/formulario_avaliacao_model.dart';
 import 'package:ifeeds_app/models/formulario_avaliacao_model_request.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
@@ -30,33 +27,41 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(bottom: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
-            child: Container(
-              color: Colors.white,
-              height: 80.0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 29.0 / 2, horizontal: 19.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    BreadCrumb(
+      appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: Container(
+            color: Colors.white,
+            height: 80.0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: 29.0 / 2, horizontal: 19.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  BreadCrumb(
                     items: <BreadCrumbItem>[
-                    BreadCrumbItem(content: Text('Realizar Feedback', style: GoogleFonts.titilliumWeb(fontSize: 22.0, fontWeight: FontWeight.bold),)),
-	            ],
-	            divider: Icon(Icons.chevron_right),)
-                  ],
-                ),
+                      BreadCrumbItem(
+                          content: Text(
+                        'Realizar Feedback',
+                        style: GoogleFonts.titilliumWeb(
+                            fontSize: 22.0, fontWeight: FontWeight.bold),
+                      )),
+                    ],
+                    divider: Icon(Icons.chevron_right),
+                  )
+                ],
               ),
             ),
-          ),),
+          ),
+        ),
+      ),
       body: Row(
         children: [
           Expanded(
             child: Container(
-              
-              padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
               child: Builder(
                 builder: (context) => Form(
                   key: _formKey,
@@ -102,9 +107,13 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Nota", style: GoogleFonts.titilliumWeb(fontSize: 26.0),), 
+                            Text(
+                              "Nota",
+                              style: GoogleFonts.titilliumWeb(fontSize: 26.0),
+                            ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
                               child: RatingBar.builder(
                                 glowColor: Colors.transparent,
                                 itemSize: 34.0,
@@ -114,7 +123,8 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                                 direction: Axis.horizontal,
                                 allowHalfRating: true,
                                 itemCount: 5,
-                                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                itemPadding:
+                                    EdgeInsets.symmetric(horizontal: 4.0),
                                 itemBuilder: (context, _) => Icon(
                                   Icons.star_rounded,
                                   color: Colors.amber,
@@ -137,18 +147,23 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                           ],
                         ),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: ButtonWidget(edgeInsets: EdgeInsets.symmetric(vertical: 12.0), label: 'Realizar Feedback', borderCircular: 8.0, buttonStyle: AppButtonStyles.green, onPressed: () {
-                              final form = _formKey.currentState;
-                              if (form!.validate()) {
-                                _formularioModel.descricao = _descricao.text;
-                                _formularioModel.nota = _nota;
-                                print(_formularioModel.toMap());
-                                _salvarFormulario(_formularioModel);
-                              }
-                            },),
+                        child: ButtonWidget(
+                          edgeInsets: EdgeInsets.symmetric(vertical: 12.0),
+                          label: 'Realizar Feedback',
+                          borderCircular: 8.0,
+                          buttonStyle: AppButtonStyles.green,
+                          onPressed: () {
+                            final form = _formKey.currentState;
+                            if (form!.validate()) {
+                              _formularioModel.descricao = _descricao.text;
+                              _formularioModel.nota = _nota;
+                              print(_formularioModel.toMap());
+                              _salvarFormulario(_formularioModel);
+                            }
+                          },
+                        ),
                       ),
                       Expanded(child: SizedBox()),
                     ],
@@ -157,12 +172,14 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
               ),
             ),
           ),
-        Expanded(
-          child: Container(child: PageViewWidget(totalPages: 1, images: [Image.asset('assets/feedback.jpg')],),) ,
-          
-
-        )
-        ,
+          Expanded(
+            child: Container(
+              child: PageViewWidget(
+                totalPages: 1,
+                images: [Image.asset('assets/feedback.jpg')],
+              ),
+            ),
+          ),
         ],
       ),
     );

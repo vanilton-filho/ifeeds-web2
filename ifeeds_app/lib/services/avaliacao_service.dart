@@ -7,7 +7,7 @@ import 'package:ifeeds_app/services/envs.dart';
 
 class AvaliacaoService {
   static Future<dynamic> listarAvaliacoes() async {
-    Uri uri = Uri.http(Envs.baseUrl, "api/avaliacoes");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacoes");
     try {
       final response =
           await http.get(uri, headers: {"Accept": "application/json"});
@@ -43,14 +43,15 @@ class AvaliacaoService {
   static Future<dynamic> criarAvaliacao(Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacoes");
     try {
-      final response = await http.post(uri, headers: {
-        HttpHeaders.acceptHeader: "application/json",
-        HttpHeaders.contentTypeHeader: "application/json"
-      });
-
+      final response = await http.post(uri,
+          headers: {
+            HttpHeaders.acceptHeader: "application/json",
+            HttpHeaders.contentTypeHeader: "application/json"
+          },
+          body: convert.json.encode(payload));
+      print(payload);
       if (response.statusCode == 201) {
-        final json = convert.json.decode(response.body);
-        return AvaliacaoModel.fromJson(json);
+        return AvaliacaoModel.fromJson(response.body);
       }
     } catch (e) {
       throw new Exception("Impossível criar avaliação");
@@ -87,4 +88,6 @@ class AvaliacaoService {
       throw new Exception("Impossível deletar avaliação");
     }
   }
+
+  static listarCategorias() {}
 }

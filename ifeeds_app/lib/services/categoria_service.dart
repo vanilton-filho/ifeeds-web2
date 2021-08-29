@@ -6,7 +6,7 @@ import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class CategoriaService {
-  static Future<dynamic> listarCategorias() async {
+  static Future<List<CategoriaModel>> listarCategorias() async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias");
     try {
       final response = await http.get(uri, headers: {
@@ -15,10 +15,13 @@ class CategoriaService {
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);
+        print(json);
         return json
             .map<CategoriaModel>((json) => CategoriaModel.fromMap(json))
             .toList();
       }
+
+      throw Exception();
     } catch (e) {
       throw new Exception("Impossível listar categorias");
     }
