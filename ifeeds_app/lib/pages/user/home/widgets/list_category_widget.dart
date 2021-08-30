@@ -23,7 +23,7 @@ class _ListCategoryWidgetState extends State<ListCategoryWidget> {
   Widget _buildCategory(BuildContext context) {
     return FutureBuilder(
       future:
-          AvaliacaoService.listarAvaliacoesPorCategoria(widget.categoria!.id!),
+          AvaliacaoService().listarAvaliacoesPorCategoria(widget.categoria!.id!),
       builder: (context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           return _buildCategoryList(context, snapshot.data!);

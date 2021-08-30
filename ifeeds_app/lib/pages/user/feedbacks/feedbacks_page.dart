@@ -15,7 +15,7 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: FeedbackService.listarFeedback(),
+        future: FeedbackService().listarFeedback(),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
             List<FeedbackModel> feedbacksModel = snapshot.data!;

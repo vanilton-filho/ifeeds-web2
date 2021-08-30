@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/models/estatistica_model.dart';
 import 'package:ifeeds_app/pages/user/admin/widgets/card_gridview_widget.dart';
 import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
@@ -39,10 +42,24 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
                   value: estatisticas.feedbacksRespondidos,
                   label: 'Feedbacks respondidos',
                 ),
-                CardGridView(
-                  color: Colors.purple,
-                  value: estatisticas.satisfacaoGeral,
-                  label: 'Satisfação',
+                InkWell(
+                  onLongPress: () => Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                    body: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.favorite, color: Colors.redAccent, size: 90,),
+                          Text("Satisfeitos ficaríamos com a nota 10!!! ;-)", style: GoogleFonts.roboto(fontSize: 42),),
+                        ],  
+                      ),
+                    ),
+                  )),),
+                  child: CardGridView(
+                    color: Colors.purple,
+                    value: estatisticas.satisfacaoGeral,
+                    label: 'Satisfação',
+                  ),
                 ),
                 CardGridView(
                   color: Colors.blue,
@@ -70,7 +87,7 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
       EstatisticaModel estatisticas =
-          await EstatisticaService.getEstatisticas(1);
+          await EstatisticaService().getEstatisticas(1);
       yield estatisticas;
     }
   }

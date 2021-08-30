@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/pages/user/home/widgets/list_category_widget.dart';
 import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
-import 'package:ifeeds_app/services/avaliacao_service.dart';
 import 'package:ifeeds_app/services/categoria_service.dart';
 
 class HomePage extends StatelessWidget {
@@ -45,7 +44,7 @@ class HomePage extends StatelessWidget {
     while (true) {
       await Future.delayed(Duration(milliseconds: 1000));
       List<CategoriaModel> categorias =
-          await CategoriaService.listarCategorias();
+          await CategoriaService().listarCategorias();
       yield categorias;
     }
   }
