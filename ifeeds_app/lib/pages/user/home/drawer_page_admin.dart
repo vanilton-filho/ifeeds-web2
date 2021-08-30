@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
+import 'package:ifeeds_app/pages/user/admin/acoes/acoes_page.dart';
 import 'package:ifeeds_app/pages/user/admin/home_admin_page.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/feedbacks_page.dart';
 import 'package:ifeeds_app/pages/user/formulario/formulario_avaliacao_page.dart';
@@ -44,8 +45,7 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
               ListTile(
                 selected: 1 == _selectedIndex,
                 leading: Icon(Icons.feedback),
-                title: Text('Feedbacks'),
-                subtitle: Text('Histórico de Feedbacks'),
+                title: Text('Ações'),
                 onTap: () => _onSelectItem(1),
               ),
               ListTile(
@@ -118,25 +118,6 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
             child: Container(
               color: Colors.white,
               height: 80.0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 29.0 / 2, horizontal: 19.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ButtonWidget(
-                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => FormularioAvaliacaoPage())),
-                      edgeInsets: const EdgeInsets.symmetric(
-                        vertical: 10.5,
-                        horizontal: 48,
-                      ),
-                      label: 'Novo Feedback  +',
-                      borderCircular: 8,
-                      buttonStyle: AppButtonStyles.white,
-                    )
-                  ],
-                ),
-              ),
             ),
           ),
         ),
@@ -153,7 +134,7 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
       case 0:
         return HomeAdminPage();
       case 1:
-        return FeedbacksPage();
+        return AcoesPage();
     }
   }
 }

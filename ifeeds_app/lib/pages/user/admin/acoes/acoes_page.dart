@@ -8,6 +8,7 @@ import 'package:ifeeds_app/models/campus_model_request.dart';
 import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/models/categoria_model_request.dart';
 import 'package:ifeeds_app/pages/user/admin/widgets/expansion_tile_widget.dart';
+import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
 import 'package:ifeeds_app/services/avaliacao_service.dart';
@@ -372,16 +373,80 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarAvaliacao(AvaliacaoModelRequest request) async {
     var payload = request.toMap();
-    print(await AvaliacaoService.criarAvaliacao(payload));
+    AvaliacaoModel? avaliacaoModel = await AvaliacaoService.criarAvaliacao(payload);
+    if(avaliacaoModel is AvaliacaoModel)
+    {
+    SnackBarUtils.showSnackbar(
+        context,
+        "Avaliação adicionada com sucesso!",
+        Icon(
+          Icons.check_circle,
+          color: Colors.white,
+        ),
+        background: Colors.green,
+      );
+    }
+    SnackBarUtils.showSnackbar(
+        context,
+        "Opss! Aconteceu um erro!",
+        Icon(
+          Icons.error,
+          color: Colors.white,
+        ),
+        background: Colors.redAccent,
+      );
   }
 
   _criarCategoria(CategoriaModelRequest request) async {
     var payload = request.toMap();
-    print(await CategoriaService.criarCategoria(payload));
+    CategoriaModel? categoriaModel = await CategoriaService.criarCategoria(payload);
+    
+    if(categoriaModel is CategoriaModel)
+    {
+    SnackBarUtils.showSnackbar(
+        context,
+        "Categoria adicionada com sucesso!",
+        Icon(
+          Icons.check_circle,
+          color: Colors.white,
+        ),
+        background: Colors.green,
+      );
+    }
+    SnackBarUtils.showSnackbar(
+        context,
+        "Opss! Aconteceu um erro!",
+        Icon(
+          Icons.error,
+          color: Colors.white,
+        ),
+        background: Colors.redAccent,
+      );
   }
 
   _criarCampus(CampusModelRequest request) async {
     var payload = request.toMap();
-    print(await CampusService.criarCampus(payload));
+    CampusModel? campusModel = await CampusService.criarCampus(payload);
+    if(campusModel is CampusModel)
+    {
+    SnackBarUtils.showSnackbar(
+        context,
+        "Campus adicionado com sucesso!",
+        Icon(
+          Icons.check_circle,
+          color: Colors.white,
+        ),
+        background: Colors.green,
+      );
+    }
+    SnackBarUtils.showSnackbar(
+        context,
+        "Opss! Aconteceu um erro!",
+        Icon(
+          Icons.error,
+          color: Colors.white,
+        ),
+        background: Colors.redAccent,
+      );
   }
 }
