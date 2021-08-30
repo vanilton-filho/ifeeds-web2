@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 class AvaliacaoModel {
+  int? id;
   String? titulo;
   double? mediaAvaliacao;
   String? categoria;
@@ -8,6 +9,7 @@ class AvaliacaoModel {
   int? totalFeedbacks;
 
   AvaliacaoModel({
+    this.id,
     this.titulo,
     this.mediaAvaliacao,
     this.categoria,
@@ -17,6 +19,7 @@ class AvaliacaoModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'titulo': titulo,
       'mediaAvaliacao': mediaAvaliacao,
       'categoria': categoria,
@@ -27,6 +30,7 @@ class AvaliacaoModel {
 
   factory AvaliacaoModel.fromMap(Map<String, dynamic> map) {
     return AvaliacaoModel(
+      id: map['id'],
       titulo: map['titulo'],
       mediaAvaliacao: map['mediaAvaliacao'],
       categoria: map['categoria'],

@@ -40,13 +40,13 @@ class CampusService {
     }
   }
 
-  static Future<dynamic> atualizarCampus(Map<String, dynamic> payload) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus");
+  static Future<dynamic> atualizarCampus(int id, Map<String, dynamic> payload) async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus/$id");
     try {
       final response = await http.put(uri, headers: {
         HttpHeaders.acceptHeader: "application/json",
         HttpHeaders.contentTypeHeader: "application/json"
-      });
+      }, body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);
@@ -58,7 +58,7 @@ class CampusService {
   }
 
   static Future<dynamic> deletarCampus(int id) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus/{id}");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus/$id");
     try {
       final response = await http.delete(uri);
 

@@ -25,7 +25,7 @@ class RespostaFeedbackService {
   }
 
   static Future<dynamic> criarRespostaFeedbacks(Map<String, dynamic> payload) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbcaks");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbacks");
     try {
       final response = await http.post(uri, headers: {
         HttpHeaders.acceptHeader:"application/json", HttpHeaders.contentTypeHeader: "application/json"
@@ -40,12 +40,12 @@ class RespostaFeedbackService {
     }
   }
 
-  static Future<dynamic> atualizarRespostaFeedbacks(Map<String, dynamic> payload) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbcaks");
+  static Future<dynamic> atualizarRespostaFeedbacks(int id, Map<String, dynamic> payload) async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbacks/$id");
     try {
       final response = await http.put(uri, headers: {
         HttpHeaders.acceptHeader:"application/json", HttpHeaders.contentTypeHeader: "application/json"
-      });
+      }, body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);
@@ -57,7 +57,7 @@ class RespostaFeedbackService {
   }
 
 static Future<dynamic> deletarRespostaFeedbcaks(int id) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbcaks/{id}");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbcaks/$id");
     try {
       final response = await http.delete(uri);
 
