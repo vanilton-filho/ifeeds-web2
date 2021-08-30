@@ -8,7 +8,7 @@ import 'package:ifeeds_app/models/formulario_avaliacao_model_request.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
-import 'package:ifeeds_app/services/formulario_service.dart';
+import 'package:ifeeds_app/services/feedback_service.dart';
 
 class FormularioAvaliacaoPage extends StatefulWidget {
   const FormularioAvaliacaoPage({Key? key}) : super(key: key);
@@ -187,7 +187,7 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
 
   _salvarFormulario(FormularioAvaliacaoModelRequest formulario) async {
     var formularioSalvo =
-        await FormularioService.postFormulario(formulario.toMap());
+        await FeedbackService().postFormulario(formulario.toMap());
     print(formularioSalvo);
     await showModalBottomSheet(
         context: context,

@@ -1,16 +1,25 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/campus_model.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class CampusService {
-  static Future<dynamic> listarCampus() async {
+  GetStorage storage = GetStorage();
+  late final token;
+
+  CampusService() {
+    this.token = storage.read("jwt");
+  }
+
+  Future<dynamic> listarCampus() async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus");
     try {
-      final response = await http.get(uri, headers: {
+      final response = await http.get(uri,  headers: {
         "Accept": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
       });
 
       if (response.statusCode == 200) {
@@ -24,12 +33,13 @@ class CampusService {
     }
   }
 
-  static Future<dynamic> criarCampus(Map<String, dynamic> payload) async {
+  Future<dynamic> criarCampus(Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus");
     try {
       final response = await http.post(uri, headers: {
         HttpHeaders.acceptHeader: "application/json",
-        HttpHeaders.contentTypeHeader: "application/json"
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
        }, body: convert.json.encode(payload));
 
       if (response.statusCode == 201) {
@@ -40,12 +50,13 @@ class CampusService {
     }
   }
 
-  static Future<dynamic> atualizarCampus(int id, Map<String, dynamic> payload) async {
+  Future<dynamic> atualizarCampus(int id, Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus/$id");
     try {
       final response = await http.put(uri, headers: {
         HttpHeaders.acceptHeader: "application/json",
-        HttpHeaders.contentTypeHeader: "application/json"
+        HttpHeaders.contentTypeHeader: "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
       }, body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
@@ -57,10 +68,13 @@ class CampusService {
     }
   }
 
-  static Future<dynamic> deletarCampus(int id) async {
+  Future<dynamic> deletarCampus(int id) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/campus/$id");
     try {
-      final response = await http.delete(uri);
+      final response = await http.delete(uri, headers: {
+        "Accept": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
+      });
 
       if (response.statusCode == 204) {
         return true;

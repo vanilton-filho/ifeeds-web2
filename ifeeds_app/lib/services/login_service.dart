@@ -1,9 +1,9 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/error_model.dart';
-import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/services/envs.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
@@ -18,19 +18,16 @@ class LoginService {
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            HttpHeaders.allowHeader: "Authorization"
+            HttpHeaders.allowHeader: "Authorization",
+            HttpHeaders.contentTypeHeader: "application/json"
           },
           body: convert.json.encode(payload));
 
       if (response.statusCode == 204) {
-        await StorageUtil.getInstance();
+        GetStorage storage = GetStorage();
+        await storage.write("jwt", response.headers["authorization"].toString());
         Map<String, dynamic> decodedToken =
-            JwtDecoder.decode(response.headers["authorization"].toString());
-        print("token" + response.headers["authorization"].toString());
-        await StorageUtil.getInstance();
-        StorageUtil.putString(
-            'token', response.headers["authorization"].toString());
-
+            JwtDecoder.decode(storage.read("jwt"));
         return decodedToken["role"];
       } else if (response.statusCode == 404) {
         return ErrorModel(

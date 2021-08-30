@@ -47,17 +47,17 @@ class _AcoesPageState extends State<AcoesPage> {
   }
 
   _getCategorias() async {
-    _categorias = await CategoriaService.listarCategorias();
+    _categorias = await CategoriaService().listarCategorias();
     setState(() {});
   }
 
   _getCampus() async {
-    _campus = await CampusService.listarCampus();
+    _campus = await CampusService().listarCampus();
     setState(() {});
   }
 
   _getAvaliacoes() async {
-    _avaliacoes = await AvaliacaoService.listarAvaliacoes();
+    _avaliacoes = await AvaliacaoService().listarAvaliacoes();
     setState(() {});
   }
 
@@ -65,9 +65,9 @@ class _AcoesPageState extends State<AcoesPage> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
       if (_avaliacoes != null && _categorias != null && _campus != null) {
-        _categorias = await CategoriaService.listarCategorias();
-        _campus = await CampusService.listarCampus();
-        _avaliacoes = await AvaliacaoService.listarAvaliacoes();
+        _categorias = await CategoriaService().listarCategorias();
+        _campus = await CampusService().listarCampus();
+        _avaliacoes = await AvaliacaoService().listarAvaliacoes();
         yield true;
       }
     }
@@ -373,7 +373,7 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarAvaliacao(AvaliacaoModelRequest request) async {
     var payload = request.toMap();
-    AvaliacaoModel? avaliacaoModel = await AvaliacaoService.criarAvaliacao(payload);
+    AvaliacaoModel? avaliacaoModel = await AvaliacaoService().criarAvaliacao(payload);
     if(avaliacaoModel is AvaliacaoModel)
     {
     SnackBarUtils.showSnackbar(
@@ -400,7 +400,7 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarCategoria(CategoriaModelRequest request) async {
     var payload = request.toMap();
-    CategoriaModel? categoriaModel = await CategoriaService.criarCategoria(payload);
+    CategoriaModel? categoriaModel = await CategoriaService().criarCategoria(payload);
     
     if(categoriaModel is CategoriaModel)
     {
@@ -429,7 +429,7 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarCampus(CampusModelRequest request) async {
     var payload = request.toMap();
-    CampusModel? campusModel = await CampusService.criarCampus(payload);
+    CampusModel? campusModel = await CampusService().criarCampus(payload);
     if(campusModel is CampusModel)
     {
     SnackBarUtils.showSnackbar(

@@ -494,7 +494,7 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
 
   _cadastrarUsuario(UsuarioRequestModel usuarioRequestModel) async {
     var usuarioPayload = usuarioRequestModel.toMap();
-    UsuarioModel result = await UsuarioService.cadastrar(usuarioPayload);
+    UsuarioModel result = await UsuarioService().cadastrar(usuarioPayload);
 
     Navigator.push(
         context,

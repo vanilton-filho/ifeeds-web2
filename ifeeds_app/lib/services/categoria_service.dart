@@ -1,19 +1,27 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class CategoriaService {
-  static Future<List<CategoriaModel>> listarCategorias() async {
+  GetStorage storage = GetStorage();
+  late final token;
+
+  CategoriaService() {
+    this.token = storage.read("jwt");
+  }
+
+  Future<List<CategoriaModel>> listarCategorias() async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias");
     await StorageUtil.getInstance();
     try {
       final response = await http.get(uri, headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer ${StorageUtil.getString("token")}"
+        HttpHeaders.authorizationHeader: "Bearer $token"
       });
 
       if (response.statusCode == 200) {
@@ -30,14 +38,15 @@ class CategoriaService {
     }
   }
 
-  static Future<dynamic> criarCategoria(Map<String, dynamic> payload) async {
+  Future<dynamic> criarCategoria(Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias");
     try {
       final response = await http.post(uri,
-          headers: {
-            HttpHeaders.acceptHeader: "application/json",
-            HttpHeaders.contentTypeHeader: "application/json"
-          },
+        headers: {
+        "Accept": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token",
+        HttpHeaders.contentTypeHeader: "application/json"
+        },
           body: convert.json.encode(payload));
 
       if (response.statusCode == 201) {
@@ -48,15 +57,16 @@ class CategoriaService {
     }
   }
 
-  static Future<dynamic> atualizarCategoria(
+  Future<dynamic> atualizarCategoria(
       int id, Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias/$id");
     try {
       final response = await http.put(uri,
           headers: {
-            HttpHeaders.acceptHeader: "application/json",
-            HttpHeaders.contentTypeHeader: "application/json"
-          },
+        "Accept": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token",
+        HttpHeaders.contentTypeHeader: "application/json"
+      },
           body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
@@ -68,12 +78,15 @@ class CategoriaService {
     }
   }
 
-  static Future<dynamic> deletarCategoria(int id) async {
+  Future<dynamic> deletarCategoria(int id) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias/$id");
     print(uri);
     try {
       final response = await http
-          .delete(uri, headers: {HttpHeaders.acceptHeader: "application/json"});
+          .delete(uri, headers: {
+        "Accept": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
+      });
 
       if (response.statusCode == 204) {
         return true;

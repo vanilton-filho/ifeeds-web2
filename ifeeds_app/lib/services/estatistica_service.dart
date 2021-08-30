@@ -1,16 +1,27 @@
+import 'dart:io';
+
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:ifeeds_app/models/estatistica_model.dart';
 import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class EstatisticaService {
-  static Future<dynamic> getEstatisticas(int usuarioId) async {
+  GetStorage storage = GetStorage();
+  late final token;
+
+  EstatisticaService(){
+    this.token = storage.read("jwt");
+  }
+
+  Future<dynamic> getEstatisticas(int usuarioId) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/estatisticas/$usuarioId");
     StorageUtil.getInstance();
     try {
       final response = await http.get(uri, headers: {
         "Accept": "application/json",
-        "Authorization": "Bearer ${StorageUtil.getString("token")}"
+        HttpHeaders.authorizationHeader: "Bearer $token"
       });
 
       if (response.statusCode == 200) {

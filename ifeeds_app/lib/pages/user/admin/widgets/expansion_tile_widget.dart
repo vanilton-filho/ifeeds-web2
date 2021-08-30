@@ -89,11 +89,11 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
 
   deletar(dynamic genericModel) async{
     if(genericModel is AvaliacaoModel){
-      await AvaliacaoService.deletarAvaliacao(genericModel.id!);
+      await AvaliacaoService().deletarAvaliacao(genericModel.id!);
     }else if (genericModel is CategoriaModel) {
-      await CategoriaService.deletarCategoria(genericModel.id!);
+      await CategoriaService().deletarCategoria(genericModel.id!);
     }else if (genericModel is CampusModel) {
-      await CampusService.deletarCampus(genericModel.id!);
+      await CampusService().deletarCampus(genericModel.id!);
     }
     Navigator.pop(context);
   }

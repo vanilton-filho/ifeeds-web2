@@ -38,6 +38,7 @@ dependencies:
   get: ^4.3.8
   mask_text_input_formatter: ^2.0.0
   jwt_decoder: ^2.0.1
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_test:
