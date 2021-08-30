@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/avaliacao_model.dart';
+import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/services/envs.dart';
 
 class AvaliacaoService {
@@ -24,10 +25,14 @@ class AvaliacaoService {
   }
 
   static Future<dynamic> listarAvaliacoesPorCategoria(int categoria) async {
-    Uri uri = Uri.http(Envs.baseUrl, "api/avaliacoes/$categoria/por-categoria");
+    Uri uri =
+        Uri.http(Envs.baseUrl, "v1/api/avaliacoes/$categoria/por-categoria");
+    await StorageUtil.getInstance();
     try {
-      final response =
-          await http.get(uri, headers: {"Accept": "application/json"});
+      final response = await http.get(uri, headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer ${StorageUtil.getString("token")}"
+      });
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);
@@ -58,14 +63,16 @@ class AvaliacaoService {
     }
   }
 
-  static Future<dynamic> atualizarAvaliacao(int id,
-      Map<String, dynamic> payload) async {
+  static Future<dynamic> atualizarAvaliacao(
+      int id, Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacoes/$id");
     try {
-      final response = await http.put(uri, headers: {
-        HttpHeaders.acceptHeader: "application/json",
-        HttpHeaders.contentTypeHeader: "application/json"
-      }, body: convert.json.encode(payload));
+      final response = await http.put(uri,
+          headers: {
+            HttpHeaders.acceptHeader: "application/json",
+            HttpHeaders.contentTypeHeader: "application/json"
+          },
+          body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);

@@ -1,7 +1,7 @@
 using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Domain.Services;
 using IfeedsApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers.V1
@@ -20,6 +20,7 @@ namespace IfeedsApi.Api.Controllers.V1
             _estatisticaMapper = estatisticaMapper;
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet("{usuarioId}")]
         public ActionResult<EstatisticaModel> GetEstatisticas(int usuarioId)
         {

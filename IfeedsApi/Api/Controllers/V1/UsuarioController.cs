@@ -46,16 +46,7 @@ namespace IfeedsApi.Api.Controllers.V1
             }
 
             var token = new TokenService(_configuration).GenerateToken(_usuarioMapper.ToModel(usuario));
-            Response.Cookies
-                .Append(
-                    "X-Access-Token",
-                    token,
-                    new CookieOptions()
-                    {
-                        HttpOnly = true,
-                        SameSite = SameSiteMode.Strict,
-                        Secure = true
-                    });
+            Response.Headers.Append("Authorization", token);
 
             return NoContent();
 

@@ -6,6 +6,7 @@ using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers.V1
@@ -27,6 +28,7 @@ namespace IfeedsApi.Api.Controllers.V1
 
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet]
         public ActionResult<ICollection<CampusModel>> Get()
         {
@@ -35,6 +37,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(campusModel);
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{id}", Name = "GetCampusId")]
         public ActionResult<CampusModel> Get(int id)
         {
@@ -47,7 +50,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(campusModel);
         }
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public ActionResult Post([FromBody] CampusModelRequest request)
         {
@@ -61,7 +64,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new CreatedAtRouteResult("GetCampusId", new { campusSalvo.Id }, campusModel);
         }
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPut("{id}")]
         public ActionResult<CampusModel> Put(int id, [FromBody] CampusModelRequest request)
         {
@@ -76,6 +79,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(campusModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

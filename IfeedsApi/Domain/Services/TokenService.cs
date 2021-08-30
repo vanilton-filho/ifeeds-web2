@@ -16,10 +16,10 @@ namespace IfeedsApi.Services
         {
             Configuration = configuration;
         }
-        
+
         public string GenerateToken(UsuarioModel usuario)
         {
-            var jwt =  new JwtSettings(Configuration);
+            var jwt = new JwtSettings(Configuration);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(jwt.GetSecret());
@@ -27,6 +27,7 @@ namespace IfeedsApi.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
+                    new Claim("id", usuario.Id.ToString()),
                     new Claim("matricula", usuario.Matricula),
                     new Claim(ClaimTypes.Email, usuario.Contato.Email),
                     new Claim(ClaimTypes.Role, usuario.Role)

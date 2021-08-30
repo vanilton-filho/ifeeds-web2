@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
-using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Exceptions;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers.V1
@@ -28,6 +27,7 @@ namespace IfeedsApi.Api.Controllers.V1
 
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet]
         public ActionResult<ICollection<AvaliacaoModel>> Get()
         {
@@ -36,6 +36,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(avaliacoesModel);
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{id}/por-categoria")]
         public ActionResult<ICollection<AvaliacaoModel>> ListarPorCategoria(int id)
         {
@@ -44,6 +45,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(avaliacoesModel);
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{id}", Name = "GetCodigo")]
         public ActionResult<AvaliacaoModel> Get(int id)
         {
@@ -56,6 +58,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(avaliacaoModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public ActionResult Post([FromBody] AvaliacaoModelRequest request)
         {
@@ -65,6 +68,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new CreatedAtRouteResult("GetCodigo", new { avaliacaoSalva.Id }, avaliacaoModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPut("{id}")]
         public ActionResult<AvaliacaoModel> Put(int id, [FromBody] AvaliacaoModelRequest request)
         {
@@ -79,6 +83,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(avaliacaoModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

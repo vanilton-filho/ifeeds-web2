@@ -6,8 +6,8 @@ import 'package:ifeeds_app/models/login_model.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_image_widget.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/user/home/drawer_page.dart';
+import 'package:ifeeds_app/pages/user/home/drawer_page_admin.dart';
 import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
-import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
 import 'package:ifeeds_app/pages/widgets/link_widget.dart';
@@ -118,7 +118,9 @@ class _LoginPageState extends State<LoginPage> {
                                               height: 40,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 120),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 120),
                                               child: FormFieldWidget(
                                                 label: 'Matrícula',
                                                 validator: (String? val) => (val!
@@ -134,7 +136,9 @@ class _LoginPageState extends State<LoginPage> {
                                               height: 33,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.symmetric(horizontal: 120),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 120),
                                               child: FormFieldWidget(
                                                 label: 'Senha',
                                                 prefixIcon: Icons.lock,
@@ -218,11 +222,10 @@ class _LoginPageState extends State<LoginPage> {
       return LoginPage();
     }
 
-    await StorageUtil.getInstance();
-    StorageUtil.putString('token', result.token);
-    StorageUtil.putString('email', result.usuario.contato!.email!);
-
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => DrawerPage()));
+    String role = result;
+    print(role);
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            role.toLowerCase() == "admin" ? DrawerPageAdmin() : DrawerPage()));
   }
 }

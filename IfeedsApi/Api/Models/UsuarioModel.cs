@@ -9,6 +9,10 @@ namespace IfeedsApi.Api.Models
     [AutoMap(typeof(Usuario), ReverseMap = true)]
     public class UsuarioModel
     {
+        /// <summary>Id do aluno ou servidor</summary>
+        /// <example>1</example>
+        public int Id { get; set; }
+
         /// <summary>Matrícula do aluno ou servidor</summary>
         /// <example>20152863123456</example>
         public string Matricula { get; set; }
@@ -105,10 +109,10 @@ namespace IfeedsApi.Api.Models
     public class AlterarSenhaModel
     {
         [Required(ErrorMessage = "Senha atual é um campo obrigatório")]
-        public string senhaAtual{get; set;}
+        public string senhaAtual { get; set; }
 
         [Required(ErrorMessage = "Nova senha é um campo obrigatório")]
-        public string novaSenha{get; set;}
+        public string novaSenha { get; set; }
 
     }
 }

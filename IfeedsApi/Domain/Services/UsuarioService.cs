@@ -107,6 +107,11 @@ namespace IfeedsApi.Services
             return _context.Usuarios.Where(u => u.Id == usuarioId && u.RoleId == ((int)TipoRole.ADMIN)).FirstOrDefault();
         }
 
+        public Usuario GetPorId(int usuarioId)
+        {
+            return _context.Usuarios.Find(usuarioId);
+        }
+
         public bool AlterarSenha(string senhaAtual, string novaSenha, string matricula)
         {
             var usuario = _context.Usuarios.Where(u => u.Matricula.Equals(matricula)).FirstOrDefault();

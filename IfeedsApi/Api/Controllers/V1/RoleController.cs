@@ -4,6 +4,7 @@ using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers.V1
@@ -25,6 +26,7 @@ namespace IfeedsApi.Api.Controllers.V1
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public ActionResult<ICollection<RoleModel>> Get()
         {
@@ -33,6 +35,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(roleModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet("{id}", Name = "GetRoleId")]
         public ActionResult<RoleModel> Get(int id)
         {
@@ -45,6 +48,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(roleModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public ActionResult Post([FromBody] RoleModelRequest request)
         {
@@ -58,6 +62,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new CreatedAtRouteResult("GetRoleId", new { roleSalvo.Id }, roleModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPut("{id}")]
         public ActionResult<RoleModel> Put(int id, [FromBody] RoleModelRequest request)
         {
@@ -72,6 +77,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(roleModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

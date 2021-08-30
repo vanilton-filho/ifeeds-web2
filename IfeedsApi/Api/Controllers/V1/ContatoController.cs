@@ -28,7 +28,7 @@ namespace IfeedsApi.Api.Controllers.V1
             _contatoMapper = contatoMapper;
         }
 
-        //[Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         [Produces("application/json")]
         public ActionResult<ICollection<ContatoModel>> Get()
@@ -38,7 +38,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(contatosModel);
         }
 
-        //[Authorize(Roles = "ADMIN,USER")]
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{id}", Name = "ObterContatoPorId")]
         [Produces("application/json")]
         public ActionResult<ContatoModel> Get(int id)
@@ -47,26 +47,27 @@ namespace IfeedsApi.Api.Controllers.V1
                 .Where(e => e.ContatoId == id)
                 .FirstOrDefault();
 
-            /*if (usuario != null &&
+            if (usuario != null &&
                     HttpContext.User.HasClaim("matricula", usuario.Matricula))
-            {*/
-            var contato = _context.Contatos
-                .Where(e => e.Id == id)
-                .FirstOrDefault();
-
-            if (contato == null)
             {
-                return NotFound();
+                var contato = _context.Contatos
+                    .Where(e => e.Id == id)
+                    .FirstOrDefault();
+
+                if (contato == null)
+                {
+                    return NotFound();
+                }
+
+                var contatoModel = _mapper.Map<ContatoModel>(contato);
+
+                return new OkObjectResult(contatoModel);
             }
 
-            var contatoModel = _mapper.Map<ContatoModel>(contato);
-
-            return new OkObjectResult(contatoModel);
-            //}
-
-            //return new UnauthorizedResult();
+            return new UnauthorizedResult();
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpPut("{id}")]
         public ActionResult<ContatoModel> Put(int id, [FromBody] ContatoModelRequest request)
         {

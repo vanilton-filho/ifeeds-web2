@@ -53,5 +53,10 @@ namespace IfeedsApi.Domain.Services
             return _context.Feedbacks.Where(f => f.Codigo.ToString().Equals(codigo)).FirstOrDefault();
         }
 
+        public Feedback GetPorId(int id)
+        {
+            return _context.Feedbacks.Find(id);
+        }
+
     }
 }

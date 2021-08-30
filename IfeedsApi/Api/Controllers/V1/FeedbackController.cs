@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using AutoMapper;
 using IfeedsApi.Api.Mappers;
 using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers.V1
@@ -26,6 +28,7 @@ namespace IfeedsApi.Api.Controllers.V1
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public ActionResult<ICollection<FeedbackModel>> Get()
         {
@@ -33,19 +36,36 @@ namespace IfeedsApi.Api.Controllers.V1
             return _feedbackMapper.ToCollection(feedbacks);
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{codigo}", Name = "GetPorCodigo")]
         public ActionResult<FeedbackModel> GetPorCodigo(string codigo)
         {
             var feedback = _feedbackService.GetPorCodigo(codigo);
+
+            var feedbackModel = _feedbackMapper.ToModel(feedback);
+
             if (feedback == null)
             {
                 return NotFound();
             }
 
-            var feedbackModel = _feedbackMapper.ToModel(feedback);
-            return new OkObjectResult(feedbackModel);
+            // O ADMIN terá acesso a qualquer feedback por código
+            if (feedback != null && HttpContext.User.HasClaim(ClaimTypes.Role, "ADMIN"))
+            {
+                return new OkObjectResult(feedbackModel);
+            } // O USER vai ter acesso apenas ao feedback feito por ele
+            else if (feedback != null &&
+                    HttpContext.User.HasClaim("matricula", feedback.Usuario.Matricula))
+            {
+                return new OkObjectResult(feedbackModel);
+
+            }
+
+            return new UnauthorizedResult();
+
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpPost]
         public ActionResult<FeedbackModel> Post([FromBody] FeedbaackModelRequest request)
         {

@@ -6,6 +6,7 @@ using IfeedsApi.Api.Models;
 using IfeedsApi.Core.Database;
 using IfeedsApi.Domain.Models;
 using IfeedsApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IfeedsApi.Api.Controllers.V1
@@ -26,6 +27,7 @@ namespace IfeedsApi.Api.Controllers.V1
             _categoriaMapper = categoriaMapper;
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet]
         public ActionResult<ICollection<CategoriaModel>> Get()
         {
@@ -33,6 +35,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return _mapper.Map<List<CategoriaModel>>(categorias);
         }
 
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{id}", Name = "GetCategoriaId")]
         public ActionResult<CategoriaModel> Get(int id)
         {
@@ -45,6 +48,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(categoriaModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public ActionResult Post([FromBody] CategoriaModelRequest request)
         {
@@ -58,6 +62,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new CreatedAtRouteResult("GetCategoriaId", new { categoriaSalva.Id }, categoriaModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpPut("{id}")]
         public ActionResult<CategoriaModel> Put(int id, [FromBody] CategoriaModelRequest request)
         {
@@ -72,6 +77,7 @@ namespace IfeedsApi.Api.Controllers.V1
             return new OkObjectResult(categoriaModel);
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
