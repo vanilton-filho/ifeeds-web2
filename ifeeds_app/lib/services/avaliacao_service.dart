@@ -58,14 +58,14 @@ class AvaliacaoService {
     }
   }
 
-  static Future<dynamic> atualizarAvaliacao(
+  static Future<dynamic> atualizarAvaliacao(int id,
       Map<String, dynamic> payload) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacao");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacoes/$id");
     try {
       final response = await http.put(uri, headers: {
         HttpHeaders.acceptHeader: "application/json",
         HttpHeaders.contentTypeHeader: "application/json"
-      });
+      }, body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);
@@ -77,7 +77,7 @@ class AvaliacaoService {
   }
 
   static Future<dynamic> deletarAvaliacao(int id) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacao/{id}");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/avaliacoes/$id");
     try {
       final response = await http.delete(uri);
 

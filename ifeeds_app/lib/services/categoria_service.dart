@@ -43,14 +43,14 @@ class CategoriaService {
     }
   }
 
-  static Future<dynamic> atualizarCategoria(
+  static Future<dynamic> atualizarCategoria(int id,
       Map<String, dynamic> payload) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/categoria");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias/$id");
     try {
       final response = await http.put(uri, headers: {
         HttpHeaders.acceptHeader: "application/json",
         HttpHeaders.contentTypeHeader: "application/json"
-      });
+      }, body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
         final json = convert.json.decode(response.body);
@@ -62,9 +62,10 @@ class CategoriaService {
   }
 
   static Future<dynamic> deletarCategoria(int id) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/categoria/{id}");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias/$id");
+    print(uri);
     try {
-      final response = await http.delete(uri);
+      final response = await http.delete(uri, headers: {HttpHeaders.acceptHeader: "application/json"});
 
       if (response.statusCode == 204) {
         return true;

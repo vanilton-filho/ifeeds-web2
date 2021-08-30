@@ -385,8 +385,8 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.green,
       );
-    }
-    SnackBarUtils.showSnackbar(
+    } else {
+      SnackBarUtils.showSnackbar(
         context,
         "Opss! Aconteceu um erro!",
         Icon(
@@ -395,6 +395,7 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.redAccent,
       );
+    }
   }
 
   _criarCategoria(CategoriaModelRequest request) async {
@@ -412,8 +413,8 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.green,
       );
-    }
-    SnackBarUtils.showSnackbar(
+    }else {
+      SnackBarUtils.showSnackbar(
         context,
         "Opss! Aconteceu um erro!",
         Icon(
@@ -422,6 +423,8 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.redAccent,
       );
+    }
+
   }
 
   _criarCampus(CampusModelRequest request) async {
@@ -438,8 +441,8 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.green,
       );
-    }
-    SnackBarUtils.showSnackbar(
+    }else {
+      SnackBarUtils.showSnackbar(
         context,
         "Opss! Aconteceu um erro!",
         Icon(
@@ -448,5 +451,6 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.redAccent,
       );
+    }
   }
 }
