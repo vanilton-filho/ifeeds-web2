@@ -4,7 +4,6 @@ import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/models/avaliacao_model.dart';
 import 'package:ifeeds_app/models/feedback_model_request.dart';
@@ -255,5 +254,6 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(42.0), topRight: Radius.circular(42.0)),
         ));
+    Navigator.pop(context);
   }
 }

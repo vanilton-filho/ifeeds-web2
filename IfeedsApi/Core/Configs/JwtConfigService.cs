@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using IfeedsApi.Core.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -27,7 +28,11 @@ namespace IfeedsApi.Core.Configs
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+
+
                 };
             });
 

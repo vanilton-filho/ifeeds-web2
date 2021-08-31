@@ -25,10 +25,13 @@ class LoginService {
 
       if (response.statusCode == 204) {
         GetStorage storage = GetStorage();
-        await storage.write("jwt", response.headers["authorization"].toString());
+        await storage.write(
+            "jwt", response.headers["authorization"].toString());
         Map<String, dynamic> decodedToken =
             JwtDecoder.decode(storage.read("jwt"));
         await storage.write("id", decodedToken["id"]);
+        await storage.write("matricula", decodedToken["matricula"]);
+
         return decodedToken["role"];
       } else if (response.statusCode == 404) {
         return ErrorModel(
