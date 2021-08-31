@@ -117,25 +117,6 @@ class _DrawerPageState extends State<DrawerPage> {
             child: Container(
               color: Colors.white,
               height: 80.0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 29.0 / 2, horizontal: 19.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ButtonWidget(
-                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => FormularioAvaliacaoPage())),
-                      edgeInsets: const EdgeInsets.symmetric(
-                        vertical: 10.5,
-                        horizontal: 48,
-                      ),
-                      label: 'Novo Feedback  +',
-                      borderCircular: 8,
-                      buttonStyle: AppButtonStyles.white,
-                    )
-                  ],
-                ),
-              ),
             ),
           ),
         ),

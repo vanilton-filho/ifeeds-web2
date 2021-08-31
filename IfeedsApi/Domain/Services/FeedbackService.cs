@@ -36,6 +36,10 @@ namespace IfeedsApi.Domain.Services
             return feedback;
         }
 
+        public List<Feedback> ListarFeedbackPorUsuarioId(int usuarioId){
+            return _context.Feedbacks.Where(f => f.UsuarioId == usuarioId).ToList();
+        }
+
         private int GetTotalFeedbacks(int avaliacaoId)
         {
             return _context.Feedbacks.Where(f => f.AvaliacaoId == avaliacaoId).Count();
