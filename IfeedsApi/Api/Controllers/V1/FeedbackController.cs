@@ -37,6 +37,22 @@ namespace IfeedsApi.Api.Controllers.V1
         }
 
         [Authorize(Roles = "ADMIN,USER")]
+        [HttpGet("usuario/{id}")]
+        public ActionResult<ICollection<FeedbackModel>> GetFeedbackPorUsuarioId(int id)
+        {
+            var feedbacks = _feedbackService.ListarFeedbackPorUsuarioId(id);
+            if(feedbacks.Count() == 0 && HttpContext.User.HasClaim("id", id.ToString())) 
+            {
+                return NotFound();
+            }
+            else if (HttpContext.User.HasClaim("id", id.ToString()))
+            {
+                return _feedbackMapper.ToCollection(feedbacks);
+            }
+            return new UnauthorizedResult();
+        }
+
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet("{codigo}", Name = "GetPorCodigo")]
         public ActionResult<FeedbackModel> GetPorCodigo(string codigo)
         {

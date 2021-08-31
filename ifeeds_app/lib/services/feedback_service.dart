@@ -15,8 +15,8 @@ class FeedbackService {
     this.token = storage.read("jwt");
   }
   
-  Future<dynamic> listarFeedback() async {
-    Uri uri = Uri.http(Envs.baseUrl, "api/feedbacks");
+  Future<dynamic> listarFeedback(int id) async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/feedbacks/usuario/$id");
     try {
       final response =
           await http.get(uri, headers: {

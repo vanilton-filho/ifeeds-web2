@@ -56,7 +56,7 @@ class _TileWidgetState extends State<TileWidget> {
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 14.0),
                                   child: Text(
-                                    '${widget.feedbackModel.formulario!.titulo}',
+                                    '${widget.feedbackModel.titulo}',
                                     style: AppTextStyles.normal2.merge(
                                         TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -186,7 +186,7 @@ class _TileWidgetState extends State<TileWidget> {
                       child: Wrap(
                         children: [
                           Text(
-                            '${widget.feedbackModel.formulario!.descricao}',
+                            '${widget.feedbackModel.descricao}',
                             style: GoogleFonts.roboto(fontSize: 21.0),
                             textAlign: TextAlign.center,
                           ),

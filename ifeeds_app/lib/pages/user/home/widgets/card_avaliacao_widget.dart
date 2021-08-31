@@ -29,8 +29,11 @@ class _CardAvaliacaoWidgetState extends State<CardAvaliacaoWidget> {
           ),
         ),
         child: InkWell(
+
           hoverColor: AppColors.primarySwatch[50],
-          onLongPress: () => _showModal(), onTap:() => Navigator.push(context, MaterialPageRoute(builder: (context) => FormularioAvaliacaoPage())),
+          onLongPress: () => _showModal(), onTap:() => 
+          Navigator.push(context, MaterialPageRoute(builder: (context) => 
+          FormularioAvaliacaoPage(avaliacaoModel: widget.avaliacaoModel,))),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(

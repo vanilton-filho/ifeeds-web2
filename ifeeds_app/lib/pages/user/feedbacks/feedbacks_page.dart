@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/feedback_tile.dart';
 import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
@@ -12,10 +14,11 @@ class FeedbacksPage extends StatefulWidget {
 }
 
 class _FeedbacksPageState extends State<FeedbacksPage> {
+  GetStorage getStorage = GetStorage();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: FeedbackService().listarFeedback(),
+        future: FeedbackService().listarFeedback((int.parse(getStorage.read(("id"))))),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
             List<FeedbackModel> feedbacksModel = snapshot.data!;
@@ -26,6 +29,25 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
                       ))
                   .toList(),
             );
+          } else if(!snapshot.hasData && snapshot.connectionState == ConnectionState.done){
+            return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.history_edu,
+                          size: 101.0,
+                          color: Colors.grey,
+                        ),
+                        Text(
+                          'Nenhum histórico até o momento...',
+                          style: GoogleFonts.sourceSansPro(
+                            fontSize: 21.0,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
           } else if(snapshot.hasError) {
             return ErrorAppWidget(message: "error");
           }

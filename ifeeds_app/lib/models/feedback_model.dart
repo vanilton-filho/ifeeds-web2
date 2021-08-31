@@ -3,45 +3,47 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 
 import 'package:ifeeds_app/models/feedback_avaliacao_model.dart';
-import 'package:ifeeds_app/models/formulario_avaliacao_model.dart';
 
 class FeedbackModel {
   
   String? codigo;
+  String? titulo;
+  String? descricao;
   String? matricula;
   double? nota;
-  DateTime? dataCriacao;
-  String? campus;
-  FormularioAvaliacaoModel? formulario;
   FeedbackAvaliacaoModel? avaliacao;
-  bool? status;
+  String? campus;
   String? resposta;
+  bool? status;
+  DateTime? dataCriacao;
   DateTime? dataResposta;
 
   FeedbackModel({
     this.codigo,
+    this.titulo,
+    this.descricao,
     this.matricula,
     this.nota,
-    this.dataCriacao,
-    this.campus,
-    this.formulario,
     this.avaliacao,
-    this.status,
+    this.campus,
     this.resposta,
+    this.status,
+    this.dataCriacao,
     this.dataResposta,
   });
-  
+    
   Map<String, dynamic> toMap() {
     return {
       'codigo': codigo,
+      'titulo': titulo,
+      'descricao': descricao,
       'matricula': matricula,
       'nota': nota,
+      'avaliacao': avaliacao?.toMap(),
       'campus': campus,
-      'dataCriacao': new DateFormat("yy-MM-dd").format(dataCriacao!),
-      'formulario': formulario?.toMap(),
-      'feedback': avaliacao?.toMap(),
-      'status': status,
       'resposta': resposta,
+      'status': status,
+      'dataCriacao': new DateFormat("yy-MM-dd").format(dataCriacao!),
       'dataResposta': dataResposta == null ? null : new DateFormat("yy-MM-dd").format(dataCriacao!),
     };
   }
@@ -49,19 +51,18 @@ class FeedbackModel {
   factory FeedbackModel.fromMap(Map<String, dynamic> map) {
     return FeedbackModel(
       codigo: map['codigo'],
+      titulo: map['titulo'],
+      descricao: map['descricao'],
       matricula: map['matricula'],
       nota: map['nota'],
-      campus: map['campus'],
-      dataCriacao: DateFormat('yy-MM-dd').parse(map['dataCriacao']),
-      formulario: FormularioAvaliacaoModel.fromMap(map['formulario']),
       avaliacao: FeedbackAvaliacaoModel.fromMap(map['avaliacao']),
-      status: map['status'],
+      campus: map['campus'],
       resposta: map['resposta'],
+      status: map['status'],
+      dataCriacao:  DateFormat('yy-MM-dd').parse(map['dataCriacao']),
       dataResposta: map['dataResposta'] == null ? null : DateFormat('yy-MM-dd').parse(map['dataResposta']),
     );
   }
-
-  String toJson() => json.encode(toMap());
 
   factory FeedbackModel.fromJson(String source) => FeedbackModel.fromMap(json.decode(source));
 }

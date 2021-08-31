@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:ifeeds_app/core/app_button_styles.dart';
-import 'package:ifeeds_app/models/formulario_avaliacao_model_request.dart';
+import 'package:ifeeds_app/models/avaliacao_model.dart';
+import 'package:ifeeds_app/models/feedback_model_request.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
 import 'package:ifeeds_app/services/feedback_service.dart';
 
 class FormularioAvaliacaoPage extends StatefulWidget {
-  const FormularioAvaliacaoPage({Key? key}) : super(key: key);
+  final AvaliacaoModel avaliacaoModel;
+
+  const FormularioAvaliacaoPage({
+    Key? key,
+    required this.avaliacaoModel,
+  }) : super(key: key);
 
   @override
   _FormularioAvaliacaoPageState createState() =>
@@ -20,7 +28,7 @@ class FormularioAvaliacaoPage extends StatefulWidget {
 
 class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
   final _formKey = GlobalKey<FormState>();
-  final _formularioModel = FormularioAvaliacaoModelRequest();
+  final _feedbackModel = FeedbackModelRequest();
   final _descricao = TextEditingController();
   double _nota = 0.0;
 
@@ -77,7 +85,7 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                               ? 'Por favor, insira a sua matrícula'
                               : null,
                           onChanged: (val) {
-                            _formularioModel.titulo = val;
+                            _feedbackModel.titulo = val;
                           },
                         ),
                       ),
@@ -157,10 +165,10 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                           onPressed: () {
                             final form = _formKey.currentState;
                             if (form!.validate()) {
-                              _formularioModel.descricao = _descricao.text;
-                              _formularioModel.nota = _nota;
-                              print(_formularioModel.toMap());
-                              _salvarFormulario(_formularioModel);
+                              _feedbackModel.descricao = _descricao.text;
+                              _feedbackModel.nota = _nota;
+                              print(_feedbackModel.toMap());
+                              _salvarFormulario(_feedbackModel);
                             }
                           },
                         ),
@@ -185,7 +193,10 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
     );
   }
 
-  _salvarFormulario(FormularioAvaliacaoModelRequest formulario) async {
+  _salvarFormulario(FeedbackModelRequest formulario) async {
+    GetStorage getStorage = GetStorage();
+    formulario.avaliacaoId = widget.avaliacaoModel.id;
+    formulario.usuarioId = int.parse(getStorage.read("id"));
     var formularioSalvo =
         await FeedbackService().postFormulario(formulario.toMap());
     print(formularioSalvo);
