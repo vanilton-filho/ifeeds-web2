@@ -5,6 +5,7 @@ import 'package:ifeeds_app/models/error_model.dart';
 import 'package:ifeeds_app/models/login_model.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_image_widget.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
+import 'package:ifeeds_app/pages/user/cadastro/cadastro_usuario_page.dart';
 import 'package:ifeeds_app/pages/user/home/drawer_page.dart';
 import 'package:ifeeds_app/pages/user/home/drawer_page_admin.dart';
 import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
@@ -171,6 +172,11 @@ class _LoginPageState extends State<LoginPage> {
                                             LinkWidget(
                                               text:
                                                   "NÃO POSSUI CONTA? CADASTRE-SE",
+                                              onTap: () => Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          CadastroUsuarioPage())),
                                             ),
                                           ],
                                         ),

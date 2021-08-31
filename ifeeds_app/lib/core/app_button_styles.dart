@@ -19,6 +19,22 @@ class AppButtonStyles {
     ),
   );
 
+  static final ButtonStyle gray = ButtonStyle(
+    textStyle: MaterialStateProperty.all<TextStyle>(
+      AppTextStyles.button,
+    ),
+    foregroundColor: MaterialStateProperty.all<Color>(Colors.black45),
+    backgroundColor: MaterialStateProperty.all<Color>(
+      Colors.white,
+    ),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+        side: BorderSide(color: Colors.black45, width: 3),
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+  );
+
   static final ButtonStyle delete = ButtonStyle(
     textStyle: MaterialStateProperty.all<TextStyle>(
       AppTextStyles.button,

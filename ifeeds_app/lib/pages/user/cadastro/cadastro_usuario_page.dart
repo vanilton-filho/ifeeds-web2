@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/models/usuario_model.dart';
 import 'package:ifeeds_app/models/usuario_request_model.dart';
 import 'package:ifeeds_app/pages/login/login_page.dart';
@@ -88,6 +89,7 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ButtonWidget(
+              buttonStyle: AppButtonStyles.green,
               onPressed: () {
                 final form = _formKey.currentState;
                 if (form!.validate()) {
@@ -120,6 +122,7 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ButtonWidget(
+              buttonStyle: AppButtonStyles.green,
               onPressed: () {
                 final form = _formKey.currentState;
                 if (form!.validate()) {
@@ -221,6 +224,7 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
         Padding(
           padding: const EdgeInsets.only(bottom: 23.0),
           child: ButtonWidget(
+            buttonStyle: AppButtonStyles.green,
             onPressed: () {
               final form = _formKey.currentState;
               if (form!.validate()) {

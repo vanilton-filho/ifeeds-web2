@@ -20,7 +20,7 @@ class RespostaFeedbackPage extends StatelessWidget {
               child: ListView(
                 children: [
                   ...respostas.map((e) => Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -40,10 +40,13 @@ class RespostaFeedbackPage extends StatelessWidget {
                               ],
                             ),
                             ButtonWidget(
-                                buttonStyle: AppButtonStyles.white,
+                                width: 250,
+                                buttonStyle: e.status!
+                                    ? AppButtonStyles.gray
+                                    : AppButtonStyles.gray,
                                 onPressed: () => {},
                                 edgeInsets: EdgeInsets.zero,
-                                label: "Responder +",
+                                label: "Responder",
                                 borderCircular: 15)
                           ],
                         ),
