@@ -1,18 +1,13 @@
 import 'dart:convert';
 
 class RespostaFeedbackModel {
-
   String? titulo;
-  
   String? descricao;
-
   String? resposta;
-
   double? nota;
-
   bool? status;
-
   String? usuario;
+
   RespostaFeedbackModel({
     this.titulo,
     this.descricao,
@@ -21,9 +16,6 @@ class RespostaFeedbackModel {
     this.status,
     this.usuario,
   });
-
-  
-  
 
   Map<String, dynamic> toMap() {
     return {
@@ -49,5 +41,6 @@ class RespostaFeedbackModel {
 
   String toJson() => json.encode(toMap());
 
-  factory RespostaFeedbackModel.fromJson(String source) => RespostaFeedbackModel.fromMap(json.decode(source));
-  }
+  factory RespostaFeedbackModel.fromJson(String source) =>
+      RespostaFeedbackModel.fromMap(json.decode(source));
+}

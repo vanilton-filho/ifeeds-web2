@@ -5,6 +5,7 @@ import 'package:ifeeds_app/models/usuario_model.dart';
 import 'package:ifeeds_app/pages/login/login_page.dart';
 import 'package:ifeeds_app/pages/user/admin/acoes/acoes_page.dart';
 import 'package:ifeeds_app/pages/user/admin/home_admin_page.dart';
+import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_feedback_page.dart';
 import 'package:ifeeds_app/services/usuario_service.dart';
 
 class DrawerPageAdmin extends StatefulWidget {
@@ -54,9 +55,8 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                     ),
                     ListTile(
                       leading: Icon(Icons.person),
-                      title: Text('Perfil'),
-                      subtitle: Text('Configurações do usuário'),
-                      onTap: () => {Navigator.of(context).pop()},
+                      title: Text('Feedbacks'),
+                      onTap: () => _onSelectItem(2),
                     ),
                     ListTile(
                       leading: Icon(Icons.help),
@@ -158,6 +158,8 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
         return HomeAdminPage();
       case 1:
         return AcoesPage();
+      case 2:
+        return RespostaFeedbackPage();
     }
   }
 }
