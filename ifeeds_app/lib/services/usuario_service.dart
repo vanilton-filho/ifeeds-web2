@@ -52,4 +52,64 @@ class UsuarioService {
       throw Exception("Indisponível obter usuário");
     }
   }
+
+  Future<dynamic> listar() async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/usuarios");
+    try {
+      final response = await http.get(
+        uri,
+        headers: {
+          "Accept": "application/json",
+          HttpHeaders.authorizationHeader: "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final json = convert.json.decode(response.body);
+        return json
+            .map<UsuarioModel>((json) => UsuarioModel.fromMap(json))
+            .toList();
+      }
+    } catch (e) {
+      throw Exception("Indisponível listar usuário");
+    }
+  }
+
+  Future<bool?> ativar(String matricula) async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/usuarios/$matricula/ativar");
+    try {
+      final response = await http.put(
+        uri,
+        headers: {
+          "Accept": "application/json",
+          HttpHeaders.authorizationHeader: "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 204) {
+        return true;
+      }
+    } catch (e) {
+      throw Exception("Indisponível ativar usuário");
+    }
+  }
+
+  Future<bool?> desativar(String matricula) async {
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/usuarios/$matricula/desativar");
+    try {
+      final response = await http.delete(
+        uri,
+        headers: {
+          "Accept": "application/json",
+          HttpHeaders.authorizationHeader: "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 204) {
+        return true;
+      }
+    } catch (e) {
+      throw Exception("Indisponível desativar usuário");
+    }
+  }
 }

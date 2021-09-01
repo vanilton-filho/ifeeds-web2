@@ -19,7 +19,7 @@ class AppButtonStyles {
     ),
   );
 
-  static final ButtonStyle gray = ButtonStyle(
+  static final ButtonStyle grey = ButtonStyle(
     textStyle: MaterialStateProperty.all<TextStyle>(
       AppTextStyles.button,
     ),

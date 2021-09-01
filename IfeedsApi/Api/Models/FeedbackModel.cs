@@ -8,11 +8,11 @@ using IfeedsApi.Domain.Models;
 
 namespace IfeedsApi.Api.Models
 {
-    [AutoMap(typeof(Feedback), ReverseMap =true)]
-    [AutoMap(typeof(Usuario), ReverseMap =true)]
+    [AutoMap(typeof(Feedback), ReverseMap = true)]
+    [AutoMap(typeof(Usuario), ReverseMap = true)]
     public class FeedbackModel
     {
-
+        public int Id { get; set; }
         public string Codigo { get; set; }
 
         public string Titulo { get; set; }
@@ -38,26 +38,26 @@ namespace IfeedsApi.Api.Models
 
     }
 
-    [AutoMap(typeof(Feedback), ReverseMap =true)]
-    public class FeedbaackModelRequest 
+    [AutoMap(typeof(Feedback), ReverseMap = true)]
+    public class FeedbaackModelRequest
     {
         [Required(ErrorMessage = "Título é um campo obrigatório")]
         [MaxLength(45)]
-        public String Titulo{ get; set;}
-        
-        
+        public String Titulo { get; set; }
+
+
         [Required(ErrorMessage = "Descrição é um campo obrigatório")]
-        public String Descricao {get; set;}
+        public String Descricao { get; set; }
 
-        
+
         [Required(ErrorMessage = "Nota é um campo obrigatório")]
-        [Range(0,5)]
-        public decimal Nota{get; set;}
+        [Range(0, 5)]
+        public decimal Nota { get; set; }
 
 
-        public int AvaliacaoId{ get; set; }
+        public int AvaliacaoId { get; set; }
 
-        public int UsuarioId{get;set;}
+        public int UsuarioId { get; set; }
 
     }
 }

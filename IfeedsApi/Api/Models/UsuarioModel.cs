@@ -28,6 +28,8 @@ namespace IfeedsApi.Api.Models
         /// <example>ADMIN</example>
         public string Role { get; set; }
 
+        public bool Status { get; set; }
+
         public string Campus { get; set; }
     }
 

@@ -1,11 +1,10 @@
 import 'dart:convert';
 
+import 'package:ifeeds_app/models/feedback_avaliacao_model.dart';
 import 'package:intl/intl.dart';
 
-import 'package:ifeeds_app/models/feedback_avaliacao_model.dart';
-
 class FeedbackModel {
-  
+  int? id;
   String? codigo;
   String? titulo;
   String? descricao;
@@ -19,6 +18,7 @@ class FeedbackModel {
   DateTime? dataResposta;
 
   FeedbackModel({
+    this.id,
     this.codigo,
     this.titulo,
     this.descricao,
@@ -31,9 +31,10 @@ class FeedbackModel {
     this.dataCriacao,
     this.dataResposta,
   });
-    
+
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'codigo': codigo,
       'titulo': titulo,
       'descricao': descricao,
@@ -44,12 +45,15 @@ class FeedbackModel {
       'resposta': resposta,
       'status': status,
       'dataCriacao': new DateFormat("yy-MM-dd").format(dataCriacao!),
-      'dataResposta': dataResposta == null ? null : new DateFormat("yy-MM-dd").format(dataCriacao!),
+      'dataResposta': dataResposta == null
+          ? null
+          : new DateFormat("yy-MM-dd").format(dataCriacao!),
     };
   }
 
   factory FeedbackModel.fromMap(Map<String, dynamic> map) {
     return FeedbackModel(
+      id: map['id'],
       codigo: map['codigo'],
       titulo: map['titulo'],
       descricao: map['descricao'],
@@ -59,10 +63,13 @@ class FeedbackModel {
       campus: map['campus'],
       resposta: map['resposta'],
       status: map['status'],
-      dataCriacao:  DateFormat('yy-MM-dd').parse(map['dataCriacao']),
-      dataResposta: map['dataResposta'] == null ? null : DateFormat('yy-MM-dd').parse(map['dataResposta']),
+      dataCriacao: DateFormat('yy-MM-dd').parse(map['dataCriacao']),
+      dataResposta: map['dataResposta'] == null
+          ? null
+          : DateFormat('yy-MM-dd').parse(map['dataResposta']),
     );
   }
 
-  factory FeedbackModel.fromJson(String source) => FeedbackModel.fromMap(json.decode(source));
+  factory FeedbackModel.fromJson(String source) =>
+      FeedbackModel.fromMap(json.decode(source));
 }

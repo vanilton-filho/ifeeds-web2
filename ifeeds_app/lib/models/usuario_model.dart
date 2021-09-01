@@ -8,6 +8,7 @@ class UsuarioModel {
   String? nome;
   ContatoModel? contato;
   String? role;
+  bool? status;
   String? campus;
 
   UsuarioModel({
@@ -16,6 +17,7 @@ class UsuarioModel {
     this.nome,
     this.contato,
     this.role,
+    this.status,
     this.campus,
   });
 
@@ -26,6 +28,7 @@ class UsuarioModel {
       'nome': nome,
       'contato': contato?.toMap(),
       'role': role,
+      'status': status,
       'campus': campus,
     };
   }
@@ -37,6 +40,7 @@ class UsuarioModel {
       nome: map['nome'],
       contato: ContatoModel.fromMap(map['contato']),
       role: map['role'],
+      status: map['status'],
       campus: map['campus'],
     );
   }

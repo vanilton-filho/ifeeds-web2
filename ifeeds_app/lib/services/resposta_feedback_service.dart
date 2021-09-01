@@ -37,11 +37,13 @@ class RespostaFeedbackService {
   Future<dynamic> criarRespostaFeedbacks(Map<String, dynamic> payload) async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/respostas-feedbacks");
     try {
-      final response = await http.post(uri, headers: {
-        "Accept": "application/json",
-        HttpHeaders.authorizationHeader: "Bearer $token",
-        HttpHeaders.contentTypeHeader: "application/json"
-      });
+      final response = await http.post(uri,
+          headers: {
+            "Accept": "application/json",
+            HttpHeaders.authorizationHeader: "Bearer $token",
+            HttpHeaders.contentTypeHeader: "application/json"
+          },
+          body: convert.json.encode(payload));
 
       if (response.statusCode == 201) {
         final json = convert.json.decode(response.body);
@@ -54,7 +56,7 @@ class RespostaFeedbackService {
 
   Future<dynamic> atualizarRespostaFeedbacks(
       int id, Map<String, dynamic> payload) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbacks/$id");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/respostas-feedbacks/$id");
     try {
       final response = await http.put(uri,
           headers: {
@@ -74,7 +76,7 @@ class RespostaFeedbackService {
   }
 
   Future<dynamic> deletarRespostaFeedbcaks(int id) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/resposta-feedbcaks/$id");
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/respostas-feedbcaks/$id");
     try {
       final response = await http.delete(uri, headers: {
         "Accept": "application/json",

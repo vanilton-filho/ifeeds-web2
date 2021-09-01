@@ -4,6 +4,7 @@ import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/usuario_model.dart';
 import 'package:ifeeds_app/pages/login/login_page.dart';
 import 'package:ifeeds_app/pages/user/admin/acoes/acoes_page.dart';
+import 'package:ifeeds_app/pages/user/admin/ativacao/ativacao_page.dart';
 import 'package:ifeeds_app/pages/user/admin/home_admin_page.dart';
 import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_feedback_page.dart';
 import 'package:ifeeds_app/services/usuario_service.dart';
@@ -60,8 +61,8 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                     ),
                     ListTile(
                       leading: Icon(Icons.help),
-                      title: Text('Ajuda'),
-                      onTap: () => {Navigator.of(context).pop()},
+                      title: Text('Usuários'),
+                      onTap: () => _onSelectItem(3),
                     ),
                   ],
                 ),
@@ -160,6 +161,8 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
         return AcoesPage();
       case 2:
         return RespostaFeedbackPage();
+      case 3:
+        return AtivacaoPage();
     }
   }
 }

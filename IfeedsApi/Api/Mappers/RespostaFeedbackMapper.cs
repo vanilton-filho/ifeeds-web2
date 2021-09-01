@@ -28,9 +28,10 @@ namespace IfeedsApi.Api.Mappers
             respostaFeedbackModel.Nota = feedback.Nota;
             respostaFeedbackModel.Usuario = usuario.Matricula;
             respostaFeedbackModel.Status = feedback.Status;
+            respostaFeedbackModel.Codigo = feedback.Codigo.ToString();
 
-             
-            return respostaFeedbackModel; 
+
+            return respostaFeedbackModel;
         }
 
         public List<RespostaFeedbackModel> ToCollection(List<RespostaFeedback> respostas)
