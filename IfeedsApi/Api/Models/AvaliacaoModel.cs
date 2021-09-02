@@ -17,9 +17,9 @@ namespace IfeedsApi.Api.Models
 
         public decimal MediaAvaliacao { get; set; }
 
-        public string Categoria { get; set; }
+        public CategoriaModel Categoria { get; set; }
 
-        public string Campus { get; set; }
+        public CampusModel Campus { get; set; }
 
         public int TotalFeedbacks { get; set; }
     }

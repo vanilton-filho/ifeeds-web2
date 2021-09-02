@@ -28,8 +28,8 @@ namespace IfeedsApi.Api.Mappers
 
 
             //Anexando Campus e Categoria ao model
-            avaliacaoModel.Campus = campus.Nome;
-            avaliacaoModel.Categoria = categoria.Nome;
+            avaliacaoModel.Campus = _mapper.Map<CampusModel>(campus);
+            avaliacaoModel.Categoria = _mapper.Map<CategoriaModel>(categoria);
             avaliacaoModel.TotalFeedbacks = totalFeedbacks;
 
             return avaliacaoModel;
