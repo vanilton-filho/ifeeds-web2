@@ -130,6 +130,11 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(80.0),
                   child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: _selectedIndex == 0 ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Dashboard", style: AppTextStyles.heading2,),
+                    ) : null,
                     color: Colors.white,
                     height: 80.0,
                   ),
