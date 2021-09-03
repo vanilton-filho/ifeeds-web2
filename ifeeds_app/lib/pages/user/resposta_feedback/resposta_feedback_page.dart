@@ -2,19 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
+import 'package:ifeeds_app/pages/login/login_page.dart';
 import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_formulario.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/services/feedback_service.dart';
 
-class RespostaFeedbackPage extends StatelessWidget {
+class RespostaFeedbackPage extends StatefulWidget {
   const RespostaFeedbackPage({Key? key}) : super(key: key);
 
+  @override
+  _RespostaFeedbackPageState createState() => _RespostaFeedbackPageState();
+}
+
+class _RespostaFeedbackPageState extends State<RespostaFeedbackPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: _stream(),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
-          print(snapshot);
           if (snapshot.hasData) {
             List<FeedbackModel> feedbacks = snapshot.data!;
             return Container(
@@ -73,7 +78,11 @@ class RespostaFeedbackPage extends StatelessWidget {
   _stream() async* {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
-      List<FeedbackModel> feedbacks = await FeedbackService().listar();
+      dynamic feedbacks = await FeedbackService().listar();
+      if(feedbacks == true){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+        break;
+      }
       yield feedbacks;
     }
   }

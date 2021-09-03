@@ -46,8 +46,7 @@ class RespostaFeedbackService {
           body: convert.json.encode(payload));
 
       if (response.statusCode == 201) {
-        final json = convert.json.decode(response.body);
-        return RespostaFeedbackModel.fromJson(json);
+        return RespostaFeedbackModel.fromJson(response.body);
       }
     } catch (e) {
       throw new Exception("Impossível criar respostas feedbacks");
@@ -67,8 +66,7 @@ class RespostaFeedbackService {
           body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
-        final json = convert.json.decode(response.body);
-        return RespostaFeedbackModel.fromJson(json);
+        return RespostaFeedbackModel.fromJson(response.body);
       }
     } catch (e) {
       throw new Exception("Impossível atualizar respostas feedbcaks");

@@ -6,9 +6,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
+import 'package:ifeeds_app/models/resposta_feedback_model.dart';
 import 'package:ifeeds_app/models/resposta_feedback_model_request.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_feedback_page.dart';
+import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/services/feedback_service.dart';
 import 'package:ifeeds_app/services/resposta_feedback_service.dart';
@@ -216,8 +218,18 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
 
   _salvarResposta(RespostaFeedbackModelRequest request) async {
     var payload = request.toMap();
-    await RespostaFeedbackService().criarRespostaFeedbacks(payload);
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => RespostaFeedbackPage()));
+    var response = await RespostaFeedbackService().criarRespostaFeedbacks(payload);
+    if(response is RespostaFeedbackModel){
+      SnackBarUtils.showSnackbar(
+        context,
+        "Feedback respondido!" ,
+        Icon(
+          Icons.error,
+          color: Colors.white,
+        ),
+        background: Colors.green,
+      );
+    }
+    Navigator.pop(context);
   }
 }

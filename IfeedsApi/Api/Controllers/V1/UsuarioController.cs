@@ -44,7 +44,10 @@ namespace IfeedsApi.Api.Controllers.V1
             {
                 return NotFound();
             }
-
+            if(usuario.Status == false)
+            {
+                return BadRequest();
+            }
             var token = new TokenService(_configuration).GenerateToken(_usuarioMapper.ToModel(usuario));
             Response.Headers.Append("Authorization", token);
 

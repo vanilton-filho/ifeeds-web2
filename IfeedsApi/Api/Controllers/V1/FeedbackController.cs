@@ -81,12 +81,17 @@ namespace IfeedsApi.Api.Controllers.V1
 
         }
 
-        [Authorize(Roles = "ADMIN,USER")]
+        [Authorize(Roles = "USER")]
         [HttpPost]
         public ActionResult<FeedbackModel> Post([FromBody] FeedbaackModelRequest request)
         {
             var feedback = _mapper.Map<Feedback>(request);
             var feedbackSalvo = _feedbackService.Salvar(feedback);
+
+            if(feedbackSalvo == null){
+                return BadRequest();
+            }
+            
             var feedbackModel = _feedbackMapper.ToModel(feedbackSalvo);
             return new CreatedAtRouteResult("GetPorCodigo", new { codigo = feedbackSalvo.Codigo }, feedbackModel);
         }

@@ -32,7 +32,7 @@ namespace IfeedsApi.Services
                     new Claim(ClaimTypes.Email, usuario.Contato.Email),
                     new Claim(ClaimTypes.Role, usuario.Role)
                 }),
-                Expires = DateTime.UtcNow.AddHours(2),
+                Expires = DateTime.UtcNow.AddMinutes(2),
                 SigningCredentials = new SigningCredentials(
                         new SymmetricSecurityKey(key),
                         SecurityAlgorithms.HmacSha256Signature)

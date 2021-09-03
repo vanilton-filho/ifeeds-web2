@@ -1,9 +1,12 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/feedback_model.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 import 'envs.dart';
 
@@ -37,6 +40,11 @@ class FeedbackService {
   Future<dynamic> listar() async {
     Uri uri = Uri.http(Envs.baseUrl, "v1/api/feedbacks");
     try {
+      var jwt = storage.read("jwt");
+      var isExpired = JwtDecoder.isExpired(jwt);
+      if(isExpired){
+        return true;
+      }
       final response = await http.get(uri, headers: {
         "Accept": "application/json",
         HttpHeaders.authorizationHeader: "Bearer $token"
