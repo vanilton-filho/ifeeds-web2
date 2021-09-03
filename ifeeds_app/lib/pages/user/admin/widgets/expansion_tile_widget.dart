@@ -158,13 +158,16 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
               flex: 3,
               child: Row(
                 children: [
-                  FormFieldWidget(
-                    initialValue: e.titulo!,
-                    label: 'Nome da avaliação',
-                    validator: (value) => value!.isEmpty
-                        ? "Por favor, forneça um título para a avaliação"
-                        : null,
-                    onChanged: (value) => _avaliacaoRequest.titulo = value,
+                  Expanded(
+                    flex: 3,
+                    child: FormFieldWidget(
+                      initialValue: e.titulo!,
+                      label: 'Nome da avaliação',
+                      validator: (value) => value!.isEmpty
+                          ? "Por favor, forneça um título para a avaliação"
+                          : null,
+                      onChanged: (value) => _avaliacaoRequest.titulo = value,
+                    ),
                   ),
                   Padding(padding: EdgeInsets.symmetric(horizontal: 3)),
                   Expanded(
@@ -247,13 +250,15 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
               flex: 3,
               child: Row(
                 children: [
-                  FormFieldWidget(
-                    initialValue: e.nome!,
-                    label: 'Nome do campus',
-                    validator: (value) => value!.isEmpty
-                        ? "Por favor, forneça um nome para categoria"
-                        : null,
-                    onChanged: (value) => _categoriaRequest.nome = value,
+                  Expanded(
+                    child: FormFieldWidget(
+                      initialValue: e.nome!,
+                      label: 'Nome do campus',
+                      validator: (value) => value!.isEmpty
+                          ? "Por favor, forneça um nome para categoria"
+                          : null,
+                      onChanged: (value) => _categoriaRequest.nome = value,
+                    ),
                   ),
                 ],
               ),
@@ -276,13 +281,15 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
               flex: 3,
               child: Row(
                 children: [
-                  FormFieldWidget(
-                    initialValue: e.nome!,
-                    label: 'Nome do campus',
-                    validator: (value) => value!.isEmpty
-                        ? "Por favor, forneça um nome para campus"
-                        : null,
-                    onChanged: (value) => _campusRequest.nome = value,
+                  Expanded(
+                    child: FormFieldWidget(
+                      initialValue: e.nome!,
+                      label: 'Nome do campus',
+                      validator: (value) => value!.isEmpty
+                          ? "Por favor, forneça um nome para campus"
+                          : null,
+                      onChanged: (value) => _campusRequest.nome = value,
+                    ),
                   ),
                 ],
               ),
@@ -313,7 +320,7 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
       var payload = _categoriaRequest;
       await CategoriaService()
           .atualizarCategoria(genericModel.id!, payload.toMap());
-    } else if (genericModel is CampusModel) {
+    } else {
       var payload = _campusRequest;
       await CampusService().atualizarCampus(genericModel.id!, payload.toMap());
     }

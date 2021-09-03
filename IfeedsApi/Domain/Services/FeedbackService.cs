@@ -22,6 +22,10 @@ namespace IfeedsApi.Domain.Services
         }
         public Feedback Salvar(Feedback feedback)
         {
+            var usuario = _context.Usuarios.Find(feedback.UsuarioId);
+            if(usuario.RoleId == ((int)TipoRole.ADMIN)){
+                return null;
+            } 
             using var transaction = _context.Database.BeginTransaction(); // início da transação
 
             _context.Add(feedback);

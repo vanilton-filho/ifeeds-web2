@@ -70,8 +70,7 @@ class CategoriaService {
           body: convert.json.encode(payload));
 
       if (response.statusCode == 200) {
-        final json = convert.json.decode(response.body);
-        return CategoriaModel.fromJson(json);
+        return CategoriaModel.fromJson(response.body);
       }
     } catch (e) {
       throw new Exception("Impossível atualizar categoria");
