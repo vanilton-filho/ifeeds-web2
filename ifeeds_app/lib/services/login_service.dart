@@ -38,7 +38,12 @@ class LoginService {
           statusCode: response.statusCode,
           message: 'A matrícula ou email estão errados.',
         );
-      } else if (response.statusCode == 500) {
+      } else if (response.statusCode == 400) {
+        return ErrorModel(
+          statusCode: response.statusCode,
+          message: 'Usuário inativo.',
+        );
+      }else if (response.statusCode == 500) {
         return ErrorModel(
           statusCode: response.statusCode,
           message: 'Aconteceu algum erro interno no servidor.',
