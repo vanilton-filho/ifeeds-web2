@@ -1,13 +1,15 @@
 import 'dart:convert';
 
+import 'package:ifeeds_app/models/campus_model.dart';
+import 'package:ifeeds_app/models/categoria_model.dart';
+
 class AvaliacaoModel {
   int? id;
   String? titulo;
   double? mediaAvaliacao;
-  String? categoria;
-  String? campus;
+  CategoriaModel? categoria;
+  CampusModel? campus;
   int? totalFeedbacks;
-
   AvaliacaoModel({
     this.id,
     this.titulo,
@@ -22,8 +24,8 @@ class AvaliacaoModel {
       'id': id,
       'titulo': titulo,
       'mediaAvaliacao': mediaAvaliacao,
-      'categoria': categoria,
-      'campus': campus,
+      'categoria': categoria?.toMap(),
+      'campus': campus?.toMap(),
       'totalFeedbacks': totalFeedbacks,
     };
   }
@@ -33,8 +35,8 @@ class AvaliacaoModel {
       id: map['id'],
       titulo: map['titulo'],
       mediaAvaliacao: map['mediaAvaliacao'],
-      categoria: map['categoria'],
-      campus: map['campus'],
+      categoria: CategoriaModel.fromMap(map['categoria']),
+      campus: CampusModel.fromMap(map['campus']),
       totalFeedbacks: map['totalFeedbacks'],
     );
   }

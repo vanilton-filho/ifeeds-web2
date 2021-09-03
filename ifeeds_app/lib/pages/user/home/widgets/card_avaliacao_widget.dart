@@ -29,11 +29,14 @@ class _CardAvaliacaoWidgetState extends State<CardAvaliacaoWidget> {
           ),
         ),
         child: InkWell(
-
           hoverColor: AppColors.primarySwatch[50],
-          onLongPress: () => _showModal(), onTap:() => 
-          Navigator.push(context, MaterialPageRoute(builder: (context) => 
-          FormularioAvaliacaoPage(avaliacaoModel: widget.avaliacaoModel,))),
+          onLongPress: () => _showModal(),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => FormularioAvaliacaoPage(
+                        avaliacaoModel: widget.avaliacaoModel,
+                      ))),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -97,7 +100,7 @@ class _CardAvaliacaoWidgetState extends State<CardAvaliacaoWidget> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0, bottom: 5),
-                    child: Text(widget.avaliacaoModel.campus!),
+                    child: Text(widget.avaliacaoModel.campus!.nome!),
                   )
                 ],
               ),

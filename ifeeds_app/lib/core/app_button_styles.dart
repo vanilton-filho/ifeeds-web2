@@ -45,6 +45,16 @@ class AppButtonStyles {
     ),
   );
 
+  static final ButtonStyle atualizar = ButtonStyle(
+    textStyle: MaterialStateProperty.all<TextStyle>(
+      AppTextStyles.button,
+    ),
+    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+    backgroundColor: MaterialStateProperty.all<Color>(
+      Colors.blue,
+    ),
+  );
+
   static final ButtonStyle white = ButtonStyle(
     textStyle: MaterialStateProperty.all<TextStyle>(
       AppTextStyles.button,

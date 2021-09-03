@@ -37,6 +37,8 @@ class _AcoesPageState extends State<AcoesPage> {
   final _campusRequest = CampusModelRequest();
   final _formKey2 = GlobalKey<FormState>();
   final _formKey3 = GlobalKey<FormState>();
+  int? _campusId;
+  int? _categoriaId;
 
   @override
   void initState() {
@@ -140,10 +142,13 @@ class _AcoesPageState extends State<AcoesPage> {
                                           // isExpanded: true,
                                           items: [
                                             ..._categorias!.map(
-                                              (e) => DropdownMenuItem<int>(
-                                                child: Text("${e.nome}"),
-                                                value: e.id,
-                                              ),
+                                              (e) {
+                                                _categoriaId = e.id;
+                                                return DropdownMenuItem<int>(
+                                                  child: Text("${e.nome}"),
+                                                  value: e.id,
+                                                );
+                                              },
                                             )
                                           ],
                                           onChanged: (int? val) {
@@ -176,10 +181,13 @@ class _AcoesPageState extends State<AcoesPage> {
                                           // isExpanded: true,
                                           items: [
                                             ..._campus!.map(
-                                              (e) => DropdownMenuItem<int>(
-                                                child: Text("${e.nome}"),
-                                                value: e.id,
-                                              ),
+                                              (e) {
+                                                _campusId = e.id;
+                                                return DropdownMenuItem<int>(
+                                                  child: Text("${e.nome}"),
+                                                  value: e.id,
+                                                );
+                                              },
                                             )
                                           ],
                                           onChanged: (int? val) {
@@ -215,6 +223,10 @@ class _AcoesPageState extends State<AcoesPage> {
                         ),
                       ),
                       ExpansionTileWidget(
+                          campusId: _campusId,
+                          categoriaId: _categoriaId,
+                          campus: _campus!,
+                          categorias: _categorias,
                           leadingIcon: Icons.star,
                           lista: _avaliacoes!,
                           title: "Avaliações")
@@ -373,10 +385,10 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarAvaliacao(AvaliacaoModelRequest request) async {
     var payload = request.toMap();
-    AvaliacaoModel? avaliacaoModel = await AvaliacaoService().criarAvaliacao(payload);
-    if(avaliacaoModel is AvaliacaoModel)
-    {
-    SnackBarUtils.showSnackbar(
+    AvaliacaoModel? avaliacaoModel =
+        await AvaliacaoService().criarAvaliacao(payload);
+    if (avaliacaoModel is AvaliacaoModel) {
+      SnackBarUtils.showSnackbar(
         context,
         "Avaliação adicionada com sucesso!",
         Icon(
@@ -400,11 +412,11 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarCategoria(CategoriaModelRequest request) async {
     var payload = request.toMap();
-    CategoriaModel? categoriaModel = await CategoriaService().criarCategoria(payload);
-    
-    if(categoriaModel is CategoriaModel)
-    {
-    SnackBarUtils.showSnackbar(
+    CategoriaModel? categoriaModel =
+        await CategoriaService().criarCategoria(payload);
+
+    if (categoriaModel is CategoriaModel) {
+      SnackBarUtils.showSnackbar(
         context,
         "Categoria adicionada com sucesso!",
         Icon(
@@ -413,7 +425,7 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.green,
       );
-    }else {
+    } else {
       SnackBarUtils.showSnackbar(
         context,
         "Opss! Aconteceu um erro!",
@@ -424,15 +436,13 @@ class _AcoesPageState extends State<AcoesPage> {
         background: Colors.redAccent,
       );
     }
-
   }
 
   _criarCampus(CampusModelRequest request) async {
     var payload = request.toMap();
     CampusModel? campusModel = await CampusService().criarCampus(payload);
-    if(campusModel is CampusModel)
-    {
-    SnackBarUtils.showSnackbar(
+    if (campusModel is CampusModel) {
+      SnackBarUtils.showSnackbar(
         context,
         "Campus adicionado com sucesso!",
         Icon(
@@ -441,7 +451,7 @@ class _AcoesPageState extends State<AcoesPage> {
         ),
         background: Colors.green,
       );
-    }else {
+    } else {
       SnackBarUtils.showSnackbar(
         context,
         "Opss! Aconteceu um erro!",

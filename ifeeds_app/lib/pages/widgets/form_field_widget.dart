@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FormFieldWidget extends StatelessWidget {
+  final String? initialValue;
   final String label;
   final IconData? prefixIcon;
   final bool isPassword;
@@ -15,6 +16,7 @@ class FormFieldWidget extends StatelessWidget {
   const FormFieldWidget(
       {Key? key,
       required this.label,
+      this.initialValue,
       this.prefixIcon,
       this.isPassword = false,
       this.onChanged,
@@ -28,6 +30,7 @@ class FormFieldWidget extends StatelessWidget {
   const FormFieldWidget.expanded(
       {Key? key,
       required this.label,
+      this.initialValue,
       this.prefixIcon,
       this.isPassword = false,
       this.onChanged,
@@ -57,6 +60,7 @@ class FormFieldWidget extends StatelessWidget {
           onChanged: onChanged,
           obscureText: isPassword,
           keyboardType: type,
+          initialValue: initialValue,
           decoration: InputDecoration(
             prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
             labelText: label,
