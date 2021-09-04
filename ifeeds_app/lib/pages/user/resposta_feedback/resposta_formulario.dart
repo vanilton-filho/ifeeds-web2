@@ -12,7 +12,9 @@ import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_feedback_page.dart';
 import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/feedback_service.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 import 'package:ifeeds_app/services/resposta_feedback_service.dart';
 
 class RespostaFormulario extends StatefulWidget {
@@ -28,6 +30,7 @@ class RespostaFormulario extends StatefulWidget {
 }
 
 class _RespostaFormularioState extends State<RespostaFormulario> {
+  GetStorage storage = GetStorage();
   @override
   void initState() {
     _getFeedback();
@@ -35,8 +38,12 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
   }
 
   _getFeedback() async {
-    feedback = FeedbackService().getPorMatricula(widget.feedback.codigo!);
-    setState(() {});
+    if (JwtUtils.isExpired(storage)) {
+      RouterLogin.routeToLogin(context);
+    } else {
+      feedback = FeedbackService().getPorMatricula(widget.feedback.codigo!);
+      setState(() {});
+    }
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -217,19 +224,24 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
   }
 
   _salvarResposta(RespostaFeedbackModelRequest request) async {
-    var payload = request.toMap();
-    var response = await RespostaFeedbackService().criarRespostaFeedbacks(payload);
-    if(response is RespostaFeedbackModel){
-      SnackBarUtils.showSnackbar(
-        context,
-        "Feedback respondido!" ,
-        Icon(
-          Icons.error,
-          color: Colors.white,
-        ),
-        background: Colors.green,
-      );
+    if (JwtUtils.isExpired(storage)) {
+      RouterLogin.routeToLogin(context);
+    } else {
+      var payload = request.toMap();
+      var response =
+          await RespostaFeedbackService().criarRespostaFeedbacks(payload);
+      if (response is RespostaFeedbackModel) {
+        SnackBarUtils.showSnackbar(
+          context,
+          "Feedback respondido!",
+          Icon(
+            Icons.error,
+            color: Colors.white,
+          ),
+          background: Colors.green,
+        );
+      }
+      Navigator.pop(context);
     }
-    Navigator.pop(context);
   }
 }

@@ -10,7 +10,9 @@ import 'package:ifeeds_app/models/feedback_model_request.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/feedback_service.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 
 class FormularioAvaliacaoPage extends StatefulWidget {
   final AvaliacaoModel avaliacaoModel;
@@ -26,6 +28,7 @@ class FormularioAvaliacaoPage extends StatefulWidget {
 }
 
 class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
+  GetStorage storage = GetStorage();
   final _formKey = GlobalKey<FormState>();
   final _feedbackModel = FeedbackModelRequest();
   final _descricao = TextEditingController();
@@ -193,12 +196,13 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
   }
 
   _salvarFormulario(FeedbackModelRequest formulario) async {
-    GetStorage getStorage = GetStorage();
-    formulario.avaliacaoId = widget.avaliacaoModel.id;
-    formulario.usuarioId = int.parse(getStorage.read("id"));
+    if(JwtUtils.isExpired(storage)){
+      RouterLogin.routeToLogin(context);
+    }else {
+          formulario.avaliacaoId = widget.avaliacaoModel.id;
+    formulario.usuarioId = int.parse(storage.read("id"));
     var formularioSalvo =
         await FeedbackService().postFormulario(formulario.toMap());
-    print(formularioSalvo);
     await showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -255,5 +259,6 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
               topLeft: Radius.circular(42.0), topRight: Radius.circular(42.0)),
         ));
     Navigator.pop(context);
+    }
   }
 }

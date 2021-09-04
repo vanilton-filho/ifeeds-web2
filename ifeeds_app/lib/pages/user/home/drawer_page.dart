@@ -5,6 +5,8 @@ import 'package:ifeeds_app/models/usuario_model.dart';
 import 'package:ifeeds_app/pages/login/login_page.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/feedbacks_page.dart';
 import 'package:ifeeds_app/pages/user/home/home_page.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 import 'package:ifeeds_app/services/usuario_service.dart';
 
 class DrawerPage extends StatefulWidget {
@@ -146,7 +148,11 @@ class _DrawerPageState extends State<DrawerPage> {
   }
 
   _future() async {
-    return await UsuarioService().getPorMatricula(storage.read("matricula"));
+    if(JwtUtils.isExpired(storage)){
+      RouterLogin.routeToLogin(context);
+    }else {
+      return await UsuarioService().getPorMatricula(storage.read("matricula"));
+    }
   }
 
   _onSelectItem(int index) {

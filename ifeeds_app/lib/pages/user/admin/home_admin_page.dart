@@ -1,10 +1,10 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/models/estatistica_model.dart';
 import 'package:ifeeds_app/pages/user/admin/widgets/card_gridview_widget.dart';
 import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/estatistica_service.dart';
 
 class HomeAdminPage extends StatefulWidget {
@@ -22,7 +22,7 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
     var widthSize = MediaQuery.of(context).size.width;
     return StreamBuilder(
         stream: estatisticasStream(),
-        builder: (context, AsyncSnapshot<EstatisticaModel> snapshot) {
+        builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
             EstatisticaModel estatisticas = snapshot.data!;
             return GridView.count(
@@ -83,11 +83,15 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
         });
   }
 
-  Stream<EstatisticaModel> estatisticasStream() async* {
+  estatisticasStream() async* {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
-      EstatisticaModel estatisticas =
+      var estatisticas =
           await EstatisticaService().getEstatisticas(1);
+      if(estatisticas == true){
+        RouterLogin.routeToLogin(context);
+        break;
+      }
       yield estatisticas;
     }
   }

@@ -11,6 +11,7 @@ import 'package:ifeeds_app/pages/user/admin/widgets/expansion_tile_widget.dart';
 import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/avaliacao_service.dart';
 import 'package:ifeeds_app/services/campus_service.dart';
 import 'package:ifeeds_app/services/categoria_service.dart';
@@ -67,9 +68,19 @@ class _AcoesPageState extends State<AcoesPage> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
       if (_avaliacoes != null && _categorias != null && _campus != null) {
-        _categorias = await CategoriaService().listarCategorias();
-        _campus = await CampusService().listarCampus();
-        _avaliacoes = await AvaliacaoService().listarAvaliacoes();
+        var categorias = await CategoriaService().listarCategorias();
+        var campus = await CampusService().listarCampus();
+        var avaliacoes = await AvaliacaoService().listarAvaliacoes();
+
+        if(categorias == true || campus == true || avaliacoes == true){
+          RouterLogin.routeToLogin(context);
+          break;
+        }
+
+        _categorias = categorias;
+        _campus = campus;
+        _avaliacoes = avaliacoes;
+
         yield true;
       }
     }
@@ -385,9 +396,11 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarAvaliacao(AvaliacaoModelRequest request) async {
     var payload = request.toMap();
-    AvaliacaoModel? avaliacaoModel =
+    var avaliacaoModel =
         await AvaliacaoService().criarAvaliacao(payload);
-    if (avaliacaoModel is AvaliacaoModel) {
+    if(avaliacaoModel == true){
+      RouterLogin.routeToLogin(context);
+    }else if (avaliacaoModel is AvaliacaoModel) {
       SnackBarUtils.showSnackbar(
         context,
         "Avaliação adicionada com sucesso!",
@@ -412,10 +425,12 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarCategoria(CategoriaModelRequest request) async {
     var payload = request.toMap();
-    CategoriaModel? categoriaModel =
+    var categoriaModel =
         await CategoriaService().criarCategoria(payload);
 
-    if (categoriaModel is CategoriaModel) {
+    if(categoriaModel == true){
+      RouterLogin.routeToLogin(context);
+    }else if (categoriaModel is CategoriaModel) {
       SnackBarUtils.showSnackbar(
         context,
         "Categoria adicionada com sucesso!",
@@ -440,8 +455,10 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarCampus(CampusModelRequest request) async {
     var payload = request.toMap();
-    CampusModel? campusModel = await CampusService().criarCampus(payload);
-    if (campusModel is CampusModel) {
+    var campusModel = await CampusService().criarCampus(payload);
+    if(campusModel == true){
+      RouterLogin.routeToLogin(context);
+    }else if (campusModel is CampusModel) {
       SnackBarUtils.showSnackbar(
         context,
         "Campus adicionado com sucesso!",

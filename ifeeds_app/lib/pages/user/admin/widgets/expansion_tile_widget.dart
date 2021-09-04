@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/avaliacao_model.dart';
@@ -9,9 +10,11 @@ import 'package:ifeeds_app/models/categoria_model.dart';
 import 'package:ifeeds_app/models/categoria_model_request.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/form_field_widget.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/avaliacao_service.dart';
 import 'package:ifeeds_app/services/campus_service.dart';
 import 'package:ifeeds_app/services/categoria_service.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 
 class ExpansionTileWidget extends StatefulWidget {
   final IconData? leadingIcon;
@@ -40,6 +43,7 @@ class ExpansionTileWidget extends StatefulWidget {
 }
 
 class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
+  GetStorage storage = GetStorage();
   final _formKey = GlobalKey<FormState>();
   AvaliacaoModelRequest _avaliacaoRequest = AvaliacaoModelRequest();
   CategoriaModelRequest _categoriaRequest = CategoriaModelRequest();
@@ -301,30 +305,38 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> {
   }
 
   deletar(dynamic genericModel) async {
-    if (genericModel is AvaliacaoModel) {
-      await AvaliacaoService().deletarAvaliacao(genericModel.id!);
-    } else if (genericModel is CategoriaModel) {
-      await CategoriaService().deletarCategoria(genericModel.id!);
-    } else if (genericModel is CampusModel) {
-      await CampusService().deletarCampus(genericModel.id!);
+    if (JwtUtils.isExpired(storage)) {
+      RouterLogin.routeToLogin(context);
+    } else {
+      if (genericModel is AvaliacaoModel) {
+        await AvaliacaoService().deletarAvaliacao(genericModel.id!);
+      } else if (genericModel is CategoriaModel) {
+        await CategoriaService().deletarCategoria(genericModel.id!);
+      } else if (genericModel is CampusModel) {
+        await CampusService().deletarCampus(genericModel.id!);
+      }
+      Navigator.pop(context);
     }
-    Navigator.pop(context);
   }
 
   atualizar(dynamic genericModel) async {
-    if (genericModel is AvaliacaoModel) {
-      var payload = _avaliacaoRequest;
-      await AvaliacaoService()
-          .atualizarAvaliacao(genericModel.id!, payload.toMap());
-    } else if (genericModel is CategoriaModel) {
-      var payload = _categoriaRequest;
-      await CategoriaService()
-          .atualizarCategoria(genericModel.id!, payload.toMap());
+    if (JwtUtils.isExpired(storage)) {
+      RouterLogin.routeToLogin(context);
     } else {
-      var payload = _campusRequest;
-      await CampusService().atualizarCampus(genericModel.id!, payload.toMap());
+      if (genericModel is AvaliacaoModel) {
+        var payload = _avaliacaoRequest;
+        await AvaliacaoService()
+            .atualizarAvaliacao(genericModel.id!, payload.toMap());
+      } else if (genericModel is CategoriaModel) {
+        var payload = _categoriaRequest;
+        await CategoriaService()
+            .atualizarCategoria(genericModel.id!, payload.toMap());
+      } else {
+        var payload = _campusRequest;
+        await CampusService()
+            .atualizarCampus(genericModel.id!, payload.toMap());
+      }
+      Navigator.pop(context);
     }
-
-    Navigator.pop(context);
   }
 }

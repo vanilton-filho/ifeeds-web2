@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/estatistica_model.dart';
 import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/services/envs.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 
 class EstatisticaService {
   GetStorage storage = GetStorage();
@@ -16,7 +17,8 @@ class EstatisticaService {
   }
 
   Future<dynamic> getEstatisticas(int usuarioId) async {
-    Uri uri = Uri.http(Envs.baseUrl, "v1/api/estatisticas/$usuarioId");
+    if (!(JwtUtils.isExpired(storage))) {
+          Uri uri = Uri.http(Envs.baseUrl, "v1/api/estatisticas/$usuarioId");
     StorageUtil.getInstance();
     try {
       final response = await http.get(uri, headers: {
@@ -31,5 +33,7 @@ class EstatisticaService {
     } catch (e) {
       throw new Exception("Impossível listar estatísticas");
     }
+    }
+    return true;
   }
 }
