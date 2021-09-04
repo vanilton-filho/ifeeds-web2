@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/feedback_tile.dart';
 import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/feedback_service.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 
 class FeedbacksPage extends StatefulWidget {
   const FeedbacksPage({Key? key}) : super(key: key);
@@ -14,11 +16,11 @@ class FeedbacksPage extends StatefulWidget {
 }
 
 class _FeedbacksPageState extends State<FeedbacksPage> {
-  GetStorage getStorage = GetStorage();
+  GetStorage storage = GetStorage();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: FeedbackService().listarFeedback((int.parse(getStorage.read(("id"))))),
+        future: _future(),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
             List<FeedbackModel> feedbacksModel = snapshot.data!;
@@ -61,5 +63,13 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
             ),
           );
         });
+  }
+
+  _future() async{
+    if(JwtUtils.isExpired(storage)){
+      RouterLogin.routeToLogin(context);
+    }else{
+      return await FeedbackService().listarFeedback((int.parse(storage.read(("id")))));
+    }
   }
 }

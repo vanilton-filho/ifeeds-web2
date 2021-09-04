@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/models/usuario_model.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 import 'package:ifeeds_app/services/usuario_service.dart';
 
 class AtivacaoPage extends StatefulWidget {
@@ -12,8 +15,14 @@ class AtivacaoPage extends StatefulWidget {
 
 class _AtivacaoPageState extends State<AtivacaoPage> {
   _future() async {
-    return await UsuarioService().listar();
+    if (!(JwtUtils.isExpired(storage))) {
+      return await UsuarioService().listar();
+    }else{
+      RouterLogin.routeToLogin(context);
+    }
   }
+
+  GetStorage storage = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -86,22 +95,29 @@ class _AtivacaoPageState extends State<AtivacaoPage> {
   }
 
   Future<void> _refreshUsuarios() async {
-    setState(() {
-      UsuarioService().listar();
-    });
+    if (!(JwtUtils.isExpired(storage))) {
+      setState(() {
+        UsuarioService().listar();
+      });
+    }else{
+      RouterLogin.routeToLogin(context);
+    }
   }
 
   _ativaOuDesativa(bool value, UsuarioModel usuario) async {
-    bool? isOk;
-    if (value)
-      isOk = await UsuarioService().ativar(usuario.matricula!);
-    else
-      isOk = await UsuarioService().desativar(usuario.matricula!);
-
-    if (isOk!) {
-      setState(() {
-        usuario.status = value;
-      });
+    if (JwtUtils.isExpired(storage)) {
+      RouterLogin.routeToLogin(context);
+    } else {
+      bool? isOk;
+      if (value)
+        isOk = await UsuarioService().ativar(usuario.matricula!);
+      else
+        isOk = await UsuarioService().desativar(usuario.matricula!);
+      if (isOk!) {
+        setState(() {
+          usuario.status = value;
+        });
+      }
     }
   }
 }

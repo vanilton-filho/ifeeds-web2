@@ -7,6 +7,8 @@ import 'package:ifeeds_app/pages/user/admin/acoes/acoes_page.dart';
 import 'package:ifeeds_app/pages/user/admin/ativacao/ativacao_page.dart';
 import 'package:ifeeds_app/pages/user/admin/home_admin_page.dart';
 import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_feedback_page.dart';
+import 'package:ifeeds_app/pages/widgets/router_login.dart';
+import 'package:ifeeds_app/services/jwt_utils.dart';
 import 'package:ifeeds_app/services/usuario_service.dart';
 
 class DrawerPageAdmin extends StatefulWidget {
@@ -131,10 +133,15 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                   preferredSize: Size.fromHeight(80.0),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    child: _selectedIndex == 0 ? Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("Dashboard", style: AppTextStyles.heading2,),
-                    ) : null,
+                    child: _selectedIndex == 0
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Dashboard",
+                              style: AppTextStyles.heading2,
+                            ),
+                          )
+                        : null,
                     color: Colors.white,
                     height: 80.0,
                   ),
@@ -150,7 +157,11 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
   }
 
   _future() async {
-    return await UsuarioService().getPorMatricula(storage.read("matricula"));
+    if (JwtUtils.isExpired(storage)) {
+      RouterLogin.routeToLogin(context);
+    } else {
+      return await UsuarioService().getPorMatricula(storage.read("matricula"));
+    }
   }
 
   _onSelectItem(int index) {
