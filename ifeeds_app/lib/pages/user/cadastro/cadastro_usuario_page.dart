@@ -188,6 +188,9 @@ class _CadastroUsuarioPageState extends State<CadastroUsuarioPage> {
               },
               onChanged: (valor) => _usuarioRequestModel.email = valor,
             ),
+            SizedBox(
+              width: 8,
+            ),
             FormFieldWidget.expanded(
               label: 'Senha',
               isPassword: true,

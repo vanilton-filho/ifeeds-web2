@@ -17,25 +17,21 @@ class UsuarioService {
   }
 
   Future<dynamic> cadastrar(Map<String, dynamic> payload) async {
-    if (!(JwtUtils.isExpired(storage))) {
-      Uri uri = Uri.http(Envs.baseUrl, "v1/api/usuarios");
-      try {
-        final response = await http.post(uri,
-            headers: {
-              "Accept": "application/json",
-              HttpHeaders.authorizationHeader: "Bearer $token",
-              HttpHeaders.contentTypeHeader: "application/json"
-            },
-            body: convert.json.encode(payload));
+    Uri uri = Uri.http(Envs.baseUrl, "v1/api/usuarios");
+    try {
+      final response = await http.post(uri,
+          headers: {
+            "Accept": "application/json",
+            HttpHeaders.contentTypeHeader: "application/json"
+          },
+          body: convert.json.encode(payload));
 
-        if (response.statusCode == 201) {
-          return UsuarioModel.fromJson(response.body);
-        }
-      } catch (e) {
-        throw Exception("Indisponível realizar login");
+      if (response.statusCode == 201) {
+        return UsuarioModel.fromJson(response.body);
       }
+    } catch (e) {
+      throw Exception("Indisponível realizar login");
     }
-    return true;
   }
 
   Future<dynamic> getPorMatricula(String matricula) async {
