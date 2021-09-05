@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/usuario_model.dart';
 import 'package:ifeeds_app/pages/login/login_page.dart';
@@ -34,8 +35,14 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                   padding: EdgeInsets.zero,
                   children: <Widget>[
                     UserAccountsDrawerHeader(
-                        accountName: Text("${usuarioModel.nome}"),
-                        accountEmail: Text("${usuarioModel.contato!.email}"),
+                        accountName: Text(
+                          "${usuarioModel.nome}",
+                          style: GoogleFonts.sourceSansPro(fontSize: 21),
+                        ),
+                        accountEmail: Text(
+                          "${usuarioModel.contato!.email}",
+                          style: GoogleFonts.sourceSansPro(fontSize: 18),
+                        ),
                         currentAccountPicture: CircleAvatar(
                           child: Icon(
                             Icons.account_circle,
@@ -52,18 +59,19 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                     ),
                     ListTile(
                       selected: 1 == _selectedIndex,
-                      leading: Icon(Icons.feedback),
+                      leading: Icon(Icons.dynamic_feed),
                       title: Text('Ações'),
                       onTap: () => _onSelectItem(1),
                     ),
                     ListTile(
-                      leading: Icon(Icons.person),
-                      title: Text('Feedbacks'),
+                      leading: Icon(Icons.feedback),
+                      title: Text('Respostas Feedbacks'),
                       onTap: () => _onSelectItem(2),
                     ),
                     ListTile(
-                      leading: Icon(Icons.help),
+                      leading: Icon(Icons.security),
                       title: Text('Usuários'),
+                      subtitle: Text('Gerencia usuários'),
                       onTap: () => _onSelectItem(3),
                     ),
                   ],
@@ -85,15 +93,6 @@ class _DrawerPageAdminState extends State<DrawerPageAdmin> {
                           padding: const EdgeInsets.only(right: 26.0),
                           child: PopupMenuButton<int>(
                               itemBuilder: (context) => [
-                                    PopupMenuItem<int>(
-                                      value: 0,
-                                      child: Text("Configurações"),
-                                    ),
-                                    PopupMenuItem<int>(
-                                      value: 1,
-                                      child: Text("Políticas de Privacidade"),
-                                    ),
-                                    PopupMenuDivider(),
                                     PopupMenuItem<int>(
                                       value: 2,
                                       child: Row(

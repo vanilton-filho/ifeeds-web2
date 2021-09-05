@@ -17,7 +17,7 @@ class _AtivacaoPageState extends State<AtivacaoPage> {
   _future() async {
     if (!(JwtUtils.isExpired(storage))) {
       return await UsuarioService().listar();
-    }else{
+    } else {
       RouterLogin.routeToLogin(context);
     }
   }
@@ -49,8 +49,12 @@ class _AtivacaoPageState extends State<AtivacaoPage> {
                       final usuarioAtivo = usuarios[index];
                       return SwitchListTile(
                           title: Text(
-                            '@${usuarioAtivo.nome} | ${usuarioAtivo.matricula}',
+                            '${usuarioAtivo.nome}',
                             style: GoogleFonts.sourceSansPro(fontSize: 21.0),
+                          ),
+                          subtitle: Text(
+                            '${usuarioAtivo.matricula}',
+                            style: GoogleFonts.sourceSansPro(),
                           ),
                           value: usuarioAtivo.status!,
                           onChanged: (value) =>
@@ -99,7 +103,7 @@ class _AtivacaoPageState extends State<AtivacaoPage> {
       setState(() {
         UsuarioService().listar();
       });
-    }else{
+    } else {
       RouterLogin.routeToLogin(context);
     }
   }

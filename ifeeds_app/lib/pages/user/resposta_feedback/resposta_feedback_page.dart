@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_button_styles.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/feedback_model.dart';
@@ -39,10 +40,9 @@ class _RespostaFeedbackPageState extends State<RespostaFeedbackPage> {
                                 style: AppTextStyles.normal.merge(TextStyle(
                                     fontSize: 23, fontWeight: FontWeight.bold)),
                               ),
-                              Text(
-                                "Usuário: ${e.matricula}",
-                                style: AppTextStyles.normal,
-                              ),
+                              Text("Usuário: ${e.matricula}",
+                                  style:
+                                      GoogleFonts.sourceSansPro(fontSize: 18)),
                             ],
                           ),
                           ButtonWidget(
@@ -79,8 +79,9 @@ class _RespostaFeedbackPageState extends State<RespostaFeedbackPage> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
       dynamic feedbacks = await FeedbackService().listar();
-      if(feedbacks == true){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+      if (feedbacks == true) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
         break;
       }
       yield feedbacks;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
-import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,11 +14,11 @@ import 'package:ifeeds_app/services/feedback_service.dart';
 import 'package:ifeeds_app/services/jwt_utils.dart';
 
 class FormularioAvaliacaoPage extends StatefulWidget {
-  final AvaliacaoModel avaliacaoModel;
+  final AvaliacaoModel? avaliacaoModel;
 
   const FormularioAvaliacaoPage({
     Key? key,
-    required this.avaliacaoModel,
+    this.avaliacaoModel,
   }) : super(key: key);
 
   @override
@@ -49,17 +48,11 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  BreadCrumb(
-                    items: <BreadCrumbItem>[
-                      BreadCrumbItem(
-                          content: Text(
-                        'Realizar Feedback',
-                        style: GoogleFonts.titilliumWeb(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      )),
-                    ],
-                    divider: Icon(Icons.chevron_right),
-                  )
+                  Text(
+                    'Realizar Feedback',
+                    style: GoogleFonts.titilliumWeb(
+                        fontSize: 22.0, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
@@ -157,23 +150,29 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0),
-                        child: ButtonWidget(
-                          edgeInsets: EdgeInsets.symmetric(vertical: 12.0),
-                          label: 'Realizar Feedback',
-                          borderCircular: 8.0,
-                          buttonStyle: AppButtonStyles.green,
-                          onPressed: () {
-                            final form = _formKey.currentState;
-                            if (form!.validate()) {
-                              _feedbackModel.descricao = _descricao.text;
-                              _feedbackModel.nota = _nota;
-                              print(_feedbackModel.toMap());
-                              _salvarFormulario(_feedbackModel);
-                            }
-                          },
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: ButtonWidget(
+                              width: 400,
+                              edgeInsets: EdgeInsets.symmetric(vertical: 12.0),
+                              label: 'Realizar Feedback',
+                              borderCircular: 8.0,
+                              buttonStyle: AppButtonStyles.green,
+                              onPressed: () {
+                                final form = _formKey.currentState;
+                                if (form!.validate()) {
+                                  _feedbackModel.descricao = _descricao.text;
+                                  _feedbackModel.nota = _nota;
+                                  print(_feedbackModel.toMap());
+                                  _salvarFormulario(_feedbackModel);
+                                }
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                       Expanded(child: SizedBox()),
                     ],
@@ -184,6 +183,7 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
           ),
           Expanded(
             child: Container(
+              color: Colors.white,
               child: PageViewWidget(
                 totalPages: 1,
                 images: [Image.asset('assets/feedback.jpg')],
@@ -196,69 +196,70 @@ class _FormularioAvaliacaoPageState extends State<FormularioAvaliacaoPage> {
   }
 
   _salvarFormulario(FeedbackModelRequest formulario) async {
-    if(JwtUtils.isExpired(storage)){
+    if (JwtUtils.isExpired(storage)) {
       RouterLogin.routeToLogin(context);
-    }else {
-          formulario.avaliacaoId = widget.avaliacaoModel.id;
-    formulario.usuarioId = int.parse(storage.read("id"));
-    var formularioSalvo =
-        await FeedbackService().postFormulario(formulario.toMap());
-    await showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: 300,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 42.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  HeartBeat(
-                    preferences: AnimationPreferences(
-                      duration: Duration(seconds: 2),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.star_rounded,
-                        color: Colors.amber,
-                        size: 100.0,
+    } else {
+      formulario.avaliacaoId = widget.avaliacaoModel!.id;
+      formulario.usuarioId = int.parse(storage.read("id"));
+      var formularioSalvo =
+          await FeedbackService().postFormulario(formulario.toMap());
+      await showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              height: 300,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 42.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    HeartBeat(
+                      preferences: AnimationPreferences(
+                        duration: Duration(seconds: 2),
                       ),
-                    ),
-                  ),
-                  BounceInUp(
-                    preferences:
-                        AnimationPreferences(duration: Duration(seconds: 2)),
-                    child: Text(
-                      'Obrigado pelo feedback!',
-                      style: GoogleFonts.roboto(
-                        fontSize: 23.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Wrap(
-                      children: [
-                        Text(
-                          '',
-                          style: GoogleFonts.roboto(fontSize: 16.0),
-                          textAlign: TextAlign.center,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.star_rounded,
+                          color: Colors.amber,
+                          size: 100.0,
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                    BounceInUp(
+                      preferences:
+                          AnimationPreferences(duration: Duration(seconds: 2)),
+                      child: Text(
+                        'Obrigado pelo feedback!',
+                        style: GoogleFonts.roboto(
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Wrap(
+                        children: [
+                          Text(
+                            '',
+                            style: GoogleFonts.roboto(fontSize: 16.0),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(42.0), topRight: Radius.circular(42.0)),
-        ));
-    Navigator.pop(context);
+            );
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(42.0),
+                topRight: Radius.circular(42.0)),
+          ));
+      Navigator.pop(context);
     }
   }
 }

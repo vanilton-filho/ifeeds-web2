@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +8,6 @@ import 'package:ifeeds_app/models/feedback_model.dart';
 import 'package:ifeeds_app/models/resposta_feedback_model.dart';
 import 'package:ifeeds_app/models/resposta_feedback_model_request.dart';
 import 'package:ifeeds_app/pages/login/widgets/page_view_widget.dart';
-import 'package:ifeeds_app/pages/user/resposta_feedback/resposta_feedback_page.dart';
 import 'package:ifeeds_app/pages/utils/snackbar_utils.dart';
 import 'package:ifeeds_app/pages/widgets/button_widget.dart';
 import 'package:ifeeds_app/pages/widgets/router_login.dart';
@@ -18,11 +16,11 @@ import 'package:ifeeds_app/services/jwt_utils.dart';
 import 'package:ifeeds_app/services/resposta_feedback_service.dart';
 
 class RespostaFormulario extends StatefulWidget {
-  final FeedbackModel feedback;
+  final FeedbackModel? feedback;
 
   const RespostaFormulario({
     Key? key,
-    required this.feedback,
+    this.feedback,
   }) : super(key: key);
 
   @override
@@ -41,7 +39,7 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
     if (JwtUtils.isExpired(storage)) {
       RouterLogin.routeToLogin(context);
     } else {
-      feedback = FeedbackService().getPorMatricula(widget.feedback.codigo!);
+      feedback = FeedbackService().getPorMatricula(widget.feedback!.codigo!);
       setState(() {});
     }
   }
@@ -66,17 +64,11 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  BreadCrumb(
-                    items: <BreadCrumbItem>[
-                      BreadCrumbItem(
-                          content: Text(
-                        'Responder feedback',
-                        style: GoogleFonts.titilliumWeb(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      )),
-                    ],
-                    divider: Icon(Icons.chevron_right),
-                  )
+                  Text(
+                    'Responder feedback',
+                    style: GoogleFonts.titilliumWeb(
+                        fontSize: 22.0, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
@@ -100,13 +92,13 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
                         Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Text(
-                              '${widget.feedback.titulo}',
+                              '${widget.feedback!.titulo}',
                               style: AppTextStyles.heading2,
                             )),
                         Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Text(
-                              "${widget.feedback.descricao}",
+                              "${widget.feedback!.descricao}",
                               style: AppTextStyles.normal,
                             )),
                         Padding(
@@ -124,7 +116,7 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
                                 child: RatingBar.builder(
                                   glowColor: Colors.transparent,
                                   itemSize: 34.0,
-                                  initialRating: widget.feedback.nota!,
+                                  initialRating: widget.feedback!.nota!,
                                   minRating: 0,
                                   maxRating: 5,
                                   direction: Axis.horizontal,
@@ -141,7 +133,7 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
                                 ),
                               ),
                               Text(
-                                '${widget.feedback.nota!.toStringAsFixed(1)}',
+                                '${widget.feedback!.nota!.toStringAsFixed(1)}',
                                 style: GoogleFonts.robotoCondensed(
                                   fontSize: 30,
                                   fontWeight: FontWeight.w400,
@@ -191,10 +183,9 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
                                     _respostaFeedbackModel.resposta =
                                         _descricao.text;
                                     _respostaFeedbackModel.feedbackId =
-                                        widget.feedback.id;
+                                        widget.feedback!.id;
                                     _respostaFeedbackModel.usuarioId =
                                         int.parse(storage.read("id"));
-                                    print(_respostaFeedbackModel);
                                     _salvarResposta(_respostaFeedbackModel);
                                   }
                                 },
@@ -212,6 +203,7 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
           ),
           Expanded(
             child: Container(
+              color: Colors.white,
               child: PageViewWidget(
                 totalPages: 1,
                 images: [Image.asset('assets/feedback.jpg')],

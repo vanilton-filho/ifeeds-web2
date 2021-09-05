@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/core/app_text_styles.dart';
 import 'package:ifeeds_app/models/usuario_model.dart';
-import 'package:ifeeds_app/pages/login/login_page.dart';
 import 'package:ifeeds_app/pages/user/feedbacks/feedbacks_page.dart';
 import 'package:ifeeds_app/pages/user/home/home_page.dart';
 import 'package:ifeeds_app/pages/widgets/router_login.dart';
@@ -33,8 +33,14 @@ class _DrawerPageState extends State<DrawerPage> {
                   padding: EdgeInsets.zero,
                   children: <Widget>[
                     UserAccountsDrawerHeader(
-                        accountName: Text("${usuarioModel.nome}"),
-                        accountEmail: Text("${usuarioModel.contato!.email}"),
+                        accountName: Text(
+                          "${usuarioModel.nome}",
+                          style: GoogleFonts.sourceSansPro(fontSize: 21),
+                        ),
+                        accountEmail: Text(
+                          "${usuarioModel.contato!.email}",
+                          style: GoogleFonts.sourceSansPro(fontSize: 18),
+                        ),
                         currentAccountPicture: CircleAvatar(
                           child: Icon(
                             Icons.account_circle,
@@ -56,17 +62,6 @@ class _DrawerPageState extends State<DrawerPage> {
                       subtitle: Text('Histórico de Feedbacks'),
                       onTap: () => _onSelectItem(1),
                     ),
-                    ListTile(
-                      leading: Icon(Icons.person),
-                      title: Text('Perfil'),
-                      subtitle: Text('Configurações do usuário'),
-                      onTap: () => {Navigator.of(context).pop()},
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.help),
-                      title: Text('Ajuda'),
-                      onTap: () => {Navigator.of(context).pop()},
-                    ),
                   ],
                 ),
               ),
@@ -87,15 +82,6 @@ class _DrawerPageState extends State<DrawerPage> {
                           child: PopupMenuButton<int>(
                               itemBuilder: (context) => [
                                     PopupMenuItem<int>(
-                                      value: 0,
-                                      child: Text("Configurações"),
-                                    ),
-                                    PopupMenuItem<int>(
-                                      value: 1,
-                                      child: Text("Políticas de Privacidade"),
-                                    ),
-                                    PopupMenuDivider(),
-                                    PopupMenuItem<int>(
                                       value: 2,
                                       child: Row(
                                         children: [
@@ -115,10 +101,7 @@ class _DrawerPageState extends State<DrawerPage> {
                                 if (item == 2) {
                                   GetStorage storage = GetStorage();
                                   storage.erase();
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginPage()));
+                                  Navigator.pushReplacementNamed(context, '/');
                                 }
                               },
                               icon: Icon(
@@ -148,9 +131,9 @@ class _DrawerPageState extends State<DrawerPage> {
   }
 
   _future() async {
-    if(JwtUtils.isExpired(storage)){
+    if (JwtUtils.isExpired(storage)) {
       RouterLogin.routeToLogin(context);
-    }else {
+    } else {
       return await UsuarioService().getPorMatricula(storage.read("matricula"));
     }
   }

@@ -45,7 +45,7 @@ namespace IfeedsApi.Core.Database
                 .HasIndex(p => p.Tipo)
                 .IsUnique();
 
-                
+
             //Entidade Campus
             modelBuilder.Entity<Campus>()
                 .HasIndex(p => p.Nome)
@@ -64,7 +64,7 @@ namespace IfeedsApi.Core.Database
                         Id = 1,
                         Email = "cicrano@email.com",
                         Telefone = "79999999999",
-                        DataCriacao =  DateTime.UtcNow
+                        DataCriacao = DateTime.UtcNow
                     },
                     new
                     {
@@ -144,7 +144,7 @@ namespace IfeedsApi.Core.Database
                     new
                     {
                         Id = 2,
-                        Tipo = "USER" , // servidor ou aluno
+                        Tipo = "USER", // servidor ou aluno
                         DataCriacao = DateTime.UtcNow
 
                     }
@@ -155,7 +155,7 @@ namespace IfeedsApi.Core.Database
 
             modelBuilder.Entity<Usuario>()
                 .HasData(
-                    new 
+                    new
                     {
                         Id = 1,
                         Nome = "Cicrano",
@@ -393,7 +393,7 @@ namespace IfeedsApi.Core.Database
                         Id = 1,
                         Titulo = "Banheiro",
                         MediaAvaliacao = 3.5m,
-                        CategoriaId = 1, 
+                        CategoriaId = 1,
                         CampusId = 1,
                         DataCriacao = DateTime.UtcNow
 
@@ -507,7 +507,7 @@ namespace IfeedsApi.Core.Database
                         CampusId = 6,
                         DataCriacao = DateTime.UtcNow
                     }
-                    
+
                 );
 
             modelBuilder.Entity<Feedback>()
@@ -523,14 +523,14 @@ namespace IfeedsApi.Core.Database
                         Nota = 3.50m,
                         AvaliacaoId = 1,
                         Status = true
-                        
+
                     },
                     new
                     {
                         Id = 2,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        UsuarioId = 1,
+                        UsuarioId = 2,
                         Titulo = "Problema no corrimão",
                         Descricao = "Corrimão da Escada da COINF Descascando. Me cortei",
                         Nota = 3m,
@@ -606,7 +606,7 @@ namespace IfeedsApi.Core.Database
                         Titulo = "Elogio ao evento",
                         Descricao = "Semana Academica Divertida - Evento top",
                         Nota = 4.50m,
-                        AvaliacaoId = 8, 
+                        AvaliacaoId = 8,
                         Status = true
                     },
                     new
@@ -662,7 +662,8 @@ namespace IfeedsApi.Core.Database
                         Id = 13,
                         Codigo = Guid.NewGuid(),
                         DataCriacao = DateTime.UtcNow,
-                        UsuarioId = 2,Titulo = "Rasuras no livro",
+                        UsuarioId = 2,
+                        Titulo = "Rasuras no livro",
                         Descricao = "Livro de Cálculo com página rasurada - o livro está com rasuras",
                         Nota = 3m,
                         AvaliacaoId = 6,
@@ -685,7 +686,7 @@ namespace IfeedsApi.Core.Database
                         Id = 2,
                         Resposta = "Obrigado, Sim, eles são maravilhosos",
                         FeedbackId = 5,
-                        UsuarioId =1,
+                        UsuarioId = 1,
                         DataCriacao = DateTime.UtcNow
                     },
                     new
@@ -720,7 +721,7 @@ namespace IfeedsApi.Core.Database
                         UsuarioId = 1,
                         DataCriacao = DateTime.UtcNow
                     },
-                    new 
+                    new
                     {
                         Id = 7,
                         Resposta = "Que bom que está gostando, aproveite",

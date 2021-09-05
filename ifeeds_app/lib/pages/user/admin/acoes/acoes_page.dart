@@ -72,7 +72,7 @@ class _AcoesPageState extends State<AcoesPage> {
         var campus = await CampusService().listarCampus();
         var avaliacoes = await AvaliacaoService().listarAvaliacoes();
 
-        if(categorias == true || campus == true || avaliacoes == true){
+        if (categorias == true || campus == true || avaliacoes == true) {
           RouterLogin.routeToLogin(context);
           break;
         }
@@ -223,6 +223,9 @@ class _AcoesPageState extends State<AcoesPage> {
                                         final form = _formKey.currentState;
                                         if (form!.validate()) {
                                           _criarAvaliacao(_avaliacaoRequest);
+                                          setState(() {
+                                            form.reset();
+                                          });
                                         }
                                       },
                                     ),
@@ -296,6 +299,9 @@ class _AcoesPageState extends State<AcoesPage> {
                                           final form = _formKey2.currentState;
                                           if (form!.validate()) {
                                             _criarCategoria(_categoriaRequest);
+                                            setState(() {
+                                              form.reset();
+                                            });
                                           }
                                         },
                                       ),
@@ -367,6 +373,9 @@ class _AcoesPageState extends State<AcoesPage> {
                                           final form = _formKey3.currentState;
                                           if (form!.validate()) {
                                             _criarCampus(_campusRequest);
+                                            setState(() {
+                                              form.reset();
+                                            });
                                           }
                                         },
                                       ),
@@ -396,11 +405,10 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarAvaliacao(AvaliacaoModelRequest request) async {
     var payload = request.toMap();
-    var avaliacaoModel =
-        await AvaliacaoService().criarAvaliacao(payload);
-    if(avaliacaoModel == true){
+    var avaliacaoModel = await AvaliacaoService().criarAvaliacao(payload);
+    if (avaliacaoModel == true) {
       RouterLogin.routeToLogin(context);
-    }else if (avaliacaoModel is AvaliacaoModel) {
+    } else if (avaliacaoModel is AvaliacaoModel) {
       SnackBarUtils.showSnackbar(
         context,
         "Avaliação adicionada com sucesso!",
@@ -425,12 +433,11 @@ class _AcoesPageState extends State<AcoesPage> {
 
   _criarCategoria(CategoriaModelRequest request) async {
     var payload = request.toMap();
-    var categoriaModel =
-        await CategoriaService().criarCategoria(payload);
+    var categoriaModel = await CategoriaService().criarCategoria(payload);
 
-    if(categoriaModel == true){
+    if (categoriaModel == true) {
       RouterLogin.routeToLogin(context);
-    }else if (categoriaModel is CategoriaModel) {
+    } else if (categoriaModel is CategoriaModel) {
       SnackBarUtils.showSnackbar(
         context,
         "Categoria adicionada com sucesso!",
@@ -456,9 +463,9 @@ class _AcoesPageState extends State<AcoesPage> {
   _criarCampus(CampusModelRequest request) async {
     var payload = request.toMap();
     var campusModel = await CampusService().criarCampus(payload);
-    if(campusModel == true){
+    if (campusModel == true) {
       RouterLogin.routeToLogin(context);
-    }else if (campusModel is CampusModel) {
+    } else if (campusModel is CampusModel) {
       SnackBarUtils.showSnackbar(
         context,
         "Campus adicionado com sucesso!",

@@ -50,7 +50,7 @@ class FormFieldWidget extends StatelessWidget {
 
   _buildTextFormField() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SizedBox(
         width: width == null ? 100 : width,
         child: TextFormField(
