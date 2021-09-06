@@ -1,13 +1,10 @@
 import 'dart:convert' as convert;
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/feedback_model.dart';
 import 'package:ifeeds_app/services/jwt_utils.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 import 'envs.dart';
 
@@ -33,6 +30,8 @@ class FeedbackService {
           return json
               .map<FeedbackModel>((json) => FeedbackModel.fromMap(json))
               .toList();
+        } else if (response.statusCode == 404) {
+          return <FeedbackModel>[];
         }
       } catch (e) {
         throw new Exception("Impossível listar feedbacks");

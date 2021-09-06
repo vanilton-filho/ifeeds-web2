@@ -17,6 +17,7 @@ class FeedbacksPage extends StatefulWidget {
 
 class _FeedbacksPageState extends State<FeedbacksPage> {
   GetStorage storage = GetStorage();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -24,15 +25,15 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
           if (snapshot.hasData) {
             List<FeedbackModel> feedbacksModel = snapshot.data!;
-            return ListView(
-              children: feedbacksModel
-                  .map((e) => FeedbackTile(
-                        feedbackModel: e,
-                      ))
-                  .toList(),
-            );
-          } else if(!snapshot.hasData && snapshot.connectionState == ConnectionState.done){
-            return Center(
+            return !feedbacksModel.isEmpty
+                ? ListView(
+                    children: feedbacksModel
+                        .map((e) => FeedbackTile(
+                              feedbackModel: e,
+                            ))
+                        .toList(),
+                  )
+                : Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -50,8 +51,8 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
                       ],
                     ),
                   );
-          } else if(snapshot.hasError) {
-            return ErrorAppWidget(message: "error");
+          } else if (snapshot.hasError) {
+            return ErrorAppWidget(message: "Error API");
           }
           return Center(
             child: Row(
@@ -65,11 +66,12 @@ class _FeedbacksPageState extends State<FeedbacksPage> {
         });
   }
 
-  _future() async{
-    if(JwtUtils.isExpired(storage)){
+  _future() async {
+    if (JwtUtils.isExpired(storage)) {
       RouterLogin.routeToLogin(context);
-    }else{
-      return await FeedbackService().listarFeedback((int.parse(storage.read(("id")))));
+    } else {
+      return await FeedbackService()
+          .listarFeedback((int.parse(storage.read(("id")))));
     }
   }
 }
