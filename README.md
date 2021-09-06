@@ -15,17 +15,25 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 
 > Esse projeto utiliza o Secret Manager para gerenciar as credenciais/segredos(senha de banco de dados, JWT, etc.)
 
+
 ## REGRAS DE NEGÓCIO
 
 - O usuário deverá ter vínculo com Instituto atravéz da matrícula;
 - O usário deverá realizar um cadastro para estar habilitado a usar o sistema;
 - Ao realizar avaliação, o usuário deverá atribuir uma nota entre 0 e 5;
 - O formulário de avaliação obrigatoriamente deverá conter a descrição para finalizar o feedback.
+- Usuário poderá realizar Feedback para qualquer tipo avaliação através de: um título, descrição e nota, podendo ser um elogio, uma sugestão ou até mesmo uma crítica relacionada a   quaisquer campus. 
+-  O Usuário só terá acesso aos feedbacks que ele realizar.
+-  O usuário Admin poderá responder qualquer feedback em aberto.
+-  Cada feedback só poderá ser respondido apenas uma vez.
+-  Só Admin poderá realizar o CRUD de Campus, Categoria e Avaliação.
+-  Somente o ADMIN poderá Ativar/Desativar usuários.
+-  Somente usuário cadastrado como Admin poderá habilitar outro ADMIN.
 
 
 ## FUNCIONALIDADES
 
-- [ ] Perfis de usuários(admin, usuário comum);
+- [ ] Perfis de usuários(admin, user);
 - [ ] Cadastro de usuários;
 - [ ] Cadastro de avaliações; 
 - [ ] Realizar feedback;
@@ -34,6 +42,9 @@ também, fazer elogios sobre serviços, infraestrutura e eventos da instituiçã
 - [ ] Preencher formulário de avaliação;
 - [ ] Cadastrar informações de contato do usuário;
 - [ ] Cadastro de campus;
+- [ ] Para o ADMIN é exibido os dados relacionados aos Feedbacks;
+- [ ]  Usuário terá acesso ao histórico de avaliações que foi realizado e suas respectivas respostas;
+- [ ]  O usuário(USER) terá acesso a lista de avaliações e suas respectivas médias.
 
 
 ### REQUISITOS NÃO FUNCIONAIS
