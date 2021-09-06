@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifeeds_app/models/estatistica_model.dart';
 import 'package:ifeeds_app/pages/user/admin/widgets/card_gridview_widget.dart';
@@ -15,7 +15,7 @@ class HomeAdminPage extends StatefulWidget {
 }
 
 class _HomeAdminPageState extends State<HomeAdminPage> {
-  var estatisticaModel = EstatisticaModel();
+  GetStorage storage = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +43,28 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
                   label: 'Feedbacks respondidos',
                 ),
                 InkWell(
-                  onLongPress: () => Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                    body: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.favorite, color: Colors.redAccent, size: 90,),
-                          Text("Satisfeitos ficaríamos com a nota 10!!! ;-)", style: GoogleFonts.roboto(fontSize: 42),),
-                        ],  
-                      ),
-                    ),
-                  )),),
+                  onLongPress: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                              body: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.favorite,
+                                      color: Colors.redAccent,
+                                      size: 90,
+                                    ),
+                                    Text(
+                                      "Satisfeitos ficaríamos com a nota 10!!! ;-)",
+                                      style: GoogleFonts.roboto(fontSize: 42),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                  ),
                   child: CardGridView(
                     color: Colors.purple,
                     value: estatisticas.satisfacaoGeral,
@@ -86,9 +96,9 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
   estatisticasStream() async* {
     while (true) {
       await Future.delayed(Duration(milliseconds: 5000));
-      var estatisticas =
-          await EstatisticaService().getEstatisticas(1);
-      if(estatisticas == true){
+      var estatisticas = await EstatisticaService()
+          .getEstatisticas(int.parse(storage.read("id")));
+      if (estatisticas == true) {
         RouterLogin.routeToLogin(context);
         break;
       }

@@ -23,7 +23,7 @@ class RootApp extends StatelessWidget {
         title: 'IFeedS',
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginPage(),
+          '/': (context) => const LoginPage(),
           '/usuario': (context) => DrawerPage(),
           '/admin': (context) => DrawerPageAdmin(),
           '/acoes': (context) => AcoesPage(),

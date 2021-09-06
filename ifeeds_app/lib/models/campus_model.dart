@@ -3,8 +3,7 @@ import 'dart:convert';
 class CampusModel {
   int? id;
   String? nome;
-  
-  
+
   CampusModel({
     this.id,
     this.nome,

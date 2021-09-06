@@ -85,7 +85,7 @@ class _CardAvaliacaoWidgetState extends State<CardAvaliacaoWidget> {
                                   ),
                                 ),
                                 Text(
-                                  '${widget.avaliacaoModel.mediaAvaliacao!}',
+                                  '${widget.avaliacaoModel.mediaAvaliacao!.toStringAsFixed(1)}',
                                   style: GoogleFonts.robotoMono(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w300,

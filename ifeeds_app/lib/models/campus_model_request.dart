@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 class CampusModelRequest {
-  
   String? nome;
- 
- 
+
   CampusModelRequest({
     this.nome,
   });
@@ -23,5 +21,6 @@ class CampusModelRequest {
 
   String toJson() => json.encode(toMap());
 
-  factory CampusModelRequest.fromJson(String source) => CampusModelRequest.fromMap(json.decode(source));
+  factory CampusModelRequest.fromJson(String source) =>
+      CampusModelRequest.fromMap(json.decode(source));
 }

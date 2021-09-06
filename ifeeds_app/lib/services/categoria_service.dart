@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:ifeeds_app/models/categoria_model.dart';
-import 'package:ifeeds_app/pages/utils/storage_util.dart';
 import 'package:ifeeds_app/services/envs.dart';
 import 'package:ifeeds_app/services/jwt_utils.dart';
 
@@ -19,7 +18,6 @@ class CategoriaService {
   Future<dynamic> listarCategorias() async {
     if (!(JwtUtils.isExpired(storage))) {
       Uri uri = Uri.http(Envs.baseUrl, "v1/api/categorias");
-      await StorageUtil.getInstance();
       try {
         final response = await http.get(uri, headers: {
           "Accept": "application/json",
@@ -28,12 +26,10 @@ class CategoriaService {
 
         if (response.statusCode == 200) {
           final json = convert.json.decode(response.body);
-          print(json);
           return json
               .map<CategoriaModel>((json) => CategoriaModel.fromMap(json))
               .toList();
         }
-        throw Exception();
       } catch (e) {
         throw new Exception("Impossível listar categorias");
       }

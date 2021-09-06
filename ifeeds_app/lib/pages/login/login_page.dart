@@ -221,7 +221,6 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     String role = result;
-    print(role);
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) =>
             role.toLowerCase() == "admin" ? DrawerPageAdmin() : DrawerPage()));

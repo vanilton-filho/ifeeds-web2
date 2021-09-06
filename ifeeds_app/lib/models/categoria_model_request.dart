@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 class CategoriaModelRequest {
-  
   String? nome;
- 
- 
+
   CategoriaModelRequest({
     this.nome,
   });
@@ -23,5 +21,6 @@ class CategoriaModelRequest {
 
   String toJson() => json.encode(toMap());
 
-  factory CategoriaModelRequest.fromJson(String source) => CategoriaModelRequest.fromMap(json.decode(source));
+  factory CategoriaModelRequest.fromJson(String source) =>
+      CategoriaModelRequest.fromMap(json.decode(source));
 }

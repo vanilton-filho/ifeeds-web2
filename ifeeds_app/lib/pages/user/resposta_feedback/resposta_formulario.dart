@@ -155,8 +155,7 @@ class _RespostaFormularioState extends State<RespostaFormulario> {
                                   labelText: "Descrição",
                                   alignLabelWithHint: true,
                                   border: OutlineInputBorder(),
-                                  hintText:
-                                      "Forneça um comentário, dúvida, elogio ou sugestão!"),
+                                  hintText: "Forneça uma resposta"),
                               validator: (String? val) => (val!.isEmpty)
                                   ? 'Por favor, forneça algum comentário'
                                   : null,

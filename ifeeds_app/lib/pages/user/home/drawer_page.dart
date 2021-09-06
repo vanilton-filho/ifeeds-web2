@@ -97,10 +97,10 @@ class _DrawerPageState extends State<DrawerPage> {
                                       ),
                                     ),
                                   ],
-                              onSelected: (item) {
+                              onSelected: (item) async {
                                 if (item == 2) {
                                   GetStorage storage = GetStorage();
-                                  storage.erase();
+                                  await storage.erase();
                                   Navigator.pushReplacementNamed(context, '/');
                                 }
                               },

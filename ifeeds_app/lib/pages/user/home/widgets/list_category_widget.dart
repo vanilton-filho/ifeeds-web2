@@ -19,6 +19,7 @@ class ListCategoryWidget extends StatefulWidget {
 
 class _ListCategoryWidgetState extends State<ListCategoryWidget> {
   GetStorage storage = GetStorage();
+
   @override
   Widget build(BuildContext context) {
     return _buildCategory(context);
@@ -26,8 +27,7 @@ class _ListCategoryWidgetState extends State<ListCategoryWidget> {
 
   Widget _buildCategory(BuildContext context) {
     return FutureBuilder(
-      future:
-          _future(),
+      future: _future(),
       builder: (context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           return _buildCategoryList(context, snapshot.data!);
@@ -47,13 +47,21 @@ class _ListCategoryWidgetState extends State<ListCategoryWidget> {
     );
   }
 
-  _future() async{
-    if(JwtUtils.isExpired(storage)){
+  @override
+  void initState() {
+    _future();
+
+    super.initState();
+  }
+
+  _future() async {
+    if (JwtUtils.isExpired(storage)) {
       RouterLogin.routeToLogin(context);
-    }else {
-      return await AvaliacaoService().listarAvaliacoesPorCategoria(widget.categoria!.id!);
+    } else {
+      return await AvaliacaoService()
+          .listarAvaliacoesPorCategoria(widget.categoria!.id!);
     }
-  }  
+  }
 
   _buildCategoryList(BuildContext contex, List<AvaliacaoModel> avaliacoes) {
     return Container(

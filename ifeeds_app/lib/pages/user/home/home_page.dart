@@ -5,7 +5,6 @@ import 'package:ifeeds_app/pages/user/home/widgets/list_category_widget.dart';
 import 'package:ifeeds_app/pages/widgets/error_app_widget.dart';
 import 'package:ifeeds_app/pages/widgets/router_login.dart';
 import 'package:ifeeds_app/services/categoria_service.dart';
-import 'package:ifeeds_app/services/jwt_utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -52,7 +51,7 @@ class _HomePageState extends State<HomePage> {
 
   categoriasStream() async* {
     while (true) {
-      await Future.delayed(Duration(milliseconds: 3000));
+      await Future.delayed(Duration(milliseconds: 5000));
       var categorias = await CategoriaService().listarCategorias();
       if (categorias == true) {
         RouterLogin.routeToLogin(context);

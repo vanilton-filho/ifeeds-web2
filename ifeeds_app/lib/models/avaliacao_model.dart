@@ -10,6 +10,7 @@ class AvaliacaoModel {
   CategoriaModel? categoria;
   CampusModel? campus;
   int? totalFeedbacks;
+
   AvaliacaoModel({
     this.id,
     this.titulo,
